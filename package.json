@@ -1,14 +1,20 @@
 {
-  "name": "create-dapp",
+  "name": "create-app",
   "version": "1.0.0",
-  "description": "ethereum peer-to-peer rewards platform with charitable contributions",
+  "description": "An enterprise platform boilerplate, forked from escobard/create-dapp",
   "main": "index.js",
   "dependencies": {
+    "concurrently": "^4.1.0",
     "prettier": "^1.17.0"
   },
   "devDependencies": {},
   "scripts": {
-    "start": "docker-compose -f dev.yaml up",
+    "test": "concurrently --names \"UI,API\" \"npm run test --prefix ui\" \"npm run test --prefix api\" ",
+    "init": "concurrently --names \"UI,API\" \"npm run install --prefix ui\" \"npm run install --prefix api\" ",
+    "start": "concurrently --names \"UI,API\" \"npm run start --prefix ui\" \"npm run start --prefix api\" ",
+    "dev": "concurrently --names \"UI,API\" \"npm run start --prefix ui\" \"npm run dev --prefix api\" ",
+    "dev-compose": "docker-compose -f dev.yaml up",
+    "dev-ngnix": "docker-compose -f dev-nginx.yaml up",
     "clean": "docker-compose system prune -a"
   },
   "repository": {
