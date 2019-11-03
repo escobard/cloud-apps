@@ -1,0 +1,4 @@
+FROM node:alpine
+WORKDIR /usr/create-app/ui
+COPY package.json .
+RUN npm install
