@@ -2,6 +2,45 @@
 
 An enterprise platform boilerplate, forked from escobard/create-dapp
 
+## APP Usage
+
+Production version available here: (enter future production URL here)
+
+### Scripts
+
+The following scripts assume:
+
+1) The user has `docker` and `docker-compose` installed.
+2) `npm install` has been run in the `./`,`./ui` and `./api` directories.
+
+#### Scripts - NPM
+
+The following scripts can be used to run the UI and the API application cocurrently. For debugging, it's recommended to run each application individually.
+
+##### Local development for UI and API
+
+`npm run dev`
+
+##### Run unit tests on UI and API
+
+`npm run test`
+
+#### Scripts - Docker
+
+The following scripts can be used to run the UI and the API via docker-compose.
+
+##### Local development for UI and API with docker-compose routing
+
+`npm run dev-compose`
+
+##### Local development for UI and API with nginx routing
+
+`npm run dev-nginx`
+
+##### Clean up idle docker images
+
+`npm run clean`
+
 ## Product Technology
 
 This product follows the traditional MVC (Model View Controller) paradigm where:
@@ -10,10 +49,6 @@ This product follows the traditional MVC (Model View Controller) paradigm where:
    - The Controller = the Node restful api  - handled in the `/api` directory
 
 Expanded product concept and highlights can be found here: [documentation/concept.md](https://github.com/escobard/create-app/blob/master/documentation/concept.md)
-
-### APP Usage
-
-Production version available here: (enter future production URL here)
 
 ### UI
 
