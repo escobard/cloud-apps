@@ -30,17 +30,16 @@ export const postFormFields = [
 ];
 
 const environment =
-  process.env.NODE_ENV === "production" ? "heroku" : "development";
+  process.env.NODE_ENV === "production" ? "gcp" : "development";
 
-console.log("environment", environment);
+console.log("environment:", environment);
 
-// TODO - to be updated with new heroku env for digipdfs
 const apiRoot =
-  environment === "heroku"
-    ? "https://share-controller.herokuapp.com"
-    : "http://localhost:4000";
+  environment === "gcp"
+    ? "https://gcp.url"
+    : "http://api";
 
-console.log("root", apiRoot);
+console.log("root:", apiRoot);
 
 export const apiRoutes = {
   postForm: `${apiRoot + "/postForm"}`
