@@ -35,11 +35,11 @@ const environment =
 console.log("environment:", environment);
 
 // expand in the future with more variants
-const apiRouteController = process.env.DOCKER_VARIANT === "ngnix_routing" ? "http://api" : "http://localhost:4000" ;
+const apiRouteController = process.env.DOCKER_VARIANT === "nginx_routing" ? "http://api" : "http://localhost:4000" ;
 
 const apiRoot =
   environment === "gcp"
-    ? "https://gcp.url"
+    ? "https://gcp.api.url"
     : apiRouteController;
 
 console.log("root:", apiRoot);

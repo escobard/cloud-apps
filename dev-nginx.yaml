@@ -4,9 +4,7 @@ services:
     container_name: ui_dev
     working_dir: /usr/create-app/ui
     environment:
-      - DOCKER_VARIANT=compose_routing
-    ports:
-    - "3000:3000"
+      - DOCKER_VARIANT=nginx_routing
     build:
       context: ./ui
       dockerfile: Dockerfile.dev
@@ -19,9 +17,7 @@ services:
     container_name: api_dev
     working_dir: /usr/create-app/api
     environment:
-      - DOCKER_VARIANT=compose_routing
-    ports:
-    - "4000:4000"
+      - DOCKER_VARIANT=nginx_routing
     build:
       context: ./api
       dockerfile: Dockerfile.dev
@@ -30,3 +26,10 @@ services:
     - /usr/create-app/api/node_modules
     command: |
       sh -c "npm run dev"
+  nginx:
+    restart: always
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    ports:
+      - '5000:80'
