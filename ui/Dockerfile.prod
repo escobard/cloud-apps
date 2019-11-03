@@ -2,7 +2,7 @@
 # Stage 1 - build process
 FROM node:alpine as builder
 
-WORKDIR /usr/create-dapp/ui
+WORKDIR /usr/create-app/ui
 
 COPY ./package.json .
 COPY ./src ./src
@@ -19,7 +19,7 @@ FROM nginx:alpine
 
 ENV DOCKER prod
 
-COPY --from=builder /usr/create-dapp/ui/build /usr/share/nginx/html
+COPY --from=builder /usr/create-app/ui/build /usr/share/nginx/html
 
 EXPOSE 80
 

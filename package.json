@@ -13,6 +13,7 @@
     "dev": "concurrently --names \"UI,API\" \"npm run start --prefix ui\" \"npm run dev --prefix api\" ",
     "dev-compose": "docker-compose -f dev.yaml up",
     "dev-nginx": "docker-compose -f dev-nginx.yaml up",
+    "prod": "docker-compose -f prod.yaml up",
     "clean": "docker system prune -a"
   },
   "repository": {
