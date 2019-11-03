@@ -16,7 +16,7 @@
     "semantic-ui-react": "^0.84.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts start --watch-aggregate-timeout=500 --watch-poll=1000",
     "build": "CI=false react-scripts build",
     "test": "react-scripts test --coverage",
     "eject": "react-scripts eject",
