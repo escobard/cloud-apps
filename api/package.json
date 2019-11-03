@@ -6,8 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "test": "nyc mocha tests/routes/*.js",
-    "install": "npm install"
+    "test": "nyc mocha tests/routes/*.js"
   },
   "engines": {
     "node": "10.x",

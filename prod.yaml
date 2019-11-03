@@ -22,16 +22,14 @@ services:
       - REACT_APP_DOCKER_VARIANT=nginx_routing
     build:
       context: ./api
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile.prod
     volumes:
     - ./api:/usr/create-app/api
     - /usr/create-app/api/node_modules
-    command: |
-      sh -c "npm run dev"
   nginx:
     restart: always
     build:
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile.prod
       context: ./nginx
     ports:
       - '5000:80'
