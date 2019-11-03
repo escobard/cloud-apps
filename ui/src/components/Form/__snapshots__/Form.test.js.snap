@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form snapshot renders should render makeDonation form and fields correctly 1`] = `
+<Fragment>
+  <Form
+    as="form"
+  >
+    <Message />
+    <FormGroup
+      widths="equal"
+    >
+      <FormInput
+        as={[Function]}
+        control={[Function]}
+        key="0"
+        label="String Type"
+        name="stringType"
+        onChange={[Function]}
+        placeholder="Enter a random string"
+      />
+      <FormInput
+        as={[Function]}
+        control={[Function]}
+        key="1"
+        label="String Length"
+        name="stringLength"
+        onChange={[Function]}
+        placeholder="Enter a random string, must have char length greater than 10"
+      />
+      <FormInput
+        as={[Function]}
+        control={[Function]}
+        key="2"
+        label="Number Type"
+        name="numberType"
+        onChange={[Function]}
+        placeholder="Enter a random number, must have char length greater than 10"
+      />
+      <FormInput
+        as={[Function]}
+        control={[Function]}
+        key="3"
+        label="Number Max"
+        name="numberMax"
+        onChange={[Function]}
+        placeholder="Enter a random number, must be greater than 10"
+      />
+    </FormGroup>
+    <FormField
+      control={[Function]}
+      onClick={[Function]}
+    >
+      Submit
+    </FormField>
+  </Form>
+</Fragment>
+`;
