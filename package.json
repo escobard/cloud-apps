@@ -8,7 +8,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "docker-compose -f dev.yaml up"
+    "start": "docker-compose -f dev.yaml up",
+    "clean": "docker-compose system prune -a"
   },
   "repository": {
     "type": "git",
