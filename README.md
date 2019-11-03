@@ -19,7 +19,7 @@ Documentation has been fragmented into several different markdown files, to faci
 
 Production version available here: (enter future production URL here)
 
-Follow the instructions within the messages to utilize, expanded instructions here: [documentation/usage.md](https://github.com/escobard/create-app/blob/master/documentation/usage.md)
+Usage instructions here: [documentation/usage.md](https://github.com/escobard/create-app/blob/master/documentation/usage.md)
 
 ### UI
 
