@@ -32,10 +32,10 @@ export const postFormFields = [
 const environment =
   process.env.NODE_ENV === "production" ? "gcp" : "development";
 
-console.log("environment:", environment);
+console.log("environsment:", process.env);
 
 // expand in the future with more variants
-const apiRouteController = process.env.DOCKER_VARIANT === "nginx_routing" ? "http://api" : "http://localhost:4000" ;
+const apiRouteController = process.env.REACT_APP_DOCKER_VARIANT === "nginx_routing" ? "/api" : "http://localhost:4000" ;
 
 const apiRoot =
   environment === "gcp"

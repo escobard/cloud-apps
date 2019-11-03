@@ -5,6 +5,7 @@ services:
     working_dir: /usr/create-app/ui
     environment:
       - DOCKER_VARIANT=nginx_routing
+      - REACT_APP_DOCKER_VARIANT=nginx_routing
     build:
       context: ./ui
       dockerfile: Dockerfile.dev
@@ -18,6 +19,7 @@ services:
     working_dir: /usr/create-app/api
     environment:
       - DOCKER_VARIANT=nginx_routing
+      - REACT_APP_DOCKER_VARIANT=nginx_routing
     build:
       context: ./api
       dockerfile: Dockerfile.dev
