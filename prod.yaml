@@ -4,8 +4,7 @@ services:
     container_name: ui_prod
     working_dir: /usr/create-app/ui
     environment:
-      - DOCKER_VARIANT=nginx_routing
-      - REACT_APP_DOCKER_VARIANT=nginx_routing
+      - DOCKER_VARIANT=compose_routing
     build:
       context: ./ui
       dockerfile: Dockerfile.prod
@@ -13,23 +12,17 @@ services:
       - ./ui:/usr/create-app/ui
       - /usr/create-app/ui/node_modules
     ports:
-    - "3000:80"
+      - '3000:80'
   api:
-    container_name: api_dev
+    container_name: api_prod
     working_dir: /usr/create-app/api
     environment:
-      - DOCKER_VARIANT=nginx_routing
-      - REACT_APP_DOCKER_VARIANT=nginx_routing
+      - DOCKER_VARIANT=compose_routing
+    ports:
+    - "4000:4000"
     build:
       context: ./api
       dockerfile: Dockerfile.prod
     volumes:
     - ./api:/usr/create-app/api
     - /usr/create-app/api/node_modules
-  nginx:
-    restart: always
-    build:
-      dockerfile: Dockerfile.prod
-      context: ./nginx
-    ports:
-      - '5000:80'

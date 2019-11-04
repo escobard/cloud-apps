@@ -1,5 +1,5 @@
 FROM node:alpine
-WORKDIR /usr/create-dapp/api
+WORKDIR /usr/create-app/api
 COPY package.json .
 COPY . .
 RUN npm install

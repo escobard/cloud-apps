@@ -4,13 +4,11 @@ FROM node:alpine as builder
 
 WORKDIR /usr/create-app/ui
 
-COPY ./package.json .
-COPY ./src ./src
-COPY ./scripts ./scripts
-COPY ./config ./config
-COPY ./public ./public
+COPY package.json .
 
 RUN npm install
+
+COPY . .
 
 RUN npm run build
 
@@ -19,7 +17,7 @@ FROM nginx:alpine
 
 ENV DOCKER prod
 
-COPY --from=builder /usr/create-app/ui/build /usr/share/nginx/html
+COPY --from=builder /usr/create-app/ui/build /usr/create-app/nginx/html
 
 EXPOSE 80
 
