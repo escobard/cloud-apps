@@ -1,19 +1,5 @@
 # UI
 
-## Introduction
-
-The purpose of the UI layer is to control the user experience directing the user to use the Share service.
-
-Ideally in a completed product, a slick and modern UI layout will be adapted, similar to https://alice.si/
-
-## Usage - Expanded
-
-The donor must fill out the make donation form with a valid `public and private address`, and an ethereum amount.
-
-The product then delivers a `donationId` upon the transactions' success.
-
-This `donationId` can be used to fetch the `donationReceipt` by using the fetch donation form by providing the `donor's public address and the donationId`.
-
 ### Development - Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

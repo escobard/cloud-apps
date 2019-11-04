@@ -1,4 +1,4 @@
-# Share - API
+# API
 
 For more API documentation, visit [documents/api.md](documents/api.md)
 

@@ -35,7 +35,7 @@ class DynamicForm extends Component {
    **/
 
   submitForm = () => {
-    let { makeDonation, postForm } = this.props;
+    let { postForm } = this.props;
     let { value0, value1, value2, value3 } = this.state;
 
     if (postForm){
@@ -49,7 +49,7 @@ class DynamicForm extends Component {
    **/
 
   inputState = (fieldObject, index) => {
-    Object.keys(fieldObject).map(key => {
+    return Object.keys(fieldObject).map(key => {
       // only creates state for the error / value variables
       if (key === "error" || key === "value") {
         // uses index argument to create scalable state for each object in this.fields
@@ -58,6 +58,7 @@ class DynamicForm extends Component {
         // sets the state key name and value
         return this.setState({ [stateVariable]: fieldObject[key] });
       }
+      return null;
     });
   };
 
