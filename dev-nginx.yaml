@@ -20,6 +20,11 @@ services:
     environment:
       - DOCKER_VARIANT=nginx_routing
       - REACT_APP_DOCKER_VARIANT=nginx_routing
+      - PGUSER=postgres
+      - PGHOST=postgres
+      - PGDATABASE=postgres
+      - PGPASSWORD=postgres_password
+      - PGPORT=5432
     build:
       context: ./api
       dockerfile: Dockerfile.dev
@@ -28,6 +33,8 @@ services:
     - /usr/create-app/api/node_modules
     command: |
       sh -c "npm run dev"
+  postgres:
+    image: 'postgres:latest'
   nginx:
     restart: always
     build:

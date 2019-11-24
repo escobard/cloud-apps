@@ -3,23 +3,40 @@ const express = require("express"),
   cors = require("cors"),
   app = express(),
   routes = require("./constants/routes"),
-  port = routes.port;
+  port = routes.port,
+  {
+    pgUser,
+    pgHost,
+    pgDatabase,
+    pgPassword,
+    pgPort,
+  } = require('./constants/dbkeys');
 
 app.use(bodyParser.json());
+app.use(cors({ origin: "*" }));
 
-// TODO this needs to be refactored to a helper - needs to handle GCP logic after containerization
-if (process.env.NODE_ENV === "production"){
-  global.environment = "prod";
-  app.use(cors({ origin: "https://share-ui.herokuapp.com" }));
-}
-else{
-  app.use(cors({ origin: "http://localhost:3000" }));
-  global.environment = "dev";
-}
+// PGDB
+const { Pool } = require('pg'),
+pg = new Pool({
+    user: pgUser,
+    host: pgHost,
+    database: pgDatabase,
+    pasword: pgPassword,
+    port: pgPort
+})
+pg.on('error', () => console.log('Lost PG connection'));
+
+// sets our DB instance to global
+global.pg = pg;
+
+// postgress table
+/*
+pg
+    .query('CREATE TABLE IF NOT EXISTS values (number INT)')
+    .catch(err => console.log(err));
+    */
 
 require("./routes")(app);
-
-
 let server = app.listen(port, () =>
   console.log(`Example app listening on port ${port}!`)
 );
