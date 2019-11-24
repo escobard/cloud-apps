@@ -3,7 +3,7 @@ const routes = {
     health: '/health',
     postForm: '/postForm',
     values: "/values/all",
-    newValue: "/newValues"
+    newValue: "/newValue"
 };
 
 module.exports = routes;
