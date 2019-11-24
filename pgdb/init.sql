@@ -10,7 +10,7 @@ CREATE TABLE notes.users (
 
 CREATE TABLE notes.notes (
     id serial,
-    user int NOT NULL,
+    user INTEGER NOT NULL,
     subject VARCHAR(250) NOT NULL,
     note VARCHAR(1000) NOT NULL,
     added_date timestamp NOT NULL,

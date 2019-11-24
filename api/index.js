@@ -39,10 +39,11 @@ sequelize
   .catch(err => {
     console.error('Unable to connect to the database:', err);
   });
-
+// need to update with user / book models
+/*
 models.Values.findAll().then(values => {
   console.log("All users:", JSON.stringify(values, null, 4));
-})
+})*/
 
 require("./routes")(app);
 let server = app.listen(port, () =>
