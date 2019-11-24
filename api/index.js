@@ -3,7 +3,14 @@ const express = require("express"),
   cors = require("cors"),
   app = express(),
   routes = require("./constants/routes"),
-  port = routes.port;
+  port = routes.port,
+  {
+    pgUser,
+    pgHost,
+    pgDatabase,
+    pgPassword,
+    pgPort,
+  } = require('./constants/dbkeys');
 
 app.use(bodyParser.json());
 app.use(cors({ origin: "*" }));

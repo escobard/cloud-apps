@@ -2,6 +2,8 @@ version: '3'
 services:
   postgres:
     image: 'postgres:latest'
+    ports:
+      - "5432:5432"
   api:
     container_name: api_dev
     working_dir: /usr/create-app/api
@@ -12,7 +14,7 @@ services:
       - PGDATABASE=postgres
       - PGPASSWORD=postgres_password
       - PGPORT=5432
-      - WAIT_HOSTS=postgres
+      - WAIT_HOSTS=postgres:5432
     ports:
     - "4000:4000"
     build:
@@ -27,8 +29,8 @@ services:
     container_name: ui_dev
     working_dir: /usr/create-app/ui
     environment:
-      - WAIT_HOSTS=api, postgres
       - DOCKER_VARIANT=compose_routing
+      - WAIT_HOSTS=api:4000,postgres:5432
     ports:
     - "3000:3000"
     build:
