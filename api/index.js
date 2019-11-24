@@ -9,7 +9,20 @@ app.use(bodyParser.json());
 app.use(cors({ origin: "*" }));
 
 // PGDB
+const { Pool } = require('pg'),
+pg = new Pool({
+    user: pgUser,
+    host: pgHost,
+    database: pgDatabase,
+    pasword: pgPassword,
+    port: pgPort
+})
+pg.on('error', () => console.log('Lost PG connection'));
 
+// postgress table
+pg
+    .query('CREATE TABLE IF NOT EXISTS values (number INT)')
+    .catch(err => console.log(err));
 
 require("./routes")(app);
 let server = app.listen(port, () =>
