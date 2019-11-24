@@ -29,13 +29,6 @@ pg.on('error', () => console.log('Lost PG connection'));
 // sets our DB instance to global
 global.pg = pg;
 
-// postgress table
-/*
-pg
-    .query('CREATE TABLE IF NOT EXISTS values (number INT)')
-    .catch(err => console.log(err));
-    */
-
 require("./routes")(app);
 let server = app.listen(port, () =>
   console.log(`Example app listening on port ${port}!`)
