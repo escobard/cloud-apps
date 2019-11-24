@@ -1,5 +1,4 @@
 const Sequelize = require('sequelize'),
-port = routes.port,
   {
     pgPort,
     pgHost,
@@ -23,5 +22,7 @@ const models = {
   Values: sequelize.import('./models/values')
 };
 
-export { sequelize };
-export default models;
+module.exports.default = models;
+module.exports = {
+  sequelize
+}
