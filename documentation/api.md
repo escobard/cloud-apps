@@ -2,11 +2,11 @@
 
 ## Introduction
 
-The main purpose of the API layer is to control the business logic of the product.
+The purpose of the API layer is to control the business logic of the product.
 
 This is managed by a combination of Node.js, Express.js and various npm libraries.
 
-## Usage - Expanded
+## Usage - Expanded - needs to be updated with final routes for phase2
 
 ### Validation
 
