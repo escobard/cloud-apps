@@ -26,6 +26,9 @@ pg = new Pool({
 })
 pg.on('error', () => console.log('Lost PG connection'));
 
+// sets our DB instance to global
+global.pg = pg;
+
 // postgress table
 pg
     .query('CREATE TABLE IF NOT EXISTS values (number INT)')

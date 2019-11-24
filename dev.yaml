@@ -2,8 +2,6 @@ version: '3'
 services:
   postgres:
     image: 'postgres:latest'
-    ports:
-      - "5432:5432"
   api:
     container_name: api_dev
     working_dir: /usr/create-app/api

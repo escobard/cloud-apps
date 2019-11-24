@@ -7,4 +7,8 @@ module.exports = app => {
 
   // form routes
   app.use(routes.postForm, require("../routes/postForm"))
+
+  // db routes
+  app.use(routes.values, require("../routes/values"))
+  app.use(routes.newValue, require("../routes/newValue"))
 };
