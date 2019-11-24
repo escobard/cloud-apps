@@ -29,7 +29,7 @@ pg.on('error', () => console.log('Lost PG connection'));
 // sets our DB instance to global
 global.pg = pg;
 
-const { sequelize } = require("./services/postgres");
+const { sequelize, models } = require("./services/postgres");
 
 sequelize
   .authenticate()
@@ -39,6 +39,10 @@ sequelize
   .catch(err => {
     console.error('Unable to connect to the database:', err);
   });
+
+models.Values.findAll().then(values => {
+  console.log("All users:", JSON.stringify(values, null, 4));
+})
 
 require("./routes")(app);
 let server = app.listen(port, () =>

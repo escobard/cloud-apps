@@ -10,4 +10,4 @@ const values = (sequelize, DataTypes) => {
   });
   return values;
 };
-export default values;
+module.exports.default = values;

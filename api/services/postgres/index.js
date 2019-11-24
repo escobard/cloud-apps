@@ -15,6 +15,10 @@ const sequelize = new Sequelize(
     host: pgHost,
     port: pgPort,
     dialect: 'postgres',
+    define: {
+      timestamps: false,
+      schema: "notes"
+    }
   },
 );
 
@@ -22,7 +26,8 @@ const models = {
   Values: sequelize.import('./models/values')
 };
 
-module.exports.default = models;
+module.exports.default =
 module.exports = {
-  sequelize
+  sequelize,
+  models
 }
