@@ -23,7 +23,9 @@ const sequelize = new Sequelize(
 );
 
 const models = {
-  Values: sequelize.import('./models/values')
+  Values: sequelize.import('./models/values'),
+  Users: sequelize.import('./models/users'),
+  Notes: sequelize.import('./models/notes')
 };
 
 module.exports.default =
