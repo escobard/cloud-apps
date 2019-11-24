@@ -30,9 +30,11 @@ pg.on('error', () => console.log('Lost PG connection'));
 global.pg = pg;
 
 // postgress table
+/*
 pg
     .query('CREATE TABLE IF NOT EXISTS values (number INT)')
     .catch(err => console.log(err));
+    */
 
 require("./routes")(app);
 let server = app.listen(port, () =>
