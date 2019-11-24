@@ -1,9 +1,33 @@
 version: '3'
 services:
+  postgres:
+    image: 'postgres:latest'
+  api:
+    container_name: api_dev
+    working_dir: /usr/create-app/api
+    environment:
+      - DOCKER_VARIANT=compose_routing
+      - PGUSER=postgres
+      - PGHOST=postgres
+      - PGDATABASE=postgres
+      - PGPASSWORD=postgres_password
+      - PGPORT=5432
+      - WAIT_HOSTS=postgres
+    ports:
+    - "4000:4000"
+    build:
+      context: ./api
+      dockerfile: Dockerfile.dev
+    volumes:
+    - ./api:/usr/create-app/api
+    - /usr/create-app/api/node_modules
+    command: |
+      sh -c "/wait && npm run dev"
   ui:
     container_name: ui_dev
     working_dir: /usr/create-app/ui
     environment:
+      - WAIT_HOSTS=api, postgres
       - DOCKER_VARIANT=compose_routing
     ports:
     - "3000:3000"
@@ -14,19 +38,4 @@ services:
       - ./ui:/usr/create-app/ui
       - /usr/create-app/ui/node_modules
     command: |
-      sh -c "npm run start"
-  api:
-    container_name: api_dev
-    working_dir: /usr/create-app/api
-    environment:
-      - DOCKER_VARIANT=compose_routing
-    ports:
-    - "4000:4000"
-    build:
-      context: ./api
-      dockerfile: Dockerfile.dev
-    volumes:
-    - ./api:/usr/create-app/api
-    - /usr/create-app/api/node_modules
-    command: |
-      sh -c "npm run dev"
+      sh -c "/wait && npm run start"
