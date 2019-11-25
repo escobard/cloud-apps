@@ -23,17 +23,9 @@ const sequelize = new Sequelize(
 );
 
 const models = {
-  Values: sequelize.import('./models/values'),
   Users: sequelize.import('./models/users'),
   Notes: sequelize.import('./models/notes')
 };
-
-// likely redundant
-Object.keys(models).forEach(key => {
-  if ('associate' in models[key]) {
-    models[key].associate(models);
-  }
-});
 
 sequelize
   .authenticate()
@@ -44,7 +36,19 @@ sequelize
     console.error('Unable to connect to the database:', err);
   });
 
+const { Users } = models;
 
+Users.findAll().then(values => {
+  
+  const cleanData = JSON.stringify(values, null, 4)
+  
+  console.log("All users:", cleanData);
+  if(cleanData.length === 0){
+    Users.create({ email: "admin@admin" }).then(admin => {
+      console.log("Auto-generated ID:", admin.id, admin.email);
+    });
+  }
+})
 
 module.exports.default =
 module.exports = {
