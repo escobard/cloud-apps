@@ -1,4 +1,5 @@
-const router = require('express').Router();
+const router = require('express').Router(),
+{ sequelize, models: { Users, Notes } } = require("../services/postgres");
   // add future validation
   // postFormValidation = require("../middlewares/postFormValidation");
 

@@ -28,6 +28,12 @@ const models = {
   Notes: sequelize.import('./models/notes')
 };
 
+Object.keys(models).forEach(key => {
+  if ('associate' in models[key]) {
+    models[key].associate(models);
+  }
+});
+
 module.exports.default =
 module.exports = {
   sequelize,

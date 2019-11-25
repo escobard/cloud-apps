@@ -9,10 +9,9 @@ CREATE TABLE notes.users (
 
 CREATE TABLE notes.notes (
     id serial,
-    user INTEGER NOT NULL,
+    user_id INTEGER NOT NULL,
     subject VARCHAR(250) NOT NULL,
     note VARCHAR(1000) NOT NULL,
-    added_date timestamp,
-    FOREIGN KEY (user) REFERENCES notes.users(id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES notes.users(id) ON DELETE CASCADE,
     PRIMARY KEY (id)
 );

@@ -1,17 +1,12 @@
 const users = (sequelize, DataTypes) => {
   
-  const users = sequelize.define('users', {
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      allowNull: false,
-      unique: true,
-    },
+  const Users = sequelize.define('users', {
     email: {
       type: DataTypes.STRING(100),
       allowNull: false,
     },
   });
-  return users;
+  
+  return Users;
 };
 module.exports.default = users;

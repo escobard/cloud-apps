@@ -1,13 +1,7 @@
 const notes = (sequelize, DataTypes) => {
   
   const Notes = sequelize.define('notes', {
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      allowNull: false,
-      unique: true,
-    },
-    user: {
+    user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
@@ -21,10 +15,6 @@ const notes = (sequelize, DataTypes) => {
     },
     
   });
-  
-  Notes.associate = models => {
-    Notes.belongsTo(models.User)
-  }
   
   return Notes;
 };
