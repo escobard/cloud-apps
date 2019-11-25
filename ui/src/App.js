@@ -1,8 +1,9 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Grid } from 'semantic-ui-react';
 import Navigation from "./components/Navigation";
 import Form from "./components/Form";
 import Footer from "./components/Footer";
+import Note from "./components/Note";
 
 import { postFormFields } from "./constants";
 import { postForm } from "./utils/requests";
@@ -163,36 +164,32 @@ class App extends Component {
       postFormMessage,
       postFormStatus
     } = this.state;
-
+    
+    const note = {
+      title: "TEst",
+      description: "Test",
+      date: "9 am"
+    }
+    
     return (
-      <main id={id} className="application">
+      <Fragment>
         <Navigation />
-        <Grid id={`${id}-note`}  columns='equal'>
-          <Grid.Column>
-            <i aria-hidden="true" className="sticky note big circular icon"></i>
-          </Grid.Column>
-          <Grid.Column width={12}>
-            Title / Description
-          </Grid.Column>
-          <Grid.Column>
-            Date
-          </Grid.Column>
-        </Grid>
-        { /*
-          <section className="float">
-            <Form
-              postForm={this.postForm}
-              fields={postFormFields}
-              messageHeader={postFormTitle}
-              messageValue={postFormMessage}
-              messageStatus={postFormStatus}
-            />
-          </section>
-        */}
-
-
-        <Footer />
-      </main>
+        <main id={id} className="application">
+          
+          <Note data={note} id={id}/>
+          { /*
+            <section className="float">
+              <Form
+                postForm={this.postForm}
+                fields={postFormFields}
+                messageHeader={postFormTitle}
+                messageValue={postFormMessage}
+                messageStatus={postFormStatus}
+              />
+            </section>
+          */}
+        </main>
+      </Fragment>
     );
   }
 }
