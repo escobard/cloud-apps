@@ -4,7 +4,8 @@ const routes = {
     postForm: '/postForm',
     values: "/values/all",
     newValue: "/newValue",
-    addNote: "/addNote"
+    addNote: "/addNote",
+    getNotes: "/getNotes"
 };
 
 module.exports = routes;

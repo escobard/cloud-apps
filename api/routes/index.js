@@ -14,4 +14,5 @@ module.exports = app => {
   
   // note routes
   app.use(routes.addNote, require('../routes/addNote'))
+  app.use(routes.getNotes, require("../routes/getNotes"))
 };

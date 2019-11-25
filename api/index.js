@@ -36,9 +36,9 @@ Users.findAll().then(values => {
   const cleanData = JSON.stringify(values, null, 4)
   
   console.log("All users:", cleanData);
-  if(cleanData.length >= 1){
+  if(cleanData.length === 0){
     Users.create({ email: "admin@admin" }).then(admin => {
-      console.log("Jane's auto-generated ID:", admin.id, admin.email);
+      console.log("Auto-generated ID:", admin.id, admin.email);
     });
   }
 
