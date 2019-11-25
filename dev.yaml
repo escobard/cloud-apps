@@ -33,7 +33,7 @@ services:
     working_dir: /usr/create-app/ui
     environment:
       - DOCKER_VARIANT=compose_routing
-      - WAIT_HOSTS=api:4000,postgres:5432
+      - WAIT_HOSTS=api:4000
     ports:
     - "3000:3000"
     build:
