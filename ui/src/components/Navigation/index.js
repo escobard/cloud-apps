@@ -7,7 +7,8 @@ import "./styles.scss"
 const Navigation = () => (
   <nav id="navigation">
     <i aria-hidden="true" className="bars big icon"></i>
-    <h1>Your Notes</h1>
+    <h1>Your <br/>
+     Notes</h1>
     <p>Nov 5, 2019</p>
   </nav>
 );

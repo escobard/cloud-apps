@@ -2,9 +2,21 @@
 
 /* start by selecting the parent ID */
 #navigation{
-  background: $grey-black;
-  padding: 25px 30px;
+  background: url("../../assets/images/nav-background.jpg");
+  background-size: cover;
+  background-position: 100% -800px;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  height: 270px;
+  padding: $space-xlrg;
   h1,p, i{
     color: $white;
+  }
+  h1{
+    font-size: $font-size-xxxl;
+    margin-bottom: $space-xlrg;
+  }
+  p{
+    color: $grey-medium-darkish
   }
 }
