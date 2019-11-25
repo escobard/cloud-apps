@@ -29,26 +29,23 @@ pg.on('error', () => console.log('Lost PG connection'));
 // sets our DB instance to global
 global.pg = pg;
 
-const { sequelize, models: { Users, Notes } } = require("./services/postgres");
+const { models: { Users, Notes } } = require("./services/postgres");
 
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log('Connection has been established successfully.');
-  })
-  .catch(err => {
-    console.error('Unable to connect to the database:', err);
-  });
-
-// need to update with user / book models
 Users.findAll().then(values => {
-  console.log("All users:", JSON.stringify(values, null, 4));
-  Users.create({ email: "admin@admin" }).then(jane => {
-    console.log("Jane's auto-generated ID:", jane.id, jane.email);
-    Notes.create({user_id: 1, subject: "first note", note: "First note thoughts"}).then(note => {
-      console.log("Note:", note)
-    })
-  });
+  
+  const cleanData = JSON.stringify(values, null, 4)
+  
+  console.log("All users:", cleanData);
+  if(cleanData.length >= 1){
+    Users.create({ email: "admin@admin" }).then(admin => {
+      console.log("Jane's auto-generated ID:", admin.id, admin.email);
+    });
+  }
+
+})
+
+Notes.findAll().then(values => {
+  console.log('VALUES', JSON.stringify(values, null, 4))
 })
 
 require("./routes")(app);

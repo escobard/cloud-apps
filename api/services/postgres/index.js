@@ -28,11 +28,23 @@ const models = {
   Notes: sequelize.import('./models/notes')
 };
 
+// likely redundant
 Object.keys(models).forEach(key => {
   if ('associate' in models[key]) {
     models[key].associate(models);
   }
 });
+
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log('Connection has been established successfully.');
+  })
+  .catch(err => {
+    console.error('Unable to connect to the database:', err);
+  });
+
+
 
 module.exports.default =
 module.exports = {
