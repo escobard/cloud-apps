@@ -5,8 +5,6 @@ services:
     build:
       context: ./pgdb
       dockerfile: Dockerfile.dev
-    volumes:
-      - ./pgdb/var/pgdata:/var/lib/postgresql/data
     ports:
       - "5432:5432"
   api:

@@ -11,4 +11,8 @@ module.exports = app => {
   // db routes
   app.use(routes.values, require("../routes/values"))
   app.use(routes.newValue, require("../routes/newValue"))
+  
+  // note routes
+  app.use(routes.addNote, require('../routes/addNote'))
+  app.use(routes.getNotes, require("../routes/getNotes"))
 };
