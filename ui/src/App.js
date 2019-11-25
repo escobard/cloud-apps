@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { Grid } from 'semantic-ui-react';
 import Navigation from "./components/Navigation";
 import Form from "./components/Form";
 import Footer from "./components/Footer";
@@ -155,6 +155,9 @@ class App extends Component {
   };
 
   render() {
+    
+    const id = "application"
+    
     let {
       postFormTitle,
       postFormMessage,
@@ -162,18 +165,31 @@ class App extends Component {
     } = this.state;
 
     return (
-      <main className="application">
+      <main id={id} className="application">
         <Navigation />
+        <Grid id={`${id}-note`}  columns='equal'>
+          <Grid.Column>
+            <i aria-hidden="true" className="sticky note big circular icon"></i>
+          </Grid.Column>
+          <Grid.Column width={12}>
+            Title / Description
+          </Grid.Column>
+          <Grid.Column>
+            Date
+          </Grid.Column>
+        </Grid>
+        { /*
+          <section className="float">
+            <Form
+              postForm={this.postForm}
+              fields={postFormFields}
+              messageHeader={postFormTitle}
+              messageValue={postFormMessage}
+              messageStatus={postFormStatus}
+            />
+          </section>
+        */}
 
-        <section className="float">
-          <Form
-            postForm={this.postForm}
-            fields={postFormFields}
-            messageHeader={postFormTitle}
-            messageValue={postFormMessage}
-            messageStatus={postFormStatus}
-          />
-        </section>
 
         <Footer />
       </main>
