@@ -2,9 +2,10 @@
 
 /* start by selecting the parent ID */
 #navigation{
+  /* will need a higher res image for screens larger than 1800px*/
   background: url("../../assets/images/nav-background.jpg");
   background-size: cover;
-  background-position: 100% -84vh;
+  background-position: 100% -50vh;
   background-attachment: fixed;
   background-repeat: no-repeat;
   height: 270px;
@@ -16,10 +17,8 @@
     font-size: $font-size-xxxl;
     margin-bottom: $space-xlrg;
   }
-  p{
-    color: $grey-medium-darkish
-  }
   h1, p{
-    font-family: 'Roboto', sans-serif;
+    font-family: $font-family-default;
+    font-weight: $font-weight-lightish;
   }
 }

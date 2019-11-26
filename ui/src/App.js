@@ -174,6 +174,7 @@ class App extends Component {
     return (
       <Fragment>
         <Navigation />
+        <div className="divider" />
         <main id={id} className="application">
           
           <Note data={note} id={id}/>
