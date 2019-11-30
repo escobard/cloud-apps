@@ -166,8 +166,8 @@ class App extends Component {
     } = this.state;
     
     const note = {
-      title: "TEst",
-      description: "Test",
+      title: "Test title",
+      description: "Test description",
       date: "9 am"
     }
     
