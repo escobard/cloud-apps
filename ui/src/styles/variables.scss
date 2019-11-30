@@ -6,21 +6,20 @@ $break-normal: 1080px;
 $break-large: 1200px;
 
 // COLORS
-
-$grey-light-background: #fafbfc;
-$grey-black: #000000;
-$grey-darker-highlight: #2e3d49;
-$grey-dark-highlight: #313336;
-$grey-dark: #3b3f43;
-$grey-border: #dbe2e8;
-$grey-medium-darker: #525c65;
-$grey-medium-dark: #757c81;
-$grey-medium-darkity: #7d97ad;
-$grey-medium-darkish: #8a9094;
-$grey-medium: #979fa7;
-$grey-very-medium: #91a7ba;
-$grey-medium-light: #b9c0c4;
-$grey-light: #efefef;
+$gray-light-background: #fafbfc;
+$gray-black: #000000;
+$gray-darker-highlight: #2e3d49;
+$gray-dark-highlight: #313336;
+$gray-dark: #3b3f43;
+$gray-border: #dbe2e8;
+$gray-medium-darker: #525c65;
+$gray-medium-dark: #757c81;
+$gray-medium-darkity: #7d97ad;
+$gray-medium-darkish: #8a9094;
+$gray-medium: #979fa7;
+$gray-very-medium: #91a7ba;
+$gray-medium-light: #b9c0c4;
+$gray-light: #efefef;
 $white: #ffffff;
 
 $green: #02ccba;
@@ -32,7 +31,7 @@ $red-hover: #f5421d;
 $red-warning: #f7330b;
 $red-dark: #ea411d;
 
-$blue: #02b3e4;
+$blue: #0182c9;
 $black: #000;
 
 $primary-lighter: #00bcd4;
@@ -44,6 +43,7 @@ $primary-gray: #b9c0c4;
 
 $semantic-gray: rgba(34,36,38,.15);
 $semantic-light-gray: #f2f3f2;
+
 // SHADOWS
 $button-hover-shadow: 2px 4px 8px 0px rgba(46, 61, 73, 0.2);
 
@@ -82,3 +82,7 @@ $font-margin-bottom-std: 2rem;
 
 // LAYERS
 $overlay-z-index: 9999;
+
+// borders
+
+$border-gray: solid 2px $gray-light;

@@ -1,8 +1,22 @@
 @import "../../styles/variables";
 
-// really useful way of finding the elements that contain some id characters - should re-use this approach with rebank
+// really useful way of finding the elements that contain some id characters - should consider this approach with rebank
 div[id*="-note"] {
+  border-bottom: $border-gray;
+  margin: 0 !important;
+  padding-bottom: $space-med !important;
   i{
-    color: #0182c9;
+    color: $blue;
+  }
+  .column{
+   padding-left: 0 !important;
+    &.date{
+      text-align: right;
+      padding-right: 0 !important;
+    }
+    p{
+      color: $gray-medium-dark;
+      font-weight: 400;
+    }
   }
 }

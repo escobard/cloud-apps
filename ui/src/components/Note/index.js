@@ -13,7 +13,7 @@ const Note = ({ id, data: { title, description, date }}) => {
         <h3>{title}</h3>
         <p>{description}</p>
       </Grid.Column>
-      <Grid.Column>
+      <Grid.Column className="date">
         <p>{date}</p>
       </Grid.Column>
     </Grid>

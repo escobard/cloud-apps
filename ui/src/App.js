@@ -167,7 +167,7 @@ class App extends Component {
     
     const note = {
       title: "Test title",
-      description: "Test description",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vel nulla sit amet nibh sagittis eleifend. Cras a lacus rutrum ipsum pretium scelerisque sed eu turpis. ",
       date: "9 am"
     }
     
@@ -189,6 +189,7 @@ class App extends Component {
               />
             </section>
           */}
+          <Footer/>
         </main>
       </Fragment>
     );
