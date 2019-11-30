@@ -1,0 +1,16 @@
+@import "../../styles/variables";
+
+footer{
+  right: 0;
+  left: 0;
+  bottom: 0;
+  padding: $space-lrg 0;
+  border-top: solid 2px $gray-light;
+  background: $white;
+  text-align: center;
+  position: fixed;
+  margin: 30px;
+  p{
+    float: left;
+  }
+}

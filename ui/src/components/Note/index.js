@@ -9,7 +9,7 @@ const Note = ({ id, data: { title, description, date }}) => {
       <Grid.Column>
         <i aria-hidden="true" className="sticky newspaper outline big circular icon"></i>
       </Grid.Column>
-      <Grid.Column computer mobile={10} tablet={12} width={14}>
+      <Grid.Column computer mobile={10} tablet={12} width={14} className="content">
         <h3>{title}</h3>
         <p>{description}</p>
       </Grid.Column>

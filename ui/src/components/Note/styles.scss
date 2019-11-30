@@ -7,12 +7,18 @@ div[id*="-note"] {
   padding-bottom: $space-med !important;
   i{
     color: $blue;
+    border: solid 2px $gray-light;
+    box-shadow: none !important;
+    font-size: $font-size-xxxl !important;
   }
   .column{
    padding-left: 0 !important;
     &.date{
       text-align: right;
       padding-right: 0 !important;
+    }
+    &.content{
+      padding-left: $space-lrg !important;
     }
     p{
       color: $gray-medium-dark;
