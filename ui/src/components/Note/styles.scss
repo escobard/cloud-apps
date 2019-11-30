@@ -1,0 +1,8 @@
+@import "../../styles/variables";
+
+// really useful way of finding the elements that contain some id characters - should re-use this approach with rebank
+div[id*="-note"] {
+  i{
+    color: #0182c9;
+  }
+}
