@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { Grid } from 'semantic-ui-react';
+import { Modal } from "semantic-ui-react";
 import Navigation from "./components/Navigation";
 import Form from "./components/Form";
 import Footer from "./components/Footer";
@@ -11,7 +11,6 @@ import { postForm } from "./utils/requests";
 import "./styles/global.scss";
 
 class App extends Component {
-
   state = {
     messageErrors: [],
     postFormTitle: "Post Form",
@@ -19,6 +18,9 @@ class App extends Component {
       "Follow the placeholder instructions to validate data on the UI and API side",
     postFormStatus: null
   };
+
+  show = size => () => this.setState({ size, open: true });
+  close = () => this.setState({ open: false });
 
   /** Submits the POST request to the API
    * @name postForm
@@ -156,29 +158,29 @@ class App extends Component {
   };
 
   render() {
-    
-    const id = "application"
-    
-    let {
-      postFormTitle,
-      postFormMessage,
-      postFormStatus
-    } = this.state;
-    
+    const id = "application";
+
+    let { postFormTitle, postFormMessage, postFormStatus, open } = this.state;
+
     const note = {
       title: "Test title",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vel nulla sit amet nibh sagittis eleifend. Cras a lacus rutrum ipsum pretium scelerisque sed eu turpis. ",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vel nulla sit amet nibh sagittis eleifend. Cras a lacus rutrum ipsum pretium scelerisque sed eu turpis. ",
       date: "9 am"
-    }
-    
+    };
+
     return (
       <Fragment>
         <Navigation />
         <div className="divider" />
         <main id={id} className="application">
-          
-          <Note data={note} id={id}/>
-          { /*
+          <Modal size="large" open={open} onClose={this.close}>
+            <Modal.Content>
+              <p>Are you sure you want to delete your account</p>
+            </Modal.Content>
+          </Modal>
+          <Note data={note} id={id} />
+          {/*
             <section className="float">
               <Form
                 postForm={this.postForm}
@@ -189,7 +191,7 @@ class App extends Component {
               />
             </section>
           */}
-          <Footer id={id} />
+          <Footer id={id} show={this.show()} />
         </main>
       </Fragment>
     );
