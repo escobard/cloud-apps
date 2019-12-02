@@ -27,7 +27,7 @@ const ModalElement = ({ id, open, close, title }) => {
           <i aria-hidden="true" className="sticky note outline big circular icon" />
         </div>
         <div className="form" />
-        <button>Add Note</button>
+        <button className="button ui">Add Note</button>
       </Modal.Content>
     </Modal>
   );

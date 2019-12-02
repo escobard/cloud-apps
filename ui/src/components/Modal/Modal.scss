@@ -24,5 +24,16 @@ div[id*="-modal"]{
         border: solid 2px $white;
       }
     }
+    button{
+      width: 100%;
+      text-transform: capitalize;
+      font-size: $font-size-small;
+      color: $white;
+      background: $blue;
+      &:hover {
+        background: $white;
+        color: $blue;
+      }
+    }
+    }
   }
-}
