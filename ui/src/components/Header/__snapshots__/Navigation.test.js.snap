@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Navigation snapshot renders should render correctly mode 1`] = `
+exports[`Header snapshot renders should render correctly mode 1`] = `
 <nav>
   <Menu
     items={

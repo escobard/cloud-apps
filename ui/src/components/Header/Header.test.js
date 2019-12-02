@@ -1,10 +1,10 @@
 import React from "react";
 import { shallow } from "enzyme";
-import Navigation from "./index";
+import Header from "./index";
 
-describe("Navigation snapshot renders", () => {
+describe("Header snapshot renders", () => {
   it("should render correctly mode", () => {
-    const component = shallow(<Navigation />);
+    const component = shallow(<Header />);
 
     expect(component).toMatchSnapshot();
   });

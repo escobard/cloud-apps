@@ -1,9 +1,10 @@
 import React, { Component, Fragment } from "react";
-import { Modal } from "semantic-ui-react";
-import Navigation from "./components/Navigation";
+
+import Header from "./components/Header";
 import Form from "./components/Form";
 import Footer from "./components/Footer";
 import Note from "./components/Note";
+import Modal from "./components/Modal"
 
 import { postFormFields } from "./constants";
 import { postForm } from "./utils/requests";
@@ -171,14 +172,10 @@ class App extends Component {
 
     return (
       <Fragment>
-        <Navigation />
+        <Header />
         <div className="divider" />
         <main id={id} className="application">
-          <Modal size="large" open={open} onClose={this.close}>
-            <Modal.Content>
-              <p>Are you sure you want to delete your account</p>
-            </Modal.Content>
-          </Modal>
+          <Modal open={open} close={this.close}/>
           <Note data={note} id={id} />
           {/*
             <section className="float">

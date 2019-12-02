@@ -1,10 +1,10 @@
 import React from "react";
 
-import "./Navigation.scss"
+import "./Header.scss"
 
 // needs to all sections as anchor links
 // look for css highlight options when section is selected
-const Navigation = () => (
+const Header = () => (
     <nav id="navigation">
         <i aria-hidden="true" className="bars big icon"></i>
         <h1>Your <br/>
@@ -13,4 +13,4 @@ const Navigation = () => (
     </nav>
 );
 
-export default Navigation;
+export default Header;
