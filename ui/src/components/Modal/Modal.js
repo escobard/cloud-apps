@@ -23,7 +23,9 @@ const ModalElement = ({ id, open, close, title }) => {
             </Grid.Column>
           </Grid>
         </div>
-        <div className="icon" />
+        <div className="icon-container">
+          <i aria-hidden="true" className="sticky note outline big circular icon" />
+        </div>
         <div className="form" />
         <button>Add Note</button>
       </Modal.Content>

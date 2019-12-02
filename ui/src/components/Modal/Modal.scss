@@ -5,12 +5,24 @@ div[id*="-modal"]{
   .content{
     background: $blue-dark !important;
     color: $white;
-  }
-  h2{
-    text-align: center;
-    font-weight: 100;
-  }
-  .clipboard{
-    float: right;
+    h2{
+      text-align: center;
+      font-weight: 100;
+    }
+    .clipboard{
+      float: right;
+    }
+    .icon-container{
+      padding: $space-xxlrg 0 $space-mega;
+      i{
+        font-size: $font-size-xxxl;
+        text-align: center;
+        float: none;
+        margin: auto;
+        display: block;
+        box-shadow: none;
+        border: solid 2px $white;
+      }
+    }
   }
 }
