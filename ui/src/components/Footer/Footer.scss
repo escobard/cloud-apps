@@ -12,5 +12,14 @@ footer{
   margin: 30px;
   p{
     float: left;
+    span{
+      width: $space-lrg;
+      display: block;
+      float: right;
+      margin-left: $space-small;
+      background: $gray-medium-dark;
+      color: $white;
+      border-radius: 50%;
+    }
   }
 }
