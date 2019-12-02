@@ -1,7 +1,7 @@
 import React from "react"
 import { Grid } from "semantic-ui-react";
 
-import "./Navigation.scss"
+import "./Note.scss"
 
 const Note = ({ id, data: { title, description, date }}) => {
     return(

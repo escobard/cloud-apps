@@ -189,7 +189,7 @@ class App extends Component {
               />
             </section>
           */}
-          <Footer/>
+          <Footer id={id} />
         </main>
       </Fragment>
     );

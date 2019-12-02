@@ -8,8 +8,9 @@ const Footer = ({ id, notesTotal }) => {
     return (
         <footer id={footerId}>
             <p>
-                COMPLETED <span id={`${footerId}-counter`}>5</span>
+                COMPLETED <span>5</span>
             </p>
+            <i aria-hidden="true" className="plus big icon"></i>
         </footer>
     );
 };
