@@ -1,11 +1,31 @@
 import React from "react";
-import { Modal } from "semantic-ui-react";
+import { Modal, Grid } from "semantic-ui-react";
 
-const ModalElement = ({ open, close }) => {
+import "./Modal.scss";
+
+// all icons should be OUTLINE to differentiate
+const ModalElement = ({ id, open, close, title }) => {
+  const modalId = `${id}-modal`;
+
   return (
-    <Modal size="large" open={open} onClose={close}>
+    <Modal id={modalId} size="large" open={open} onClose={close}>
       <Modal.Content>
-        <p>Are you sure you want to delete your account</p>
+        <div className="header">
+          <Grid>
+            <Grid.Column width={2}>
+              <i aria-hidden="true" className="arrow left big icon" />
+            </Grid.Column>
+            <Grid.Column width={12}>
+              <h2>{title}</h2>
+            </Grid.Column>
+            <Grid.Column width={2}>
+              <i aria-hidden="true" className="clipboard outline big icon" />
+            </Grid.Column>
+          </Grid>
+        </div>
+        <div className="icon" />
+        <div className="form" />
+        <button>Add Note</button>
       </Modal.Content>
     </Modal>
   );

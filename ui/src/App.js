@@ -4,7 +4,7 @@ import Header from "./components/Header";
 import Form from "./components/Form";
 import Footer from "./components/Footer";
 import Note from "./components/Note";
-import Modal from "./components/Modal"
+import Modal from "./components/Modal";
 
 import { postFormFields } from "./constants";
 import { postForm } from "./utils/requests";
@@ -175,7 +175,7 @@ class App extends Component {
         <Header />
         <div className="divider" />
         <main id={id} className="application">
-          <Modal open={open} close={this.close}/>
+          <Modal id={id} title="Add Note" open={open} close={this.close} />
           <Note data={note} id={id} />
           {/*
             <section className="float">
