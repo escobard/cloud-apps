@@ -7,8 +7,8 @@ export const addNoteFields = [
     error: false
   },
   {
-    name: "description",
-    label: "Description *",
+    name: "note",
+    label: "Note *",
     placeholder: "Enter a subject for your note",
     value: "",
     error: false

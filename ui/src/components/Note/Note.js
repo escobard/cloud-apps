@@ -3,7 +3,7 @@ import { Grid } from "semantic-ui-react";
 
 import "./Note.scss";
 
-const Note = ({ id, data: { title, description, date } }) => {
+const Note = ({ id, data: { title, note, date } }) => {
   return (
     <Grid id={`${id}-note`} columns="equal">
       <Grid.Column>
@@ -20,7 +20,7 @@ const Note = ({ id, data: { title, description, date } }) => {
         className="content"
       >
         <h3>{title}</h3>
-        <p>{description}</p>
+        <p>{note}</p>
       </Grid.Column>
       <Grid.Column className="date">
         <p>{date}</p>

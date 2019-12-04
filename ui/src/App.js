@@ -27,21 +27,21 @@ class App extends Component {
    * @name addNote
    * @dev this requests tests basic validation between UI and API
    * @param {string} subject, contains note's subject value
-   * @param {string} description, contains note's description value
+   * @param {string} note, contains note's note value
    * @returns /addNote route response, or validation errors
    **/
 
-  addNote = async (subject, description) => {
+  addNote = async (subject, note) => {
     let { messageErrors } = this.state;
 
     // triggers validation logic
-    this.validateAddNote(subject, description);
+    this.validateAddNote(subject, note);
 
     // only runs request, if no validation errors are present
     if (messageErrors.length === 0) {
       const request = {
         subject,
-        description,
+        note,
       };
 
       let response = await addNote(request);
@@ -94,16 +94,16 @@ class App extends Component {
    * @name validateaddNote
    * @dev used to reduce clutter in makeDonation
    * @param {string} subject, contains random string value
-   * @param {string} description, contains random string value with a length greater than 10
+   * @param {string} note, contains random string value with a length greater than 10
    **/
 
-  validateAddNote = (subject, description) => {
+  validateAddNote = (subject, note) => {
     let { messageErrors } = this.state;
 
     this.validateField(
-      description,
-      description.length < 25,
-      "Description Length must be greater than 25"
+      note,
+      note.length < 25,
+      "note Length must be greater than 25"
     );
 
     // sets messagesState
@@ -132,7 +132,7 @@ class App extends Component {
 
     const note = {
       title: "Test title",
-      description:
+      note:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vel nulla sit amet nibh sagittis eleifend. Cras a lacus rutrum ipsum pretium scelerisque sed eu turpis. ",
       date: "9 am"
     };
