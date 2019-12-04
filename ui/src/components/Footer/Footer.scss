@@ -35,5 +35,8 @@ footer{
     padding-top: 11.5px;
     color: $white;
     margin-top: -17px !important;
+    &:hover{
+      cursor: pointer;
+    }
   }
 }

@@ -34,6 +34,7 @@ class App extends Component {
    **/
 
   postForm = async (stringType, stringLength, numberType, numberMax) => {
+    console.log('TEST', stringType)
     let { messageErrors } = this.state;
 
     // turns both strings into numbers
@@ -175,19 +176,16 @@ class App extends Component {
         <Header />
         <div className="divider" />
         <main id={id} className="application">
-          <Modal id={id} title="Add Note" open={open} close={this.close} />
+          <Modal
+            id={id}
+            title="Add Note"
+            open={open}
+            close={this.close}
+            content={
+              <Form id={id} postForm={this.postForm} fields={postFormFields} />
+            }
+          />
           <Note data={note} id={id} />
-          {/*
-            <section className="float">
-              <Form
-                postForm={this.postForm}
-                fields={postFormFields}
-                messageHeader={postFormTitle}
-                messageValue={postFormMessage}
-                messageStatus={postFormStatus}
-              />
-            </section>
-          */}
           <Footer id={id} show={this.show()} />
         </main>
       </Fragment>

@@ -1,10 +1,13 @@
 @import "../../styles/variables";
 
 // really useful way of finding the elements that contain some id characters - should consider this approach with rebank
-div[id*="-note"] {
+[id*="-note"] {
   border-bottom: $border-gray;
   margin: 0 !important;
   padding-bottom: $space-med !important;
+  &:hover{
+    cursor: pointer;
+  }
   i{
     color: $blue;
     border: solid 2px $gray-light;
