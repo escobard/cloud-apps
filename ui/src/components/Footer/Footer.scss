@@ -1,0 +1,39 @@
+@import "../../styles/variables";
+
+footer{
+  right: 0;
+  left: 0;
+  bottom: 0;
+  border-top: solid 2px $gray-light;
+  background: $white;
+  text-align: center;
+  position: fixed;
+  margin: $space-xlrg;
+  padding: $space-xxlrg 0 $space-lrg;
+
+  p{
+    float: left;
+    color: $gray-medium;
+    font-weight: 500;
+    span{
+      width: $space-lrg;
+      display: block;
+      float: right;
+      margin-left: $space-small;
+      background: $gray-medium-dark;
+      color: $white;
+      border-radius: 50%;
+      font-size: $font-size-xs;
+    }
+  }
+  i{
+    float: right;
+    height: 50px !important;
+    background: $blue;
+    width: 50px !important;
+    border-radius: 50%;
+    padding-top: 11.5px;
+    color: $white;
+    margin-top: -17px !important;
+  }
+}

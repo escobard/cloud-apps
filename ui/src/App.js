@@ -1,8 +1,10 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 
-import Navigation from "./components/Navigation";
+import Header from "./components/Header";
 import Form from "./components/Form";
 import Footer from "./components/Footer";
+import Note from "./components/Note";
+import Modal from "./components/Modal";
 
 import { postFormFields } from "./constants";
 import { postForm } from "./utils/requests";
@@ -10,7 +12,6 @@ import { postForm } from "./utils/requests";
 import "./styles/global.scss";
 
 class App extends Component {
-
   state = {
     messageErrors: [],
     postFormTitle: "Post Form",
@@ -18,6 +19,9 @@ class App extends Component {
       "Follow the placeholder instructions to validate data on the UI and API side",
     postFormStatus: null
   };
+
+  show = size => () => this.setState({ size, open: true });
+  close = () => this.setState({ open: false });
 
   /** Submits the POST request to the API
    * @name postForm
@@ -155,28 +159,38 @@ class App extends Component {
   };
 
   render() {
-    let {
-      postFormTitle,
-      postFormMessage,
-      postFormStatus
-    } = this.state;
+    const id = "application";
+
+    let { postFormTitle, postFormMessage, postFormStatus, open } = this.state;
+
+    const note = {
+      title: "Test title",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vel nulla sit amet nibh sagittis eleifend. Cras a lacus rutrum ipsum pretium scelerisque sed eu turpis. ",
+      date: "9 am"
+    };
 
     return (
-      <main className="application">
-        <Navigation />
-
-        <section className="float">
-          <Form
-            postForm={this.postForm}
-            fields={postFormFields}
-            messageHeader={postFormTitle}
-            messageValue={postFormMessage}
-            messageStatus={postFormStatus}
-          />
-        </section>
-
-        <Footer />
-      </main>
+      <Fragment>
+        <Header />
+        <div className="divider" />
+        <main id={id} className="application">
+          <Modal id={id} title="Add Note" open={open} close={this.close} />
+          <Note data={note} id={id} />
+          {/*
+            <section className="float">
+              <Form
+                postForm={this.postForm}
+                fields={postFormFields}
+                messageHeader={postFormTitle}
+                messageValue={postFormMessage}
+                messageStatus={postFormStatus}
+              />
+            </section>
+          */}
+          <Footer id={id} show={this.show()} />
+        </main>
+      </Fragment>
     );
   }
 }
