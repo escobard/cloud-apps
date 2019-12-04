@@ -6,61 +6,52 @@ import Footer from "./components/Footer";
 import Note from "./components/Note";
 import Modal from "./components/Modal";
 
-import { postFormFields } from "./constants";
-import { postForm } from "./utils/requests";
+import { addNoteFields } from "./constants";
+import { addNote } from "./utils/requests";
 
 import "./styles/global.scss";
 
 class App extends Component {
   state = {
     messageErrors: [],
-    postFormTitle: "Post Form",
-    postFormMessage:
+    addNoteTitle: "Post Form",
+    addNoteMessage:
       "Follow the placeholder instructions to validate data on the UI and API side",
-    postFormStatus: null
+    addNoteStatus: null
   };
 
   show = size => () => this.setState({ size, open: true });
   close = () => this.setState({ open: false });
 
   /** Submits the POST request to the API
-   * @name postForm
+   * @name addNote
    * @dev this requests tests basic validation between UI and API
-   * @param {string} stringType, contains random string value
-   * @param {string} stringLength, contains random string value with a length greater than 10
-   * @param {string} numberType, contains random string value
-   * @param {string} numberMax, contains number greater than 10
-   * @returns /postForm route response, or validation errors
+   * @param {string} subject, contains note's subject value
+   * @param {string} description, contains note's description value
+   * @returns /addNote route response, or validation errors
    **/
 
-  postForm = async (stringType, stringLength, numberType, numberMax) => {
-    console.log('TEST', stringType)
+  addNote = async (subject, description) => {
     let { messageErrors } = this.state;
 
-    // turns both strings into numbers
-    numberType = parseInt(numberType);
-    numberMax = parseInt(numberMax);
-
     // triggers validation logic
-    this.validatePostForm(stringType, stringLength, numberType, numberMax);
+    this.validateAddNote(subject, description);
 
     // only runs request, if no validation errors are present
     if (messageErrors.length === 0) {
       const request = {
-        stringType,
-        stringLength,
-        numberType,
-        numberMax
+        subject,
+        description,
       };
 
-      let response = await postForm(request);
+      let response = await addNote(request);
 
       // checks for API promise rejections
       if (!response.status) {
         return this.setState({
-          postFormTitle: "postForm() error(s)",
-          postFormMessage: response,
-          postFormStatus: "red"
+          addNoteTitle: "addNote() error(s)",
+          addNoteMessage: response,
+          addNoteStatus: "red"
         });
       } else if (response.data.result === "validated") {
         const {
@@ -68,9 +59,9 @@ class App extends Component {
         } = response;
 
         this.setState({
-          postFormTitle: "postForm() validated!",
-          postFormMessage: status,
-          postFormStatus: "green"
+          addNoteTitle: "addNote() validated!",
+          addNoteMessage: status,
+          addNoteStatus: "green"
         });
       }
     }
@@ -99,62 +90,37 @@ class App extends Component {
     });
   };
 
-  /** Validates postForm values
-   * @name validatePostForm
+  /** Validates addNote values
+   * @name validateaddNote
    * @dev used to reduce clutter in makeDonation
-   * @param {string} stringType, contains random string value
-   * @param {string} stringLength, contains random string value with a length greater than 10
-   * @param {string} numberType, contains random string value
-   * @param {string} numberMax, contains number greater than 10
+   * @param {string} subject, contains random string value
+   * @param {string} description, contains random string value with a length greater than 10
    **/
 
-  validatePostForm = (stringType, stringLength, numberType, numberMax) => {
+  validateAddNote = (subject, description) => {
     let { messageErrors } = this.state;
 
     this.validateField(
-      stringType,
-      stringType.length === 0,
-      "String Type cannot be empty"
-    );
-
-    this.validateField(
-      stringLength,
-      stringLength.length < 10,
-      "String Length must be greater than 10"
-    );
-
-    this.validateField(
-      numberType,
-      isNaN(numberType),
-      "Number Type must be a number"
-    );
-    this.validateField(
-      numberMax,
-      isNaN(numberMax),
-      "Number Max must be a number"
-    );
-
-    this.validateField(
-      numberMax,
-      numberMax < 10,
-      "Number Max must be greater than 10"
+      description,
+      description.length < 25,
+      "Description Length must be greater than 25"
     );
 
     // sets messagesState
     if (messageErrors.length > 0) {
       this.setState({
-        postFormStatus: "red",
-        postFormTitle: "postForm() error(s)",
-        postFormMessage: `Contains the following error(s): ${messageErrors.join(
+        addNoteStatus: "red",
+        addNoteTitle: "addNote() form error(s)",
+        addNoteMessage: `Form contains the following error(s): ${messageErrors.join(
           ", "
         )}.`
       });
       this.emptyErrors();
     } else {
       this.setState({
-        postFormStatus: "green",
-        postFormTitle: "postForm() validated",
-        postFormMessage: `Making donation...`
+        addNoteStatus: "green",
+        addNoteTitle: "addNote() validated",
+        addNoteMessage: `Adding note...`
       });
     }
   };
@@ -162,7 +128,7 @@ class App extends Component {
   render() {
     const id = "application";
 
-    let { postFormTitle, postFormMessage, postFormStatus, open } = this.state;
+    let { addNoteTitle, addNoteMessage, addNoteStatus, open } = this.state;
 
     const note = {
       title: "Test title",
@@ -182,7 +148,7 @@ class App extends Component {
             open={open}
             close={this.close}
             content={
-              <Form id={id} postForm={this.postForm} fields={postFormFields} />
+              <Form id={id} addNote={this.addNote} fields={addNoteFields} />
             }
           />
           <Note data={note} id={id} />

@@ -1,4 +1,4 @@
-export const postFormFields = [
+export const addNoteFields = [
   {
     name: "subject",
     label: "Subject",
@@ -8,7 +8,7 @@ export const postFormFields = [
   },
   {
     name: "description",
-    label: "Description",
+    label: "Description *",
     placeholder: "Enter a subject for your note",
     value: "",
     error: false
@@ -31,7 +31,7 @@ const apiRoot =
 console.log("root:", apiRoot);
 
 export const apiRoutes = {
-  postForm: `${apiRoot + "/postForm"}`
+  addNote: `${apiRoot + "/addNote"}`
 };
 
 export const headers = { "Access-Control-Allow-Origin": "*" };

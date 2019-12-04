@@ -35,11 +35,11 @@ class DynamicForm extends Component {
      **/
 
     submitForm = () => {
-        let { postForm } = this.props;
+        let { addNote } = this.props;
         let { value0, value1 } = this.state;
 
-        if (postForm){
-            postForm(value0, value1)
+        if (addNote){
+            addNote(value0, value1)
         }
     };
 
@@ -86,6 +86,8 @@ class DynamicForm extends Component {
 
             // expects a boolean
             let fieldError = `${error + index}`;
+
+            // add conditional for input vs textfield
 
             return (
                 <Form.Input

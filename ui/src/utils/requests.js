@@ -18,15 +18,15 @@ const cleanError = error => {
   return message;
 };
 
-/** Sends POST request to API to postForm
- * @dev refer to the /postForm route within the API request handling logic
- * @name postForm
+/** Sends POST request to API to addNote
+ * @dev refer to the /addNote route within the API request handling logic
+ * @name addNote
  * @returns resolved promise || rejected promise
  **/
 
-export const postForm = async request => {
+export const addNote = async request => {
   return await axios
-    .post(apiRoutes.postForm, request, { headers })
+    .post(apiRoutes.addNote, request, { headers })
     .then(response => {
       return response;
     })
