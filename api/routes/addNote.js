@@ -1,9 +1,8 @@
 const router = require('express').Router(),
-{ models: { Notes } } = require("../services/postgres");
-  // TODO - addNote() validation
-  // addNoteValidation = require("../middlewares/addNoteValidation");
+{ models: { Notes } } = require("../services/postgres"),
+  addNoteValidation = require("../middlewares/addNoteValidation");
 
-router.post('/', async (req, res) => {
+router.post('/', addNoteValidation, async (req, res) => {
   console.log('/addNote request', req.body);
   const { subject, note } = req.body;
   
