@@ -6,60 +6,52 @@ import Footer from "./components/Footer";
 import Note from "./components/Note";
 import Modal from "./components/Modal";
 
-import { postFormFields } from "./constants";
-import { postForm } from "./utils/requests";
+import { addNoteFields } from "./constants";
+import { addNote } from "./utils/requests";
 
 import "./styles/global.scss";
 
 class App extends Component {
   state = {
     messageErrors: [],
-    postFormTitle: "Post Form",
-    postFormMessage:
+    title: "Post Form",
+    message:
       "Follow the placeholder instructions to validate data on the UI and API side",
-    postFormStatus: null
+    status: false
   };
 
   show = size => () => this.setState({ size, open: true });
   close = () => this.setState({ open: false });
 
   /** Submits the POST request to the API
-   * @name postForm
+   * @name addNote
    * @dev this requests tests basic validation between UI and API
-   * @param {string} stringType, contains random string value
-   * @param {string} stringLength, contains random string value with a length greater than 10
-   * @param {string} numberType, contains random string value
-   * @param {string} numberMax, contains number greater than 10
-   * @returns /postForm route response, or validation errors
+   * @param {string} subject, contains note's subject value
+   * @param {string} note, contains note's note value
+   * @returns /addNote route response, or validation message
    **/
 
-  postForm = async (stringType, stringLength, numberType, numberMax) => {
+  addNote = async (subject, note) => {
     let { messageErrors } = this.state;
 
-    // turns both strings into numbers
-    numberType = parseInt(numberType);
-    numberMax = parseInt(numberMax);
-
     // triggers validation logic
-    this.validatePostForm(stringType, stringLength, numberType, numberMax);
+    this.validateAddNote(subject, note);
 
-    // only runs request, if no validation errors are present
+    // only runs request, if no validation message are present
     if (messageErrors.length === 0) {
       const request = {
-        stringType,
-        stringLength,
-        numberType,
-        numberMax
+        subject,
+        note
       };
 
-      let response = await postForm(request);
+      let response = await addNote(request);
 
       // checks for API promise rejections
       if (!response.status) {
         return this.setState({
-          postFormTitle: "postForm() error(s)",
-          postFormMessage: response,
-          postFormStatus: "red"
+          title: "addNote() error(s)",
+          message: response,
+          status: "red"
         });
       } else if (response.data.result === "validated") {
         const {
@@ -67,25 +59,14 @@ class App extends Component {
         } = response;
 
         this.setState({
-          postFormTitle: "postForm() validated!",
-          postFormMessage: status,
-          postFormStatus: "green"
+          title: "addNote() validated!",
+          message: status,
+          status: "green"
         });
       }
     }
-  };
 
-  /** Validates a form value
-   * @dev can be split out into a validation class to re-use in api / ui layers
-   * @param {*} value, property to validate
-   * @param {*} condition, functional condition to validate / invalidate value
-   * @param {string} error, string of error to add to this.state.errors
-   **/
-
-  validateField = (value, condition, error) => {
-    if (condition) {
-      this.setState({ messageErrors: this.state.messageErrors.push(error) });
-    }
+    console.log("message", messageErrors);
   };
 
   /** Resets the message array after form validation checks
@@ -98,62 +79,50 @@ class App extends Component {
     });
   };
 
-  /** Validates postForm values
-   * @name validatePostForm
-   * @dev used to reduce clutter in makeDonation
-   * @param {string} stringType, contains random string value
-   * @param {string} stringLength, contains random string value with a length greater than 10
-   * @param {string} numberType, contains random string value
-   * @param {string} numberMax, contains number greater than 10
+  /** Validates a form value
+   * @dev can be split out into a validation class to re-use in api / ui layers
+   * @param {*} value, property to validate
+   * @param {*} condition, functional condition to validate / invalidate value
+   * @param {string} error, string of error to add to this.state.message
    **/
 
-  validatePostForm = (stringType, stringLength, numberType, numberMax) => {
+  validateField = (value, condition, error) => {
+    if (condition) {
+      this.setState({ messageErrors: this.state.messageErrors.push(error) });
+    }
+  };
+
+  /** Validates addNote values
+   * @name validateAddNote
+   * @dev used to reduce clutter in makeDonation
+   * @param {string} subject, contains random string value
+   * @param {string} note, contains random string value with a length greater than 10
+   **/
+
+  validateAddNote = (subject, note) => {
     let { messageErrors } = this.state;
 
     this.validateField(
-      stringType,
-      stringType.length === 0,
-      "String Type cannot be empty"
-    );
-
-    this.validateField(
-      stringLength,
-      stringLength.length < 10,
-      "String Length must be greater than 10"
-    );
-
-    this.validateField(
-      numberType,
-      isNaN(numberType),
-      "Number Type must be a number"
-    );
-    this.validateField(
-      numberMax,
-      isNaN(numberMax),
-      "Number Max must be a number"
-    );
-
-    this.validateField(
-      numberMax,
-      numberMax < 10,
-      "Number Max must be greater than 10"
+      note,
+      note.length < 25,
+      "Note must contain more than 25 characters"
     );
 
     // sets messagesState
     if (messageErrors.length > 0) {
       this.setState({
-        postFormStatus: "red",
-        postFormTitle: "postForm() error(s)",
-        postFormMessage: `Contains the following error(s): ${messageErrors.join(
+        status: "red",
+        title: "addNote() form error:",
+        message: `Form contains the following error: ${messageErrors.join(
           ", "
         )}.`
       });
       this.emptyErrors();
     } else {
       this.setState({
-        postFormStatus: "green",
-        postFormTitle: "postForm() validated",
-        postFormMessage: `Making donation...`
+        status: "green",
+        title: "addNote() validated",
+        message: `Adding note...`
       });
     }
   };
@@ -161,33 +130,50 @@ class App extends Component {
   render() {
     const id = "application";
 
-    let { postFormTitle, postFormMessage, postFormStatus, open } = this.state;
+    let {
+      title,
+      message,
+      status,
+      open,
+      messageErrors
+    } = this.state;
 
     const note = {
       title: "Test title",
-      description:
+      note:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vel nulla sit amet nibh sagittis eleifend. Cras a lacus rutrum ipsum pretium scelerisque sed eu turpis. ",
       date: "9 am"
     };
+
+    const formMessage =
+      status
+        ? {
+            color: status,
+            header: title,
+            content: message
+          }
+        : null;
 
     return (
       <Fragment>
         <Header />
         <div className="divider" />
         <main id={id} className="application">
-          <Modal id={id} title="Add Note" open={open} close={this.close} />
-          <Note data={note} id={id} />
-          {/*
-            <section className="float">
+          <Modal
+            id={id}
+            title="Add Note"
+            open={open}
+            close={this.close}
+            content={
               <Form
-                postForm={this.postForm}
-                fields={postFormFields}
-                messageHeader={postFormTitle}
-                messageValue={postFormMessage}
-                messageStatus={postFormStatus}
+                id={id}
+                message={formMessage}
+                addNote={this.addNote}
+                fields={addNoteFields}
               />
-            </section>
-          */}
+            }
+          />
+          <Note data={note} id={id} />
           <Footer id={id} show={this.show()} />
         </main>
       </Fragment>
