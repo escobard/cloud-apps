@@ -120,9 +120,11 @@ class DynamicForm extends Component {
 
   render() {
     const { hasFields } = this.state;
-    let { id, fields, name } = this.props;
+    let { id, fields, name, message } = this.props;
 
     const formId = `${id}-form`;
+
+    console.log('message', message)
 
     // TODO - switch to material-ui just for form to match desired look and feel
     return (

@@ -14,10 +14,10 @@ import "./styles/global.scss";
 class App extends Component {
   state = {
     messageErrors: [],
-    addNoteTitle: "Post Form",
-    addNoteMessage:
+    title: "Post Form",
+    message:
       "Follow the placeholder instructions to validate data on the UI and API side",
-    addNoteStatus: null
+    status: false
   };
 
   show = size => () => this.setState({ size, open: true });
@@ -28,7 +28,7 @@ class App extends Component {
    * @dev this requests tests basic validation between UI and API
    * @param {string} subject, contains note's subject value
    * @param {string} note, contains note's note value
-   * @returns /addNote route response, or validation errors
+   * @returns /addNote route response, or validation message
    **/
 
   addNote = async (subject, note) => {
@@ -37,11 +37,11 @@ class App extends Component {
     // triggers validation logic
     this.validateAddNote(subject, note);
 
-    // only runs request, if no validation errors are present
+    // only runs request, if no validation message are present
     if (messageErrors.length === 0) {
       const request = {
         subject,
-        note,
+        note
       };
 
       let response = await addNote(request);
@@ -49,9 +49,9 @@ class App extends Component {
       // checks for API promise rejections
       if (!response.status) {
         return this.setState({
-          addNoteTitle: "addNote() error(s)",
-          addNoteMessage: response,
-          addNoteStatus: "red"
+          title: "addNote() error(s)",
+          message: response,
+          status: "red"
         });
       } else if (response.data.result === "validated") {
         const {
@@ -59,25 +59,14 @@ class App extends Component {
         } = response;
 
         this.setState({
-          addNoteTitle: "addNote() validated!",
-          addNoteMessage: status,
-          addNoteStatus: "green"
+          title: "addNote() validated!",
+          message: status,
+          status: "green"
         });
       }
     }
-  };
 
-  /** Validates a form value
-   * @dev can be split out into a validation class to re-use in api / ui layers
-   * @param {*} value, property to validate
-   * @param {*} condition, functional condition to validate / invalidate value
-   * @param {string} error, string of error to add to this.state.errors
-   **/
-
-  validateField = (value, condition, error) => {
-    if (condition) {
-      this.setState({ messageErrors: this.state.messageErrors.push(error) });
-    }
+    console.log("message", messageErrors);
   };
 
   /** Resets the message array after form validation checks
@@ -88,6 +77,19 @@ class App extends Component {
     this.setState({
       messageErrors: []
     });
+  };
+
+  /** Validates a form value
+   * @dev can be split out into a validation class to re-use in api / ui layers
+   * @param {*} value, property to validate
+   * @param {*} condition, functional condition to validate / invalidate value
+   * @param {string} error, string of error to add to this.state.message
+   **/
+
+  validateField = (value, condition, error) => {
+    if (condition) {
+      this.setState({ messageErrors: this.state.messageErrors.push(error) });
+    }
   };
 
   /** Validates addNote values
@@ -109,18 +111,18 @@ class App extends Component {
     // sets messagesState
     if (messageErrors.length > 0) {
       this.setState({
-        addNoteStatus: "red",
-        addNoteTitle: "addNote() form error(s)",
-        addNoteMessage: `Form contains the following error(s): ${messageErrors.join(
+        status: "red",
+        title: "addNote() form error(s)",
+        message: `Form contains the following error(s): ${messageErrors.join(
           ", "
         )}.`
       });
       this.emptyErrors();
     } else {
       this.setState({
-        addNoteStatus: "green",
-        addNoteTitle: "addNote() validated",
-        addNoteMessage: `Adding note...`
+        status: "green",
+        title: "addNote() validated",
+        message: `Adding note...`
       });
     }
   };
@@ -128,7 +130,13 @@ class App extends Component {
   render() {
     const id = "application";
 
-    let { addNoteTitle, addNoteMessage, addNoteStatus, open } = this.state;
+    let {
+      title,
+      message,
+      status,
+      open,
+      messageErrors
+    } = this.state;
 
     const note = {
       title: "Test title",
@@ -137,9 +145,14 @@ class App extends Component {
       date: "9 am"
     };
 
-    const status = {
-        
-    }
+    const formMessage =
+      status
+        ? {
+            color: status,
+            header: title,
+            content: message
+          }
+        : null;
 
     return (
       <Fragment>
@@ -152,7 +165,12 @@ class App extends Component {
             open={open}
             close={this.close}
             content={
-              <Form id={id} addNote={this.addNote} fields={addNoteFields} status={""}/>
+              <Form
+                id={id}
+                message={formMessage}
+                addNote={this.addNote}
+                fields={addNoteFields}
+              />
             }
           />
           <Note data={note} id={id} />
