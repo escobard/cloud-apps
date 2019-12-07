@@ -124,14 +124,18 @@ class DynamicForm extends Component {
 
     const formId = `${id}-form`;
 
-    console.log('message', message)
-
     // TODO - switch to material-ui just for form to match desired look and feel
     return (
       <Fragment>
         {hasFields ? (
           <Form id={formId}>
-            {message ? <Message color={message.color} header={message.header} content={message.content}/> : null}
+            {message ? (
+              <Message
+                color={message.color}
+                header={message.header}
+                content={message.content}
+              />
+            ) : null}
 
             {this.renderFields(fields)}
             <Form.Field onClick={() => this.submitForm(name)} control={Button}>

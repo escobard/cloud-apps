@@ -17,11 +17,12 @@ class App extends Component {
     title: "Post Form",
     message:
       "Follow the placeholder instructions to validate data on the UI and API side",
-    status: false
+    status: false,
+    show: false,
   };
 
-  show = size => () => this.setState({ size, open: true });
-  close = () => this.setState({ open: false });
+  open = size => () => this.setState({ size, show: true });
+  close = () => this.setState({ show: false });
 
   /** Submits the POST request to the API
    * @name addNote
@@ -53,16 +54,21 @@ class App extends Component {
           message: response,
           status: "red"
         });
-      } else if (response.data.result === "validated") {
+      } else if (response.data.note) {
         const {
           data: { status }
         } = response;
 
         this.setState({
-          title: "addNote() validated!",
+          title: "addNote() added!",
           message: status,
           status: "green"
         });
+
+        // add timeout here to close out modal on note creation
+        setTimeout(() =>{
+          this.close()
+        }, 1000 )
       }
     }
 
@@ -134,8 +140,7 @@ class App extends Component {
       title,
       message,
       status,
-      open,
-      messageErrors
+      show
     } = this.state;
 
     const note = {
@@ -162,7 +167,7 @@ class App extends Component {
           <Modal
             id={id}
             title="Add Note"
-            open={open}
+            open={show}
             close={this.close}
             content={
               <Form
@@ -174,7 +179,7 @@ class App extends Component {
             }
           />
           <Note data={note} id={id} />
-          <Footer id={id} show={this.show()} />
+          <Footer id={id} open={this.open()} />
         </main>
       </Fragment>
     );

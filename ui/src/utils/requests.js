@@ -1,6 +1,7 @@
 import axios from "axios";
 import { apiRoutes, headers } from "../constants";
 
+// TODO - add commentary
 const cleanError = error => {
   let errors;
   let status;
@@ -11,8 +12,9 @@ const cleanError = error => {
     errors = error.response.data.errors;
     status = error.response.data.status;
     message = `API rejection: ${status} ${errors}`;
-    //console.log("makeDonation error response:",  error.response.data.errors);
-  } else {
+  }
+  // handles other API errors
+  else {
     message = `API rejection: ${error}`;
   }
   return message;
