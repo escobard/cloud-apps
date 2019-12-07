@@ -12,8 +12,6 @@ module.exports = async (req, res, next) => {
     // null case values validation
     validation.exists(note, "note must exist");
 
-    console.log('AddNote validator', req.body)
-
     // rejects request in case of null values
     let nullErrors = validation.getErrors();
 

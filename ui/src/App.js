@@ -53,16 +53,19 @@ class App extends Component {
           message: response,
           status: "red"
         });
-      } else if (response.data.result === "validated") {
+      } else if (response.data.note) {
         const {
           data: { status }
         } = response;
 
         this.setState({
-          title: "addNote() validated!",
+          title: "addNote() added!",
           message: status,
           status: "green"
         });
+
+        // add timeout here to close out modal on note creation
+
       }
     }
 
