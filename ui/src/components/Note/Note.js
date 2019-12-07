@@ -13,10 +13,9 @@ const Note = ({ id, data: { title, note, date } }) => {
         />
       </Grid.Column>
       <Grid.Column
-        computer
-        mobile={10}
+        mobile={9}
         tablet={12}
-        width={14}
+        computer={14}
         className="content"
       >
         <h3>{title}</h3>
