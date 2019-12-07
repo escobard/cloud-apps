@@ -91,7 +91,7 @@ class App extends Component {
   };
 
   /** Validates addNote values
-   * @name validateaddNote
+   * @name validateAddNote
    * @dev used to reduce clutter in makeDonation
    * @param {string} subject, contains random string value
    * @param {string} note, contains random string value with a length greater than 10
@@ -103,7 +103,7 @@ class App extends Component {
     this.validateField(
       note,
       note.length < 25,
-      "note Length must be greater than 25"
+      "Note must contain more than 25 characters"
     );
 
     // sets messagesState
@@ -137,6 +137,10 @@ class App extends Component {
       date: "9 am"
     };
 
+    const status = {
+        
+    }
+
     return (
       <Fragment>
         <Header />
@@ -148,7 +152,7 @@ class App extends Component {
             open={open}
             close={this.close}
             content={
-              <Form id={id} addNote={this.addNote} fields={addNoteFields} />
+              <Form id={id} addNote={this.addNote} fields={addNoteFields} status={""}/>
             }
           />
           <Note data={note} id={id} />

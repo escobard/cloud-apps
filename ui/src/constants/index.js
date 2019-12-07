@@ -9,7 +9,7 @@ export const addNoteFields = [
   {
     name: "note",
     label: "Note *",
-    placeholder: "Enter a subject for your note",
+    placeholder: "Enter a description for your note (required)",
     value: "",
     error: false
   },
