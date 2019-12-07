@@ -131,6 +131,8 @@ class DynamicForm extends Component {
       <Fragment>
         {hasFields ? (
           <Form id={formId}>
+            {message ? <Message color={message.color} header={message.header} content={message.content}/> : null}
+
             {this.renderFields(fields)}
             <Form.Field onClick={() => this.submitForm(name)} control={Button}>
               Add Note

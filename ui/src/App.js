@@ -112,8 +112,8 @@ class App extends Component {
     if (messageErrors.length > 0) {
       this.setState({
         status: "red",
-        title: "addNote() form error(s)",
-        message: `Form contains the following error(s): ${messageErrors.join(
+        title: "addNote() form error:",
+        message: `Form contains the following error: ${messageErrors.join(
           ", "
         )}.`
       });

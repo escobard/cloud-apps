@@ -2,7 +2,7 @@
 
 div[id*="-modal"]{
   background: $blue-dark !important;
-  .content{
+  > .content{
     background: $blue-dark !important;
     color: $white;
     h2{
