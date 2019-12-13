@@ -141,9 +141,9 @@ class App extends Component {
    **/
 
   renderNotes(id, data){
-    data.map((object, index) =>{
-      const { title, note, date } = object;
-      return <Note id={`${id}-${index}`} />
+    if (data.length === 0) {return <p>No notes</p>}
+    return data.map((object, index) =>{
+      return <Note id={`${id}-${index}`} data={object} />
     })
   }
 
