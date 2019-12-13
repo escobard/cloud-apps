@@ -49,7 +49,7 @@ export const addNote = async request => {
  * @returns resolved promise || rejected promise
  **/
 
-export const getNotes = async request => {
+export const getNotes = async => {
   return await axios
       .get(apiRoutes.getNotes,{ headers })
       .then(response => {
