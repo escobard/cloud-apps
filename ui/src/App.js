@@ -133,6 +133,20 @@ class App extends Component {
     }
   };
 
+   /** Validates addNote values
+   * @name renderNotes
+   * @dev used to render multiple notes
+   * @param {array} data, contains random string value
+   * @returns one or more <Note />
+   **/
+
+  renderNotes(id, data){
+    data.map((object, index) =>{
+      const { title, note, date } = object;
+      return <Note id={`${id}-${index}`} />
+    })
+  }
+
   render() {
     const id = "application";
 
