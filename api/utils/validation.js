@@ -29,29 +29,6 @@ class Validation{
     }
   }
 
-  /** Checks if a value is a number
-   * @param {string} value, property to validate
-   * @param {string} error, error added to the errors array
-   */
-
-  isNumber(value, error){
-    if (typeof value !== 'number'){
-      this.setError(error)
-    }
-  }
-
-  /** Checks if a value is a number
-   * @param {string} value, property to validate
-   * @param {int} length, exact length expected
-   * @param {string} error, error added to the errors array
-   */
-
-  exactLength(value, length, error){
-    if (value.length !== length){
-      this.setError(error)
-    }
-  }
-
   /** Custom validation function
    * @param {function} condition, must return true to trigger error case
    * @param {string} error, error added to the errors array
@@ -77,14 +54,6 @@ class Validation{
 
   getErrors(){
     return this.errors;
-  }
-
-  /** Clears errors array
-   * @return {[]}, clears validation array
-   */
-
-  clearErrors(){
-    this.errors = [];
   }
 }
 

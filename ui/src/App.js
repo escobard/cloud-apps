@@ -28,7 +28,7 @@ class App extends Component {
   }
 
   open = size => () => this.setState({ size, show: true });
-  close = () => this.setState({ show: false });
+  close = () => this.setState({ show: false, status: false });
 
   /** Submits the POST request to the API
    * @name addNote
