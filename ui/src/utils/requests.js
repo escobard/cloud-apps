@@ -1,7 +1,13 @@
 import axios from "axios";
 import { apiRoutes, headers } from "../constants";
 
-// TODO - add commentary
+
+/** Cleans up API errors OR API promise rejections
+ * @dev refer to /utils/validation in the API
+ * @name cleanError
+ * @return clean error message
+ **/
+
 const cleanError = error => {
   let errors;
   let status;
@@ -38,16 +44,16 @@ export const addNote = async request => {
 };
 
 /** Sends GET request to API to getNotes
- * @dev refer to the /getNotes route in the API for request handling logic
- * @name addNote
+ * @dev refer to the /getNotes route within the API request handling logic
+ * @name getNotes
  * @returns resolved promise || rejected promise
  **/
 
-export const getNotes = async request => {
+export const getNotes = async () => {
   return await axios
-      .get(apiRoutes.getNotes, { headers })
+      .get(apiRoutes.getNotes,{ headers })
       .then(response => {
-        return response;
+        return response.data;
       })
       .catch(error => {
         return cleanError(error);
