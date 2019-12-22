@@ -12,6 +12,7 @@ CREATE TABLE notes.notes (
     user_id INTEGER NOT NULL,
     subject VARCHAR(250) NOT NULL,
     note VARCHAR(1000) NOT NULL,
+    date VARCHAR(25) NOT NULL,
     FOREIGN KEY (user_id) REFERENCES notes.users(id) ON DELETE CASCADE,
     PRIMARY KEY (id)
 );
