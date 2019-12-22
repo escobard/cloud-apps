@@ -7,7 +7,7 @@ import Note from "./components/Note";
 import Modal from "./components/Modal";
 
 import { addNoteFields } from "./constants";
-import { addNote } from "./utils/requests";
+import { addNote, getNotes } from "./utils/requests";
 
 import "./styles/global.scss";
 
@@ -19,7 +19,13 @@ class App extends Component {
       "Follow the placeholder instructions to validate data on the UI and API side",
     status: false,
     show: false,
+    notes: []
   };
+
+  async componentDidMount(){
+    const notes = await getNotes();
+    this.setState({notes})
+  }
 
   open = size => () => this.setState({ size, show: true });
   close = () => this.setState({ show: false });
@@ -133,6 +139,20 @@ class App extends Component {
     }
   };
 
+   /** Validates addNote values
+   * @name renderNotes
+   * @dev used to render multiple notes
+   * @param {array} data, contains random string value
+   * @returns one or more <Note />
+   **/
+
+  renderNotes(id, data){
+    if (data.length === 0) {return <p>No notes</p>}
+    return data.map((object, index) =>{
+      return <Note id={`${id}-${index}`} data={object} />
+    })
+  }
+
   render() {
     const id = "application";
 
@@ -140,7 +160,8 @@ class App extends Component {
       title,
       message,
       status,
-      show
+      show,
+      notes
     } = this.state;
 
     const note = {
@@ -178,7 +199,7 @@ class App extends Component {
               />
             }
           />
-          <Note data={note} id={id} />
+          {this.renderNotes(notes)}
           <Footer id={id} open={this.open()} />
         </main>
       </Fragment>
