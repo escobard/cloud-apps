@@ -28,7 +28,7 @@ class App extends Component {
   }
 
   open = size => () => this.setState({ size, show: true });
-  close = () => this.setState({ show: false });
+  close = () => this.setState({ show: false, status: false });
 
   /** Submits the POST request to the API
    * @name addNote
@@ -71,14 +71,15 @@ class App extends Component {
           status: "green"
         });
 
+        const notes = await getNotes()
+
         // add timeout here to close out modal on note creation
-        setTimeout(() =>{
+        setTimeout(async () =>{
+          this.setState({notes})
           this.close()
-        }, 1000 )
+        }, 500 )
       }
     }
-
-    console.log("message", messageErrors);
   };
 
   /** Resets the message array after form validation checks
@@ -139,7 +140,7 @@ class App extends Component {
     }
   };
 
-   /** Validates addNote values
+   /** Renders Notes based on API response
    * @name renderNotes
    * @dev used to render multiple notes
    * @param {array} data, contains random string value
@@ -149,7 +150,7 @@ class App extends Component {
   renderNotes(id, data){
     if (data.length === 0) {return <p>No notes</p>}
     return data.map((object, index) =>{
-      return <Note id={`${id}-${index}`} data={object} />
+      return <Note key={id + index} id={`${id}-${index}`} data={object} />
     })
   }
 
@@ -199,7 +200,7 @@ class App extends Component {
               />
             }
           />
-          {this.renderNotes(notes)}
+          {this.renderNotes(id, notes)}
           <Footer id={id} open={this.open()} />
         </main>
       </Fragment>

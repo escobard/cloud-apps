@@ -31,7 +31,8 @@ const apiRoot =
 console.log("root:", apiRoot);
 
 export const apiRoutes = {
-  addNote: `${apiRoot + "/addNote"}`
+  addNote: `${apiRoot + "/addNote"}`,
+  getNotes: `${apiRoot + "/getNotes"}`
 };
 
 export const headers = { "Access-Control-Allow-Origin": "*" };

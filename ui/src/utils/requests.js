@@ -27,7 +27,7 @@ const cleanError = error => {
 };
 
 /** Sends POST request to API to addNote
- * @dev refer to the /addNote route within the API request handling logic
+ * @dev refer to the /addNote route in the API for request handling logic
  * @name addNote
  * @returns resolved promise || rejected promise
  **/
@@ -49,11 +49,11 @@ export const addNote = async request => {
  * @returns resolved promise || rejected promise
  **/
 
-export const getNotes = async => {
+export const getNotes = async () => {
   return await axios
       .get(apiRoutes.getNotes,{ headers })
       .then(response => {
-        return response;
+        return response.data;
       })
       .catch(error => {
         return cleanError(error);

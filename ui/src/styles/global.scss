@@ -39,7 +39,7 @@ code {
 }
 
 main.application {
-  padding: $space-xlrg;
+  padding: $space-med $space-xlrg $space-xlrg;
   section{
     text-align: center;
   }

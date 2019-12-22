@@ -13,6 +13,10 @@ const notes = (sequelize, DataTypes) => {
       type: DataTypes.STRING(1000),
       allowNull: false,
     },
+    date: {
+      type: DataTypes.STRING(25),
+      allowNull: false,
+    },
     
   });
   

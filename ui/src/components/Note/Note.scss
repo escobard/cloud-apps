@@ -4,7 +4,6 @@
 [id*="-note"] {
   border-bottom: $border-gray;
   margin: 0 !important;
-  padding-bottom: $space-med !important;
   &:hover{
     cursor: pointer;
   }
@@ -26,6 +25,7 @@
     p{
       color: $gray-medium-dark;
       font-weight: 400;
+      word-break: break-word;
     }
   }
 }

@@ -10,7 +10,7 @@ module.exports = async (req, res, next) => {
     let validation = new Validation();
 
     // null case values validation
-    validation.exists(note, "note must exist");
+    validation.exists(note, "Note property must exist");
 
     // rejects request in case of null values
     let nullErrors = validation.getErrors();
@@ -24,7 +24,7 @@ module.exports = async (req, res, next) => {
     }
 
     // data type validation
-    validation.isString(note, "note must be a string");
+    validation.isString(note, "Note must be a string");
 
     let dataTypeErrors = validation.getErrors();
 
@@ -39,7 +39,7 @@ module.exports = async (req, res, next) => {
     // business logic validation
     validation.customValidation(
         note.length < 25,
-        "note length must be greater than 10"
+        "Note length must be greater than 10"
     );
 
     let businessErrors = validation.getErrors();
