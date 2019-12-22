@@ -80,8 +80,6 @@ class App extends Component {
         }, 500 )
       }
     }
-
-    console.log("message", messageErrors);
   };
 
   /** Resets the message array after form validation checks
@@ -150,10 +148,9 @@ class App extends Component {
    **/
 
   renderNotes(id, data){
-    console.log("DATA", data)
     if (data.length === 0) {return <p>No notes</p>}
     return data.map((object, index) =>{
-      return <Note id={`${id}-${index}`} data={object} />
+      return <Note key={id + index} id={`${id}-${index}`} data={object} />
     })
   }
 
