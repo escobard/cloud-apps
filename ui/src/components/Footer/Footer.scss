@@ -8,9 +8,8 @@ footer{
   background: $white;
   text-align: center;
   position: fixed;
-  margin: $space-xlrg;
+  margin: $space-xlrg $space-xlrg 0;
   padding: $space-xxlrg 0 $space-lrg;
-
   p{
     float: left;
     color: $gray-medium;
