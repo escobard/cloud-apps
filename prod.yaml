@@ -17,7 +17,7 @@ services:
       context: ./ui
       dockerfile: Dockerfile.prod
     ports:
-      - "3000:80"
+      - "3000:3000"
   api:
     container_name: api_prod
     working_dir: /usr/create-app/api
