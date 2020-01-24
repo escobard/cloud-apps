@@ -12,6 +12,8 @@ import { addNote, getNotes } from "./utils/requests";
 import "./styles/global.scss";
 
 const AppNew = () => {
+  const id = "application";
+
   const [messageErrors, setMessageErrors] = useState([]),
     [title, setTitle] = useState("Post Form"),
     [message, setMessage] = useState(
@@ -20,6 +22,15 @@ const AppNew = () => {
     [status, setStatus] = useState(false),
     [show, setShow] = useState(false),
     [notes, setNotes] = useState([]);
+
+  // TODO - make the properties consistent at the form level
+  const formMessage = status
+    ? {
+        color: status,
+        header: title,
+        content: message
+      }
+    : null;
 
   // TODO - refactor to standalone hook when working
   useEffect(async () => {
@@ -113,6 +124,48 @@ const AppNew = () => {
       setStatus("green");
     }
   };
+
+  /** Renders Notes based on API response
+   * @name renderNotes
+   * @dev used to render multiple notes
+   * @param {string} id, contains inherited id
+   * @param {array} data, contains random string value
+   * @returns one or more <Note />
+   **/
+
+  const renderNotes = (id, data) => {
+    if (data.length === 0) {
+      return <p>No notes</p>;
+    }
+    return data.map((object, index) => {
+      return <Note key={id + index} id={`${id}-${index}`} data={object} />;
+    });
+  };
+
+  return (
+    <Fragment>
+      <Header />
+      <div className="divider" />
+      <main id={id} className="application">
+        <Modal
+          id={id}
+          title="Add Note"
+          open={show}
+          close={this.close}
+          content={
+            <Form
+              id={id}
+              message={formMessage}
+              addNote={this.addNote}
+              fields={addNoteFields}
+            />
+          }
+        />
+        {this.renderNotes(id, notes)}
+        <Footer id={id} open={this.open()} />
+      </main>
+    </Fragment>
+  );
 };
 
 class App extends Component {
@@ -264,13 +317,6 @@ class App extends Component {
     const id = "application";
 
     let { title, message, status, show, notes } = this.state;
-
-    const note = {
-      title: "Test title",
-      note:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vel nulla sit amet nibh sagittis eleifend. Cras a lacus rutrum ipsum pretium scelerisque sed eu turpis. ",
-      date: "9 am"
-    };
 
     const formMessage = status
       ? {
