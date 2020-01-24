@@ -7,7 +7,8 @@ const router = require('express').Router(),
 router.get('/', async (req, res) => {
   
   const getNotes = await Notes.findAll()
-  res.status(200).json(getNotes);
+
+  res.status(200).json(getNotes.reverse());
 });
 
 module.exports = router;

@@ -87,6 +87,7 @@ const App = () => {
     }
   };
 
+  // TODO refactor to util
   /** Validates a form value
    * @dev can be split out into a validation class to re-use in api / ui layers
    * @param {*} condition, functional condition to validate / invalidate value
@@ -147,7 +148,7 @@ const App = () => {
       return <Note key={id + index} id={`${id}-${index}`} data={object} />;
     });
   };
-  console.log("RENDERED");
+
   return (
     <Fragment>
       <Header />
