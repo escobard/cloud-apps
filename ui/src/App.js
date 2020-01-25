@@ -144,7 +144,7 @@ const App = () => {
               id={id}
               message={formMessage}
               addNote={addNote}
-              fields={addNoteFields}
+              // fields={addNoteFields}
             />
           }
         />

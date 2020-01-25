@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment, useState, useEffect } from "react";
 import { Button, Form, Message } from "semantic-ui-react";
 
 import "./Form.scss";
@@ -11,17 +11,60 @@ import "./Form.scss";
  * @returns {Component}, Form
  **/
 
-class DynamicForm extends Component {
-  /** Triggers logic to dynamically generate inputState
-   * @param {object[]} props.fields, required, determines form value state
-   * @returns {Component}, Form
+const FormNew = ({fields, addNote}) => {
+
+  const [formState, setFormState] = useState({});
+
+  useEffect(() =>{
+    if (fields){
+      fields.map((field) => {
+        // return inputState(field)
+      });
+    }
+  },[])
+
+  /** Submits the form, triggers POST request from parent
+   * @name submitForm
+   * @dev could be scrapped all together and just use addNote callback, keeping for readability
    **/
+
+  const submitForm = () => {
+
+    // may want to make these values more dynamic
+    // let { value0, value1 } = this.state;
+
+    if (addNote) {
+      // addNote(value0, value1);
+    }
+  };
+
+  /** Creates the input state dynamically from props.fields
+   * @dev does much more than it needs to for this platform, built to support future extendability
+   * @param {object} fieldObject, contains the .error / .value keys necessary to create form state
+   **/
+
+  const inputState = (fieldObject) => {
+    setFormState(
+      {
+        ...formState,
+        [fieldObject["name"]]: {
+          label: fieldObject["label"],
+          placeholder: fieldObject["placeholder"],
+          value: fieldObject["value"],
+          error: fieldObject["error"]
+        }
+      }
+    )
+  };
+
+};
+
+class DynamicForm extends Component {
 
   componentWillMount() {
     let { fields } = this.props;
 
     if (fields) {
-      this.setState({ hasFields: true });
 
       fields.map((field, index) => {
         return this.inputState(field, index);
@@ -119,7 +162,6 @@ class DynamicForm extends Component {
   };
 
   render() {
-    const { hasFields } = this.state;
     let { id, fields, name, message } = this.props;
 
     const formId = `${id}-form`;
@@ -127,7 +169,7 @@ class DynamicForm extends Component {
     // TODO - switch to material-ui just for form to match desired look and feel
     return (
       <Fragment>
-        {hasFields ? (
+        {fields ? (
           <Form id={formId}>
             {message ? (
               <Message
