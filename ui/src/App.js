@@ -169,7 +169,7 @@ const App = () => {
           }
         />
         {renderNotes(id, notes)}
-        <Footer id={id} open={() => setShow(true)} />
+        <Footer id={id} open={() => setShow(true)} count={notes.length}/>
       </main>
     </Fragment>
   );
