@@ -8,7 +8,7 @@ import Modal from "./components/Modal";
 
 import { addNoteFields } from "./constants";
 import { useGetRequest } from "./hooks/useGetRequest";
-import { addNote as addNoteRequest, getNotes } from "./utils/requests";
+import { addNote as addNoteRequest, getNotes, validateField } from "./utils";
 
 import "./styles/global.scss";
 
@@ -19,7 +19,7 @@ const App = () => {
     [title, setTitle] = useState(""),
     [message, setMessage] = useState(""),
     [status, setStatus] = useState(false),
-    [show, setShow] = useState(false),
+    [showModal, setShowModal] = useState(false),
     [notes, setNotes] = useState([]);
 
   // TODO - make the properties consistent at the form level
@@ -32,7 +32,7 @@ const App = () => {
     : null;
 
 
-  const {data: fetchedNotes } = useGetRequest(getNotes);
+  const { data: fetchedNotes } = useGetRequest(getNotes);
 
   useEffect(() => {
     setNotes(fetchedNotes)
@@ -80,25 +80,10 @@ const App = () => {
         // add timeout here to close out modal on note creation
         setTimeout(async () => {
           setNotes(notes);
-          setShow(false);
+          setShowModal(false);
           return setStatus(false);
         }, 500);
       }
-    }
-  };
-
-  // TODO refactor to util
-  /** Validates a form value
-   * @dev can be split out into a validation class to re-use in api / ui layers
-   * @param {*} condition, functional condition to validate / invalidate value
-   * @param {string} error, string of error to add to this.state.message
-   **/
-
-  const validateField = (value, condition, error) => {
-    if (condition) {
-      const errors = messageErrors;
-      errors.push(error);
-      setMessageErrors(errors);
     }
   };
 
@@ -110,11 +95,15 @@ const App = () => {
    **/
 
   const validateAddNote = (subject, note) => {
-    validateField(
-      note,
+
+
+    const { errors } = validateField(
       note.length < 25,
-      "Note must contain more than 25 characters"
+      "Note must contain more than 25 characters",
+        messageErrors
     );
+
+    errors && setMessageErrors(errors)
 
     if (messageErrors.length > 0) {
       setTitle("addNote() form error:");
@@ -151,8 +140,8 @@ const App = () => {
         <Modal
           id={id}
           title="Add Note"
-          open={show}
-          close={() => (setShow(false), setStatus(false))}
+          open={showModal}
+          close={() => (setShowModal(false), setStatus(false))}
           content={
             <Form
               id={id}
@@ -164,7 +153,7 @@ const App = () => {
         />
         {renderNotes(id, notes)}
       </main>
-      <Footer id={id} open={() => setShow(true)} count={notes.length} />
+      <Footer id={id} open={() => setShowModal(true)} count={notes.length} />
     </Fragment>
   );
 };
