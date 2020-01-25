@@ -15,10 +15,8 @@ const App = () => {
   const id = "application";
 
   const [messageErrors, setMessageErrors] = useState([]),
-    [title, setTitle] = useState("Post Form"),
-    [message, setMessage] = useState(
-      "Follow the placeholder instructions to validate data on the UI and API side"
-    ),
+    [title, setTitle] = useState(""),
+    [message, setMessage] = useState(""),
     [status, setStatus] = useState(false),
     [show, setShow] = useState(false),
     [notes, setNotes] = useState([]);
@@ -48,11 +46,9 @@ const App = () => {
    **/
 
   const addNote = async (subject, note) => {
-    console.log("NOTE ADDNOTE", note);
-    // triggers validation logic
+
     validateAddNote(subject, note);
 
-    // only runs request, if no validation message are present
     if (messageErrors.length === 0) {
       const request = {
         subject,
@@ -61,12 +57,14 @@ const App = () => {
 
       let response = await addNoteRequest(request);
 
-      // checks for API promise rejections
       if (!response.status) {
+
         setTitle("addNote() error(s)");
         setMessage(response);
         return setStatus("red");
+
       } else if (response.data.note) {
+
         const {
           data: { status }
         } = response;
@@ -81,7 +79,7 @@ const App = () => {
         setTimeout(async () => {
           setNotes(notes);
           setShow(false);
-         return  setStatus(false);
+          return setStatus(false);
         }, 500);
       }
     }
@@ -117,7 +115,6 @@ const App = () => {
       "Note must contain more than 25 characters"
     );
 
-    // sets messagesState
     if (messageErrors.length > 0) {
       setTitle("addNote() form error:");
       setMessage(
@@ -125,10 +122,6 @@ const App = () => {
       );
       setStatus("red");
       setMessageErrors([]);
-    } else {
-      setTitle("addNote() validated");
-      setMessage("Adding note...");
-      setStatus("green");
     }
   };
 
@@ -169,8 +162,8 @@ const App = () => {
           }
         />
         {renderNotes(id, notes)}
-        <Footer id={id} open={() => setShow(true)} count={notes.length}/>
       </main>
+      <Footer id={id} open={() => setShow(true)} count={notes.length} />
     </Fragment>
   );
 };

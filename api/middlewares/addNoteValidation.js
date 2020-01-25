@@ -39,7 +39,7 @@ module.exports = async (req, res, next) => {
     // business logic validation
     validation.customValidation(
         note.length < 25,
-        "Note length must be greater than 10"
+        "Note length must be greater than 25"
     );
 
     let businessErrors = validation.getErrors();
