@@ -39,6 +39,33 @@ const App = () => {
   },[fetchedNotes])
 
 
+  /** Validates addNote values
+   * @name validateAddNote
+   * @dev used to reduce clutter in makeDonation
+   * @param {string} subject, contains random string value
+   * @param {string} note, contains random string value with a length greater than 10
+   **/
+
+  const validateAddNote = (subject, note) => {
+    
+    const { errors } = validateField(
+        note.length < 25,
+        "Note must contain more than 25 characters",
+        messageErrors
+    );
+
+    errors && setMessageErrors(errors)
+
+    if (messageErrors.length > 0) {
+      setTitle("addNote() form error:");
+      setMessage(
+          `Form contains the following error: ${messageErrors.join(", ")}.`
+      );
+      setStatus("red");
+      setMessageErrors([]);
+    }
+  };
+
   /** Submits the POST request to the API
    * @name addNote
    * @dev this requests tests basic validation between UI and API
@@ -84,34 +111,6 @@ const App = () => {
           return setStatus(false);
         }, 500);
       }
-    }
-  };
-
-  /** Validates addNote values
-   * @name validateAddNote
-   * @dev used to reduce clutter in makeDonation
-   * @param {string} subject, contains random string value
-   * @param {string} note, contains random string value with a length greater than 10
-   **/
-
-  const validateAddNote = (subject, note) => {
-
-
-    const { errors } = validateField(
-      note.length < 25,
-      "Note must contain more than 25 characters",
-        messageErrors
-    );
-
-    errors && setMessageErrors(errors)
-
-    if (messageErrors.length > 0) {
-      setTitle("addNote() form error:");
-      setMessage(
-        `Form contains the following error: ${messageErrors.join(", ")}.`
-      );
-      setStatus("red");
-      setMessageErrors([]);
     }
   };
 

@@ -6,9 +6,9 @@
  **/
 
 export const validateField = (condition, error, errors) => {
-        if (condition) {
-            errors.push(error);
-            return { errors };
-        }
-        return errors
-    };
+    if (condition) {
+      errors.push(error);
+      return { errors };
+    }
+    return errors
+  };
