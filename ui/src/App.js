@@ -22,12 +22,11 @@ const App = () => {
     [showModal, setShowModal] = useState(false),
     [notes, setNotes] = useState([]);
 
-  // TODO - make the properties consistent at the form level
   const formMessage = status
     ? {
-        color: status,
-        header: title,
-        content: message
+        status,
+        title,
+        message
       }
     : null;
 
@@ -144,7 +143,7 @@ const App = () => {
               id={id}
               message={formMessage}
               addNote={addNote}
-              // fields={addNoteFields}
+              fields={addNoteFields}
             />
           }
         />

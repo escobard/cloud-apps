@@ -11,17 +11,18 @@ import "./Form.scss";
  * @returns {Component}, Form
  **/
 
-const FormNew = ({fields, addNote}) => {
+const FormNew = ({ id, fields, addNote, message }) => {
+  const formId = `${id}-form`;
 
   const [formState, setFormState] = useState({});
 
-  useEffect(() =>{
-    if (fields){
-      fields.map((field) => {
+  useEffect(() => {
+    if (fields) {
+      fields.map(field => {
         // return inputState(field)
       });
     }
-  },[])
+  }, []);
 
   /** Submits the form, triggers POST request from parent
    * @name submitForm
@@ -29,7 +30,6 @@ const FormNew = ({fields, addNote}) => {
    **/
 
   const submitForm = () => {
-
     // may want to make these values more dynamic
     // let { value0, value1 } = this.state;
 
@@ -43,29 +43,103 @@ const FormNew = ({fields, addNote}) => {
    * @param {object} fieldObject, contains the .error / .value keys necessary to create form state
    **/
 
-  const inputState = (fieldObject) => {
-    setFormState(
-      {
-        ...formState,
-        [fieldObject["name"]]: {
-          label: fieldObject["label"],
-          placeholder: fieldObject["placeholder"],
-          value: fieldObject["value"],
-          error: fieldObject["error"]
-        }
+  const inputState = fieldObject => {
+    setFormState({
+      ...formState,
+      [fieldObject["name"]]: {
+        value: fieldObject["value"],
+        errors: fieldObject["errors"]
       }
-    )
+    });
   };
 
+  /** Handles the change of each field's input, when the user types into a field
+   * @dev this is where field level validation could be introduced
+   * @param {string} value, new field value
+   * @param {string} fieldKey, state.fieldKey, determines which state to update dynamically
+   **/
+
+  const inputChange = (value, fieldKey) => {
+    setFormState({
+      ...formState,
+      [fieldKey]: {
+        ...[fieldKey],
+        value
+      }
+    });
+  };
+
+  /** Dynamically renders all fields, based on props.fields
+   * @param {object[]} fields, each object contains field name, label, placeholder, error
+   * @returns {Component} Form.Input
+   **/
+
+  const renderFields = fields => {
+    return fields.map((field, index) => {
+      let { name, label, placeholder } = field;
+
+      // add conditional for input vs textfield
+
+      if (name === "note") {
+        return (
+          <Form.TextArea
+            key={index}
+            name={name}
+            label={label}
+            onChange={e => {
+              inputChange(e.target.value, name);
+            }}
+            placeholder={placeholder}
+            error={formState[name].errors}
+          />
+        );
+      }
+
+      return (
+        <Form.Input
+          key={index}
+          name={name}
+          label={label}
+          onChange={e => {
+            inputChange(e.target.value, name);
+          }}
+          placeholder={placeholder}
+          error={formState[name].errors}
+        />
+      );
+    });
+  };
+
+  return (
+    // TODO - switch to material-ui just for form to match desired look and feel
+    <Fragment>
+      {fields ? (
+        <Form id={formId}>
+          {message && (
+            <Message
+              color={message.status}
+              header={message.title}
+              content={message.message}
+            />
+          )}
+
+          {renderFields(fields)}
+          <Form.Field onClick={() => submitForm()} control={Button}>
+            Add Note
+          </Form.Field>
+        </Form>
+      ) : (
+        <p>Form has no input props!</p>
+      )}
+    </Fragment>
+  );
 };
 
 class DynamicForm extends Component {
-
   componentWillMount() {
     let { fields } = this.props;
 
     if (fields) {
-
       fields.map((field, index) => {
         return this.inputState(field, index);
       });
@@ -162,7 +236,7 @@ class DynamicForm extends Component {
   };
 
   render() {
-    let { id, fields, name, message } = this.props;
+    let { id, fields, message } = this.props;
 
     const formId = `${id}-form`;
 
@@ -171,16 +245,16 @@ class DynamicForm extends Component {
       <Fragment>
         {fields ? (
           <Form id={formId}>
-            {message ? (
+            {message && (
               <Message
-                color={message.color}
-                header={message.header}
-                content={message.content}
+                color={message.status}
+                header={message.title}
+                content={message.message}
               />
-            ) : null}
+            )}
 
             {this.renderFields(fields)}
-            <Form.Field onClick={() => this.submitForm(name)} control={Button}>
+            <Form.Field onClick={() => this.submitForm()} control={Button}>
               Add Note
             </Form.Field>
           </Form>
