@@ -1,4 +1,4 @@
-import React, { Component, Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 
 import Header from "./components/Header";
 import Form from "./components/Form";
@@ -31,13 +31,11 @@ const App = () => {
       }
     : null;
 
-
   const { data: fetchedNotes } = useGetRequest(getNotes);
 
   useEffect(() => {
-    setNotes(fetchedNotes)
-  },[fetchedNotes])
-
+    setNotes(fetchedNotes);
+  }, [fetchedNotes]);
 
   /** Validates addNote values
    * @name validateAddNote
@@ -47,19 +45,18 @@ const App = () => {
    **/
 
   const validateAddNote = (subject, note) => {
-    
     const { errors } = validateField(
-        note.length < 25,
-        "Note must contain more than 25 characters",
-        messageErrors
+      note.length < 25,
+      "Note must contain more than 25 characters",
+      messageErrors
     );
 
-    errors && setMessageErrors(errors)
+    errors && setMessageErrors(errors);
 
     if (messageErrors.length > 0) {
       setTitle("addNote() form error:");
       setMessage(
-          `Form contains the following error: ${messageErrors.join(", ")}.`
+        `Form contains the following error: ${messageErrors.join(", ")}.`
       );
       setStatus("red");
       setMessageErrors([]);
@@ -75,7 +72,6 @@ const App = () => {
    **/
 
   const addNote = async (subject, note) => {
-
     validateAddNote(subject, note);
 
     if (messageErrors.length === 0) {
@@ -110,6 +106,7 @@ const App = () => {
           setShowModal(false);
           return setStatus(false);
         }, 500);
+
       }
     }
   };
@@ -118,11 +115,12 @@ const App = () => {
    * @name renderNotes
    * @dev used to render multiple notes
    * @param {string} id, contains inherited id
-   * @param {array} data, contains random string value
-   * @returns one or more <Note />
+   * @param {array} data, contains array of note objects
+   * @returns  no note message || one or more <Note />
    **/
 
   const renderNotes = (id, data) => {
+    // TODO - improve look and feel on no notes
     if (data.length === 0) {
       return <p>No notes</p>;
     }
@@ -140,7 +138,7 @@ const App = () => {
           id={id}
           title="Add Note"
           open={showModal}
-          close={() => (setShowModal(false), setStatus(false))}
+          close={() => (setShowModal(false) && setStatus(false))}
           content={
             <Form
               id={id}
