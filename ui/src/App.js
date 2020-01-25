@@ -7,6 +7,7 @@ import Note from "./components/Note";
 import Modal from "./components/Modal";
 
 import { addNoteFields } from "./constants";
+import { useGetRequest } from "./hooks/useGetRequest";
 import { addNote as addNoteRequest, getNotes } from "./utils/requests";
 
 import "./styles/global.scss";
@@ -30,12 +31,13 @@ const App = () => {
       }
     : null;
 
-  // TODO - refactor to standalone hook when working
-  useEffect(async () => {
-    const notes = await getNotes();
-    setNotes(notes);
-    console.log("NOTES INIT", notes);
-  }, []);
+
+  const {data: fetchedNotes } = useGetRequest(getNotes);
+
+  useEffect(() => {
+    setNotes(fetchedNotes)
+  },[fetchedNotes])
+
 
   /** Submits the POST request to the API
    * @name addNote
@@ -108,7 +110,6 @@ const App = () => {
    **/
 
   const validateAddNote = (subject, note) => {
-    console.log("NOTE", note);
     validateField(
       note,
       note.length < 25,
