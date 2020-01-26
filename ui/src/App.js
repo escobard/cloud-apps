@@ -130,7 +130,7 @@ const App = () => {
 
   return (
     <Fragment>
-      <Header />
+      <Header id={id} />
       <div className="divider" />
       <main id={id} className="application">
         <Modal

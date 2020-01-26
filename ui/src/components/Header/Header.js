@@ -2,8 +2,14 @@ import React from "react";
 
 import "./Header.scss";
 
-const Header = () => (
-  <nav id="navigation">
+/** Header Component
+ * @name Header
+ * @param {string} id, inherited ID from parent
+ * @return {Component} Header
+ **/
+
+const Header = ({id}) => (
+  <nav id={`${id}-navigation`}>
     <i aria-hidden="true" className="bars big icon" />
     <h1>
       Your <br />
