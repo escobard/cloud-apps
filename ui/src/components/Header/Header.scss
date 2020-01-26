@@ -1,13 +1,10 @@
 @import "../../styles/variables";
 
 /* start by selecting the parent ID */
-#navigation{
+[id*="-navigation"] {
   /* will need a higher res image for screens larger than 1800px*/
-  background: url("../../assets/images/nav-background.jpg");
+  background: url("../../assets/images/nav-background.jpg") no-repeat fixed 100% -50vh;
   background-size: cover;
-  background-position: 100% -50vh;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
   height: 270px;
   padding: $space-xlrg;
   h1,p, i{
