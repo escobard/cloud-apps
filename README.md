@@ -1,6 +1,6 @@
 # create-app
 
-An enterprise platform boilerplate, forked from escobard/create-dapp
+An full stack boilerplate, forked from escobard/create-dapp
 
 ## APP Usage
 
