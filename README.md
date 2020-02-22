@@ -1,6 +1,6 @@
 # create-app
 
-A product platform boilerplate, forked from escobard/create-dapp
+A product platform boilerplate.
 
 ## APP Usage
 
