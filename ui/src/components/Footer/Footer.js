@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 import "./Footer.scss";
 
@@ -13,11 +13,16 @@ import "./Footer.scss";
 const Footer = ({ id, count, open }) => (
   <footer id={`${id}-footer`}>
     <p>
-      COMPLETED <span>{count}</span>
+      {count >= 1 ? (
+        <Fragment>
+          COMPLETED <span> {count} </span>
+        </Fragment>
+      ) : (
+        "NO NOTES"
+      )}
     </p>
     <i aria-hidden="true" className="plus big icon" onClick={open} />
   </footer>
 );
-
 
 export default Footer;
