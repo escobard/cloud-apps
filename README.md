@@ -1,6 +1,6 @@
 # create-app
 
-A product platform boilerplate.
+A platform boilerplate, built with React, Node, Postgres and Docker.
 
 ## APP Usage
 
