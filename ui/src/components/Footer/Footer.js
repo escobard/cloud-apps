@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 import "./Footer.scss";
 
@@ -9,7 +9,7 @@ import "./Footer.scss";
  * @param {number} count, number of notes
  * @param {function} open, parent function to open new note modal
  * @return {Component} Footer
- **/
+ * */
 
 const Footer = ({ id, count, open }) => (
   <footer id={`${id}-footer`}>
@@ -30,6 +30,6 @@ Footer.propTypes = {
   id: PropTypes.string.isRequired,
   count: PropTypes.number.isRequired,
   open: PropTypes.bool.isRequired
-}
+};
 
 export default Footer;

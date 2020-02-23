@@ -15,12 +15,17 @@ import "./styles/global.scss";
 const App = () => {
   const id = "application";
 
-  const [messageErrors, setMessageErrors] = useState([]),
-    [title, setTitle] = useState(""),
-    [message, setMessage] = useState(""),
-    [status, setStatus] = useState(false),
-    [showModal, setShowModal] = useState(false),
-    [notes, setNotes] = useState([]);
+  const [messageErrors, setMessageErrors] = useState([]);
+
+  const [title, setTitle] = useState("");
+
+  const [message, setMessage] = useState("");
+
+  const [status, setStatus] = useState(false);
+
+  const [showModal, setShowModal] = useState(false);
+
+  const [notes, setNotes] = useState([]);
 
   const formMessage = status
     ? {
@@ -41,7 +46,7 @@ const App = () => {
    * @dev used to reduce clutter in makeDonation
    * @param {string} subject, contains random string value
    * @param {string} note, contains random string value with a length greater than 10
-   **/
+   * */
 
   const validateAddNote = (subject, note) => {
     const { errors } = validateField(
@@ -68,7 +73,7 @@ const App = () => {
    * @param {string} subject, contains note's subject value
    * @param {string} note, contains note's note value
    * @returns /addNote route response, or validation message
-   **/
+   * */
 
   const addNote = async (subject, note) => {
     validateAddNote(subject, note);
@@ -79,16 +84,14 @@ const App = () => {
         note
       };
 
-      let response = await addNoteRequest(request);
+      const response = await addNoteRequest(request);
 
       if (!response.status) {
-
         setTitle("addNote() error(s)");
         setMessage(response);
         return setStatus("red");
-
-      } else if (response.data.note) {
-
+      }
+      if (response.data.note) {
         const {
           data: { status }
         } = response;
@@ -105,7 +108,6 @@ const App = () => {
           setShowModal(false);
           return setStatus(false);
         }, 500);
-
       }
     }
   };
@@ -116,7 +118,7 @@ const App = () => {
    * @param {string} id, contains inherited id
    * @param {array} data, contains array of note objects
    * @returns  no note message || one or more <Note />
-   **/
+   * */
 
   const renderNotes = (id, data) => {
     // TODO - improve look and feel on no notes
@@ -137,14 +139,14 @@ const App = () => {
           id={id}
           title="Add Note"
           open={showModal}
-          close={() => (setShowModal(false) && setStatus(false))}
+          close={() => setShowModal(false) && setStatus(false)}
           content={
             <Form
-              id={id}
-              message={formMessage}
-              addNote={addNote}
-              fields={addNoteFields}
-            />
+  id={id}
+  message={formMessage}
+  addNote={addNote}
+  fields={addNoteFields}
+/>
           }
         />
         {renderNotes(id, notes)}

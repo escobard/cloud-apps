@@ -15,6 +15,6 @@ const apiRoot =
 console.log("root:", apiRoot);
 
 export const apiRoutes = {
-  addNote: `${apiRoot + "/addNote"}`,
-  getNotes: `${apiRoot + "/getNotes"}`
+  addNote: `${`${apiRoot}/addNote`}`,
+  getNotes: `${`${apiRoot}/getNotes`}`
 };
