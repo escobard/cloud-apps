@@ -1,6 +1,6 @@
 import React from "react";
-import { shallow } from "enzyme";
-import Footer from "./index";
+import { render, act, cleanup } from "@testing-library/react";
+import Footer from "components/Footer";
 
 const props = {
   id: "test",
@@ -9,9 +9,14 @@ const props = {
 };
 
 describe("Footer snapshot renders", () => {
-  it("should render correctly mode", () => {
-    const component = shallow(<Footer {...props} />);
+  afterAll(() => {
+    cleanup();
+  });
 
-    expect(component).toMatchSnapshot();
+  it("should render correctly mode", async () => {
+    const { container } = render(<Footer {...props} />);
+    await act(async () => {});
+
+    expect(container).toMatchSnapshot();
   });
 });
