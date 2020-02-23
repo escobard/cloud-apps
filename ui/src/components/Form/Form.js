@@ -1,4 +1,4 @@
-import React, { Component, Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState} from "react";
 import { Button, Form, Message } from "semantic-ui-react";
 
 import "./Form.scss";

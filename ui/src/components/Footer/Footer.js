@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import PropTypes from 'prop-types';
 
 import "./Footer.scss";
 
@@ -24,5 +25,11 @@ const Footer = ({ id, count, open }) => (
     <i aria-hidden="true" className="plus big icon" onClick={open} />
   </footer>
 );
+
+Footer.propTypes = {
+  id: PropTypes.string.isRequired,
+  count: PropTypes.number.isRequired,
+  open: PropTypes.bool.isRequired
+}
 
 export default Footer;
