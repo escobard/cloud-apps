@@ -1,9 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Footer snapshot renders should render correctly mode 1`] = `
-<footer>
-  <p>
-    Copyright © 2019
-  </p>
-</footer>
+<div>
+  <footer
+    id="test-footer"
+  >
+    <p>
+      NO NOTES
+    </p>
+    <i
+      aria-hidden="true"
+      class="plus big icon"
+    />
+  </footer>
+</div>
 `;

@@ -13,9 +13,9 @@ describe("Footer snapshot renders", () => {
     cleanup();
   });
 
-  it("should render correctly mode", async () => {
+  it("should render correctly mode", () => {
     const { container } = render(<Footer {...props} />);
-    await act(async () => {});
+    act(() => {});
 
     expect(container).toMatchSnapshot();
   });

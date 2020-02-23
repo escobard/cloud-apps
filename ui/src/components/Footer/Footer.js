@@ -29,6 +29,7 @@ const Footer = ({ id, count, open }) => (
 Footer.propTypes = {
   id: PropTypes.string.isRequired,
   count: PropTypes.number.isRequired,
+  // this is a function
   open: PropTypes.bool.isRequired
 };
 

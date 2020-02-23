@@ -2,6 +2,14 @@
   "name": "ui",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "node scripts/start.js",
+    "build": "CI=false node scripts/build.js",
+    "test": "node scripts/test.js --coverage",
+    "test-single": "jest --watch",
+    "lint": "eslint ./src",
+    "lint-fix": "eslint ./src --fix"
+  },
   "dependencies": {
     "@babel/core": "7.1.6",
     "@svgr/webpack": "2.4.1",
@@ -62,17 +70,10 @@
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "7.12.4",
     "eslint-plugin-react-hooks": "^1.7.0",
-    "jest": "23.6.0",
-    "jest-pnp-resolver": "1.0.1",
-    "jest-resolve": "23.6.0"
-  },
-  "scripts": {
-    "start": "node scripts/start.js",
-    "build": "CI=false node scripts/build.js",
-    "test": "node scripts/test.js --coverage",
-    "test-single": "jest --watch",
-    "lint": "eslint ./src",
-    "lint-fix": "eslint ./src --fix"
+    "jest": "24.7.1",
+    "jest-environment-jsdom-fourteen": "0.1.0",
+    "jest-resolve": "24.7.1",
+    "jest-watch-typeahead": "0.3.0"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -86,17 +87,17 @@
       "!<rootDir>/src/index.js",
       "!<rootDir>/src/serviceWorker.js"
     ],
-    "resolver": "jest-pnp-resolver",
     "setupFiles": [
       "react-app-polyfill/jsdom"
     ],
-    "setupFilesAfterEnv": ["<rootDir>/src/setupTests.js"],
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/setupTests.js"
+    ],
     "testMatch": [
       "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
-      "<rootDir>/src/**/?(*.)(spec|test).{js,jsx,ts,tsx}"
+      "<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"
     ],
-    "testEnvironment": "jsdom",
-    "testURL": "http://localhost",
+    "testEnvironment": "jest-environment-jsdom-fourteen",
     "transform": {
       "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",
       "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
@@ -124,6 +125,10 @@
       "web.jsx",
       "jsx",
       "node"
+    ],
+    "watchPlugins": [
+      "jest-watch-typeahead/filename",
+      "jest-watch-typeahead/testname"
     ],
     "coverageReporters": [
       "text"
