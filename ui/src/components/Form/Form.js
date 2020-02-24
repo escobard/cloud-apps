@@ -1,4 +1,4 @@
-import React, { Component, Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState } from "react";
 import { Button, Form, Message } from "semantic-ui-react";
 
 import "./Form.scss";
@@ -11,10 +11,9 @@ import "./Form.scss";
  * @param {function} addNote, form submit handler from parent
  * @param {object} message, contains status strings for form message
  * @returns {Component}, DynamicForm
- **/
+ * */
 
 const DynamicForm = ({ id, fields, addNote, message }) => {
-
   const formId = `${id}-form`;
 
   const [formState, setFormState] = useState({});
@@ -22,10 +21,10 @@ const DynamicForm = ({ id, fields, addNote, message }) => {
   /** Submits the form, triggers POST request from parent
    * @name submitForm
    * @dev could be scrapped all together and just use addNote callback, keeping for readability
-   **/
+   * */
 
   const submitForm = () => {
-    let { subject, note } = formState;
+    const { subject, note } = formState;
 
     if (addNote) {
       // sends empty strings if undefined to trigger validation
@@ -40,10 +39,9 @@ const DynamicForm = ({ id, fields, addNote, message }) => {
    * @dev this also creates the input form state for each field
    * @param {string} value, new field value
    * @param {string} fieldKey, state.fieldKey, determines which state to update dynamically
-   **/
+   * */
 
   const inputChange = (value, fieldKey) => {
-
     setFormState({
       ...formState,
       [fieldKey]: {
@@ -55,11 +53,11 @@ const DynamicForm = ({ id, fields, addNote, message }) => {
   /** Dynamically renders all fields, based on props.fields
    * @param {object[]} fields, each object contains field name, label, placeholder, error
    * @returns {Component} Form.Input || Form.TextArea
-   **/
+   * */
 
   const renderFields = fields => {
     return fields.map((field, index) => {
-      let { name, label, placeholder } = field;
+      const { name, label, placeholder } = field;
 
       // add conditional for input vs textfield
 

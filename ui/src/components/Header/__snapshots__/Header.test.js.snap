@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header snapshot renders should render correctly mode 1`] = `
+<nav
+  id="navigation"
+>
+  <i
+    aria-hidden="true"
+    className="bars big icon"
+  />
+  <h1>
+    Your 
+    <br />
+    Notes
+  </h1>
+  <p>
+    Nov 5, 2019
+  </p>
+</nav>
+`;

@@ -1,4 +1,7 @@
-import React from "react";
+import React, { Fragment } from "react";
+import PropTypes from "prop-types";
+
+import { footer } from "constants/catalogue"
 
 import "./Footer.scss";
 
@@ -8,16 +11,27 @@ import "./Footer.scss";
  * @param {number} count, number of notes
  * @param {function} open, parent function to open new note modal
  * @return {Component} Footer
- **/
+ * */
 
 const Footer = ({ id, count, open }) => (
   <footer id={`${id}-footer`}>
     <p>
-      COMPLETED <span>{count}</span>
+      {count >= 1 ? (
+        <Fragment>
+          {footer.withNotes} <span> {count} </span>
+        </Fragment>
+      ) : (
+        footer.noNotes
+      )}
     </p>
-    <i aria-hidden="true" className="plus big icon" onClick={open} />
+    <i role="button" className="plus big icon" onClick={open} />
   </footer>
 );
 
+Footer.propTypes = {
+  id: PropTypes.string.isRequired,
+  count: PropTypes.number.isRequired,
+  open: PropTypes.func.isRequired
+};
 
 export default Footer;

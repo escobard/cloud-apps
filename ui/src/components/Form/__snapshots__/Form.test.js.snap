@@ -4,53 +4,31 @@ exports[`Form snapshot renders should render makeDonation form and fields correc
 <Fragment>
   <Form
     as="form"
+    id="undefined-form"
   >
-    <Message />
-    <FormGroup
-      widths="equal"
-    >
-      <FormInput
-        as={[Function]}
-        control={[Function]}
-        key="0"
-        label="String Type"
-        name="stringType"
-        onChange={[Function]}
-        placeholder="Enter a random string"
-      />
-      <FormInput
-        as={[Function]}
-        control={[Function]}
-        key="1"
-        label="String Length"
-        name="stringLength"
-        onChange={[Function]}
-        placeholder="Enter a random string, must have char length greater than 10"
-      />
-      <FormInput
-        as={[Function]}
-        control={[Function]}
-        key="2"
-        label="Number Type"
-        name="numberType"
-        onChange={[Function]}
-        placeholder="Enter a random number, must have char length greater than 10"
-      />
-      <FormInput
-        as={[Function]}
-        control={[Function]}
-        key="3"
-        label="Number Max"
-        name="numberMax"
-        onChange={[Function]}
-        placeholder="Enter a random number, must be greater than 10"
-      />
-    </FormGroup>
+    <FormInput
+      as={[Function]}
+      control={[Function]}
+      key="0"
+      label="Subject"
+      name="subject"
+      onChange={[Function]}
+      placeholder="Enter a subject for your note"
+    />
+    <FormTextArea
+      as={[Function]}
+      control={[Function]}
+      key="1"
+      label="Note *"
+      name="note"
+      onChange={[Function]}
+      placeholder="Enter a description for your note (required)"
+    />
     <FormField
       control={[Function]}
       onClick={[Function]}
     >
-      Submit
+      Add Note
     </FormField>
   </Form>
 </Fragment>

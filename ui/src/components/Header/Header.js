@@ -6,9 +6,9 @@ import "./Header.scss";
  * @name Header
  * @param {string} id, inherited ID from parent
  * @return {Component} Header
- **/
+ * */
 
-const Header = ({id}) => (
+const Header = ({ id }) => (
   <nav id={`${id}-navigation`}>
     <i aria-hidden="true" className="bars big icon" />
     <h1>

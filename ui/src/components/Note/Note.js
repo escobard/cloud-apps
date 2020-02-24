@@ -8,7 +8,7 @@ import "./Note.scss";
  * @param {string} id, inherited ID from parent
  * @param {object} data, note subject, date and message properties
  * @return {Component} Note
- **/
+ * */
 
 const Note = ({ id, data: { subject, note, date } }) => (
   <Grid id={`${id}-note`} columns="equal">
@@ -26,4 +26,3 @@ const Note = ({ id, data: { subject, note, date } }) => (
 );
 
 export default Note;
-

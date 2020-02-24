@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
  * @param {function} request, async request function pending resolution
  * @param {*} effect, property to watch for change
  * @return {object} data, resolved response
- **/
+ * */
 
 export const useGetRequest = (request, effect) => {
   const [data, setData] = useState([]);
