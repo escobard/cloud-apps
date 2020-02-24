@@ -15,19 +15,3 @@ exports[`Footer >> snapshot is up to date 1`] = `
   </footer>
 </div>
 `;
-
-exports[`Footer tests >> snapshot is up to date 1`] = `
-<div>
-  <footer
-    id="test-footer"
-  >
-    <p>
-      NO NOTES
-    </p>
-    <i
-      class="plus big icon"
-      role="button"
-    />
-  </footer>
-</div>
-`;

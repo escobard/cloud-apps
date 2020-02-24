@@ -1,7 +1,7 @@
 import React from "react";
 import { render, fireEvent, cleanup } from "@testing-library/react";
 
-import { footer } from "constants/catalogue";
+import { footer } from "constants/catalog";
 
 import Footer from "./index";
 
