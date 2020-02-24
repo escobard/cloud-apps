@@ -1,4 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
+
+import { header } from "constants/catalogue"
 
 import "./Header.scss";
 
@@ -13,10 +16,19 @@ const Header = ({ id, date  }) => (
   <nav id={`${id}-navigation`}>
     <i aria-hidden="true" className="bars big icon" />
     <h1>
-      Your Notes
+      {header.title}
     </h1>
     <p>{date}</p>
   </nav>
 );
+
+Header.propTypes = {
+  id: PropTypes.string.isRequired,
+  date: PropTypes.string
+};
+
+Header.defaultProps = {
+  date: header.todayDate
+}
 
 export default Header;

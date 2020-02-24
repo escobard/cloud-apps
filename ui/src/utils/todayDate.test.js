@@ -1,4 +1,4 @@
-import { todayDate } from "ui/src/utils/formatDate";
+import { todayDate } from "ui/src/utils/todayDate";
 
 describe("formatDate tests", () => {
   it(">> should return today's date, in the proper format", () => {

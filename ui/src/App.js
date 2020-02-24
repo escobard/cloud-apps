@@ -132,7 +132,7 @@ const App = () => {
 
   return (
     <Fragment>
-      <Header id={id} date="Nov 5, 2019" />
+      <Header id={id}/>
       <div className="divider" />
       <main id={id} className="application">
         <Modal
