@@ -1,22 +1,39 @@
 import React from "react";
-import { render, act, cleanup } from "@testing-library/react";
+import { render, fireEvent, cleanup } from "@testing-library/react";
+
+import { footer } from "constants/catalogue"
+
 import Footer from "components/Footer";
 
 const props = {
   id: "test",
   count: 0,
-  open: () => {}
+  open: jest.fn()
 };
 
-describe("Footer snapshot renders", () => {
+describe("Footer tests", () => {
   afterAll(() => {
     cleanup();
   });
 
-  it("should render correctly mode", () => {
+  it(">> snapshot is up to date", () => {
     const { container } = render(<Footer {...props} />);
-    act(() => {});
-
     expect(container).toMatchSnapshot();
   });
+
+  it(">> should display no notes when count is 0", () => {
+    const { getByText } = render(<Footer {...props} />);
+    expect(getByText(footer.noNotes))
+  });
+  it(">> should display completed notes and count if count is not 0", () => {
+    props.count = 1;
+    const { getByText } = render(<Footer {...props} />);
+    expect(getByText(footer.withNotes).toHaveTextContent(1))
+  });
+  it(">> should trigger open function on click", () => {
+    const { getByRole } = render(<Footer {...props} />);
+    fireEvent.click(getByRole("button"))
+    expect(props.open).toHaveBeenCalledTimes(1)
+  });
+
 });

@@ -1,6 +1,8 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 
+import { footer } from "constants/catalogue"
+
 import "./Footer.scss";
 
 /** Footer Component
@@ -16,13 +18,13 @@ const Footer = ({ id, count, open }) => (
     <p>
       {count >= 1 ? (
         <Fragment>
-          COMPLETED <span> {count} </span>
+          {footer.withNotes} <span> {count} </span>
         </Fragment>
       ) : (
-        "NO NOTES"
+        footer.noNotes
       )}
     </p>
-    <i aria-hidden="true" className="plus big icon" onClick={open} />
+    <i role="button" className="plus big icon" onClick={open} />
   </footer>
 );
 

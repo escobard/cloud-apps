@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal snapshot renders should render correctly mode 1`] = `
+<Modal
+  centered={true}
+  closeOnDimmerClick={true}
+  closeOnDocumentClick={false}
+  dimmer={true}
+  eventPool="Modal"
+  id="undefined-modal"
+  size="large"
+>
+  <ModalContent>
+    <Grid
+      className="header"
+    >
+      <GridColumn
+        width={2}
+      >
+        <i
+          aria-hidden="true"
+          className="arrow left big icon"
+        />
+      </GridColumn>
+      <GridColumn
+        width={12}
+      >
+        <h2 />
+      </GridColumn>
+      <GridColumn
+        width={2}
+      >
+        <i
+          aria-hidden="true"
+          className="clipboard outline big icon"
+        />
+      </GridColumn>
+    </Grid>
+    <div
+      className="icon-container"
+    >
+      <i
+        aria-hidden="true"
+        className="sticky note outline big circular icon"
+      />
+    </div>
+  </ModalContent>
+</Modal>
+`;

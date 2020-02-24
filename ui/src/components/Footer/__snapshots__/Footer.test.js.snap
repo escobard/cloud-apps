@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Footer snapshot renders should render correctly mode 1`] = `
+exports[`Footer tests >> snapshot is up to date 1`] = `
 <div>
   <footer
     id="test-footer"
@@ -9,8 +9,8 @@ exports[`Footer snapshot renders should render correctly mode 1`] = `
       NO NOTES
     </p>
     <i
-      aria-hidden="true"
       class="plus big icon"
+      role="button"
     />
   </footer>
 </div>
