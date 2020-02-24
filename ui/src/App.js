@@ -1,14 +1,15 @@
 import React, { Fragment, useState, useEffect } from "react";
 
+import { addNoteFields } from "./constants";
+import { errors } from "./constants/catalog";
+import { useGetRequest } from "./hooks/useGetRequest";
+import { addNote as addNoteRequest, getNotes, validateField } from "./utils";
+
 import Header from "./components/Header";
 import Form from "./components/Form";
 import Footer from "./components/Footer";
 import Note from "./components/Note";
 import Modal from "./components/Modal";
-
-import { addNoteFields } from "./constants";
-import { useGetRequest } from "./hooks/useGetRequest";
-import { addNote as addNoteRequest, getNotes, validateField } from "./utils";
 
 import "./styles/global.scss";
 
@@ -123,8 +124,9 @@ const App = () => {
   const renderNotes = (id, data) => {
     // TODO - improve look and feel on no notes
     if (data.length === 0) {
-      // <Note id={`${id}-no-notes`} data={object} />
-      return "";
+      const noNotes = errors.noNotes;
+      noNotes.icon = "";
+      return <Note id={`${id}-no-notes`} data={noNotes} />;
     }
     return data.map((object, index) => {
       return <Note key={id + index} id={`${id}-${index}`} data={object} />;

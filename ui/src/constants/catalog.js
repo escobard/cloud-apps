@@ -9,3 +9,10 @@ export const header = {
   title: "Your Notes",
   todayDate: todayDate()
 };
+
+export const errors = {
+  noNotes: {
+    subject: "No Notes",
+    note: "Add a note by clicking on the + icon below."
+  }
+};

@@ -1,11 +1,25 @@
 import React from "react";
-import { shallow } from "enzyme";
+import { render, cleanup } from "@testing-library/react";
 import Note from "./index";
 
-describe("Form snapshot renders", () => {
-  it("should render makeDonation form and fields correctly", () => {
-    const component = shallow(<Note />);
+import { errors } from "constants/catalog";
 
-    expect(component).toMatchSnapshot();
+const props = {
+  id: "test",
+  data: {
+    subject: "Test subject",
+    note: "Test note",
+    date: "02/23/20, 11:46 PM"
+  }
+};
+
+describe("Note", () => {
+  afterAll(() => {
+    cleanup();
+  });
+
+  it(">> snapshot is up to date", () => {
+    const { container } = render(<Note {...props} />);
+    expect(container).toMatchSnapshot();
   });
 });
