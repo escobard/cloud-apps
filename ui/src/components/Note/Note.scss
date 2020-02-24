@@ -9,18 +9,54 @@
   }
   i{
     color: $blue;
-    border: solid 2px $gray-light;
+    border: solid 2px $blue;
     box-shadow: none !important;
-    font-size: $font-size-xxxl !important;
+    font-size: $font-size-xxl !important;
   }
   .column{
-   padding-left: 0 !important;
-    &.date{
-      text-align: right;
+    padding-left: 0 !important;
+    &.icon{
       padding-right: 0 !important;
     }
+    &.date{
+      text-align: right;
+      float: right;
+      p{
+        max-width: 50%;
+        float:right;
+      }
+    }
     &.content{
-      padding-left: $space-lrg !important;
+      padding-right: 0 !important;
+      p{
+        overflow: hidden;
+        position: relative;
+        line-height: 1.2rem;
+        max-height: 1.2rem;
+        &:before {
+          /* points in the end */
+          content: '...';
+          /* absolute position */
+          position: absolute;
+          /* set position to right bottom corner of block */
+          right: 0;
+          bottom: 0;
+        }
+        &:after {
+          /* points in the end */
+          content: '';
+          /* absolute position */
+          position: absolute;
+          /* set position to right bottom corner of text */
+          right: 0;
+          /* set width and height */
+          width: 1em;
+          height: 1em;
+          margin-top: 0.2em;
+          /* bg color = bg color under block */
+          background: white;
+        }
+      }
     }
     p{
       color: $gray-medium-dark;
