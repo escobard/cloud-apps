@@ -25,11 +25,14 @@ describe("Footer tests", () => {
     const { getByText } = render(<Footer {...props} />);
     expect(getByText(footer.noNotes))
   });
+
   it(">> should display completed notes and count if count is not 0", () => {
     props.count = 1;
     const { getByText } = render(<Footer {...props} />);
-    expect(getByText(footer.withNotes).toHaveTextContent(1))
+    expect(getByText(footer.withNotes))
+    expect(getByText(props.count.toString()))
   });
+
   it(">> should trigger open function on click", () => {
     const { getByRole } = render(<Footer {...props} />);
     fireEvent.click(getByRole("button"))

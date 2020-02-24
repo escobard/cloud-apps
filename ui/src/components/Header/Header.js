@@ -9,7 +9,7 @@ import "./Header.scss";
  * */
 
 const Header = ({ id }) => (
-  <nav id={`${id}-navigation`}>
+  <nav id={`navigation`}>
     <i aria-hidden="true" className="bars big icon" />
     <h1>
       Your <br />

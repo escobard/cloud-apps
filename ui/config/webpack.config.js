@@ -298,13 +298,12 @@ module.exports = function(webpackEnv) {
           enforce: 'pre',
           use: [
             {
+              loader: require.resolve('eslint-loader'),
               options: {
                 formatter: require.resolve('react-dev-utils/eslintFormatter'),
                 eslintPath: require.resolve('eslint'),
-                failOnWarning: false
-                
+                emitWarning: true
               },
-              loader: require.resolve('eslint-loader'),
             },
           ],
           include: paths.appSrc,
