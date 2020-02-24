@@ -7,23 +7,27 @@
   &:hover{
     cursor: pointer;
   }
-  i{
-    color: $blue;
-    border: solid 2px $blue;
-    box-shadow: none !important;
-    font-size: $font-size-xxl !important;
-  }
   .column{
     padding-left: 0 !important;
     &.icon{
       padding-right: 0 !important;
+      min-width: 40px;
+      i{
+        color: $blue;
+        border: solid 2px $blue;
+        box-shadow: none !important;
+        font-size: $font-size-xxl !important;
+
+      }
     }
     &.date{
       text-align: right;
       float: right;
+      padding-right: 0 !important;
       p{
-        max-width: 50%;
-        float:right;
+        max-width: 60px;
+        min-width: 60px;
+        float: right;
       }
     }
     &.content{
