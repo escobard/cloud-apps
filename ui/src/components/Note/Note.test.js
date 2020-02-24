@@ -2,8 +2,6 @@ import React from "react";
 import { render, cleanup } from "@testing-library/react";
 import Note from "./index";
 
-import { errors } from "constants/catalog";
-
 const props = {
   id: "test",
   data: {
@@ -22,4 +20,20 @@ describe("Note", () => {
     const { container } = render(<Note {...props} />);
     expect(container).toMatchSnapshot();
   });
+
+  it(">> should display notes data", () => {
+    const { data: { subject, note, date} } = props;
+    const { getByText } = render(<Note {...props} />);
+    expect(getByText(subject).toExist);
+    expect(getByText(note).toExist);
+    expect(getByText(date).toExist);
+  });
+
+  it(">> should hide date when no date is given", () => {
+    props.data.date = undefined;
+    const { container } = render(<Note {...props} />);
+    expect(container.querySelector(".date")).toEqual(null);
+  });
+
+
 });

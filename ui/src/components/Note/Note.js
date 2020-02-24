@@ -14,7 +14,7 @@ const Note = ({ id, data: { subject, note, date, icon } }) => (
   <Grid id={`${id}-note`} columns="equal">
     <Grid.Column mobile={3} tablet={2} computer={1} className="icon">
       <i
-        aria-hidden="true"
+        aria-label="note icon"
         className={`${icon ? icon : "sticky note"} big circular icon`}
       />
     </Grid.Column>

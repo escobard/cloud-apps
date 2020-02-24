@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Note >> snapshot is up to date 1`] = `
+<div>
+  <div
+    class="ui equal width grid"
+    id="test-note"
+  >
+    <div
+      class="one wide computer three wide mobile two wide tablet column icon"
+    >
+      <i
+        aria-label="note icon"
+        class="sticky note big circular icon"
+      />
+    </div>
+    <div
+      class="thirteen wide computer nine wide mobile twelve wide tablet column content"
+    >
+      <h3>
+        Test subject
+      </h3>
+      <p>
+        Test note
+      </p>
+    </div>
+    <div
+      class="two wide computer four wide mobile two wide tablet column date"
+    >
+      <p>
+        02/23/20, 11:46 PM
+      </p>
+    </div>
+  </div>
+</div>
+`;
