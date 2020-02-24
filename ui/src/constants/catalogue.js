@@ -8,4 +8,4 @@ export const footer = {
 export const header = {
   title: "Your Notes",
   todayDate: todayDate()
-}
+};

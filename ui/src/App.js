@@ -132,7 +132,7 @@ const App = () => {
 
   return (
     <Fragment>
-      <Header id={id}/>
+      <Header id={id} />
       <div className="divider" />
       <main id={id} className="application">
         <Modal
@@ -142,11 +142,11 @@ const App = () => {
           close={() => setShowModal(false) && setStatus(false)}
           content={
             <Form
-              id={id}
-              message={formMessage}
-              addNote={addNote}
-              fields={addNoteFields}
-            />
+  id={id}
+  message={formMessage}
+  addNote={addNote}
+  fields={addNoteFields}
+/>
           }
         />
         {renderNotes(id, notes)}

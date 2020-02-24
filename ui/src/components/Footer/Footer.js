@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 
-import { footer } from "constants/catalogue"
+import { footer } from "constants/catalogue";
 
 import "./Footer.scss";
 

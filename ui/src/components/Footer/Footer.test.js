@@ -1,9 +1,9 @@
 import React from "react";
 import { render, fireEvent, cleanup } from "@testing-library/react";
 
-import { footer } from "constants/catalogue"
+import { footer } from "constants/catalogue";
 
-import Footer from "components/Footer";
+import Footer from "./index";
 
 const props = {
   id: "test",
@@ -11,7 +11,7 @@ const props = {
   open: jest.fn()
 };
 
-describe("Footer tests", () => {
+describe("Footer", () => {
   afterAll(() => {
     cleanup();
   });
@@ -23,20 +23,19 @@ describe("Footer tests", () => {
 
   it(">> should display no notes when count is 0", () => {
     const { getByText } = render(<Footer {...props} />);
-    expect(getByText(footer.noNotes).toExist)
+    expect(getByText(footer.noNotes).toExist);
   });
 
   it(">> should display completed notes and count if count is not 0", () => {
     props.count = 1;
     const { getByText } = render(<Footer {...props} />);
-    expect(getByText(footer.withNotes).toExist)
-    expect(getByText(props.count.toString()).toExist)
+    expect(getByText(footer.withNotes).toExist);
+    expect(getByText(props.count.toString()).toExist);
   });
 
   it(">> should trigger open function on click", () => {
     const { getByRole } = render(<Footer {...props} />);
-    fireEvent.click(getByRole("button"))
-    expect(props.open).toHaveBeenCalledTimes(1)
+    fireEvent.click(getByRole("button"));
+    expect(props.open).toHaveBeenCalledTimes(1);
   });
-
 });

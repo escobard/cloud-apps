@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { header } from "constants/catalogue"
+import { header } from "constants/catalogue";
 
 import "./Header.scss";
 
@@ -12,12 +12,10 @@ import "./Header.scss";
  * @return {Component} Header
  * */
 
-const Header = ({ id, date  }) => (
+const Header = ({ id, date }) => (
   <nav id={`${id}-navigation`}>
     <i aria-hidden="true" className="bars big icon" />
-    <h1>
-      {header.title}
-    </h1>
+    <h1>{header.title}</h1>
     <p>{date}</p>
   </nav>
 );
@@ -29,6 +27,6 @@ Header.propTypes = {
 
 Header.defaultProps = {
   date: header.todayDate
-}
+};
 
 export default Header;
