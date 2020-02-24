@@ -5,7 +5,7 @@ import Footer from "components/Footer";
 const props = {
   id: "test",
   count: 0,
-  open: false
+  open: () => {}
 };
 
 describe("Footer snapshot renders", () => {
