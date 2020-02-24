@@ -1,8 +1,6 @@
 const environment =
   process.env.NODE_ENV === "production" ? "gcp" : "development";
 
-console.log("environment:", process.env);
-
 // expand in the future with more variants
 const apiRouteController =
   process.env.REACT_APP_DOCKER_VARIANT === "nginx_routing"
@@ -11,8 +9,6 @@ const apiRouteController =
 
 const apiRoot =
   environment === "gcp" ? "https://gcp.api.url" : apiRouteController;
-
-console.log("root:", apiRoot);
 
 export const apiRoutes = {
   addNote: `${`${apiRoot}/addNote`}`,

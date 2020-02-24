@@ -2,7 +2,7 @@
 
 exports[`Header snapshot renders should render correctly mode 1`] = `
 <nav
-  id="undefined-navigation"
+  id="navigation"
 >
   <i
     aria-hidden="true"
