@@ -1,7 +1,7 @@
 import React from "react";
 import { render, cleanup } from "@testing-library/react";
 
-import { header } from "constants/catalogue";
+import { header } from "constants/catalog";
 
 import Header from "./index";
 

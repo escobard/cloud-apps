@@ -12,9 +12,7 @@ exports[`Header >> snapshot is up to date 1`] = `
     <h1>
       Your Notes
     </h1>
-    <p>
-      February 23, 2020
-    </p>
+    <p />
   </nav>
 </div>
 `;
