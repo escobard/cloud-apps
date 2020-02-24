@@ -1,4 +1,6 @@
 import React from "react";
+import PropTypes from "prop-types";
+
 import { Grid } from "semantic-ui-react";
 
 import "./Note.scss";
@@ -29,5 +31,22 @@ const Note = ({ id, data: { subject, note, date, icon } }) => (
     )}
   </Grid>
 );
+
+Note.propTypes = {
+  id: PropTypes.string.isRequired,
+  data: PropTypes.shape({
+    subject: PropTypes.string.isRequired,
+    note: PropTypes.string.isRequired,
+    date: PropTypes.string,
+    icon: PropTypes.string
+  })
+}
+
+Note.defaultProps ={
+  data: {
+    date: undefined,
+    icon: undefined
+  }
+}
 
 export default Note;

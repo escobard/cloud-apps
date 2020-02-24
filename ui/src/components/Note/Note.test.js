@@ -21,12 +21,13 @@ describe("Note", () => {
     expect(container).toMatchSnapshot();
   });
 
-  it(">> should display notes data", () => {
+  it(">> should display notes data and circular icon", () => {
     const { data: { subject, note, date} } = props;
-    const { getByText } = render(<Note {...props} />);
+    const { getByText, container } = render(<Note {...props} />);
     expect(getByText(subject).toExist);
     expect(getByText(note).toExist);
     expect(getByText(date).toExist);
+    expect(container.querySelector(".sticky.note").toExist);
   });
 
   it(">> should hide date when no date is given", () => {
@@ -35,5 +36,11 @@ describe("Note", () => {
     expect(container.querySelector(".date")).toEqual(null);
   });
 
+  it(">> should show different icon if icon is defined", () => {
+    props.data.icon = "some icon";
+    const { container } = render(<Note {...props} />);
+    expect(container.querySelector(".sticky.note")).toEqual(null);
+    expect(container.querySelector(".some.icon").toExist);
+  });
 
 });
