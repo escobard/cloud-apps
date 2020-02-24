@@ -10,12 +10,13 @@
   h1,p, i{
     color: $white;
   }
-  h1{
-    font-size: $font-size-mega;
-    margin-bottom: $space-xlrg;
-  }
   h1, p{
     font-family: $font-family-default;
     font-weight: 300;
+  }
+  h1{
+    font-size: $font-size-mega;
+    margin-bottom: $space-xlrg;
+    word-spacing: 100vw;
   }
 }

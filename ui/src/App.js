@@ -123,7 +123,8 @@ const App = () => {
   const renderNotes = (id, data) => {
     // TODO - improve look and feel on no notes
     if (data.length === 0) {
-      return <p>No notes</p>;
+      // <Note id={`${id}-no-notes`} data={object} />
+      return "";
     }
     return data.map((object, index) => {
       return <Note key={id + index} id={`${id}-${index}`} data={object} />;
@@ -142,11 +143,11 @@ const App = () => {
           close={() => setShowModal(false) && setStatus(false)}
           content={
             <Form
-  id={id}
-  message={formMessage}
-  addNote={addNote}
-  fields={addNoteFields}
-/>
+              id={id}
+              message={formMessage}
+              addNote={addNote}
+              fields={addNoteFields}
+            />
           }
         />
         {renderNotes(id, notes)}
