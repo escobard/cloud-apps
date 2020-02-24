@@ -23,14 +23,14 @@ describe("Footer tests", () => {
 
   it(">> should display no notes when count is 0", () => {
     const { getByText } = render(<Footer {...props} />);
-    expect(getByText(footer.noNotes))
+    expect(getByText(footer.noNotes).toExist)
   });
 
   it(">> should display completed notes and count if count is not 0", () => {
     props.count = 1;
     const { getByText } = render(<Footer {...props} />);
-    expect(getByText(footer.withNotes))
-    expect(getByText(props.count.toString()))
+    expect(getByText(footer.withNotes).toExist)
+    expect(getByText(props.count.toString()).toExist)
   });
 
   it(">> should trigger open function on click", () => {
