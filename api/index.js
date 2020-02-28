@@ -11,7 +11,7 @@ app.use(cors({ origin: "*" }));
 
 require("./routes")(app);
 
-let server = createMiddleware("PetStore.yaml", app, (err, middleware) => {
+let server = createMiddleware("Notes.yaml", app, (err, middleware) => {
   // Add all the Swagger Express Middleware, or just the ones you need.
   // NOTE: Some of these accept optional options (omitted here for brevity)
   app.use(
