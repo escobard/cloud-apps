@@ -22,6 +22,8 @@ const models = {
   Notes: sequelize.import("./models/notes")
 };
 
+// TODO - move this entire user logic to a middleware
+/*
 sequelize
   .authenticate()
   .then(() => {
@@ -29,10 +31,13 @@ sequelize
     console.log("Connection has been established successfully.");
   })
   .catch(err => {
-    console.error("Unable to connect to the database:", err);
+    const error = "Unable to connect to the database: " + err
+    console.error(error);
     global.hasDB = false;
+    //res.status(503).json(error);
   });
 
+// TODO - move this entire user logic to a middleware
 const { Users } = models;
 Users.findAll()
   .then(values => {
@@ -50,8 +55,8 @@ Users.findAll()
   .catch(err => {
     console.error("Unable to connect to create base user", err);
   });
-
-module.exports.default = module.exports = {
+*/
+module.exports = {
   sequelize,
   models
 };
