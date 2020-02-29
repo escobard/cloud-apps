@@ -22,13 +22,12 @@ schemes:
   - "https"
   - "http"
 paths:
-  /pet:
+  /addNote:
     post:
       tags:
         - "notes"
-      summary: "Add a new pet to the store"
-      description: ""
-      operationId: "addPet"
+      summary: "Add a new note"
+      operationId: "addNote"
       consumes:
         - "application/json"
         - "application/xml"
@@ -38,226 +37,92 @@ paths:
       parameters:
         - in: "body"
           name: "body"
-          description: "Pet object that needs to be added to the store"
+          description: "Note object that needs to be added to the store"
           required: true
           schema:
-            $ref: "#/definitions/Pet"
-      responses:
-        405:
-          description: "Invalid input"
-      security:
-        - createapp_auth:
-            - "write:notes"
-            - "read:notes"
-    put:
-      tags:
-        - "notes"
-      summary: "Update an existing pet"
-      description: ""
-      operationId: "updatePet"
-      consumes:
-        - "application/json"
-        - "application/xml"
-      produces:
-        - "application/xml"
-        - "application/json"
-      parameters:
-        - in: "body"
-          name: "body"
-          description: "Pet object that needs to be added to the store"
-          required: true
-          schema:
-            $ref: "#/definitions/Pet"
+            $ref: "#/definitions/Note"
       responses:
         400:
-          description: "Invalid ID supplied"
+          description: "Invalid user_id supplied"
         404:
-          description: "Pet not found"
+          description: "User not found"
         405:
           description: "Validation exception"
-      security:
-        - createapp_auth:
-            - "write:notes"
-            - "read:notes"
-  /pet/findByStatus:
+            #security:
+            #- createapp_auth:
+            #- "write:notes"
+            #- "read:notes"
+            # commented out until phase 5
+            #put:
+            #tags:
+            #- "notes"
+            #summary: "Update an existing note"
+            #description: ""
+            #operationId: "updateNote"
+            #consumes:
+            #- "application/json"
+            #- "application/xml"
+            #produces:
+            #- "application/xml"
+            # - "application/json"
+            #parameters:
+            #- in: "body"
+            #name: "body"
+            #description: "Note object that needs to be added to the store"
+            #required: true
+            #schema:
+            #$ref: "#/definitions/Note"
+            #responses:
+            #400:
+            # description: "Invalid ID supplied"
+            #404:
+            #description: "Pet not found"
+            #405:
+            #description: "Validation exception"
+            #security:
+            #- createapp_auth:
+            #- "write:notes"
+          #- "read:notes"
+  /getNotes:
     get:
       tags:
         - "notes"
-      summary: "Finds Pets by status"
-      description: "Multiple status values can be provided with comma separated strings"
-      operationId: "findPetsByStatus"
+      summary: "Finds all notes"
+      description: "Notes by user to be introduced in phase 5"
+      operationId: "getNotes"
       produces:
         - "application/xml"
         - "application/json"
-      parameters:
-        - name: "status"
-          in: "query"
-          description: "Status values that need to be considered for filter"
-          required: true
-          type: "array"
-          items:
-            type: "string"
-            enum:
-              - "available"
-              - "pending"
-              - "sold"
-            default: "available"
-          collectionFormat: "multi"
+          # paramaters introduced in phase 5
+          #parameters:
+          #- name: "user_id"
+          #in: "query"
+          #description: "User ID used to fetch user specific notes"
+          #required: true
+          #type: "array"
+          #items:
+        #type: "string"
       responses:
         200:
           description: "successful operation"
           schema:
             type: "array"
             items:
-              $ref: "#/definitions/Pet"
-        400:
-          description: "Invalid status value"
-      security:
-        - createapp_auth:
-            - "write:notes"
-            - "read:notes"
-  /pet/findByTags:
-    get:
-      tags:
-        - "notes"
-      summary: "Finds Pets by tags"
-      description: "Muliple tags can be provided with comma separated strings. Use         tag1, tag2, tag3 for testing."
-      operationId: "findPetsByTags"
-      produces:
-        - "application/xml"
-        - "application/json"
-      parameters:
-        - name: "tags"
-          in: "query"
-          description: "Tags to filter by"
-          required: true
-          type: "array"
-          items:
-            type: "string"
-          collectionFormat: "multi"
-      responses:
-        200:
-          description: "successful operation"
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/Pet"
-        400:
-          description: "Invalid tag value"
-      security:
-        - createapp_auth:
-            - "write:notes"
-            - "read:notes"
-      deprecated: true
-    post:
-      tags:
-        - "notes"
-      summary: "Updates a pet in the store with form data"
-      description: ""
-      operationId: "updatePetWithForm"
-      consumes:
-        - "application/x-www-form-urlencoded"
-      produces:
-        - "application/xml"
-        - "application/json"
-      parameters:
-        - name: "petId"
-          in: "path"
-          description: "ID of pet that needs to be updated"
-          required: true
-          type: "integer"
-          format: "int64"
-        - name: "name"
-          in: "formData"
-          description: "Updated name of the pet"
-          required: false
-          type: "string"
-        - name: "status"
-          in: "formData"
-          description: "Updated status of the pet"
-          required: false
-          type: "string"
-      responses:
-        405:
-          description: "Invalid input"
-      security:
-        - createapp_auth:
-            - "write:notes"
-            - "read:notes"
-    delete:
-      tags:
-        - "notes"
-      summary: "Deletes a pet"
-      description: ""
-      operationId: "deletePet"
-      produces:
-        - "application/xml"
-        - "application/json"
-      parameters:
-        - name: "api_key"
-          in: "header"
-          required: false
-          type: "string"
-        - name: "petId"
-          in: "path"
-          description: "Pet id to delete"
-          required: true
-          type: "integer"
-          format: "int64"
-      responses:
-        400:
-          description: "Invalid ID supplied"
-        404:
-          description: "Pet not found"
-      security:
-        - createapp_auth:
-            - "write:notes"
-            - "read:notes"
-  /pet/{petId}/uploadImage:
-    post:
-      tags:
-        - "notes"
-      summary: "uploads an image"
-      description: ""
-      operationId: "uploadFile"
-      consumes:
-        - "multipart/form-data"
-      produces:
-        - "application/json"
-      parameters:
-        - name: "petId"
-          in: "path"
-          description: "ID of pet to update"
-          required: true
-          type: "integer"
-          format: "int64"
-        - name: "additionalMetadata"
-          in: "formData"
-          description: "Additional data to pass to server"
-          required: false
-          type: "string"
-        - name: "file"
-          in: "formData"
-          description: "file to upload"
-          required: false
-          type: "file"
-      responses:
-        200:
-          description: "successful operation"
-          schema:
-            $ref: "#/definitions/ApiResponse"
-      security:
-        - createapp_auth:
-            - "write:notes"
-            - "read:notes"
-securityDefinitions:
-  createapp_auth:
-    type: "oauth2"
-    authorizationUrl: "http://petstore.swagger.io/oauth/dialog"
-    flow: "implicit"
-    scopes:
-      write:notes: "modify notes in your account"
-      read:notes: "read your notes"
+              $ref: "#/definitions/Note"
+            #400:
+            #description: "Invalid user_id"
+            #security:
+            #- createapp_auth:
+            #- "write:notes"
+            #- "read:notes"
+      #securityDefinitions:
+      #createapp_auth:
+      #type: "oauth2"
+      #authorizationUrl: "http://create-app.us-east-2.elasticbeanstalk.com/auth"
+      #flow: "implicit"
+      #scopes:
+      #write:notes: "modify notes in your account"
+      #read:notes: "read your notes"
 definitions:
   Users:
     type: "object"
@@ -267,12 +132,14 @@ definitions:
       id:
         type: "integer"
         format: "serial"
+        description: "Serial ID, created automatically, primary key"
       email:
         type: "string"
         format: "varchar250"
+        description: "User email, automatically uses admin@test.com, gmail auth0 to be added in phase 5"
     xml:
       name: "User"
-  Pet:
+  Note:
     type: "object"
     required:
       - "user_id"
@@ -283,21 +150,30 @@ definitions:
       id:
         type: "integer"
         format: "serial"
+        description: "Serial ID, created automatically, primary key"
       user_id:
         type: "integer"
         format: "int"
+        description: "User ID, attaches a note to a user"
       subject:
         type: "string"
         example: "This is a sample note subject"
         format: "varchar250"
+        minLength: 5
+        maxLength: 250
+        description: "Note subject"
       date:
         type: "string"
         example: "01/18/20, 11:08 PM"
         format: "varchar250"
+        description: "Javascript date, using this format: { year: '2-digit', month: '2-digit', day: '2-digit', hour: 'numeric', minute: 'numeric' }"
       note:
         type: "string"
         example: "This is a sample note"
         format: "varchar1000"
+        minLength: 25
+        maxLength: 1000
+        description: "Note description"
     xml:
       name: "notes"
 externalDocs:
