@@ -24,18 +24,7 @@ const models = {
 
 // TODO - move this entire user logic to a middleware
 /*
-sequelize
-  .authenticate()
-  .then(() => {
-    global.hasDB = true;
-    console.log("Connection has been established successfully.");
-  })
-  .catch(err => {
-    const error = "Unable to connect to the database: " + err
-    console.error(error);
-    global.hasDB = false;
-    //res.status(503).json(error);
-  });
+
 
 // TODO - move this entire user logic to a middleware
 const { Users } = models;

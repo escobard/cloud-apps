@@ -4,11 +4,12 @@ const express = require("express"),
   cors = require("cors"),
   app = express(),
   routes = require("./constants/routes"),
+  connectToDB = require("./middlewares/connectToDB"),
   port = routes.port;
 
 app.use(bodyParser.json());
 app.use(cors({ origin: "*" }));
-
+//app.use(connectToDB())
 require("./routes")(app);
 
 let server = createMiddleware("Notes.yaml", app, (err, middleware) => {
