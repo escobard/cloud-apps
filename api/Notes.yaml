@@ -30,9 +30,7 @@ paths:
       operationId: "addNote"
       consumes:
         - "application/json"
-        - "application/xml"
       produces:
-        - "application/xml"
         - "application/json"
       parameters:
         - in: "body"
@@ -44,6 +42,8 @@ paths:
       responses:
         400:
           description: "Invalid user_id supplied"
+        403:
+          description: "Invalid properties"
         404:
           description: "User not found"
         405:
@@ -91,7 +91,6 @@ paths:
       description: "Notes by user to be introduced in phase 5"
       operationId: "getNotes"
       produces:
-        - "application/xml"
         - "application/json"
           # paramaters introduced in phase 5
           #parameters:
@@ -145,7 +144,6 @@ definitions:
       - "user_id"
       - "subject"
       - "note"
-      - "date"
     properties:
       id:
         type: "integer"

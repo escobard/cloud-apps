@@ -3,7 +3,7 @@ const router = require('express').Router(),
   checkDB = require("../middlewares/checkDB")
   addNoteValidation = require("../middlewares/addNoteValidation");
 
-router.post('/', checkDB, addNoteValidation, async (req, res) => {
+router.post('/', async (req, res) => {
   try{
     console.log('/addNote request', req.body);
     const { subject, note } = req.body;
