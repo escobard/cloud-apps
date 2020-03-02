@@ -11,15 +11,7 @@ app.use(bodyParser.json());
 app.use(cors({ origin: "*" }));
 
 let server = createMiddleware("Notes.yaml", app, (err, middleware) => {
-  app.use(
-    middleware.metadata(),
-    middleware.CORS(),
-    middleware.files(),
-    middleware.parseRequest(),
-    middleware.validateRequest(),
-    // this is breaking a lot of operations
-    // middleware.mock()
-  );
+
   // TODO add createDB middleware
 
   // TODO split up into its own middleware

@@ -187,8 +187,8 @@ definitions:
     properties:
       id:
         type: "integer"
-        format: "int"
-        description: "Note ID, unique to each note, primary key"
+        format: "serial"
+        description: "Serial ID, created automatically, primary key"
         example: 3
       user_id:
         type: "integer"
