@@ -26,8 +26,12 @@ let server = createMiddleware("Notes.yaml", app, (err, middleware) => {
   app.use((err, req, res, next) => {
     if (err){
       res.status(err.status)
-      res.type('json');
-      res.send(err.message);
+      res.type('application/json');
+      const error = {
+        status: err.status,
+        message: err.message
+      }
+      res.json(error);
       console.log('Swagger validator error')
       console.log('Status: ' + err.status)
       console.log('Message: ' + err.message)
