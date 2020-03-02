@@ -4,7 +4,6 @@ const express = require("express"),
   cors = require("cors"),
   app = express(),
   routes = require("./constants/routes"),
-  swaggerError = require('./middlewares/swaggerError')
   port = routes.port;
 
 app.use(bodyParser.json());

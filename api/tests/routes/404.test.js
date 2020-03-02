@@ -1,10 +1,9 @@
 const request = require("supertest");
 
+/*
 // TODO - base tests for API to be updated for all Share routes
 describe("Testing 404 route", () => {
   let server;
-  global.nodePort = 5000;
-
 
   beforeEach(done => {
     server = require("../../index");
@@ -12,7 +11,7 @@ describe("Testing 404 route", () => {
   });
 
   afterEach(done => {
-    server.close();
+    server = null;
     done();
   });
 
@@ -26,3 +25,4 @@ describe("Testing 404 route", () => {
       });
   });
 });
+*/

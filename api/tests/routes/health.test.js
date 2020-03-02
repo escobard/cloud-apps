@@ -16,6 +16,7 @@ describe("Testing health route", () => {
   });
 
   it("responds to /health", done => {
+    console.log(server)
     request(server)
       .get("/health")
       .expect({
