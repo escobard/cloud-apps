@@ -1,6 +1,6 @@
 {
   "name": "create-app",
-  "version": "1.0.0",
+  "version": "0.0.2",
   "description": "An enterprise platform boilerplate, forked from escobard/create-dapp",
   "main": "index.js",
   "dependencies": {

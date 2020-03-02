@@ -1,0 +1,222 @@
+swagger: "2.0"
+info:
+  description: "This is a simple Node.js API, used as an ORM for the `create-app` platform. You can find out more about `create-app` at [https://github.com/escobard/create-app](https://github.com/escobard/create-app) or contact the author via linkedin at [https://www.linkedin.com/in/descobar-developer](https://www.linkedin.com/in/descobar-developer)."
+  version: "0.0.2"
+  title: "create-app API"
+  termsOfService: "https://github.com/escobard/create-app/blob/master/documentation/contribution.md"
+  contact:
+    email: "admin@odevs.ca"
+  license:
+    name: "MIT"
+    url: "https://opensource.org/licenses/MIT"
+host: "create-app.us-east-2.elasticbeanstalk.com"
+# update this path once swagger-ui is setup with API
+##basePath: "/v1"
+tags:
+  - name: "notes"
+    description: "Everything about your notes"
+    externalDocs:
+      description: "Find out more"
+      url: "https://github.com/escobard/create-app/tree/master/documentation"
+schemes:
+  - "https"
+  - "http"
+paths:
+  /addNote:
+    post:
+      tags:
+        - "notes"
+      summary: "Add a new note"
+      operationId: "addNote"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Note object that needs to be added to the store"
+          required: true
+          schema:
+            $ref: "#/definitions/Note"
+      responses:
+        200:
+          description: "Note added"
+          schema:
+            $ref: "#/definitions/Note"
+        400:
+          description: "Invalid user_id supplied"
+        403:
+          description: "Invalid properties"
+        404:
+          description: "User not found"
+        405:
+          description: "Validation exception"
+            #security:
+            #- createapp_auth:
+            #- "write:notes"
+            #- "read:notes"
+            # commented out until phase 5
+            #put:
+            #tags:
+            #- "notes"
+            #summary: "Update an existing note"
+            #description: ""
+            #operationId: "updateNote"
+            #consumes:
+            #- "application/json"
+            #- "application/xml"
+            #produces:
+            #- "application/xml"
+            # - "application/json"
+            #parameters:
+            #- in: "body"
+            #name: "body"
+            #description: "Note object that needs to be added to the store"
+            #required: true
+            #schema:
+            #$ref: "#/definitions/Note"
+            #responses:
+            #400:
+            # description: "Invalid ID supplied"
+            #404:
+          #description: "Pet not found"
+          #405:
+          #description: "Validation exception"
+          #security:
+          #- createapp_auth:
+          #- "write:notes"
+          #- "read:notes"
+  /getNotes:
+    get:
+      tags:
+        - "notes"
+      summary: "Finds all notes"
+      description: "Notes by user to be introduced in phase 5"
+      operationId: "getNotes"
+      produces:
+        - "application/json"
+          # paramaters introduced in phase 5
+          #parameters:
+        #- name: "user_id"
+        #in: "query"
+        #description: "User ID used to fetch user specific notes"
+        #required: true
+        #type: "array"
+        #items:
+        #type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Note"
+            #400:
+            #description: "Invalid user_id"
+            #security:
+            #- createapp_auth:
+            #- "write:notes"
+            #- "read:notes"
+      #securityDefinitions:
+      #createapp_auth:
+      #type: "oauth2"
+      #authorizationUrl: "http://create-app.us-east-2.elasticbeanstalk.com/auth"
+      #flow: "implicit"
+      #scopes:
+      #write:notes: "modify notes in your account"
+      #read:notes: "read your notes"
+  /health:
+    get:
+      tags:
+        - "health"
+      summary: "API health status"
+      operationId: "health"
+      produces:
+        - "application/json"
+          # paramaters introduced in phase 5
+        #parameters:
+        #- name: "user_id"
+        #in: "query"
+        #description: "User ID used to fetch user specific notes"
+        #required: true
+        #type: "array"
+        #items:
+        #type: "string"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/Health"
+        304:
+          description: "Not modified"
+          schema:
+            $ref: "#/definitions/Health"
+definitions:
+  Users:
+    type: "object"
+    required:
+      - "email"
+    properties:
+      id:
+        type: "integer"
+        format: "serial"
+        description: "Serial ID, created automatically, primary key"
+      email:
+        type: "string"
+        format: "varchar250"
+        description: "User email, automatically uses admin@test.com, gmail auth0 to be added in phase 5"
+    xml:
+      name: "User"
+  Health:
+    properties:
+      healthy:
+        type: "boolean"
+        description: "API availability"
+      DB:
+        type: "boolean"
+        description: "DB availability"
+    xml:
+      name: "Health"
+  Note:
+    type: "object"
+    required:
+      - "user_id"
+      - "subject"
+      - "note"
+    properties:
+      id:
+        type: "integer"
+        format: "int"
+        description: "Note ID, unique to each note, primary key"
+        example: 3
+      user_id:
+        type: "integer"
+        format: "int"
+        description: "User ID, attaches a note to a user"
+        example: 1
+      subject:
+        type: "string"
+        example: "This is a sample note subject"
+        format: "varchar250"
+        minLength: 5
+        maxLength: 250
+        description: "Note subject"
+      note:
+        type: "string"
+        example: "This is a sample note"
+        format: "varchar1000"
+        minLength: 10
+        maxLength: 1000
+        description: "Note description"
+      date:
+        type: "string"
+        example: "a JavaScript generated date"
+        format: "varchar250"
+        description: "03/01/20, 7:32 PM"
+
+    xml:
+      name: "notes"
+externalDocs:
+  description: "Find out more about create-app"
+  url: "https://github.com/escobard/create-app"

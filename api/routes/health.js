@@ -6,6 +6,7 @@ router.get('/', (req, res) => {
     res.status(200).json(
         {
             healthy: true,
+            DB: global.hasDB,
             process: global.environment,
         });
 });

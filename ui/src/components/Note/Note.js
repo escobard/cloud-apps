@@ -17,7 +17,7 @@ const Note = ({ id, data: { subject, note, date, icon } }) => (
     <Grid.Column mobile={3} tablet={2} computer={1} className="icon">
       <i
         aria-label="note icon"
-        className={`${icon ? icon : "sticky note"} big circular icon`}
+        className={`${icon || "sticky note"} big circular icon`}
       />
     </Grid.Column>
     <Grid.Column mobile={9} tablet={12} computer={13} className="content">
@@ -40,13 +40,13 @@ Note.propTypes = {
     date: PropTypes.string,
     icon: PropTypes.string
   })
-}
+};
 
-Note.defaultProps ={
+Note.defaultProps = {
   data: {
     date: undefined,
     icon: undefined
   }
-}
+};
 
 export default Note;

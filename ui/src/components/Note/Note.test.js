@@ -22,7 +22,9 @@ describe("Note", () => {
   });
 
   it(">> should display notes data and circular icon", () => {
-    const { data: { subject, note, date} } = props;
+    const {
+      data: { subject, note, date }
+    } = props;
     const { getByText, container } = render(<Note {...props} />);
     expect(getByText(subject).toExist);
     expect(getByText(note).toExist);
@@ -42,5 +44,4 @@ describe("Note", () => {
     expect(container.querySelector(".sticky.note")).toEqual(null);
     expect(container.querySelector(".some.icon").toExist);
   });
-
 });
