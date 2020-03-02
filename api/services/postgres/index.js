@@ -22,13 +22,13 @@ const models = {
   Notes: sequelize.import("./models/notes")
 };
 
-// TODO - move this entire user logic to a middleware
-
 sequelize
   .authenticate()
   .then(() => {
     global.hasDB = true;
     console.log("Connection has been established successfully.");
+
+    // TODO - this logic will be moved to the auth service with phase 5
     const { Users } = models;
     Users.findAll()
       .then(values => {

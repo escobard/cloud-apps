@@ -1,6 +1,6 @@
 const routes = {
     port: process.env.PORT || 4000,
-    health: '/health',
+    health: "/health",
     addNote: "/addNote",
     getNotes: "/getNotes"
 };

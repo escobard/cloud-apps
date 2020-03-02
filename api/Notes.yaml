@@ -78,10 +78,10 @@ paths:
             #404:
             #description: "Pet not found"
             #405:
-            #description: "Validation exception"
-            #security:
-            #- createapp_auth:
-            #- "write:notes"
+          #description: "Validation exception"
+          #security:
+          #- createapp_auth:
+          #- "write:notes"
           #- "read:notes"
   /getNotes:
     get:
@@ -96,10 +96,10 @@ paths:
           #parameters:
           #- name: "user_id"
           #in: "query"
-          #description: "User ID used to fetch user specific notes"
-          #required: true
-          #type: "array"
-          #items:
+        #description: "User ID used to fetch user specific notes"
+        #required: true
+        #type: "array"
+        #items:
         #type: "string"
       responses:
         200:
@@ -122,6 +122,42 @@ paths:
       #scopes:
       #write:notes: "modify notes in your account"
       #read:notes: "read your notes"
+  /health:
+    get:
+      tags:
+        - "health"
+      summary: "API health status"
+      operationId: "health"
+      produces:
+        - "application/json"
+          # paramaters introduced in phase 5
+          #parameters:
+          #- name: "user_id"
+        #in: "query"
+        #description: "User ID used to fetch user specific notes"
+        #required: true
+        #type: "array"
+        #items:
+        #type: "string"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            type: object
+            properties:
+              healthy:
+                type: boolean
+              DB:
+                type: boolean
+            example:
+              healthy: true
+              DB: false
+        304:
+          description: "Not modified"
+          schema:
+            type: object
+            example:
+              healthy: true
 definitions:
   Users:
     type: "object"
@@ -138,6 +174,13 @@ definitions:
         description: "User email, automatically uses admin@test.com, gmail auth0 to be added in phase 5"
     xml:
       name: "User"
+  Health:
+    properties:
+      healthy:
+        type: "boolean"
+        description: "If true, API routes are available"
+    xml:
+      name: "Health"
   Note:
     type: "object"
     required:
@@ -145,14 +188,11 @@ definitions:
       - "subject"
       - "note"
     properties:
-      id:
-        type: "integer"
-        format: "serial"
-        description: "Serial ID, created automatically, primary key"
       user_id:
         type: "integer"
         format: "int"
         description: "User ID, attaches a note to a user"
+        example: 1
       subject:
         type: "string"
         example: "This is a sample note subject"
@@ -160,16 +200,11 @@ definitions:
         minLength: 5
         maxLength: 250
         description: "Note subject"
-      date:
-        type: "string"
-        example: "01/18/20, 11:08 PM"
-        format: "varchar250"
-        description: "Javascript date, using this format: { year: '2-digit', month: '2-digit', day: '2-digit', hour: 'numeric', minute: 'numeric' }"
       note:
         type: "string"
         example: "This is a sample note"
         format: "varchar1000"
-        minLength: 25
+        minLength: 10
         maxLength: 1000
         description: "Note description"
     xml:

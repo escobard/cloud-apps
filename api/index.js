@@ -4,6 +4,7 @@ const express = require("express"),
   cors = require("cors"),
   app = express(),
   routes = require("./constants/routes"),
+  swaggerError = require('./middlewares/swaggerError')
   port = routes.port;
 
 app.use(bodyParser.json());
@@ -22,19 +23,25 @@ let server = createMiddleware("Notes.yaml", app, (err, middleware) => {
 
   // TODO split up into its own middleware
   app.use((err, req, res, next) => {
-    res.status(err.status)
-    res.type('json');
-    res.send(err.message);
-    console.log('Swagger validator error')
-    console.log('Status: ' + err.status)
-    console.log('Message: ' + err.message)
-  });
+    if (err){
+      res.status(err.status)
+      res.type('json');
+      res.send(err.message);
+      console.log('Swagger validator error')
+      console.log('Status: ' + err.status)
+      console.log('Message: ' + err.message)
+    }
+    else{
+      next()
+    }
 
-  require("./routes")(app);
+  });
 
   app.listen(port, () => {
     console.log(`Example app listening on port ${port}!`);
   });
+  require("./routes")(app);
 });
+
 
 module.exports = server;
