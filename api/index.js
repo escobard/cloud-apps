@@ -12,7 +12,7 @@ app.use(cors({ origin: "*" }));
 // swagger docs
 app.use(routes.docs, require("./routes/docs"));
 
-let server = createMiddleware("Notes.yaml", app, (err, middleware) => {
+createMiddleware("Notes.yaml", app, (err, middleware) => {
   app.use(
     middleware.metadata(),
     middleware.files(),
@@ -43,12 +43,11 @@ let server = createMiddleware("Notes.yaml", app, (err, middleware) => {
     }
 
   });
-
-  app.listen(port, () => {
-    console.log(`Example app listening on port ${port}!`);
-  });
   require("./routes")(app);
 });
 
+let server = app.listen(port, () =>
+  console.log(`Example app listening on port ${port}!`)
+);
 
 module.exports = server;
