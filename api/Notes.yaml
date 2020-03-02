@@ -80,8 +80,8 @@ paths:
             #400:
             # description: "Invalid ID supplied"
             #404:
-            #description: "Pet not found"
-            #405:
+          #description: "Pet not found"
+          #405:
           #description: "Validation exception"
           #security:
           #- createapp_auth:
@@ -98,8 +98,8 @@ paths:
         - "application/json"
           # paramaters introduced in phase 5
           #parameters:
-          #- name: "user_id"
-          #in: "query"
+        #- name: "user_id"
+        #in: "query"
         #description: "User ID used to fetch user specific notes"
         #required: true
         #type: "array"
@@ -135,8 +135,8 @@ paths:
       produces:
         - "application/json"
           # paramaters introduced in phase 5
-          #parameters:
-          #- name: "user_id"
+        #parameters:
+        #- name: "user_id"
         #in: "query"
         #description: "User ID used to fetch user specific notes"
         #required: true
@@ -147,21 +147,11 @@ paths:
         200:
           description: "OK"
           schema:
-            type: object
-            properties:
-              healthy:
-                type: boolean
-              DB:
-                type: boolean
-            example:
-              healthy: true
-              DB: false
+            $ref: "#/definitions/Health"
         304:
           description: "Not modified"
           schema:
-            type: object
-            example:
-              healthy: true
+            $ref: "#/definitions/Health"
 definitions:
   Users:
     type: "object"
@@ -182,7 +172,10 @@ definitions:
     properties:
       healthy:
         type: "boolean"
-        description: "If true, API routes are available"
+        description: "API availability"
+      DB:
+        type: "boolean"
+        description: "DB availability"
     xml:
       name: "Health"
   Note:
@@ -192,6 +185,11 @@ definitions:
       - "subject"
       - "note"
     properties:
+      id:
+        type: "integer"
+        format: "int"
+        description: "Note ID, unique to each note, primary key"
+        example: 3
       user_id:
         type: "integer"
         format: "int"
@@ -211,6 +209,12 @@ definitions:
         minLength: 10
         maxLength: 1000
         description: "Note description"
+      date:
+        type: "string"
+        example: "a JavaScript generated date"
+        format: "varchar250"
+        description: "03/01/20, 7:32 PM"
+
     xml:
       name: "notes"
 externalDocs:
