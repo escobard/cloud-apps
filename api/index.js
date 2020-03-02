@@ -17,7 +17,8 @@ let server = createMiddleware("Notes.yaml", app, (err, middleware) => {
     middleware.files(),
     middleware.parseRequest(),
     middleware.validateRequest(),
-    middleware.mock()
+    // this is breaking a lot of operations
+    // middleware.mock()
   );
   // TODO add createDB middleware
 

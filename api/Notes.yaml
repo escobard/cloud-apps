@@ -40,6 +40,10 @@ paths:
           schema:
             $ref: "#/definitions/Note"
       responses:
+        200:
+          description: "Note added"
+          schema:
+            $ref: "#/definitions/Note"
         400:
           description: "Invalid user_id supplied"
         403:
