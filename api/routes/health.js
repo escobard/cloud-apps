@@ -1,14 +1,11 @@
-const router = require('express').Router();
+const router = require("express").Router();
 
-router.get('/', (req, res) => {
-    console.log('/health GET request: ', req.headers)
-
-    res.status(200).json(
-        {
-            healthy: true,
-            DB: global.hasDB,
-            process: global.environment,
-        });
+router.get("/", (req, res) => {
+  res.status(200).json({
+    healthy: true,
+    DB: global.hasDB === true,
+    process: global.environment ? global.environment : "dev"
+  });
 });
 
 module.exports = router;

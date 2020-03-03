@@ -4,7 +4,6 @@ const express = require("express"),
   cors = require("cors"),
   app = express(),
   routes = require("./constants/routes"),
-  swaggerError = require('./middlewares/swaggerError')
   port = routes.port;
 
 app.use(bodyParser.json());
@@ -13,7 +12,7 @@ app.use(cors({ origin: "*" }));
 // swagger docs
 app.use(routes.docs, require("./routes/docs"));
 
-let server = createMiddleware("Notes.yaml", app, (err, middleware) => {
+createMiddleware("Notes.yaml", app, (err, middleware) => {
   app.use(
     middleware.metadata(),
     middleware.files(),
@@ -40,16 +39,16 @@ let server = createMiddleware("Notes.yaml", app, (err, middleware) => {
       console.log('Message: ' + err.message)
     }
     else{
+      global.swagger = true;
       next()
     }
 
   });
-
-  app.listen(port, () => {
-    console.log(`Example app listening on port ${port}!`);
-  });
   require("./routes")(app);
 });
 
+let server = app.listen(port, () =>
+  console.log(`Example app listening on port ${port}!`)
+);
 
 module.exports = server;

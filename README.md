@@ -43,7 +43,7 @@ The following scripts can be used to run the UI and the API via docker-compose.
 
 ## Product Technology
 
-This product follows the traditional MVC (Model View Controller) paradigm where:
+This product loosely follows traditional MVC (Model View Controller) paradigms where:
    - The Model = the PostgreSQL database - is handled in the `/pgdb` directory
    - The View = the React user interface - is handled in the `/ui` directory
    - The Controller = the Node restful api  - handled in the `/api` directory
