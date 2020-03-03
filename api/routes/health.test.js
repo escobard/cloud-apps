@@ -1,4 +1,4 @@
-describe("Testing health route", () => {
+describe("Health route", () => {
   let defaultHealth;
 
   beforeEach(done => {
@@ -14,7 +14,7 @@ describe("Testing health route", () => {
     done();
   });
 
-  it("responds to /health, no DB", done => {
+  it(">> responds to /health, no DB", done => {
     request(server)
       .get("/health")
       .expect(defaultHealth)
@@ -22,9 +22,8 @@ describe("Testing health route", () => {
         if (err) return done(err);
         done();
       });
-  });
-
-  it("responds to /health, has DB", done => {
+  }),
+  it(">> responds to /health, has DB", done => {
     hasDB = true;
     defaultHealth.DB = true;
     request(server)
@@ -34,9 +33,8 @@ describe("Testing health route", () => {
         if (err) return done(err);
         done();
       });
-  });
-
-  it("responds to /health, on staging / hosting platform", done => {
+  }),
+  it(">> responds to /health, on staging / hosting platform", done => {
     environment = "GCP";
     defaultHealth.process = "GCP";
     request(server)
