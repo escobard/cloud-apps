@@ -3,6 +3,7 @@ const request = require("supertest");
 describe("Testing health route", () => {
   let server;
   let defaultHealth;
+
   // TODO find a way to make this re-usable
   before(function(done) {
     server = require("../index");
