@@ -22,7 +22,8 @@ describe("Health route", () => {
         if (err) return done(err);
         done();
       });
-  }),
+  });
+
   it(">> responds to /health, has DB", done => {
     hasDB = true;
     defaultHealth.DB = true;
@@ -33,7 +34,8 @@ describe("Health route", () => {
         if (err) return done(err);
         done();
       });
-  }),
+  });
+
   it(">> responds to /health, on staging / hosting platform", done => {
     environment = "GCP";
     defaultHealth.process = "GCP";
