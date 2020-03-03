@@ -5,13 +5,13 @@ describe("Testing health route", () => {
   let defaultHealth;
   // TODO find a way to make this re-usable
   before(function(done) {
-    server = require("../../index");
+    server = require("../index");
     // necessary to prevent tests from running before swagger middleware is ready
     setTimeout(done, 10);
   });
 
   beforeEach(done => {
-    server = require("../../index");
+    server = require("../index");
     defaultHealth = { healthy: true, DB: false, process: "dev" }
     done();
   });
