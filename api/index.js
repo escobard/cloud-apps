@@ -39,6 +39,7 @@ createMiddleware("Notes.yaml", app, (err, middleware) => {
       console.log('Message: ' + err.message)
     }
     else{
+      global.swagger = true;
       next()
     }
 
