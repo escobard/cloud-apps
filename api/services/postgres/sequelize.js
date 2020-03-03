@@ -6,8 +6,7 @@ const Sequelize = require("sequelize"),
     pgUser,
     pgDatabase,
     pgPassword
-  } = require("../../constants/dbkeys"),
-  authenticate = require("./authenticate");
+  } = require("../../constants/dbkeys");
 
 const sequelize = new Sequelize(pgDatabase, pgUser, pgPassword, {
   host: pgHost,
@@ -18,8 +17,6 @@ const sequelize = new Sequelize(pgDatabase, pgUser, pgPassword, {
     schema: "notes"
   }
 });
-
-authenticate(sequelize)
 
 module.exports = sequelize;
 

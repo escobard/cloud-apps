@@ -4,6 +4,7 @@ before(function(done){
   global.request = require("supertest");
   global.server = require("./index");
   global.sinon = require("sinon");
+  global.expect = require("chai").expect;
 
   // TODO - expand request with external API url, if tests are running in CI/CD
 
@@ -12,4 +13,5 @@ before(function(done){
 
 after(function(done){
   sinon.restore();
+  done()
 })
