@@ -7,9 +7,9 @@ const authenticate = sequelize => {
       console.log("Connection has been established successfully.");
 
       // TODO - this logic will be moved to the auth service with phase 5
+
       Users.findAll()
         .then(values => {
-          // console.log("values", values);
           const { hasDB } = global;
 
           const cleanData = JSON.stringify(values, null, 4);
