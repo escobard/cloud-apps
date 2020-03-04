@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon -L index.js",
-    "test": "set PORT=5555 && nyc --reporter=text mocha ./{,!(node_modules)/**/}*.test.js",
+    "test": "nyc --reporter=text mocha ./{,!(node_modules)/**/}*.test.js",
     "test-watch": "set PORT=5555 && nyc mocha --watch ./{,!(node_modules)/**/}*.test.js"
   },
   "engines": {
@@ -30,6 +30,7 @@
     "mocha": "^5.2.0",
     "nodemon": "^1.19.4",
     "nyc": "^14.1.1",
+    "sinon": "^9.0.0",
     "supertest": "^3.4.2"
   }
 }

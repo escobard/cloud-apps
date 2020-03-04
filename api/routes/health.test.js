@@ -1,30 +1,18 @@
-const request = require("supertest");
-
-describe("Testing health route", () => {
-  let server;
+describe("Health route", () => {
   let defaultHealth;
 
-  // TODO find a way to make this re-usable
-  before(function(done) {
-    server = require("../index");
-    // necessary to prevent tests from running before swagger middleware is ready
-    setTimeout(done, 10);
-  });
-
   beforeEach(done => {
-    server = require("../index");
-    defaultHealth = { healthy: true, DB: false, process: "dev" }
+    defaultHealth = { healthy: true, DB: false, process: "dev" };
     done();
   });
 
   afterEach(done => {
-    global.hasDB = null;
-    global.environment = null;
-    server.close();
+    hasDB = null;
+    environment = null;
     done();
   });
 
-  it("responds to /health, no DB", done => {
+  it(">> responds to /health, no DB", done => {
     request(server)
       .get("/health")
       .expect(defaultHealth)
@@ -34,8 +22,8 @@ describe("Testing health route", () => {
       });
   });
 
-  it("responds to /health, has DB", done => {
-    global.hasDB = true;
+  it(">> responds to /health, has DB", done => {
+    hasDB = true;
     defaultHealth.DB = true;
     request(server)
       .get("/health")
@@ -46,8 +34,8 @@ describe("Testing health route", () => {
       });
   });
 
-  it("responds to /health, on staging / hosting platform", done => {
-    global.environment = "GCP";
+  it(">> responds to /health, on staging / hosting platform", done => {
+    environment = "GCP";
     defaultHealth.process = "GCP";
     request(server)
       .get("/health")
