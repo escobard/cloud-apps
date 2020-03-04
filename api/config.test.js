@@ -10,22 +10,20 @@ before(function(done){
   global.sinon = require("sinon");
   global.expect = require("chai").expect;
   setTimeout(done, 10);
-  //
-
   // TODO - expand request with external API url, if tests are running in CI/CD
 })
-/*
+
 beforeEach(done => {
   server = require("./index");
   done();
 });
 
 afterEach(done => {
+  sinon.restore();
   server.close();
   done();
 });
 
- */
 after(function(done){
   sinon.restore();
   done()
