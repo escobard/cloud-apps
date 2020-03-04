@@ -1,6 +1,6 @@
 const { Users } = require("./models");
 const authenticate = sequelize => {
-  sequelize
+  return sequelize
     .authenticate()
     .then(() => {
       global.hasDB = true;
@@ -8,7 +8,7 @@ const authenticate = sequelize => {
 
       // TODO - this logic will be moved to the auth service with phase 5
 
-      Users.findAll()
+      return Users.findAll()
         .then(values => {
           const { hasDB } = global;
 
@@ -20,6 +20,7 @@ const authenticate = sequelize => {
               console.log("Auto-generated ID:", admin.id, admin.email);
             });
           }
+          return values;
         })
         .catch(err => {
           console.error("Unable to connect to create base user", err);
