@@ -2,7 +2,6 @@ describe("Health route", () => {
   let defaultHealth;
 
   beforeEach(done => {
-    server = require("../index");
     defaultHealth = { healthy: true, DB: false, process: "dev" };
     done();
   });
@@ -10,7 +9,6 @@ describe("Health route", () => {
   afterEach(done => {
     hasDB = null;
     environment = null;
-    server.close();
     done();
   });
 

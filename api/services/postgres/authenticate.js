@@ -9,6 +9,7 @@ const authenticate = (sequelize) => {
       const { Users } = models;
       Users.findAll()
         .then(values => {
+          console.log('values', values)
           const { hasDB } = global;
 
           const cleanData = JSON.stringify(values, null, 4);

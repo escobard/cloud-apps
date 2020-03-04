@@ -10,7 +10,15 @@ before(function(done){
 
   setTimeout(done, 10);
 })
+beforeEach(done => {
+  server = require("./index");
+  done();
+});
 
+afterEach(done => {
+  server.close();
+  done();
+});
 after(function(done){
   sinon.restore();
   done()

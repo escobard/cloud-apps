@@ -3,12 +3,12 @@ const sequelize = require("./sequelize"),
 
 describe("DB Authentication", () => {
   it(">> is able to authenticate", async () => {
-    var expectedResult = { success: true };
-    var save = sinon.stub(sequelize, 'authenticate').resolves('Test');
+    let expectedResult = { success: true };
+    let dbAuthStub = sinon.stub(sequelize, 'authenticate').resolves('Test');
     // var callback = sinon.spy();
 
     const test = await authenticate(sequelize);
-    console.log('TEST', sequelize.authenticate)
+    // console.log('TEST', sequelize.authenticate)
     // save.restore();
     //sinon.assert.calledWith(callback, null, expectedResult);
     //expect(test).to.equal("")
