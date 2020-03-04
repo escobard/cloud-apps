@@ -1,4 +1,5 @@
-const authenticate = (sequelize) => {
+const { Users } = require("./models");
+const authenticate = sequelize => {
   sequelize
     .authenticate()
     .then(() => {
@@ -6,10 +7,9 @@ const authenticate = (sequelize) => {
       console.log("Connection has been established successfully.");
 
       // TODO - this logic will be moved to the auth service with phase 5
-      const { Users } = models;
       Users.findAll()
         .then(values => {
-          console.log('values', values)
+          // console.log("values", values);
           const { hasDB } = global;
 
           const cleanData = JSON.stringify(values, null, 4);
@@ -29,9 +29,8 @@ const authenticate = (sequelize) => {
       const error = "Unable to connect to the database: " + err;
       console.error(error);
       global.hasDB = false;
-      global.dbError = error
+      global.dbError = error;
     });
-
-}
+};
 
 module.exports = authenticate;
