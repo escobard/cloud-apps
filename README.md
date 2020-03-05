@@ -1,6 +1,6 @@
 # create-app
 
-An enterprise platform boilerplate, forked from escobard/create-dapp
+A platform boilerplate, built with React, Node, Postgres and Docker.
 
 ## APP Usage
 
@@ -75,3 +75,4 @@ Contribution documentation can be found here: [documentation/contribution.md](ht
 [Express](https://expressjs.com/)
 
 [Docker](https://www.docker.com/)
+
