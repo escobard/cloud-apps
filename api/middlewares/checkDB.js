@@ -7,7 +7,7 @@ module.exports = function checkDB(){
   return async (req, res, next) => {
     if (global.hasDB === false){
       res.status(503)
-      return res.json(global.dbError);
+      return res.json(global.dBError);
     }else{
       next()
     }
