@@ -39,7 +39,7 @@ const authenticate = sequelize => {
       const error = "Unable to connect to the database: " + err;
       console.error(error);
       global.hasDB = false;
-      global.dbError = error;
+      global.dBError = error;
       return error;
     });
 };
