@@ -70,12 +70,8 @@ Contribution documentation can be found here: [documentation/contribution.md](ht
 
 [React](https://reactjs.org/)
 
-[Redux](https://redux.js.org/)
-
 [Node](https://nodejs.org/en/)
 
 [Express](https://expressjs.com/)
 
 [Docker](https://www.docker.com/)
-
-[Docker Compose](https://docs.docker.com/compose/)
