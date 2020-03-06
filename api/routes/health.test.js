@@ -12,37 +12,25 @@ describe("Health route", () => {
     done();
   });
 
-  it(">> responds to /health, no DB", done => {
+  it(">> responds to /health, no DB", async () => {
     request(server)
       .get("/health")
       .expect(defaultHealth)
-      .end((err, res) => {
-        if (err) return done(err);
-        done();
-      });
   });
 
-  it(">> responds to /health, has DB", done => {
+  it(">> responds to /health, has DB", async () => {
     global.hasDB = true;
     defaultHealth.DB = true;
     request(server)
       .get("/health")
       .expect(defaultHealth)
-      .end((err, res) => {
-        if (err) return done(err);
-        done();
-      });
   });
 
-  it(">> responds to /health, on staging / hosting platform", done => {
+  it(">> responds to /health, on staging / hosting platform", async () => {
     environment = "GCP";
     defaultHealth.process = "GCP";
     request(server)
       .get("/health")
       .expect(defaultHealth)
-      .end((err, res) => {
-        if (err) return done(err);
-        done();
-      });
   });
 });

@@ -9,7 +9,7 @@ router.post("/", checkDB, async (req, res) => {
     console.log("/addNote request", req.body);
     const { subject, note } = req.body;
 
-    // may want to migrate this logic to Postgres to remove this operation from the API
+    // TODO - split this into a util
     const options = {
       year: "2-digit",
       month: "2-digit",
