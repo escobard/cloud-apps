@@ -9,11 +9,10 @@ router.get("/", checkDB, function(){
   return async(req, res) =>{
     try {
       const getNotes = await Notes.findAll();
-      res.status(200).json(getNotes.reverse());
+      return res.status(200).json(getNotes.reverse());
     } catch (err) {
       const error = "getNotes route promise rejection" + err;
-      console.log(error);
-      res.status(503).json(error);
+      return res.status(503).json(error);
     }
   }
 
