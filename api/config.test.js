@@ -10,11 +10,10 @@ before(async () =>{
   global.sinon = require("sinon");
   global.expect = require("chai").expect;
   // TODO - expand request with external API url, if tests are running in CI/CD
-})
+});
 
-beforeEach(done => {
+beforeEach(async () => {
   server = require("./index");
-  done();
 });
 
 afterEach(done => {
@@ -25,5 +24,5 @@ afterEach(done => {
 
 after(function(done){
   sinon.restore();
-  done()
-})
+  done();
+});

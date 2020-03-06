@@ -6,6 +6,8 @@ const express = require("express"),
   routes = require("./constants/routes"),
   port = routes.port;
 
+checkDB = require("./middlewares/checkDB");
+
 app.use(bodyParser.json());
 app.use(cors({ origin: "*" }));
 
@@ -18,7 +20,7 @@ createMiddleware("Notes.yaml", app, (err, middleware) => {
     middleware.files(),
     middleware.CORS(),
     middleware.parseRequest(),
-    middleware.validateRequest(),
+    middleware.validateRequest()
     // this is breaking a lot of operations
     // middleware.mock()
   );
@@ -26,24 +28,19 @@ createMiddleware("Notes.yaml", app, (err, middleware) => {
 
   // TODO split up into its own middleware
   app.use((err, req, res, next) => {
-    if (err){
-      res.status(err.status)
-      res.type('application/json');
-      const error = {
-        status: err.status,
-        message: err.message
-      }
-      res.json(error);
-      console.log('Swagger validator error')
-      console.log('Status: ' + err.status)
-      console.log('Message: ' + err.message)
-    }
-    else{
+    if (err) {
+      res.status(err.status);
+      res.type("application/json");
+      res.json(err.message);
+      console.log("Swagger validator error");
+      console.log("Status: " + err.status);
+      console.log("Message: " + err.message);
+    } else {
       global.swagger = true;
-      next()
+      next();
     }
-
   });
+  app.use(checkDB)
   require("./routes")(app);
 });
 
