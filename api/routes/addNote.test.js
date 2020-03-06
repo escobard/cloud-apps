@@ -29,22 +29,6 @@ describe("addNote route", () => {
       });
   });
 
-  // TODO move entire test to new middleware
-  it(">> sad path, swagger rejection", async () => {
-    global.hasDB = true;
-    note.user_id = "";
-    note.subject = "a";
-    note.note = "a";
-    request(server)
-      .post("/addNote")
-      .send(note)
-      .end((err, res) => {
-        expect(res.status).to.equal(400);
-        expect(res.error.text).to.equal(
-          '"The \\"body\\" body parameter is invalid ({\\"user_id\\":\\"\\",\\"subject\\":\\"a\\",\\"note\\":\\"a\\"}) \\nJSON Schema validation error. \\nData path: \\"/user_id\\" \\nSchema path: \\"/properties/user_id/type\\" \\nInvalid type: string (expected integer)"'
-        );
-      });
-  });
   it(">> sad path, general promise rejection", async () => {
     global.hasDB = true;
     request(server)
