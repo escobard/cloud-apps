@@ -31,11 +31,12 @@ describe("addNote route", () => {
   it(">> sad path, general promise rejection", async () => {
     global.hasDB = true;
     request(server)
-      .get("/getNotes")
+      .post("/addNote")
+      .send(note)
       .end((err, res) => {
-        expect(res.error.status).to.equal(503);
+        expect(res.status).to.equal(503);
         expect(res.error.text).to.equal(
-          '"getNotes route promise rejectionSequelizeConnectionRefusedError: connect ECONNREFUSED 127.0.0.1:5432"'
+          '"addNotes route promise rejectionSequelizeConnectionRefusedError: connect ECONNREFUSED 127.0.0.1:5432"'
         );
       });
   });
