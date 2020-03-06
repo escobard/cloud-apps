@@ -4,10 +4,8 @@ router.get("/", (req, res) => {
   res.status(200).json({
     healthy: true,
     DB: global.hasDB === true,
-    process:
-      global.environment
-        ? global.environment
-        : "dev"
+    // TODO update docker with this new variable for staging / prod
+    process: process.env.environment
   });
 });
 

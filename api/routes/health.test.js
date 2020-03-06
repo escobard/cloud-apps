@@ -2,12 +2,13 @@ describe("Health route", () => {
   let defaultHealth;
 
   beforeEach(done => {
-    global.environment = null;
-    defaultHealth = { healthy: true, DB: false, process: "dev" };
+    process.env.environment = "development"
+    defaultHealth = { healthy: true, DB: false, process: "development" };
     done();
   });
 
   afterEach(done => {
+    process.env.environment
     global.hasDB = null;
     done();
   });
@@ -26,9 +27,9 @@ describe("Health route", () => {
       .expect(defaultHealth)
   });
 
-  it(">> responds to /health, on staging / hosting platform", async () => {
-    global.environment = "GCP";
-    defaultHealth.process = "GCP";
+  it(">> responds to /health, ons staging / hosting platform", async () => {
+    process.env.environment = "testing"
+    defaultHealth.process = "testing"
     request(server)
       .get("/health")
       .expect(defaultHealth)
