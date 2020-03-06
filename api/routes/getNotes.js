@@ -7,6 +7,7 @@ const router = require("express").Router(),
 // the route here is replaced by the route passed within ./index.js
 router.get("/", checkDB, function(){
   return async(req, res) =>{
+
     try {
       const getNotes = await Notes.findAll();
       return res.status(200).json(getNotes.reverse());
