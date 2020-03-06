@@ -1,5 +1,6 @@
 const { sequelize } = require("../services/postgres");
-/** Utility to connect to DB
+
+/** Middelware to check connection to DB
  * @dev prevents API crashes when DB is unavailable
  */
 
