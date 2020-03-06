@@ -7,8 +7,8 @@ describe("Health route", () => {
   });
 
   afterEach(done => {
-    hasDB = null;
-    environment = null;
+    global.hasDB = null;
+    global.environment = null;
     done();
   });
 
@@ -23,7 +23,7 @@ describe("Health route", () => {
   });
 
   it(">> responds to /health, has DB", done => {
-    hasDB = true;
+    global.hasDB = true;
     defaultHealth.DB = true;
     request(server)
       .get("/health")
