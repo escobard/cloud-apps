@@ -3,7 +3,7 @@ const express = require("express"),
   bodyParser = require("body-parser"),
   cors = require("cors"),
   app = express(),
-  routes = require("./constants/routes"),
+  { routes } = require("./constants"),
   port = routes.port,
   { swaggerValidation } = require("./middlewares");
 
