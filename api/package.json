@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon -L index.js",
+    "dev": "set environment=development&& nodemon -L index.js",
     "test": "nyc --reporter=text mocha ./{,!(node_modules)/**/}*.test.js",
     "test-watch": "set PORT=5555 && nyc mocha --watch ./{,!(node_modules)/**/}*.test.js"
   },

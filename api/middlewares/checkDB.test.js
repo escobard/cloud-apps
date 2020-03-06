@@ -2,10 +2,12 @@ const checkDB = require("./checkDB");
 
 describe("checkDB", function() {
   let req,res,spy;
+
   afterEach(()=>{
     global.hasDB = false;
     global.dBError = "";
-  })
+  });
+
   it(">> should call next() if db is available", function() {
     let nextSpy = sinon.spy();
     global.hasDB = true;
@@ -13,6 +15,7 @@ describe("checkDB", function() {
     checkDB({}, {}, nextSpy);
     expect(nextSpy.calledOnce).to.be.true;
   });
+
   it(">> should not call next() if db is unavailable", function() {
     let nextSpy = sinon.spy();
 

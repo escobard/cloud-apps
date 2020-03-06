@@ -190,6 +190,7 @@ definitions:
         format: "int"
         description: "Note ID, unique to each note, primary key"
         example: 3
+        readOnly: true
       user_id:
         type: "integer"
         format: "int"
@@ -211,10 +212,10 @@ definitions:
         description: "Note description"
       date:
         type: "string"
-        example: "a JavaScript generated date"
         format: "varchar250"
         description: "03/01/20, 7:32 PM"
-
+        example: "03/01/20, 7:32 PM"
+        readOnly: true
     xml:
       name: "notes"
 externalDocs:

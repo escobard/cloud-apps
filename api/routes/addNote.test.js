@@ -1,12 +1,13 @@
 const { Notes } = require("../services/postgres/models");
 
 describe("addNote route", () => {
-  const note = {
-    user_id: 1,
-    subject: "This is a sample note subject",
-    note: "This is a sample note",
-  };
+  let note;
   beforeEach(done => {
+    note = {
+      user_id: 1,
+      subject: "This is a sample note subject",
+      note: "This is a sample note"
+    };
     done();
   });
 
@@ -16,7 +17,7 @@ describe("addNote route", () => {
 
   it(">> happy path, add note success", done => {
     global.hasDB = true;
-    sinon.stub(Notes, "create").resolves('Note added!');
+    sinon.stub(Notes, "create").resolves("Note added!");
     request(server)
       .post("/addNote")
       .send(note)

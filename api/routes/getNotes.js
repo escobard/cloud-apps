@@ -2,7 +2,7 @@ const router = require("express").Router(),
   {
     models: { Notes }
   } = require("../services/postgres"),
-  checkDB = require("../middlewares/checkDB");
+  { checkDB } = require("../middlewares");
 
 // the route here is replaced by the route passed within ./index.js
 router.get("/", checkDB, async (req, res) => {

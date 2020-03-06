@@ -1,10 +1,10 @@
 # create-app
 
-A platform boilerplate, built with React, Node, Postgres and Docker.
+An enterprise platform boilerplate, built with React, Node, Postgres and Docker.
 
 ## APP Usage
 
-Production version available here: (enter future production URL here)
+Production version available here: http://create-app.us-east-2.elasticbeanstalk.com/
 
 ### Scripts
 

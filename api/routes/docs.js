@@ -3,14 +3,8 @@ const router = require("express").Router(),
   SwaggerParser = require("swagger-parser");
 
 SwaggerParser.validate("./Notes.yaml", (err, api) => {
-  if (err) {
-    // Error
-  }
-  else {
-    // Success
-    router.use("/", swaggerUi.serve);
-    router.get("/", swaggerUi.setup(api));
-  }
+  router.use("/", swaggerUi.serve);
+  router.get("/", swaggerUi.setup(api));
 });
 
 module.exports = router;

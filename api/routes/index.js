@@ -1,4 +1,4 @@
-const routes = require("../constants/routes");
+const { routes } = require("../constants");
 
 module.exports = app => {
 

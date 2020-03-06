@@ -6,7 +6,7 @@ const Sequelize = require("sequelize"),
     pgUser,
     pgDatabase,
     pgPassword
-  } = require("../../constants/dbkeys");
+  } = require("../../constants").dbkeys;
 
 const sequelize = new Sequelize(pgDatabase, pgUser, pgPassword, {
   host: pgHost,

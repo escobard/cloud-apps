@@ -2,7 +2,7 @@ const router = require("express").Router(),
   {
     models: { Notes }
   } = require("../services/postgres"),
-  checkDB = require("../middlewares/checkDB");
+  { checkDB } = require("../middlewares");
 
 router.post("/", checkDB, async (req, res) => {
   try {

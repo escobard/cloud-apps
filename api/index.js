@@ -3,8 +3,9 @@ const express = require("express"),
   bodyParser = require("body-parser"),
   cors = require("cors"),
   app = express(),
-  routes = require("./constants/routes"),
-  port = routes.port;
+  { routes } = require("./constants"),
+  port = routes.port,
+  { swaggerValidation } = require("./middlewares");
 
 app.use(bodyParser.json());
 app.use(cors({ origin: "*" }));
@@ -18,32 +19,13 @@ createMiddleware("Notes.yaml", app, (err, middleware) => {
     middleware.files(),
     middleware.CORS(),
     middleware.parseRequest(),
-    middleware.validateRequest(),
-    // this is breaking a lot of operations
+    middleware.validateRequest()
+    // mock should only be used when we want to use swagger examples as route response mocks
     // middleware.mock()
   );
-  // TODO add createDB middleware
 
-  // TODO split up into its own middleware
-  app.use((err, req, res, next) => {
-    if (err){
-      res.status(err.status)
-      res.type('application/json');
-      const error = {
-        status: err.status,
-        message: err.message
-      }
-      res.json(error);
-      console.log('Swagger validator error')
-      console.log('Status: ' + err.status)
-      console.log('Message: ' + err.message)
-    }
-    else{
-      global.swagger = true;
-      next()
-    }
+  app.use(swaggerValidation(err));
 
-  });
   require("./routes")(app);
 });
 
