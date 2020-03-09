@@ -18,7 +18,3 @@ This is the script that is used in CI/CD:
 #### Run all tests
 
 `npm test`
-
-#### Production
-
-`npm start`

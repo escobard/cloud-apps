@@ -2,73 +2,28 @@
 
 ## Introduction
 
-The purpose of the API layer is to control the business logic of the product.
+The purpose of the Integration test layer, is to run API level end to end tests on critical business services.
 
-This is managed by a combination of Node.js, Express.js and various npm libraries.
+This layer was largely inspired by the outcomes of this story: [API - Testing - Research.](https://github.com
+/escobard/create-app/issues/38)
 
-## Usage - Expanded - needs to be updated with final routes for phase2
+## Usage - Expanded 
 
-### Validation
+### Globals 
 
-Validation of each route currently checks for:
+All tests rely on global variables initiated at test runtime, found at [/integration/config.test.js](https://github.com/escobard/create-app/blob/master/integration/config.test.js)
 
-1) null values
-1) data types
-1) data length
-1) data min / max
+Constants for global use are also initiated globally at test runtime and can be found at [/constants](https://github.com/escobard/create-app/tree/master/integration/constants)
 
-### Routes
+### Tests in order
 
-#### /postForm
+To run tests in a pre-determined sequence, the [test-in-order.js](https://github.com/escobard/create-app/blob/master
+/integration/tests/tests-in-order.js) file can be leveraged.
 
-Basic form data validator.
+## Libraries, Frameworks & Tools
 
-Important files:
+[Mocha as a test framework](https://mochajs.org/)
 
-```
-- routes/postForm.js
-- middlewares/postFormValidation.js
-- utils/validation.js
-```
+[Chai for assertions](https://www.chaijs.com/)
 
-Validation breakdown:
-
-```angular2html
-
-{
-   "stringType": "must be a string",
-   "stringLength": "string length must be greater than 10",
-   "numberType": 13, < ---- must be a number
-   "numberMax": 12 <---- must be greater than 10.
- }
-
-```
-
-Sample request body:
-
-```angular2html
-
-{
-   "stringType": "asdfasasdf",
-   "stringLength": "asdfasdfadsfdsfdasfdsfdsfadsf",
-   "numberType": 13,
-   "numberMax": 12
- }
-
-```
-
-Upon success, expected response: 
-
-```angular2html
-{ 
-   "status":"postForm request validated!",
-   "result":"validated",
-   "formValues":{ 
-      "stringType":"asdfasasdf",
-      "stringLength":"asdfasdfadsfdsfdasfdsfdsfadsf",
-      "numberType":13,
-      "numberMax":12
-   }
-}
-```
-
+[Supertest for request testing](https://github.com/visionmedia/supertest)
