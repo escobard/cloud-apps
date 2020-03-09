@@ -1,3 +1,8 @@
+
+/** Configuration file for tests
+ * @dev depends on a running host
+ */
+
 before((done) =>{
   global.request = require("supertest");
   global.expect = require("chai").expect

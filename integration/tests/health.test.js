@@ -1,7 +1,7 @@
 describe("API Health", () => {
   it(">> has DB, is running in test environment", done => {
 
-    // TODO - add this
+    // TODO - update with environment when that's working
     const health = { healthy: true, DB: true, /* environment: testing */ };
 
     request(server)
