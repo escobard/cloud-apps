@@ -11,8 +11,9 @@ module.exports = function swaggerValidation(err){
       console.log("Swagger validator error");
       console.log("Status: " + err.status);
       // TODO - need a util to format this string to improve its readability
+      let message = err.message.split(/\r\n|\r|\n/g);
       console.log("Message: " + err.message);
-      res.json({status: err.status, description: err.message})
+      res.json({status: err.status, description: message})
     } else {
       next();
     }
