@@ -1,8 +1,10 @@
 describe("addNote", () => {
-  it(">> can create a note, response has expected properties", done => {
+  it(">> happy path, response has expected properties", done => {
+
     const {
       addNote: { request: addNoteRequest }
     } = sampleData;
+
     request(server)
       .post(addNote)
       .send(addNoteRequest)
