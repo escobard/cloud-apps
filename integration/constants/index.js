@@ -1,5 +1,7 @@
-const routes = require("./routes")
+const routes = require("./routes"),
+  sampleData = require('./sampleData')
 
 module.exports = {
-  routes
+  routes,
+  sampleData
 }

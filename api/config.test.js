@@ -2,7 +2,7 @@
  * @dev source of truth for all unit tests in the application
  */
 
-const { routes } = require("./constants")
+const { routes } = require("./constants");
 
 // timeout is necessary to unit test swagger middleware
 before(async () =>{

@@ -3,7 +3,7 @@
  * @dev depends on a running host
  */
 
-const { routes } = require("./constants")
+const { routes, sampleData } = require("./constants")
 
 before((done) =>{
 
@@ -14,6 +14,9 @@ before((done) =>{
 
   // TODO - improve this portion during docker phase to include PORT as well
   global.server = process.env.API_HOST ||"http://localhost:4000"
+
+  // sample data
+  global.sampleData = sampleData;
 
   // routes
   global.health = health;
