@@ -5,7 +5,7 @@
   "main": "config.test.js",
   "scripts": {
     "test": "nyc --reporter=text mocha ./{,!(node_modules)/**/}*.test.js",
-    "test-watch": "set PORT=5555 && nyc --reporter=text mocha --watch ./{,!(node_modules)/**/}*.test.js"
+    "test-watch": "set PORT=5000 && nyc --reporter=text mocha --watch ./{,!(node_modules)/**/}*.test.js"
   },
   "engines": {
     "node": "10.x",
