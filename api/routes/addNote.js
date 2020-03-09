@@ -19,6 +19,7 @@ router.post("/", checkDB, async (req, res) => {
     });
 
     // user_id will be dynamic after phase 3
+    // TODO revealing too much information on response, should reduce this with phase 4
     const addNote = await Notes.create({ user_id: 1, subject, note, date });
     res.status(200).json(addNote);
   } catch (err) {

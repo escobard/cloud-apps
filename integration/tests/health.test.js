@@ -1,4 +1,4 @@
-describe("API Health", () => {
+describe("health", () => {
   it(">> has DB, is running in test environment", done => {
     request(server)
       .get(health)
