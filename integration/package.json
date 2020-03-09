@@ -4,9 +4,9 @@
   "description": "integration",
   "main": "config.test.js",
   "scripts": {
-    "test": "nyc --reporter=text mocha ./{,!(node_modules)/**/}*.test.js",
-    "test-watch": "set PORT=5000 && nyc --reporter=text mocha --watch ./{,!(node_modules)/**/}*.test.js",
-    "test-in-order": "nyc --reporter=text mocha --bail ./tests/tests-in-order.js"
+    "test": "mocha ./{,!(node_modules)/**/}*.test.js",
+    "test-watch": "set PORT=5000 && mocha --watch ./{,!(node_modules)/**/}*.test.js",
+    "test-in-order": "mocha --bail ./tests/tests-in-order.js"
   },
   "engines": {
     "node": "10.x",
@@ -17,7 +17,6 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "mocha": "^5.2.0",
-    "nyc": "^14.1.1",
     "supertest": "^3.4.2"
   }
 }
