@@ -1,17 +1,21 @@
 # API
 
-For more API documentation, visit [documents/api.md](documents/api.md)
+For more API documentation, visit [documents/api.md](https://github.com/escobard/create-app/blob/master/documentation/api.md)
 
 ### Usage
 
-#### Local development
+#### Development
 
 `npm run dev`
 
-#### Local testing
+#### Test development
+
+`npm run test-watch`
+
+#### Tests with coverage
 
 `npm test`
 
-#### Production
+#### Run API for prod
 
 `npm start`

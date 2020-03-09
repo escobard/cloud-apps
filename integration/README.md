@@ -5,7 +5,7 @@ For more Integration Test documentation, visit [documents/integration.md](https:
 
 ### Usage
 
-#### Local development
+#### Development
 
 `npm run test-watch`
 
