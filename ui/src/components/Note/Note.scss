@@ -37,9 +37,9 @@
         position: relative;
         line-height: 1.2rem;
         max-height: 1.2rem;
+        // TODO - make this conditional, only trigger if paragraph length is greater than length of screen
         &:after {
           content: '...';
-          position: absolute;
           right: 0;
           bottom: 0;
         }

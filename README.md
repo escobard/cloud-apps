@@ -1,6 +1,6 @@
 # create-app
 
-An enterprise platform boilerplate, built with React, Node, Postgres and Docker.
+An enterprise platform boilerplate, powered by React, Node, Postgres and Docker.
 
 ## APP Usage
 
