@@ -16,7 +16,7 @@ describe("Health route", () => {
   it(">> responds to /health, no DB", async () => {
     request(server)
       // TODO - update the string routes for all tests to use constants/routes
-      .get("/health")
+      .get(health)
       .expect(defaultHealth);
   });
 
@@ -24,15 +24,15 @@ describe("Health route", () => {
     global.hasDB = true;
     defaultHealth.DB = true;
     request(server)
-      .get("/health")
+      .get(health)
       .expect(defaultHealth);
   });
 
-  it(">> responds to /health, ons staging / hosting platform", async () => {
+  it(">> responds to /health, on staging / hosting platform", async () => {
     process.env.environment = "testing";
     defaultHealth.process = "testing";
     request(server)
-      .get("/health")
+      .get(health)
       .expect(defaultHealth)
       .end((err, res) => {
         expect(res.status).to.equal(200);

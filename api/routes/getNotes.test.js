@@ -24,7 +24,7 @@ describe("getNotes route", () => {
     global.hasDB = true;
     sinon.stub(Notes, "findAll").resolves(users);
     request(server)
-      .get("/getNotes")
+      .get(getNotes)
       .expect(users)
       .end((err, res) => {
         expect(res.status).to.equal(200);
@@ -36,7 +36,7 @@ describe("getNotes route", () => {
   it(">> sad path, general promise rejection", async () => {
     global.hasDB = true;
     request(server)
-      .get("/getNotes")
+      .get(getNotes)
       .end((err, res) => {
         expect(res.error.status).to.equal(503);
         expect(res.error.text).to.equal(
