@@ -37,7 +37,7 @@
         position: relative;
         line-height: 1.2rem;
         max-height: 1.2rem;
-        &:before {
+        &:after {
           content: '...';
           position: absolute;
           right: 0;

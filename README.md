@@ -13,18 +13,6 @@ The following scripts assume:
 1) The user has `docker` and `docker-compose` installed.
 2) `npm install` has been run in the `./`,`./ui` and `./api` directories.
 
-#### Scripts - NPM
-
-The following scripts can be used to run the UI and the API application cocurrently. For debugging, it's recommended to run each application individually.
-
-##### Local development for UI and API
-
-`npm run dev`
-
-##### Run unit tests on UI and API
-
-`npm run test`
-
 #### Scripts - Docker
 
 The following scripts can be used to run the UI and the API via docker-compose.
@@ -40,6 +28,20 @@ The following scripts can be used to run the UI and the API via docker-compose.
 ##### Clean up idle docker images
 
 `npm run clean`
+
+#### Scripts - NPM
+
+The following scripts can be used to run the UI and the API application `cocurrently`. 
+
+Using `concurrently` is not recommended. For debugging, it's recommended to run each application individually.
+
+##### Local development for UI and API
+
+`npm run dev`
+
+##### Run unit tests on UI and API
+
+`npm run test`
 
 ## Product Technology
 
