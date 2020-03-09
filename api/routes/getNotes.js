@@ -4,7 +4,7 @@ const router = require("express").Router(),
   } = require("../services/postgres"),
   { checkDB } = require("../middlewares");
 
-// the route here is replaced by the route passed within ./index.js
+// the route here is replaced by the route passed within ./tests-in-order.js
 router.get("/", checkDB, async (req, res) => {
   try {
     const getNotes = await Notes.findAll();

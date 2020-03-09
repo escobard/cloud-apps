@@ -19,7 +19,7 @@ describe("addNote route", () => {
     global.hasDB = true;
     sinon.stub(Notes, "create").resolves("Note added!");
     request(server)
-      .post("/addNote")
+      .post(addNote)
       .send(note)
       .expect('"Note added!"')
       .end((err, res) => {
@@ -32,7 +32,7 @@ describe("addNote route", () => {
   it(">> sad path, general promise rejection", async () => {
     global.hasDB = true;
     request(server)
-      .post("/addNote")
+      .post(addNote)
       .send(note)
       .end((err, res) => {
         expect(res.status).to.equal(503);
