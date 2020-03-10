@@ -9,16 +9,25 @@ This layer was largely inspired by the outcomes of this story: [API - Testing - 
 
 ## Usage - Expanded 
 
-### Globals 
+### Swagger
+
+### Docker
+
+### Sequelize
+
+### Tests
+
+#### Globals 
 
 All tests rely on global variables initiated at test runtime, found at [/integration/config.test.js](https://github.com/escobard/create-app/blob/master/integration/config.test.js)
 
 Constants for global use are also initiated globally at test runtime and can be found at [/constants](https://github.com/escobard/create-app/tree/master/integration/constants)
 
-### Tests in order
+#### Tests in order
 
 To run tests in a pre-determined sequence, the [test-in-order.js](https://github.com/escobard/create-app/blob/master
 /integration/tests/tests-in-order.js) file can be leveraged.
+
 
 ## Libraries, Frameworks & Tools
 
