@@ -3,8 +3,8 @@ services:
   postgres:
     container_name: pgdb_dev
     build:
-      context: ./pgdb
-      dockerfile: Dockerfile.dev
+      context: ../db
+      dockerfile: ../db/Dockerfile.dev
     ports:
       - "5432:5432"
   ui:
@@ -14,8 +14,8 @@ services:
       - DOCKER_VARIANT=compose_routing
       - REACT_APP_DOCKER_VARIANT=nginx_routing
     build:
-      context: ./ui
-      dockerfile: Dockerfile.prod
+      context: ../ui
+      dockerfile: ../ui/Dockerfile.prod
     ports:
       - "3000:3000"
   api:
@@ -32,12 +32,12 @@ services:
     ports:
     - "4000:4000"
     build:
-      context: ./api
+      context: ../api
       dockerfile: api/ops/Dockerfile
   nginx:
     restart: always
     build:
-      dockerfile: Dockerfile.prod
-      context: ./nginx
+      dockerfile: ../nginx/Dockerfile.prod
+      context: ../nginx
     ports:
       - '5000:5000'

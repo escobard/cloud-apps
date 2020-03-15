@@ -22,12 +22,24 @@ For more API documentation, visit [documents/api.md](https://github.com/escobard
 
 ## Usage - Docker
 
-Docker scripts are available for production debugging.
+Docker scripts are available for test & production debugging.
 
-### Build & Start
+### Test
+
+#### Build & Start
+
+`npm run docker-test`
+
+#### Stop & Remove
+
+`npm run docker-test-rm`
+
+### Production
+
+#### Build & Start
 
 `npm run docker`
 
-### Stop & Remove
+#### Stop & Remove
 
 `npm run docker-rm`

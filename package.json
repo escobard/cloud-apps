@@ -9,9 +9,10 @@
   },
   "devDependencies": {},
   "scripts": {
-    "dev": "docker-compose -f dev.yaml up",
-    "dev-ngnix": "docker-compose -f dev-nginx.yaml up",
-    "prod": "docker-compose -f prod.yaml up",
+    "dev": "docker-compose -f ops/dev.yaml up",
+    "dev-ngnix": "docker-compose -f ops/dev-nginx.yaml up",
+    "test": "docker-compose -f ops/test.yaml up",
+    "prod": "docker-compose -f ops/prod.yaml up",
     "clean": "docker system prune -a",
     "test-legacy": "concurrently --names \"UI,API\" \"npm run test --prefix ui\" \"npm run test --prefix api\" ",
     "dev-legacy": "concurrently --names \"UI,API\" \"npm run start --prefix ui\" \"npm run dev --prefix api\" "

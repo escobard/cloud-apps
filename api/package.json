@@ -6,12 +6,16 @@
   "scripts": {
     "start": "node index.js",
     "dev": "set environment=development&& nodemon -L index.js",
-    "test": "nyc --reporter=text mocha ./{,!(node_modules)/**/}*.test.js",
+    "test": "nyc --reporter=text mocha \"./{,!(node_modules)/**/}*.test.js\"",
     "test-watch": "set PORT=5555 && nyc mocha --watch ./{,!(node_modules)/**/}*.test.js",
     "docker-build": "docker build -t escobard/create-app-api:latest -f ops/Dockerfile .",
     "docker-start": "docker run --name api -p 4000:4000 -t escobard/create-app-api:latest",
     "docker-rm": "docker stop api && docker rm api",
-    "docker": "npm run docker-build && npm run docker-start"
+    "docker-test-build": "docker build -t escobard/create-app-api-test:latest -f ops/Dockerfile.test .",
+    "docker-test-start": "docker run --name api-test -p 4000:4000 -t escobard/create-app-api-test:latest",
+    "docker-test-rm": "docker stop api-test && docker rm api-test",
+    "docker": "npm run docker-build && npm run docker-start",
+    "docker-test": "npm run docker-test-build && npm run docker-test-start"
   },
   "engines": {
     "node": "10.x",

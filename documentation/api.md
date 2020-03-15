@@ -2,14 +2,13 @@
 
 ## Introduction
 
-The purpose of the Integration test layer, is to run API level end to end tests on critical business services.
-
-This layer was largely inspired by the outcomes of this story: [API - Testing - Research.](https://github.com
-/escobard/create-app/issues/38)
+The purpose of the API layer is to serve as a controller to the UI and DB applications.
 
 ## Usage - Expanded 
 
 ### Docker
+
+
 
 ### Swagger
 
@@ -39,14 +38,22 @@ To run tests in a pre-determined sequence, the [test-in-order.js](https://github
 
 ## Libraries, Frameworks & Tools
 
-[Swagger for validation & documentation](https://swagger.io/)
+[node](https://nodejs.org/en/)
 
-[Swagger validation middleware](https://www.npmjs.com/package/swagger-express-middleware)
+[express](https://expressjs.com/)
 
-[Swagger docs](https://www.npmjs.com/package/swagger-ui-express)
+[swagger-express-middleware](https://www.npmjs.com/package/swagger-express-middleware)
 
-[Mocha as a test framework](https://mochajs.org/)
+[swagger-ui-express](https://www.npmjs.com/package/swagger-ui-express)
 
-[Chai for assertions](https://www.chaijs.com/)
+[mocha](https://mochajs.org/)
 
-[Supertest for request testing](https://github.com/visionmedia/supertest)
+[chai](https://www.chaijs.com/)
+
+[supertest](https://github.com/visionmedia/supertest)
+
+[Docker](https://www.docker.com/)
+
+[Docker-compose](https://docs.docker.com/compose/)
+
+[Swagger](https://swagger.io/)
