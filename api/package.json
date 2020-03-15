@@ -7,7 +7,11 @@
     "start": "node index.js",
     "dev": "set environment=development&& nodemon -L index.js",
     "test": "nyc --reporter=text mocha ./{,!(node_modules)/**/}*.test.js",
-    "test-watch": "set PORT=5555 && nyc mocha --watch ./{,!(node_modules)/**/}*.test.js"
+    "test-watch": "set PORT=5555 && nyc mocha --watch ./{,!(node_modules)/**/}*.test.js",
+    "docker-dev-build": "docker build -t escobard/create-app-api-dev:latest -f ops/Dockerfile.dev .",
+    "docker-dev-start": "docker run --name api-dev -p 4000:4000 -t escobard/create-app-api-dev:latest",
+    "docker-dev-rm": "docker stop api-dev && docker rm api-dev",
+    "docker-dev": "npm run docker-dev-rm && npm run docker-dev-build && npm run docker-dev-start"
   },
   "engines": {
     "node": "10.x",

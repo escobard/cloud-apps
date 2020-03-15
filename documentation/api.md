@@ -35,13 +35,15 @@ Constants for global use are also initiated globally at test runtime and can be 
 
 #### Tests in order
 
-To run tests in a pre-determined sequence, the [test-in-order.js](https://github.com/escobard/create-app/blob/master
-/integration/tests/tests-in-order.js) file can be leveraged.
-
+To run tests in a pre-determined sequence, the [test-in-order.js](https://github.com/escobard/create-app/blob/master/integration/tests/tests-in-order.js) file can be leveraged.
 
 ## Libraries, Frameworks & Tools
 
 [Swagger for validation & documentation](https://swagger.io/)
+
+[Swagger validation middleware](https://www.npmjs.com/package/swagger-express-middleware)
+
+[Swagger docs](https://www.npmjs.com/package/swagger-ui-express)
 
 [Mocha as a test framework](https://mochajs.org/)
 

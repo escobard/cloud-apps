@@ -1,0 +1,7 @@
+# TODO - Rename to Dockerfile, only import mission critical files, not everything
+FROM node:alpine
+WORKDIR /usr/create-app/api
+COPY ../package.json .
+COPY .. .
+RUN npm install
+CMD ["npm", "run", "start"]

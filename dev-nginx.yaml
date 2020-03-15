@@ -27,7 +27,7 @@ services:
       - PGPORT=5432
     build:
       context: ./api
-      dockerfile: Dockerfile.dev
+      dockerfile: api/ops/Dockerfile.dev-compose
     volumes:
     - ./api:/usr/create-app/api
     - /usr/create-app/api/node_modules

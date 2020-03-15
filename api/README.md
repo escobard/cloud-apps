@@ -2,20 +2,28 @@
 
 For more API documentation, visit [documents/api.md](https://github.com/escobard/create-app/blob/master/documentation/api.md)
 
-### Usage
+## Usage - NPM
 
-#### Development
+### Development
 
 `npm run dev`
 
-#### Test development
+### Test development
 
 `npm run test-watch`
 
-#### Tests with coverage
+### Tests with coverage
 
 `npm test`
 
-#### Run API for prod
+### Run API for prod
 
 `npm start`
+
+## Usage - Docker
+
+### Development
+
+`npm run docker-dev`
+
+### Development
