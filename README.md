@@ -16,7 +16,7 @@ The product loosely follows traditional MVC (Model View Controller) paradigms wh
          
 For a deeper dive into the drivers behind this project, read through [`documentation/concept.md`](https://github.com/escobard/create-app/blob/master/documentation/concept.md)      
       
-### UI - this area needs work
+### UI - this area needs work - Follow API format
  UI documentation can be found here: [documentation/ui.md](https://github.com/escobard/create-app/blob/master/documentation/ui.md)      
       
 UI usage doc can be found here: [api/README.md](https://github.com/escobard/create-app/blob/master/ui/README.md)      
@@ -28,7 +28,17 @@ The API - powered by Node.js and Express - acts as an ORM, controlling the commu
 You can find the API's functional code and usage documentation within the [`api`](https://github.com/escobard/create-app/tree/master/api) directory.
 
 For expanded API documentation, have a read through [`documentation/api.md`](https://github.com/escobard/create-app/blob/master/documentation/api.md).
-      
+
+### DB - Follow API format
+
+### Integration - Follow API format
+
+### E2E - Follow API format
+
+### DevOps - Follow API format
+
+### nginx - Follow API format
+  
 ## APP Usage - this area needs work
 
  While developing, its recommended to debug each app individually with NPM.      
