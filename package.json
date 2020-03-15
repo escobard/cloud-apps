@@ -11,7 +11,11 @@
   "scripts": {
     "dev": "docker-compose -f ops/dev.yaml up",
     "dev-ngnix": "docker-compose -f ops/dev-nginx.yaml up",
-    "test": "docker-compose -f ops/test.yaml up",
+    "test-api-unit": "docker-compose -f ops/api-test-unit.yaml up --exit-code-from api",
+    "test-api-integration": "docker-compose -f ops/api-test-integration.yaml up --exit-code-from integration",
+    "test-ui-unit": "",
+    "test-ui-e2e": "",
+    "test": "npm run test-api-unit && npm run test-api-integration",
     "prod": "docker-compose -f ops/prod.yaml up",
     "clean": "docker system prune -a",
     "test-legacy": "concurrently --names \"UI,API\" \"npm run test --prefix ui\" \"npm run test --prefix api\" ",

@@ -16,48 +16,44 @@ The product loosely follows traditional MVC (Model View Controller) paradigms wh
          
 For a deeper dive into the drivers behind this project, read through [`documentation/concept.md`](https://github.com/escobard/create-app/blob/master/documentation/concept.md)      
       
-### UI - this area needs work
+## UI - this area needs work - Follow API format
  UI documentation can be found here: [documentation/ui.md](https://github.com/escobard/create-app/blob/master/documentation/ui.md)      
       
 UI usage doc can be found here: [api/README.md](https://github.com/escobard/create-app/blob/master/ui/README.md)      
       
-### API   
+## API   
 
-The API - powered by Node.js and Express - acts as an ORM, controlling the communications between the UI and DB applications.  
+The API - powered by Node.js and Express.js - acts as an ORM, controlling the communications between the UI and DB applications.  
 
-You can find the API's functional code and usage documentation within the [`api`](https://github.com/escobard/create-app/tree/master/api) directory.
+You can find the API's functional code and usage documentation within the [`api`](https://github.com/escobard/create-app/tree/master/api) directory. For expanded API documentation, have a read through [`documentation/api.md`](https://github.com/escobard/create-app/blob/master/documentation/api.md).
 
-For expanded API documentation, have a read through [`documentation/api.md`](https://github.com/escobard/create-app/blob/master/documentation/api.md).
-      
-## APP Usage - this area needs work
+## DB - Follow API format
 
- While developing, its recommended to debug each app individually with NPM.      
+## Integration - Follow API format
+
+## E2E - Follow API format
+
+## DevOps - Follow API format
+
+## nginx - Follow API format
+  
+## Scripts - this area needs work      
+ These scripts assume the user is on the root directory and has `npm`, `node`, `docker` & `docker-compose` installed.      
       
-If all apps must be ran together, its recommended to utilize docker to connect all apps in a common network.      
+### Docker      
+ The following scripts are used to start our applications as `docker` images, then connects them together through a network created by `docker-compose` to simulate a live staging environment.  
       
-It's not recommended to utilize the `concurrent` npm scripts as all parent scripts will depend on docker after phase 3.      
-      
-### Scripts      
- The following scripts assume:      
-      
-1) The user has `npm`, `node`, `docker` and `docker-compose` installed.      
-      
-#### Scripts - Docker      
- The following scripts can be used to run the UI and the API via docker-compose.      
-      
-##### Local development for UI and API with docker-compose routing      
- `npm run dev`      
- ##### Local development for UI and API with nginx routing      
- `npm run dev-nginx`      
- ##### Local prod debugging      
+#### Development      
+ `npm run dev`          
+ #### All application tests
+ `npm run test`
+ #### Prod debugging      
  `npm run prod`      
- ##### Clean up idle docker images      
- `npm run clean`      
- #### Scripts - NPM - LEGACY      
+
+ ### NPM - LEGACY      
  The following scripts can be used to run the UI and the API application `concurrently`.       
       
-Using `concurrently` is not recommended. For debugging, it's recommended to run each application individually.      
-      
+Using `concurrently` is not recommended. For debugging, it's recommended to run each application individually.
       
 The following scripts assume:      
       

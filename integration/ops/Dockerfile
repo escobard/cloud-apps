@@ -1,6 +1,6 @@
 FROM node:alpine
-WORKDIR /usr/create-app/api
-COPY package.json .
+WORKDIR /usr/create-app/integration
+COPY ./ ./
 
 ## WAIT mod
 ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.2.1/wait /wait
