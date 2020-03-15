@@ -5,9 +5,10 @@
   "main": "config.test.js",
   "scripts": {
     "start": "npm run test",
-    "test": "mocha ./{,!(node_modules)/**/}*.test.js",
-    "test-watch": "set PORT=5000 && mocha --watch ./{,!(node_modules)/**/}*.test.js",
-    "test-in-order": "mocha --bail ./tests/tests-in-order.js"
+    "port": "set port=5000",
+    "test": "npm run port && mocha \"./{,!(node_modules)/**/}*.test.js\"",
+    "test-watch": "npm run port && mocha --watch \"./{,!(node_modules)/**/}*.test.js\"",
+    "test-in-order": "npm run port && mocha --bail ./tests/tests-in-order.js"
   },
   "engines": {
     "node": "10.x",

@@ -4,7 +4,6 @@ services:
     container_name: pgdb_dev
     build:
       context: ../db
-      dockerfile: Dockerfile.dev
     ports:
       - "5432:5432"
     # TODO - replace this by creating a default superadmin with SQL for phase 4

@@ -4,7 +4,7 @@ services:
     container_name: pgdb_dev
     build:
       context: ../db
-      dockerfile: ../db/Dockerfile.dev
+      dockerfile: ../db/Dockerfile
     ports:
       - "5432:5432"
   ui:
