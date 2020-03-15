@@ -9,9 +9,19 @@ This layer was largely inspired by the outcomes of this story: [API - Testing - 
 
 ## Usage - Expanded 
 
+### Docker
+
 ### Swagger
 
-### Docker
+This API's validation is primarily handled with swagger. You can read move about swagger here: [swagger.io](https://swagger.io/)
+
+The swagger doc that drives all validation logic can be found here: [Notes.yaml](https://github.com/escobard/create-app/blob/master/api/Notes.yaml)
+
+Swagger validation is leveraged an application level through [swagger-express-middleware](https://www.npmjs.com/package/swagger-express-middleware)
+
+Swagger docs can be found here: [http://create-app.us-east-2.elasticbeanstalk.com/api/docs](http://create-app.us-east-2.elasticbeanstalk.com/api/docs)
+
+The swagger middleware and the swagger docs are set up at [api/index.js](https://github.com/escobard/create-app/blob/master/api/index.js)
 
 ### Sequelize
 
@@ -30,6 +40,8 @@ To run tests in a pre-determined sequence, the [test-in-order.js](https://github
 
 
 ## Libraries, Frameworks & Tools
+
+[Swagger for validation & documentation](https://swagger.io/)
 
 [Mocha as a test framework](https://mochajs.org/)
 
