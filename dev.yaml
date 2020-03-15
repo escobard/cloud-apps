@@ -25,7 +25,7 @@ services:
     - "4000:4000"
     build:
       context: ./api
-      dockerfile: api/ops/Dockerfile.dev
+      dockerfile: ops/Dockerfile.dev
     volumes:
     - ./api:/usr/create-app/api
     - /usr/create-app/api/node_modules

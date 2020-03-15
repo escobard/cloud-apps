@@ -37,8 +37,7 @@ It's not recommended to utilize the `concurrent` npm scripts as all parent scrip
 
 The following scripts assume:
 
-1) The user has `docker` and `docker-compose` installed.
-2) `npm install` has been run in the `./`,`./ui` and `./api` directories.
+1) The user has `npm`, `node`, `docker` and `docker-compose` installed.
 
 #### Scripts - Docker
 
@@ -46,11 +45,15 @@ The following scripts can be used to run the UI and the API via docker-compose.
 
 ##### Local development for UI and API with docker-compose routing
 
-`npm run dev-compose`
+`npm run dev`
 
 ##### Local development for UI and API with nginx routing
 
 `npm run dev-nginx`
+
+##### Local prod debugging
+
+`npm run prod`
 
 ##### Clean up idle docker images
 
@@ -62,13 +65,18 @@ The following scripts can be used to run the UI and the API application `concurr
 
 Using `concurrently` is not recommended. For debugging, it's recommended to run each application individually.
 
+
+The following scripts assume:
+
+1. `npm install` has been run in the `./`,`./ui` and `./api` directories.
+
 ##### Local development for UI and API
 
-`npm run dev`
+`npm run dev-legacy`
 
 ##### Run unit tests on UI and API
 
-`npm run test`
+`npm run test-legacy`
 
 ### Contribution
 
