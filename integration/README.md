@@ -5,7 +5,12 @@ For more Integration Test documentation, visit [documents/integration.md](https:
 
 ### Usage
 
-#### Local development
+This application expects the `create-app API` to be running on `localhost:4000` with a database available.
+
+To quickly spin up a development instance of the platform, run `npm run dev` in the parent directory, or `cd
+ .. && npm run dev` from this directory.
+
+#### Development
 
 `npm run test-watch`
 
@@ -18,7 +23,3 @@ This is the script that is used in CI/CD:
 #### Run all tests
 
 `npm test`
-
-#### Production
-
-`npm start`

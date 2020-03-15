@@ -2,73 +2,93 @@
 
 ## Introduction
 
-The purpose of the API layer is to control the business logic of the product.
+The purpose of the API layer is to serve as a controller to the UI and DB applications.
 
-This is managed by a combination of Node.js, Express.js and various npm libraries.
+## Quickstart
 
-## Usage - Expanded - needs to be updated with final routes for phase2
+### With npm
 
-### Validation
+In your terminal, from the parent directory:
 
-Validation of each route currently checks for:
+1. `cd api`
+2. `npm install`
+3. `npm start`
 
-1) null values
-1) data types
-1) data length
-1) data min / max
+### With npm & Docker
 
-### Routes
+In your terminal, from the parent directory:
 
-#### /postForm
+1. `cd api`
+2. `npm run docker`
 
-Basic form data validator.
+## Usage - Expanded 
 
-Important files:
+### Swagger
 
-```
-- routes/postForm.js
-- middlewares/postFormValidation.js
-- utils/validation.js
-```
+Most API validation is handled with [swagger](https://swagger.io/). Live swagger docs can be found here: [http://create-app.us-east-2.elasticbeanstalk.com/api/docs](http://create-app.us-east-2.elasticbeanstalk.com/api/docs)
 
-Validation breakdown:
+[`Notes.yaml`](https://github.com/escobard/create-app/blob/master/api/Notes.yaml) drives all swagger validation logic. Swagger validation is leveraged an application level through the use of the [swagger-express-middleware](https://www.npmjs.com/package/swagger-express-middleware) library.
 
-```angular2html
+The swagger middleware and the swagger docs are set up at [`api/index.js`](https://github.com/escobard/create-app/blob/master/api/index.js)
 
-{
-   "stringType": "must be a string",
-   "stringLength": "string length must be greater than 10",
-   "numberType": 13, < ---- must be a number
-   "numberMax": 12 <---- must be greater than 10.
- }
+### Tests
 
-```
+#### Globals 
 
-Sample request body:
+All tests rely on global variables initiated at test runtime, found at [`api/config.test.js`](https://github.com/escobard/create-app/blob/master/api/config.test.js)
 
-```angular2html
+Constants for global use are initiated globally at test runtime and live within [`api/constants`](https://github.com/escobard/create-app/tree/master/api/constants)
 
-{
-   "stringType": "asdfasasdf",
-   "stringLength": "asdfasdfadsfdsfdasfdsfdsfadsf",
-   "numberType": 13,
-   "numberMax": 12
- }
+### Sequelize
 
-```
+The API leverages [sequelize](https://sequelize.org/) to communicate with the DB. Along with the rest of our `postgres` business logic, all sequelize logic lives within the [`api/services/postgres`](https://github.com/escobard/create-app/tree/master/api/services/postgres) directory.
 
-Upon success, expected response: 
+DB authentication functionality can be found within [`api/services/postgres/authenticate.js`](https://github.com/escobard/create-app/tree/master/api/services/postgres/authenticate.js) and all sequelize models live within [`api/services/postgres/models`](https://github.com/escobard/create-app/tree/master/api/services/postgres/models).
 
-```angular2html
-{ 
-   "status":"postForm request validated!",
-   "result":"validated",
-   "formValues":{ 
-      "stringType":"asdfasasdf",
-      "stringLength":"asdfasdfadsfdsfdasfdsfdsfadsf",
-      "numberType":13,
-      "numberMax":12
-   }
-}
-```
+## Docker
+
+As with the other applications in the stack, docker is heavily leveraged at the API layer.
+
+### Development
+
+Dependent on [`api/ops/Dockerfile.dev`](https://github.com/escobard/create-app/blob/master/api/ops/Dockerfile.dev).
+
+This file is leveraged by the [`ops/dev.yaml`](https://github.com/escobard/create-app/blob/master/ops/dev.yaml
+) docker-compose job. Read through [`documentation/ops.md`](https://github.com/escobard/create-app/blob/master/documentation/ops.md) to learn more.
+
+### Production
+
+Dependent on [`api/ops/Dockerfile`](https://github.com/escobard/create-app/blob/master/api/ops/Dockerfile)
+
+This file is leveraged by the [`ops/prod.yaml`](https://github.com/escobard/create-app/blob/master/ops/prod.yaml
+) docker-compose job. Read through [`documentation/ops.md`](https://github.com/escobard/create-app/blob/master/documentation/ops.md) to learn more.
+
+### Testing 
+
+Dependent on [`api/ops/Dockerfile.dev`](https://github.com/escobard/create-app/blob/master/api/ops/Dockerfile), [`api/ops/Dockerfile.test`](https://github.com/escobard/create-app/blob/master/api/ops/Dockerfile.test) is used for rapid API
+ unit test debugging with docker
+
+This file is leveraged by the [`ops/api-unit-tests.yaml`](https://github.com/escobard/create-app/blob/master/ops/api-unit-tests.yaml) and the [`ops/api-integration-tests.yaml`](https://github.com/escobard/create-app/blob/master/ops/api-integration-tests.yaml) docker-compose jobs. Read through [`documentation/ops.md`](https://github.com/escobard/create-app/blob/master/documentation/ops.md) to learn more.
+
+## Libraries, Frameworks & Tools
+
+[node](https://nodejs.org/en/)
+
+[express](https://expressjs.com/)
+
+[swagger](https://swagger.io/)
+
+[swagger-express-middleware](https://www.npmjs.com/package/swagger-express-middleware)
+
+[swagger-ui-express](https://www.npmjs.com/package/swagger-ui-express)
+
+[mocha](https://mochajs.org/)
+
+[chai](https://www.chaijs.com/)
+
+[supertest](https://github.com/visionmedia/supertest)
+
+[docker](https://www.docker.com/)
+
+[docker-compose](https://docs.docker.com/compose/)
 

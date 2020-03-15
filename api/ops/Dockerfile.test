@@ -1,6 +1,7 @@
 FROM node:alpine
 WORKDIR /usr/create-app/api
-COPY package.json .
-COPY . .
+COPY ./ ./
+
 RUN npm install
-CMD ["npm", "run", "start"]
+
+CMD ["npm", "run", "test"]

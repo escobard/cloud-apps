@@ -7,8 +7,8 @@ services:
       - DOCKER_VARIANT=nginx_routing
       - REACT_APP_DOCKER_VARIANT=nginx_routing
     build:
-      context: ./ui
-      dockerfile: Dockerfile.dev
+      context: ../ui
+      dockerfile: ../ui/Dockerfile.dev
     volumes:
       - ./ui:/usr/create-app/ui
       - /usr/create-app/ui/node_modules
@@ -26,8 +26,8 @@ services:
       - PGPASSWORD=postgres_password
       - PGPORT=5432
     build:
-      context: ./api
-      dockerfile: Dockerfile.dev
+      context: ../api
+      dockerfile: api/ops/Dockerfile.dev
     volumes:
     - ./api:/usr/create-app/api
     - /usr/create-app/api/node_modules
@@ -38,7 +38,7 @@ services:
   nginx:
     restart: always
     build:
-      dockerfile: Dockerfile.dev
-      context: ./nginx
+      dockerfile: ../nginx/Dockerfile.dev
+      context: ../nginx
     ports:
       - '5000:80'
