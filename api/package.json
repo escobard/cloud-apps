@@ -11,11 +11,7 @@
     "docker-build": "docker build -t escobard/create-app-api:latest -f ops/Dockerfile .",
     "docker-start": "docker run --name api -p 4000:4000 -t escobard/create-app-api:latest",
     "docker-rm": "docker stop api && docker rm api",
-    "docker-test-build": "docker build -t escobard/create-app-api-test:latest -f ops/Dockerfile.test .",
-    "docker-test-start": "docker run --name api_test -p 4000:4000 -t escobard/create-app-api-test:latest",
-    "docker-test-rm": "docker stop api_test && docker rm api_test",
-    "docker": "npm run docker-build && npm run docker-start",
-    "docker-test": "npm run docker-test-build && npm run docker-test-start"
+    "docker": "npm run docker-build && npm run docker-start"
   },
   "engines": {
     "node": "10.x",

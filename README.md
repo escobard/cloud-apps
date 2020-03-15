@@ -1,4 +1,3 @@
-
 # create-app 
 An enterprise platform boilerplate, powered by React, Node, Postgres and Docker.     
       
@@ -66,12 +65,3 @@ The following scripts assume:
  
 ## Contribution - this area needs work
  Contribution documentation can be found here: [documentation/contribution.md](https://github.com/escobard/create-app/blob/master/documentation/contribution.md)      
-      
-## Libraries, Frameworks & Tools - this area needs work
-[React](https://reactjs.org/)      
-      
-[Node](https://nodejs.org/en/)      
-      
-[Express](https://expressjs.com/)      
-      
-[Docker](https://www.docker.com/)

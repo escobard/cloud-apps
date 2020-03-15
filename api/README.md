@@ -33,13 +33,3 @@ Docker scripts are available for production & unit test debugging.
 #### Stop & Remove
 
 `npm run docker-rm`
-
-### Unit Tests
-
-#### Build & Start
-
-`npm run docker-test`
-
-#### Stop & Remove
-
-`npm run docker-test-rm`

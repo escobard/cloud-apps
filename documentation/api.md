@@ -65,8 +65,7 @@ This file is leveraged by the [`ops/prod.yaml`](https://github.com/escobard/crea
 
 ### Testing 
 
-Dependent on [`api/ops/Dockerfile.dev`](https://github.com/escobard/create-app/blob/master/api/ops/Dockerfile), [`api/ops/Dockerfile.test`](https://github.com/escobard/create-app/blob/master/api/ops/Dockerfile.test) is used for rapid API
- unit test debugging with docker
+Dependent on [`api/ops/Dockerfile.dev`](https://github.com/escobard/create-app/blob/master/api/ops/Dockerfile)
 
 This file is leveraged by the [`ops/api-unit-tests.yaml`](https://github.com/escobard/create-app/blob/master/ops/api-unit-tests.yaml) and the [`ops/api-integration-tests.yaml`](https://github.com/escobard/create-app/blob/master/ops/api-integration-tests.yaml) docker-compose jobs. Read through [`documentation/ops.md`](https://github.com/escobard/create-app/blob/master/documentation/ops.md) to learn more.
 
