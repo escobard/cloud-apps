@@ -1,7 +1,6 @@
 # Integration Tests
 
-For more Integration Test documentation, visit [documents/integration.md](https://github.com/escobard/create-app/blob
-/master/documentation/integration.md)
+For more Integration Test documentation, visit [documents/integration.md](https://github.com/escobard/create-app/blob/master/documentation/integration.md)
 
 ### Usage
 

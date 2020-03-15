@@ -11,7 +11,9 @@
   "scripts": {
     "dev": "docker-compose -f ops/dev.yaml up",
     "dev-ngnix": "docker-compose -f ops/dev-nginx.yaml up",
-    "test": "docker-compose -f ops/test.yaml up",
+    "test-api-unit": "docker-compose -f ops/api-unit.yaml up",
+    "test-api-integration": "docker-compose -f ops/api-integration.yaml up",
+    "test": "npm run test-api-unit && npm run test-api-integration",
     "prod": "docker-compose -f ops/prod.yaml up",
     "clean": "docker system prune -a",
     "test-legacy": "concurrently --names \"UI,API\" \"npm run test --prefix ui\" \"npm run test --prefix api\" ",
