@@ -16,14 +16,18 @@ For more API documentation, visit [documents/api.md](https://github.com/escobard
 
 `npm test`
 
-### Run API for prod
+### Run API
 
 `npm start`
 
 ## Usage - Docker
 
-### Development
+Docker scripts are available for production debugging.
 
-`npm run docker-dev`
+### Build & Start
 
-### Development
+`npm run docker`
+
+### Stop & Remove
+
+`npm run docker-rm`

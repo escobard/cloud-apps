@@ -33,7 +33,7 @@ services:
     - "4000:4000"
     build:
       context: ./api
-      dockerfile: api/ops/Dockerfile.prod
+      dockerfile: api/ops/Dockerfile
   nginx:
     restart: always
     build:
