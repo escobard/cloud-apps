@@ -21,7 +21,7 @@ UI usage doc can be found here: [api/README.md](https://github.com/escobard/crea
 
 ### API 
 
-API documentation can be found here: [documentation/api.md](https://github.com/escobard/create-app/blob/master/documentation/api.md)
+API documentation can be found lives within [documentation/api.md](https://github.com/escobard/create-app/blob/master/documentation/api.md)
 
 API usage doc can be found here: [api/README.md](https://github.com/escobard/create-app/blob/master/api/README.md)
 

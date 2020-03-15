@@ -25,13 +25,9 @@ In your terminal, from the parent directory:
 
 ### Swagger
 
-This API's validation is primarily handled with swagger. You can read move about swagger here: [swagger.io](https://swagger.io/)
+Most API validation is handled with [swagger](https://swagger.io/). Live swagger docs can be found here: [http://create-app.us-east-2.elasticbeanstalk.com/api/docs](http://create-app.us-east-2.elasticbeanstalk.com/api/docs)
 
-The swagger doc that drives all validation logic can be found here: [`Notes.yaml`](https://github.com/escobard/create-app/blob/master/api/Notes.yaml)
-
-Swagger validation is leveraged an application level through the use of the [swagger-express-middleware](https://www.npmjs.com/package/swagger-express-middleware) library.
-
-Swagger docs can be found here: [http://create-app.us-east-2.elasticbeanstalk.com/api/docs](http://create-app.us-east-2.elasticbeanstalk.com/api/docs)
+[`Notes.yaml`](https://github.com/escobard/create-app/blob/master/api/Notes.yaml) drives all swagger validation logic. Swagger validation is leveraged an application level through the use of the [swagger-express-middleware](https://www.npmjs.com/package/swagger-express-middleware) library.
 
 The swagger middleware and the swagger docs are set up at [`api/index.js`](https://github.com/escobard/create-app/blob/master/api/index.js)
 
@@ -39,17 +35,15 @@ The swagger middleware and the swagger docs are set up at [`api/index.js`](https
 
 #### Globals 
 
-All tests rely on global variables initiated at test runtime, found at [`integration/config.test.js`](https://github.com/escobard/create-app/blob/master/integration/config.test.js)
+All tests rely on global variables initiated at test runtime, found at [`api/config.test.js`](https://github.com/escobard/create-app/blob/master/api/config.test.js)
 
-Constants for global use are also initiated globally at test runtime and can be found at [`constants`](https://github.com/escobard/create-app/tree/master/integration/constants)
-
-#### Tests in order
-
-To run tests in a pre-determined sequence, the [`test-in-order.js`](https://github.com/escobard/create-app/blob/master/integration/tests/tests-in-order.js) file can be leveraged.
+Constants for global use are initiated globally at test runtime and live within [`api/constants`](https://github.com/escobard/create-app/tree/master/api/constants)
 
 ### Sequelize
 
+The API leverages [sequelize](https://sequelize.org/) to communicate with the DB. Along with the rest of our `postgres` business logic, all sequelize logic lives within the [`api/services/postgres`](https://github.com/escobard/create-app/tree/master/api/services/postgres) directory.
 
+DB authentication functionality can be found within [`api/services/postgres/authenticate.js`](https://github.com/escobard/create-app/tree/master/api/services/postgres/authenticate.js) and all sequelize models live within [`api/services/postgres/models`](https://github.com/escobard/create-app/tree/master/api/services/postgres/models).
 
 ## Docker
 
@@ -82,6 +76,8 @@ This file is leveraged by the [`ops/api-unit-tests.yaml`](https://github.com/esc
 
 [express](https://expressjs.com/)
 
+[swagger](https://swagger.io/)
+
 [swagger-express-middleware](https://www.npmjs.com/package/swagger-express-middleware)
 
 [swagger-ui-express](https://www.npmjs.com/package/swagger-ui-express)
@@ -92,8 +88,7 @@ This file is leveraged by the [`ops/api-unit-tests.yaml`](https://github.com/esc
 
 [supertest](https://github.com/visionmedia/supertest)
 
-[Docker](https://www.docker.com/)
+[docker](https://www.docker.com/)
 
-[Docker-compose](https://docs.docker.com/compose/)
+[docker-compose](https://docs.docker.com/compose/)
 
-[Swagger](https://swagger.io/)
