@@ -27,7 +27,7 @@ services:
       context: ../api
       dockerfile: ops/Dockerfile.dev
     volumes:
-    - ./api:/usr/create-app/api
+    - ../api:/usr/create-app/api
     - /usr/create-app/api/node_modules
     command: |
       sh -c "/wait && npm run dev"
@@ -44,7 +44,7 @@ services:
       context: ../ui
       dockerfile: Dockerfile.dev
     volumes:
-      - ./ui:/usr/create-app/ui
+      - ../ui:/usr/create-app/ui
       - /usr/create-app/ui/node_modules
     command: |
       sh -c "/wait && npm run start"

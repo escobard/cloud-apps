@@ -4,6 +4,7 @@
   "description": "integration",
   "main": "config.test.js",
   "scripts": {
+    "start": "npm run test",
     "test": "mocha ./{,!(node_modules)/**/}*.test.js",
     "test-watch": "set PORT=5000 && mocha --watch ./{,!(node_modules)/**/}*.test.js",
     "test-in-order": "mocha --bail ./tests/tests-in-order.js"
