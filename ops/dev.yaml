@@ -4,7 +4,7 @@ services:
     container_name: pgdb_dev
     build:
       context: ../db
-      dockerfile: ../db/Dockerfile.dev
+      dockerfile: Dockerfile.dev
     ports:
       - "5432:5432"
     # TODO - replace this by creating a default superadmin with SQL for phase 4
@@ -25,7 +25,7 @@ services:
     - "4000:4000"
     build:
       context: ../api
-      dockerfile: ../api/ops/Dockerfile.dev
+      dockerfile: ops/Dockerfile.dev
     volumes:
     - ./api:/usr/create-app/api
     - /usr/create-app/api/node_modules
@@ -42,7 +42,7 @@ services:
     - "3000:3000"
     build:
       context: ../ui
-      dockerfile: ../ui/Dockerfile.dev
+      dockerfile: Dockerfile.dev
     volumes:
       - ./ui:/usr/create-app/ui
       - /usr/create-app/ui/node_modules

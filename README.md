@@ -16,28 +16,26 @@ The product loosely follows traditional MVC (Model View Controller) paradigms wh
          
 For a deeper dive into the drivers behind this project, read through [`documentation/concept.md`](https://github.com/escobard/create-app/blob/master/documentation/concept.md)      
       
-### UI - this area needs work - Follow API format
+## UI - this area needs work - Follow API format
  UI documentation can be found here: [documentation/ui.md](https://github.com/escobard/create-app/blob/master/documentation/ui.md)      
       
 UI usage doc can be found here: [api/README.md](https://github.com/escobard/create-app/blob/master/ui/README.md)      
       
-### API   
+## API   
 
-The API - powered by Node.js and Express - acts as an ORM, controlling the communications between the UI and DB applications.  
+The API - powered by Node.js and Express.js - acts as an ORM, controlling the communications between the UI and DB applications.  
 
-You can find the API's functional code and usage documentation within the [`api`](https://github.com/escobard/create-app/tree/master/api) directory.
+You can find the API's functional code and usage documentation within the [`api`](https://github.com/escobard/create-app/tree/master/api) directory. For expanded API documentation, have a read through [`documentation/api.md`](https://github.com/escobard/create-app/blob/master/documentation/api.md).
 
-For expanded API documentation, have a read through [`documentation/api.md`](https://github.com/escobard/create-app/blob/master/documentation/api.md).
+## DB - Follow API format
 
-### DB - Follow API format
+## Integration - Follow API format
 
-### Integration - Follow API format
+## E2E - Follow API format
 
-### E2E - Follow API format
+## DevOps - Follow API format
 
-### DevOps - Follow API format
-
-### nginx - Follow API format
+## nginx - Follow API format
   
 ## APP Usage - this area needs work
 
