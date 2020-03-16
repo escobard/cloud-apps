@@ -1,0 +1,16 @@
+{
+  "name": "e2e",
+  "version": "0.0.2",
+  "description": "end to end test application to run tests against the create-app UI",
+  "main": "nightwatch.js",
+  "scripts": {
+    "start": "npm run test",
+    "test": "node nightwatch.js"
+  },
+  "engines": {
+    "node": "10.x",
+    "npm": "6.x"
+  },
+  "author": "escobard",
+  "license": "ISC"
+}
