@@ -5,12 +5,22 @@
   "main": "nightwatch.js",
   "scripts": {
     "start": "npm run test",
-    "test": "node nightwatch.js"
+    "test": "node nightwatch.js",
+    "test-path": "node nightwatch.js -g",
+    "test-docker": "node nightwatch.js --config nightwatch.conf.docker.js"
   },
   "engines": {
     "node": "10.x",
     "npm": "6.x"
   },
   "author": "escobard",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@testing-library/nightwatch": "^2.0.0",
+    "chromedriver": "^80.0.1",
+    "dotenv": "^8.2.0",
+    "dotenv-expand": "^5.1.0",
+    "env-cmd": "^10.1.0",
+    "nightwatch": "^1.3.4"
+  }
 }
