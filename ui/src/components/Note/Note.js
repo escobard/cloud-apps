@@ -12,12 +12,12 @@ import "./Note.scss";
  * @return {Component} Note
  * */
 
-const Note = ({ id, data: { subject, note, date, icon } }) => (
+const Note = ({ id, data: { subject, note, date, icon}}) => (
   <Grid id={`${id}-note`} columns="equal">
     <Grid.Column mobile={3} tablet={2} computer={1} className="icon">
       <i
-        aria-label="note icon"
-        className={`${icon || "sticky note"} big circular icon`}
+        aria-label={icon && icon.label ? icon.label : "note icon"}
+        className={`${icon && icon.image || "sticky note"} big circular icon`}
       />
     </Grid.Column>
     <Grid.Column mobile={9} tablet={12} computer={13} className="content">
@@ -38,7 +38,10 @@ Note.propTypes = {
     subject: PropTypes.string.isRequired,
     note: PropTypes.string.isRequired,
     date: PropTypes.string,
-    icon: PropTypes.string
+    icon: PropTypes.shape({
+      image: PropTypes.string,
+      label: PropTypes.string
+    })
   })
 };
 

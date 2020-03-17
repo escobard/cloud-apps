@@ -14,7 +14,7 @@ import "./Header.scss";
 
 const Header = ({ id, date }) => (
   <nav id={`${id}-navigation`}>
-    <i aria-hidden="true" className="bars big icon" />
+    <i aria-label="Menu" className="bars big icon" />
     <h1>{header.title}</h1>
     <p>{date}</p>
   </nav>
