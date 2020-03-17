@@ -13,6 +13,10 @@ export const header = {
 export const errors = {
   noNotes: {
     subject: "No Notes",
-    note: "Add a note by clicking on the + icon below."
+    note: "Add a note by clicking on the + icon below.",
+    icon: {
+      image: "exclamation",
+      label: "No Notes"
+    }
   }
 };

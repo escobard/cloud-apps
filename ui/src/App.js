@@ -124,9 +124,7 @@ const App = () => {
   const renderNotes = (id, data) => {
     // TODO - improve look and feel on no notes
     if (data.length === 0) {
-      const noNotes = errors.noNotes;
-      noNotes.icon = "exclamation";
-      return <Note id={`${id}-no-notes`} data={noNotes} />;
+      return <Note id={`${id}-no-notes`} data={errors.noNotes} />;
     }
     return data.map((object, index) => {
       return <Note key={id + index} id={`${id}-${index}`} data={object} />;

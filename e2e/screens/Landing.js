@@ -5,7 +5,8 @@ const props = {
       withNotes: "create-app integration automated test subject"
     },
     label: {
-      menuIcon: "Menu"
+      menuIcon: "Menu",
+      noNotesIcon: "No Notes"
     }
   },
   elements = {},
@@ -19,7 +20,11 @@ const props = {
       this.waitForElementVisible(menu);
     },
     async assertNoNotes(browser){
+      const { getByLabelText } = getQueriesFrom(browser)
 
+      const noNotes = await getByLabelText(this.props.label.noNotesIcon);
+
+      this.waitForElementVisible(noNotes);
     },
     async assertWithNotes(browser){
 
