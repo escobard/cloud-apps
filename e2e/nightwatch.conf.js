@@ -4,6 +4,7 @@ const chrome = require("chromedriver"),
 module.exports = {
   src_folders: ["tests"],
   page_objects_path: ["screens"],
+  test_workers: false,
   webdriver: {
     start_process: true,
     server_path: chrome.path,
