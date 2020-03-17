@@ -4,10 +4,17 @@ For more End to End Test documentation, visit [documents/integration.md](https:/
 
 ## Usage
 
-This application expects the `create-app UI` to be running on `localhost:3000` with the API and database available.
+This application expects the `create-app UI` to be running on `localhost:3000` with the API and database available. 
 
-To quickly spin up a development instance of the platform, run `npm run dev` in the root directory, or `cd
- .. && npm run dev` from this directory.
+All end to end tests are dependent on the `integration` tests running first, as e2e assertions rely on the data created by the integration tests.
+
+### Quickstart:
+
+In the root directory:
+
+1. `npm run dev`
+
+Run `npm run dev && npm run test-api-integration` in the root directory.
 
 ## Scripts 
 
