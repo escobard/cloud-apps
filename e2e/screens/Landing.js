@@ -2,23 +2,28 @@ const { getQueriesFrom } = require("@testing-library/nightwatch");
 
 const props = {
     text: {
-      withNotes: "create-app integration automated"
+      withNotes: "Your Notes"
+    },
+    label: {
+      menuIcon: "Menu"
     }
   },
   elements = {},
   LandingCommands = {
-    async assertWithNotes(browser){
+    async assertHeaderIcon(browser){
 
-      const { getByText } = getQueriesFrom(browser);
+      const { getByLabelText } = getQueriesFrom(browser);
 
-      const notes = await getByText(this.props.text.withNotes);
+      const menu = await getByLabelText(this.props.label.menuIcon);
 
-      this.waitForElementVisible(notes, 10000)
-
+      this.waitForElementVisible(menu, 10000);
     },
   };
 
 module.exports = {
+  url(){
+    return this.api.launchUrl;
+  },
   commands: [LandingCommands],
   elements,
   props

@@ -3,7 +3,7 @@ module.exports = {
   "Test": browser => {
     const landingPage = browser.page.Landing();
 
-    landingPage.assertWithNotes(browser);
+    landingPage.navigate().assertHeaderIcon(browser);
     browser.end();
   }
 }
