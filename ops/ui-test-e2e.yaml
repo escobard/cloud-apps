@@ -11,6 +11,7 @@ services:
     # TODO - replace this by creating a default superadmin with SQL for phase 4
     environment:
       POSTGRES_HOST_AUTH_METHOD: trust
+  ## TODO replace this with prod API when issue #97 is addressed
   api:
     container_name: api_test
     working_dir: /usr/create-app/api
