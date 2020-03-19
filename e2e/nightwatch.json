@@ -9,7 +9,7 @@
     "default": {
       "selenium_port": 4444,
       "selenium_host": "chromedriver",
-      "launch_url": "http://ui:80" ,
+      "launch_url": "http://nginx:5000" ,
       "filter": "tests/**/*test.js",
       "desiredCapabilities": {
         "browserName": "chrome",

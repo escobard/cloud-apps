@@ -13,7 +13,7 @@
     "dev-ngnix": "docker-compose -f ops/dev-nginx.yaml up",
     "test-api-unit": "docker-compose -f ops/api-test-unit.yaml up --exit-code-from api",
     "test-ui-unit": "",
-    "test-ui-e2e-no-data": "",
+    "test-ui-e2e-no-data": "docker-compose -f ops/ui-test-e2e.yaml up --exit-code-from e2e",
     "test-api-integration": "docker-compose -f ops/api-test-integration.yaml up --exit-code-from integration",
     "test-ui-e2e-with-data": "",
     "test": "npm run test-api-unit && npm run test-api-integration",
