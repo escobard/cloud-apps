@@ -1,3 +1,8 @@
+/**
+ * docker config, relies on external chromedriver and UI
+ * @dev used for automated tests
+ */
+
 const { config } = require("./constants")
 
 module.exports = {
