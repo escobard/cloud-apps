@@ -13,6 +13,12 @@ module.exports = {
       selenium_host: config.seleniumHost,
       launch_url: config.url,
       filter: "tests/**/*test.js",
+      screenshots:{
+        enabled: true,
+        on_failure: true,
+        on_error: true,
+        path: "screenshots"
+      },
       desiredCapabilities: {
         browserName: "chrome",
         chromeOptions: {

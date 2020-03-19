@@ -54,8 +54,6 @@ services:
   chromedriver:
     container_name: chromedriver
     image: selenium/standalone-chrome:latest
-    ports:
-      - "4444:4444"
   e2e:
     container_name: e2e_test
     working_dir: /usr/create-app/e2e
@@ -65,6 +63,7 @@ services:
       - SELENIUM_PORT=4444
       - SELENIUM_HOST=chromedriver
       - WAIT_HOSTS=chromedriver:4444, ui:3000
+      - WAIT_AFTER_HOSTS=10
     build:
       context: ../e2e
       dockerfile: ops/Dockerfile
