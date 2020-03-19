@@ -1,5 +1,17 @@
 version: '3'
+# TODO - clean up ports for ui / api / postgres - likely unecessary
 services:
+  ui:
+    container_name: ui_test
+    working_dir: /usr/create-app/ui
+      - DOCKER_VARIANT=compose_routing
+      - REACT_APP_DOCKER_VARIANT=nginx_routing
+    build:
+      context: ../ui
+      dockerfile: ../ui/Dockerfile.prod
+    ports:
+      - "3000:3000"
+  ## TODO - remove this for no-data version
   postgres:
     container_name: pgdb_test
     build:
@@ -29,36 +41,29 @@ services:
       - ../api:/usr/create-app/api
       - /usr/create-app/api/node_modules
     command: |
-      sh -c "/wait && npm run dev"
-  ui:
-    container_name: ui_test
-    working_dir: /usr/create-app/ui
-    environment:
-      - REACT_APP_environment=docker_dev
-      - DOCKER_VARIANT=compose_routing
-      - WAIT_HOSTS=api:4000
-    ports:
-      - "3000:3000"
+      sh -c "/wait && npm start"
+  nginx:
+    restart: always
     build:
-      context: ../ui
-      dockerfile: Dockerfile.dev
-    volumes:
-      - ../ui:/usr/create-app/ui
-      - /usr/create-app/ui/node_modules
-    command: |
-      sh -c "/wait && npm run start"
+      dockerfile: ../nginx/Dockerfile.prod
+      context: ../nginx
+    ports:
+      - '5000:5000'
   e2e:
     container_name: e2e_test
     working_dir: /usr/create-app/e2e
-      - DOCKER_VARIANT=compose_routing
-      - WAIT_HOSTS=ui:3000
-    ports:
-      - "3000:3000"
+    environment:
+      - WAIT_HOSTS=chromedriver:4444, ngnix:5000
     build:
       context: ../e2e
-      dockerfile: ops/Dockerfile.test
+      dockerfile: ../e2e/ops/Dockerfile
     volumes:
       - ../e2e:/usr/create-app/e2e
       - /usr/create-app/e2e/node_modules
     command: |
-      sh -c "/wait && npm run test"
+      sh -c "/wait && npm run test-docker"
+  chromedriver:
+    container_name: chromedriver
+    image: selenium/standalone-chrome:latest
+    ports:
+      - "4444:4444"

@@ -8,18 +8,13 @@
   "test_settings": {
     "default": {
       "selenium_port": 4444,
-      "selenium_host": "localhost",
-      "screenshots": {
-        "enabled": true,
-        "on_failure": true,
-        "on_error": true,
-        "path": "screenshots"
-      },
-      "launch_url": "http://localhost:3000",
+      "selenium_host": "chromedriver",
+      "launch_url": "http://ui:80" ,
       "filter": "tests/**/*test.js",
       "desiredCapabilities": {
         "browserName": "chrome",
         "chromeOptions": {
+          "args": ["headless"],
           "w3c": false
         }
       }
