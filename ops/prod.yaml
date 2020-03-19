@@ -1,10 +1,9 @@
 version: '3'
 services:
   postgres:
-    container_name: pgdb_dev
+    container_name: pgdb_prod
     build:
       context: ../db
-      dockerfile: ../db/Dockerfile
     ports:
       - "5432:5432"
   ui:
@@ -15,7 +14,7 @@ services:
       - REACT_APP_DOCKER_VARIANT=nginx_routing
     build:
       context: ../ui
-      dockerfile: ../ui/Dockerfile.prod
+      dockerfile: Dockerfile.prod
     ports:
       - "3000:3000"
   api:
@@ -37,7 +36,7 @@ services:
   nginx:
     restart: always
     build:
-      dockerfile: ../nginx/Dockerfile.prod
+      dockerfile: Dockerfile.prod
       context: ../nginx
     ports:
       - '5000:5000'
