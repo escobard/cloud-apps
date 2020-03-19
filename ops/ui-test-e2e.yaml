@@ -1,16 +1,6 @@
 version: '3'
 # TODO - clean up ports for ui / api / postgres - likely unecessary
 services:
-  ui:
-    container_name: ui_test
-    working_dir: /usr/create-app/ui
-      - DOCKER_VARIANT=compose_routing
-      - REACT_APP_DOCKER_VARIANT=nginx_routing
-    build:
-      context: ../ui
-      dockerfile: Dockerfile.prod
-    ports:
-      - "3000:3000"
   ## TODO - remove this for no-data version
   postgres:
     container_name: pgdb_test
@@ -42,21 +32,34 @@ services:
       - /usr/create-app/api/node_modules
     command: |
       sh -c "/wait && npm start"
-  nginx:
-    restart: always
-    build:
-      dockerfile: ../nginx/Dockerfile.prod
-      context: ../nginx
+  ## TODO replace this with prod UI when issue #97 is addressed
+  ui:
+    container_name: ui_test
+    working_dir: /usr/create-app/ui
+    environment:
+      - REACT_APP_environment=docker_dev
+      - DOCKER_VARIANT=compose_routing
+      - WAIT_HOSTS=api:4000
     ports:
-      - '5000:5000'
+      - "3000:3000"
+    build:
+      context: ../ui
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ../ui:/usr/create-app/ui
+      - /usr/create-app/ui/node_modules
+    command: |
+      sh -c "/wait && npm run start"
+  ## TODO - add ngnix routing to job when prod for UI is fixed
   e2e:
     container_name: e2e_test
     working_dir: /usr/create-app/e2e
     environment:
-      - WAIT_HOSTS=chromedriver:4444, ngnix:5000
+      - UI_HOST=ui:3000
+      - WAIT_HOSTS=chromedriver:4444, ui:3000
     build:
       context: ../e2e
-      dockerfile: ../e2e/ops/Dockerfile
+      dockerfile: ops/Dockerfile
     volumes:
       - ../e2e:/usr/create-app/e2e
       - /usr/create-app/e2e/node_modules
