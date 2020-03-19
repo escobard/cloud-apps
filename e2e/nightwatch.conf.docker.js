@@ -1,3 +1,5 @@
+const { config } = require("./constants")
+
 module.exports = {
   src_folders: ["tests"],
   page_objects_path: ["screens"],
@@ -7,9 +9,9 @@ module.exports = {
   },
   test_settings: {
     default: {
-      selenium_port: 4444,
-      selenium_host: "chromedriver",
-      launch_url: process.env.UI_HOST,
+      selenium_port: config.seleniumPort,
+      selenium_host: config.seleniumHost,
+      launch_url: config.url,
       filter: "tests/**/*test.js",
       desiredCapabilities: {
         browserName: "chrome",

@@ -51,11 +51,19 @@ services:
     command: |
       sh -c "/wait && npm run start"
   ## TODO - add ngnix routing to job when prod for UI is fixed
+  chromedriver:
+    container_name: chromedriver
+    image: selenium/standalone-chrome:latest
+    ports:
+      - "4444:4444"
   e2e:
     container_name: e2e_test
     working_dir: /usr/create-app/e2e
     environment:
-      - UI_HOST=ui:3000
+      - UI_HOST=ui
+      - UI_PORT=3000
+      - SELENIUM_PORT=4444
+      - SELENIUM_HOST=chromedriver
       - WAIT_HOSTS=chromedriver:4444, ui:3000
     build:
       context: ../e2e
@@ -65,8 +73,3 @@ services:
       - /usr/create-app/e2e/node_modules
     command: |
       sh -c "/wait && npm run test-docker"
-  chromedriver:
-    container_name: chromedriver
-    image: selenium/standalone-chrome:latest
-    ports:
-      - "4444:4444"
