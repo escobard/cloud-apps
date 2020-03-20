@@ -1,4 +1,4 @@
-const { Notes } = require("../services/postgres/models")
+const { Notes } = require("../services/postgres/models");
 
 describe("getNotes route", () => {
   const users = [
@@ -20,7 +20,7 @@ describe("getNotes route", () => {
     done();
   });
 
-  it(">> happy path, get all users success", (done)=> {
+  it(">> happy path, get all users success", done => {
     global.hasDB = true;
     sinon.stub(Notes, "findAll").resolves(users);
     request(server)
@@ -40,8 +40,9 @@ describe("getNotes route", () => {
       .end((err, res) => {
         expect(res.error.status).to.equal(503);
         expect(res.error.text).to.equal(
-          '"getNotes route promise rejectionSequelizeConnectionRefusedError: connect ECONNREFUSED 127.0.0.1:5432"'
+          '{"type":"Promise rejection error","status":503,"message":"connect ECONNREFUSED 127.0.0.1:5432"}'
         );
+        if (err) return err;
       });
   });
 });

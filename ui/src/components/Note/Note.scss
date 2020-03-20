@@ -4,6 +4,19 @@
 [id*="-note"] {
   border-bottom: $border-gray;
   margin: 0 !important;
+  &.error {
+    &:hover{
+      cursor: initial;
+    }
+    .column {
+      &.icon {
+        i {
+          color: $red;
+          border: solid 2px $red;
+        }
+      }
+    }
+  }
   &:hover{
     cursor: pointer;
   }
@@ -33,16 +46,9 @@
     &.content{
       padding-right: 0 !important;
       p{
+        white-space: nowrap;
         overflow: hidden;
-        position: relative;
-        line-height: 1.2rem;
-        max-height: 1.2rem;
-        // TODO - make this conditional, only trigger if paragraph length is greater than length of screen
-        &:after {
-          content: '...';
-          right: 0;
-          bottom: 0;
-        }
+        text-overflow: ellipsis;
       }
     }
     p{

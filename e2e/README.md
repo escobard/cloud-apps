@@ -48,6 +48,6 @@ In the root directory, run `npm run dev`
 
 #### Nightwatch with docker + docker-compose
 
-Runs nightwatch in a docker image, powered by a chromedriver docker image and the provided UI url.
+Runs the nightwatch application in a docker image, powered by a chromedriver docker image and the provided UI url.
 
 `npm run test-compose`

@@ -4,6 +4,7 @@ const { sequelize } = require("../services/postgres");
  * @dev prevents API crashes when DB is unavailable
  */
 
+// TODO - improve with cleanError.js util
 module.exports = function checkDB(){
   return async (req, res, next) => {
     if (global.hasDB === false){
