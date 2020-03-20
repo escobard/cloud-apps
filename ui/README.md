@@ -18,9 +18,13 @@ To run all tests, with coverage:
 
 `npm test`
 
+To run all tests in watch mode:
+
+`npm run test-watch`
+
 To run a single test:
 
-`npm run test-single /path/to/tests`
+`npm run test-watch /path/to/tests`
 
 ### Lint
 

@@ -1,6 +1,6 @@
-import { todayDate } from "utils/todayDate";
+import { todayDate } from "utils";
 
-describe("formatDate tests", () => {
+describe("todayDate tests", () => {
   it(">> should return today's date, in the proper format", () => {
     const date = todayDate();
     expect(date).toEqual(

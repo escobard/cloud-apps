@@ -1,7 +1,7 @@
 import axios from "axios";
 
 import { apiRoutes, headers } from "../constants";
-import { cleanError } from "./";
+import { cleanError } from "utils";
 
 /** Sends POST request to API to addNote
  * @dev refer to the /addNote route in the API for request handling logic
