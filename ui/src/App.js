@@ -16,8 +16,6 @@ import "./styles/global.scss";
 const App = () => {
   const id = "application";
 
-  const [messageErrors, setMessageErrors] = useState([]);
-
   const [title, setTitle] = useState("");
 
   const [message, setMessage] = useState("");
@@ -42,6 +40,10 @@ const App = () => {
     setNotes(fetchedNotes);
   }, [fetchedNotes]);
 
+  useEffect(() => {
+    console.log('message', message)
+  }, [message])
+
   /** Validates addNote values
    * @name validateAddNote
    * @dev used to reduce clutter in makeDonation
@@ -50,22 +52,31 @@ const App = () => {
    * */
 
   const validateAddNote = (subject, note) => {
-    const { errors } = validateField(
+    let errors = [];
+
+    let subjectError = validateField(
+      subject.length < 5,
+      "Subject must contain more than 5"
+    )
+
+    subjectError && errors.push(subjectError)
+
+    let noteError = validateField(
       note.length < 25,
-      "Note must contain more than 25 characters",
-      messageErrors
+      "Note must contain more than 25 characters"
     );
 
-    errors && setMessageErrors(errors);
+    noteError && errors.push(noteError);
 
-    if (messageErrors.length > 0) {
-      setTitle("addNote() form error:");
+    if (errors.length > 0) {
+      setTitle("Note form error:");
       setMessage(
-        `Form contains the following error: ${messageErrors.join(", ")}.`
+        `Form contains the following error(s): ${errors.join(", ")}.`
       );
       setStatus("red");
-      setMessageErrors([]);
     }
+
+    return errors.length > 0;
   };
 
   /** Submits the POST request to the API
@@ -77,9 +88,10 @@ const App = () => {
    * */
 
   const addNote = async (subject, note) => {
-    validateAddNote(subject, note);
 
-    if (messageErrors.length === 0) {
+    const hasErrors = validateAddNote(subject, note);
+
+    if (!hasErrors) {
       const request = {
         // TODO - this should come from authentication token after phase 4
         user_id: 1,
@@ -90,7 +102,7 @@ const App = () => {
       const response = await addNoteRequest(request);
 
       if (!response.status) {
-        setTitle("addNote() error(s)");
+        setTitle("Note form error(s)");
         setMessage(response);
         return setStatus("red");
       }
@@ -99,7 +111,7 @@ const App = () => {
           data: { status }
         } = response;
 
-        setTitle("addNote() added!");
+        setTitle("Note added!");
         setMessage(status);
         setStatus("green");
 
@@ -142,6 +154,7 @@ const App = () => {
           id={id}
           title="Add Note"
           open={showModal}
+          // TODO - reset errors to default on close
           close={() => setShowModal(false) && setStatus(false)}
           content={
             <Form

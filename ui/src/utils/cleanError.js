@@ -5,10 +5,7 @@
  * */
 
 export const cleanError = error => {
-  let type;
-  let status;
   let message;
-  let description;
 
   if (error.response) {
     const { type, status, description } = error.response.data;
