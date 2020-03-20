@@ -8,7 +8,8 @@ describe("cleanError", () => {
     const resError = cleanError(error);
     expect(resError).to.deep.equal({
       status: 503,
-      message: "test message"
+      message: "test message",
+      type: "Promise rejection error"
     });
   });
 });

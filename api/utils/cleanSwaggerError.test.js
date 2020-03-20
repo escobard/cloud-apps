@@ -17,9 +17,9 @@ describe("cleanSwaggerError", () => {
       status: 400,
       message:
         "The \"body\" body parameter is invalid ({\"user_id\":\"a\"}) ",
+      dataPath: "Data path: \"\" ",
       schemaPath: "Schema path: \"/required/1\" ",
-      description: "Missing required property: subject",
-      dataPath: "Data path: \"\""
+      description: "Missing required property: subject"
     });
   });
 });
