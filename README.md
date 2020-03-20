@@ -5,11 +5,11 @@ An enterprise platform boilerplate, powered by React, Node, Postgres and Docker.
 Production version available here: http://create-app.us-east-2.elasticbeanstalk.com/        
         
 ## About the Product 
-The mission is to challenge enterprise software norms, where a combination of Java, Python and JavaScript applications may be used to overcome challenges that can be tackled with a single programming language.
- 
-It is much harder (and unrealistic) to expect a developers to learn several languages to develop an end to end stack, versus leveraging 1 language to solve all necessary business problems. 
 
-This is the primary argument behind this boilerplate and its opinionated software architecture.
+In software enterprises, its common to have a variety of applications written in various programming languages. 
+
+This product aims to challenge this norm, by leveraging a single programming language (JavaScript) to power an
+ entire software system. 
   
 For a deeper dive into the drivers behind this project, read through [`documentation/concept.md`](https://github.com/escobard/create-app/blob/master/documentation/concept.md)        
   

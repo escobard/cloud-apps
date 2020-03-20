@@ -1,5 +1,4 @@
 version: '3'
-# TODO - clean up ports for ui / api / postgres - likely unecessary
 services:
   chromedriver:
     container_name: chromedriver
