@@ -19,7 +19,7 @@ describe("swaggerValidation", function() {
       .end((err, res) => {
         expect(res.status).to.equal(400);
         expect(res.error.text).to.equal(
-          '{"status":400,"description":["The \\"body\\" body parameter is invalid ({\\"user_id\\":\\"a\\"}) ","JSON Schema validation error. ","Data path: \\"\\" ","Schema path: \\"/required/1\\" ","Missing required property: subject"]}'
+          '{"status":400,"message":"The \\"body\\" body parameter is invalid ({\\"user_id\\":\\"a\\"}) ","schemaPath":"Schema path: \\"/required/1\\" ","missingProp":"Missing required property: subject"}'
         );
       });
   });

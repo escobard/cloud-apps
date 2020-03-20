@@ -1,5 +1,4 @@
 const cleanSwaggerError = error => {
-
   console.log("Swagger validator error");
   console.log("Status: " + error.status);
   console.log("Message: " + error.message);
