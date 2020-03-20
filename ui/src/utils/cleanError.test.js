@@ -1,6 +1,7 @@
 import { cleanError } from "utils";
 
 describe("cleanError tests", () => {
+
   it(">> should return formatter swagger error", () => {
     const error = {
       response: {
@@ -17,17 +18,17 @@ describe("cleanError tests", () => {
     };
     const cleanErr = cleanError(error);
     expect(cleanErr).toEqual(
-      "API rejection: Status 400 - Swagger validation error - Data path: \"/note\"  - Schema path: \"/properties/note/maxLength\"  - String is too long (1604 chars), maximum 1000"
+      'API rejection: Status 400 - Swagger validation error - Data path: "/note"  - Schema path: "/properties/note/maxLength"  - String is too long (1604 chars), maximum 1000'
     );
   });
+
   it(">> should return formatted api error", () => {
     const error = {
       response: {
         data: {
           type: "Promise rejection error",
           status: 503,
-          message:
-            'Test message',
+          message: "Test message",
           description: "Test description"
         }
       }
@@ -37,11 +38,11 @@ describe("cleanError tests", () => {
       "API rejection: Status 503 - Promise rejection error - Test description"
     );
   });
+
   it(">> should return request error", () => {
     const error = "Test error";
     const cleanErr = cleanError(error);
-    expect(cleanErr).toEqual(
-      "Response error: Test error"
-    );
+    expect(cleanErr).toEqual("Response error: Test error");
   });
+
 });

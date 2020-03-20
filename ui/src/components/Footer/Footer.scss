@@ -1,6 +1,9 @@
 @import "../../styles/variables";
 
 footer{
+  &.error{
+    display: none;
+  }
   right: 0;
   left: 0;
   bottom: 0;

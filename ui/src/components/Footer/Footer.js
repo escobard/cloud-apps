@@ -13,15 +13,17 @@ import "./Footer.scss";
  * @return {Component} Footer
  * */
 
-const Footer = ({ id, count, open }) => (
-  <footer id={`${id}-footer`}>
+const Footer = ({ id, count, open, hasError }) => (
+  <footer id={`${id}-footer`} className={hasError && "error"}>
     <p>
       {count >= 1 ? (
         <Fragment>
           {footer.withNotes} <span> {count} </span>
         </Fragment>
       ) : (
-        footer.noNotes
+        <>
+        {footer.noNotes}
+        </>
       )}
     </p>
     <i role="button" className="plus big icon" onClick={open} />
@@ -31,7 +33,8 @@ const Footer = ({ id, count, open }) => (
 Footer.propTypes = {
   id: PropTypes.string.isRequired,
   count: PropTypes.number.isRequired,
-  open: PropTypes.func.isRequired
+  open: PropTypes.func.isRequired,
+  hasError: PropTypes.bool.isRequired
 };
 
 export default Footer;

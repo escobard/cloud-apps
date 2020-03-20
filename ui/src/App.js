@@ -1,15 +1,14 @@
 import React, { Fragment, useState, useEffect } from "react";
 
-import { addNoteFields } from "./constants";
-import { errors } from "./constants/catalog";
-import { useGetRequest } from "./hooks/useGetRequest";
-import { addNote as addNoteRequest, getNotes, validateField } from "./utils";
+import { addNoteFields, notes as noteCatalog } from "./constants";
+import { useGetRequest } from "hooks/useGetRequest";
+import { addNote as addNoteRequest, getNotes, validateField } from "utils";
 
-import Header from "./components/Header";
-import Form from "./components/Form";
-import Footer from "./components/Footer";
-import Note from "./components/Note";
-import Modal from "./components/Modal";
+import Header from "components/Header";
+import Form from "components/Form";
+import Footer from "components/Footer";
+import Note from "components/Note";
+import Modal from "components/Modal";
 
 import "./styles/global.scss";
 
@@ -40,10 +39,6 @@ const App = () => {
     setNotes(fetchedNotes);
   }, [fetchedNotes]);
 
-  useEffect(() => {
-    console.log('message', message)
-  }, [message])
-
   /** Validates addNote values
    * @name validateAddNote
    * @dev used to reduce clutter in makeDonation
@@ -57,9 +52,9 @@ const App = () => {
     let subjectError = validateField(
       subject.length < 5,
       "Subject must contain more than 5"
-    )
+    );
 
-    subjectError && errors.push(subjectError)
+    subjectError && errors.push(subjectError);
 
     let noteError = validateField(
       note.length < 25,
@@ -70,9 +65,7 @@ const App = () => {
 
     if (errors.length > 0) {
       setTitle("Note form error:");
-      setMessage(
-        `Form contains the following error(s): ${errors.join(", ")}.`
-      );
+      setMessage(`Form contains the following error(s): ${errors.join(", ")}.`);
       setStatus("red");
     }
 
@@ -88,7 +81,6 @@ const App = () => {
    * */
 
   const addNote = async (subject, note) => {
-
     const hasErrors = validateAddNote(subject, note);
 
     if (!hasErrors) {
@@ -106,6 +98,7 @@ const App = () => {
         setMessage(response);
         return setStatus("red");
       }
+
       if (response.data.note) {
         const {
           data: { status }
@@ -136,15 +129,25 @@ const App = () => {
    * */
 
   const renderNotes = (id, data) => {
-    // TODO - improve look and feel on no notes
-    if (data.length === 0) {
-      return <Note id={`${id}-no-notes`} data={errors.noNotes} />;
-    }
-    return data.map((object, index) => {
-      return <Note key={id + index} id={`${id}-${index}`} data={object} />;
-    });
-  };
+    console.log("data", notes);
 
+    // with data
+    if (Array.isArray(data) && data.length > 0){
+      return data.map((object, index) => {
+        return <Note key={id + index} id={`${id}-${index}`} data={object} />;
+      });
+    }
+
+    // error
+    if(!Array.isArray(data) && data.length > 0){
+      noteCatalog.apiError.note = data;
+      return <Note id={`${id}-no-notes`} data={noteCatalog.apiError} />
+    }
+
+    // no data / initial
+    return <Note id={`${id}-no-notes`} data={noteCatalog.noNotes} />;
+
+  };
   return (
     <Fragment>
       <Header id={id} />
@@ -167,7 +170,7 @@ const App = () => {
         />
         {renderNotes(id, notes)}
       </main>
-      <Footer id={id} open={() => setShowModal(true)} count={notes.length} />
+      <Footer id={id} open={() => setShowModal(true)} count={notes.length} hasError={!Array.isArray(notes)}/>
     </Fragment>
   );
 };
