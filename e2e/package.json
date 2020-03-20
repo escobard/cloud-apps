@@ -7,7 +7,8 @@
     "start": "npm run test",
     "test": "node nightwatch.js",
     "test-path": "node nightwatch.js -g",
-    "test-docker": "node nightwatch.js --config nightwatch.conf.docker.js --tag smoke"
+    "test-docker": "node nightwatch.js --config nightwatch.conf.docker.js --tag smoke",
+    "test-compose": "docker-compose -f ops/ui-test-e2e.yaml up --exit-code-from e2e"
   },
   "engines": {
     "node": "10.x",

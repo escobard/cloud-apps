@@ -1,3 +1,8 @@
+/**
+ * NPM standalone config, relies on npm chromedriver and running UI on localhost:3000
+ * @dev used mostly for local development and e2e debugging
+ */
+
 const chrome = require("chromedriver"),
   headless = process.argv.includes("--headless") ? ["headless"] : [];
 
@@ -23,7 +28,8 @@ module.exports = {
       desiredCapabilities: {
         browserName: "chrome",
         chromeOptions: {
-          args: headless
+          args: headless,
+          w3c: false
         }
       }
     }
