@@ -4,11 +4,13 @@
  */
 
 const cleanError = error => {
-  console.log("Promise rejection error");
+  const type = "Promise rejection error"
+  console.log(type);
   console.log("Status: 503");
   console.log("Message: " + error.message);
 
   return {
+    type,
     status: 503,
     message: error.message
   };

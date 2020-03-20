@@ -81,6 +81,8 @@ const App = () => {
 
     if (messageErrors.length === 0) {
       const request = {
+        // TODO - this should come from authentication token after phase 4
+        user_id: 1,
         subject,
         note
       };

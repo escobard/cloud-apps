@@ -4,7 +4,8 @@
  */
 
 const cleanSwaggerError = error => {
-  console.log("Swagger validator error");
+  const type = "Swagger validator error"
+  console.log(type);
   console.log("Status: " + error.status);
   console.log("Message: " + error.message);
 
@@ -23,6 +24,7 @@ const cleanSwaggerError = error => {
   });
 
   return {
+    type,
     status: error.status,
     message,
     schemaPath,
