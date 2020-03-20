@@ -3,7 +3,7 @@ const router = require("express").Router(),
     models: { Notes }
   } = require("../services/postgres"),
   { checkDB } = require("../middlewares"),
-  { cleanError } = require("../utils")
+  { cleanError } = require("../utils");
 
 router.post("/", checkDB, async (req, res) => {
   try {
@@ -24,8 +24,7 @@ router.post("/", checkDB, async (req, res) => {
     const addNote = await Notes.create({ user_id: 1, subject, note, date });
     res.status(200).json(addNote);
   } catch (err) {
-    const error = cleanError(err);
-    res.status(503).json(error);
+    res.status(503).json(cleanError(err));
   }
 });
 
