@@ -12,7 +12,7 @@ const cleanError = error => {
   return {
     type,
     status: 503,
-    message: error.message
+    description: error.message
   };
 };
 

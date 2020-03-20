@@ -11,14 +11,20 @@ export const cleanError = error => {
   let description;
 
   if (error.response) {
-    description = error.response.data.message;
-    status = error.response.data.status;
-    type = error.response.data.type;
-    message = `API rejection: Status ${status} - ${type} - ${description}`;
+    console.log('error', error.response)
+    const { type, status, description } = error.response.data;
+    message = `API rejection: Status ${status} - ${type}`;
+    if (type === "Swagger validation error"){
+      const { dataPath, schemaPath } = error.response.data;
+      message = message + " - " + dataPath + " - " + schemaPath + " - " + description;
+    }
+    if (type === "Promise rejection error"){
+      message = message + " - " + description;
+    }
   }
   // handles other API errors
   else {
-    message = `API rejection: ${error}`;
+    message = `Response error: ${error}`;
   }
   return message;
 };
