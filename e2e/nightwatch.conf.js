@@ -14,6 +14,12 @@ module.exports = {
     default: {
       launch_url: "http://localhost:3000",
       filter: "tests/**/*test.js",
+      screenshots:{
+        enabled: true,
+        on_failure: true,
+        on_error: true,
+        path: "screenshots"
+      },
       desiredCapabilities: {
         browserName: "chrome",
         chromeOptions: {

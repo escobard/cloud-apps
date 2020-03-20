@@ -5,7 +5,7 @@ An enterprise platform boilerplate, powered by React, Node, Postgres and Docker.
 Production version available here: http://create-app.us-east-2.elasticbeanstalk.com/        
         
 ## About the Product 
-The mission is to challenge enterprise software norms, where often a combination of Java, Python and JavaScript applications may be used to overcome challenges that can be tackled with a single programming language.
+The mission is to challenge enterprise software norms, where a combination of Java, Python and JavaScript applications may be used to overcome challenges that can be tackled with a single programming language.
  
 It is much harder (and unrealistic) to expect a developers to learn several languages to develop an end to end stack, versus leveraging 1 language to solve all necessary business problems. 
 
