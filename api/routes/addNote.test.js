@@ -37,7 +37,7 @@ describe("addNote route", () => {
       .end((err, res) => {
         expect(res.status).to.equal(503);
         expect(res.error.text).to.equal(
-          '"addNotes route promise rejectionSequelizeConnectionRefusedError: connect ECONNREFUSED 127.0.0.1:5432"'
+          '{"status":503,"message":"connect ECONNREFUSED 127.0.0.1:5432"}'
         );
       });
   });
