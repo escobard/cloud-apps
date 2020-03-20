@@ -10,8 +10,6 @@ export const cleanError = error => {
   let message;
   let description;
 
-  // checks for api validation error
-  console.log("ERROR", error.response.data)
   if (error.response) {
     description = error.response.data.message;
     status = error.response.data.status;

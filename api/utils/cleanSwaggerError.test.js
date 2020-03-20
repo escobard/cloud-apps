@@ -13,11 +13,13 @@ describe("cleanSwaggerError", () => {
     };
     const cleanError = cleanSwaggerError(error);
     expect(cleanError).to.deep.equal({
+      type: "Swagger validation error",
       status: 400,
       message:
         "The \"body\" body parameter is invalid ({\"user_id\":\"a\"}) ",
       schemaPath: "Schema path: \"/required/1\" ",
-      missingProp: "Missing required property: subject"
+      description: "Missing required property: subject",
+      dataPath: "Data path: \"\""
     });
   });
 });
