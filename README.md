@@ -8,7 +8,7 @@ Production version available here: http://create-app.us-east-2.elasticbeanstalk.
 
 In software enterprises, its common to have a variety of applications written in various programming languages. 
 
-This product aims to challenge this norm, by leveraging a single programming language (JavaScript) to power an
+This product challenges this norm, by leveraging a single programming language (JavaScript) to power an
  entire software system. 
   
 For a deeper dive into the drivers behind this project, read through [`documentation/concept.md`](https://github.com/escobard/create-app/blob/master/documentation/concept.md)        
