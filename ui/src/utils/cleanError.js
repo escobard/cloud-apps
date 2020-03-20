@@ -11,7 +11,6 @@ export const cleanError = error => {
   let description;
 
   if (error.response) {
-    console.log('error', error.response)
     const { type, status, description } = error.response.data;
     message = `API rejection: Status ${status} - ${type}`;
     if (type === "Swagger validation error"){
@@ -22,7 +21,6 @@ export const cleanError = error => {
       message = message + " - " + description;
     }
   }
-  // handles other API errors
   else {
     message = `Response error: ${error}`;
   }
