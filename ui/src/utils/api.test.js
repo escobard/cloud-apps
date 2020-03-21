@@ -21,11 +21,15 @@ describe("api util", () => {
     });
   });
   describe("getNotes", () => {
-    it("successful request, notes fetched", () => {
-
+    it("successful request, notes fetched", async () => {
+      axios.get.mockResolvedValue(response)
+      const request = await getNotes(body);
+      expect(request).toEqual(response.data)
     });
-    it("rejected request, no notes fetched", () => {
-
+    it("rejected request, no notes fetched", async () => {
+      axios.get.mockRejectedValueOnce(reject)
+      const request = await getNotes(body);
+      expect(request).toEqual(rejectError)
     });
   });
 });
