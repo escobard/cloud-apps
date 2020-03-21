@@ -19,7 +19,7 @@ export const cleanError = error => {
     }
   }
   else {
-    message = `Response error: ${error}`;
+    message = `Request error: ${error}`;
   }
   return message;
 };
