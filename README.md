@@ -1,4 +1,3 @@
-
 # create-app 
 An enterprise platform boilerplate, powered by React, Node, Postgres and Docker.       
         
@@ -6,10 +5,10 @@ Production version available here: http://create-app.us-east-2.elasticbeanstalk.
         
 ## About the Product 
 
-In software enterprises, its common to have a variety of applications written in various programming languages. 
+In software enterprises its common to have a variety of applications, written in multiple programming languages, to solve business problems. 
 
-This product challenges this norm, by leveraging a single programming language (JavaScript) to power an
- entire software system. 
+This product aims to challenge the norm, by using a single programming language (JavaScript) and common design
+ patterns to power a software system. 
   
 For a deeper dive into the drivers behind this project, read through [`documentation/concept.md`](https://github.com/escobard/create-app/blob/master/documentation/concept.md)        
   

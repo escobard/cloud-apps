@@ -39,7 +39,10 @@ describe("Note", () => {
   });
 
   it(">> should show different icon if icon is defined", () => {
-    props.data.icon = "some icon";
+    props.data.icon = {
+      image: "some icon",
+      label: "No Notes"
+    };
     const { container } = render(<Note {...props} />);
     expect(container.querySelector(".sticky.note")).toEqual(null);
     expect(container.querySelector(".some.icon").toExist);
