@@ -11,7 +11,7 @@ exports[`Note >> snapshot is up to date 1`] = `
     >
       <i
         aria-label="note icon"
-        class="sticky note big circular icon"
+        class="sticky note big circular icon error"
       />
     </div>
     <div

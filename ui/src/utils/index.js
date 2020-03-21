@@ -1,5 +1,5 @@
-import { addNote, getNotes } from "./requests";
-import { validateField } from "./validation";
+import { addNote, getNotes } from "./api";
+import { validateField } from "./validateField";
 import { cleanError } from "./cleanError"
 import { todayDate } from "./todayDate";
 

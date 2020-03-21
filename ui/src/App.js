@@ -39,6 +39,7 @@ const App = () => {
     setNotes(fetchedNotes);
   }, [fetchedNotes]);
 
+  // TODO - split this into a util for more testing flexibility
   /** Validates addNote values
    * @name validateAddNote
    * @dev used to reduce clutter in makeDonation

@@ -19,8 +19,7 @@ export const cleanError = error => {
     }
   }
   else {
-    console.log(error.response)
-    message = `Response error: ${error}`;
+    message = `Request error: ${error}`;
   }
   return message;
 };

@@ -1,6 +1,6 @@
 import { cleanError } from "utils";
 
-describe("cleanError tests", () => {
+describe("cleanError util", () => {
 
   it(">> should return formatter swagger error", () => {
     const error = {
@@ -42,7 +42,7 @@ describe("cleanError tests", () => {
   it(">> should return request error", () => {
     const error = "Test error";
     const cleanErr = cleanError(error);
-    expect(cleanErr).toEqual("Response error: Test error");
+    expect(cleanErr).toEqual("Request error: Test error");
   });
 
 });

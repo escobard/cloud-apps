@@ -6,7 +6,7 @@ exports[`Header >> snapshot is up to date 1`] = `
     id="test-navigation"
   >
     <i
-      aria-hidden="true"
+      aria-label="Menu"
       class="bars big icon"
     />
     <h1>
