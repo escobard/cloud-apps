@@ -1,8 +1,10 @@
 import React, { Fragment, useState, useEffect } from "react";
 
+import { addNote as addNoteRequest, getNotes, validateForm } from "./utils";
+
 import { addNoteFields, notes as noteCatalog } from "./constants";
+
 import { useGetRequest } from "hooks/useGetRequest";
-import { addNote as addNoteRequest, getNotes, validateField } from "utils";
 
 import Header from "components/Header";
 import Form from "components/Form";
@@ -13,9 +15,10 @@ import Modal from "components/Modal";
 import "./styles/global.scss";
 
 const App = () => {
+
   const id = "application";
 
-  const [alert, setAlert] = useState({})
+  const [alert, setAlert] = useState({});
 
   const [showModal, setShowModal] = useState(false);
 
@@ -27,43 +30,6 @@ const App = () => {
     setNotes(fetchedNotes);
   }, [fetchedNotes]);
 
-  /** Closes modal & clears form errors
-   * @return {boolean} checks if form has errors
-   * */
-
-  const close = () => {
-    setShowModal(false)
-    setAlert({})
-  };
-
-  // TODO - split this into a util for more testing flexibility
-  /** Validates addNote values
-   * @name validateForm
-   * @dev used to reduce clutter in makeDonation
-   * @param {Array<Object>} fields, contains condition and error fields
-   * @return {boolean} checks if form has errors
-   * */
-
-  const validateForm = (fields) => {
-    let errors = [];
-
-    fields.map((field)=>{
-      const { condition, error } = field;
-      const fieldError = validateField(condition, error);
-      fieldError && errors.push(fieldError)
-    });
-
-    if (errors.length > 0) {
-      setAlert({
-        title: "Note form error:",
-        message: `Form contains the following error(s): ${errors.join(", ")}.`,
-        status: "red"
-      })
-    }
-
-    return errors.length > 0;
-  };
-
   /** Submits the POST request to the API
    * @name addNote
    * @dev this requests tests basic validation between UI and API
@@ -73,7 +39,6 @@ const App = () => {
    * */
 
   const addNote = async (subject, note) => {
-
     const conditions = [
       {
         condition: subject.length < 5,
@@ -82,12 +47,20 @@ const App = () => {
       {
         condition: note.length < 25,
         error: addNoteFields[1].errors[0]
-      },
+      }
     ];
 
-    const hasErrors = validateForm(conditions);
+    const errors = validateForm(conditions);
 
-    if (!hasErrors) {
+    if (errors.length > 0) {
+      setAlert({
+        title: "Note form error:",
+        message: `Form contains the following error(s): ${errors.join(", ")}.`,
+        status: "red"
+      });
+    }
+
+    if (errors.length === 0) {
       const request = {
         // TODO - this should come from authentication token after phase 4
         user_id: 1,
@@ -102,18 +75,19 @@ const App = () => {
           title: "Note form error(s)",
           message: response,
           status: "red"
-        })
+        });
       }
 
       if (response.data.note) {
         const {
           data: { status }
         } = response;
+
         setAlert({
           title: "Note added!",
           message: status,
           status: "green"
-        })
+        });
 
         const notes = await getNotes();
 
@@ -121,7 +95,7 @@ const App = () => {
         setTimeout(async () => {
           setNotes(notes);
           setShowModal(false);
-          return setAlert({})
+          return setAlert({});
         }, 500);
       }
     }
@@ -136,24 +110,23 @@ const App = () => {
    * */
 
   const renderNotes = (id, data) => {
-
     // with data
-    if (Array.isArray(data) && data.length > 0){
+    if (Array.isArray(data) && data.length > 0) {
       return data.map((object, index) => {
         return <Note key={id + index} id={`${id}-${index}`} data={object} />;
       });
     }
 
     // error
-    if(!Array.isArray(data) && data.length > 0){
+    if (!Array.isArray(data) && data.length > 0) {
       noteCatalog.apiError.note = data;
-      return <Note id={`${id}-no-notes`} data={noteCatalog.apiError} />
+      return <Note id={`${id}-no-notes`} data={noteCatalog.apiError} />;
     }
 
     // initial
     return <Note id={`${id}-no-notes`} data={noteCatalog.noNotes} />;
-
   };
+
   return (
     <Fragment>
       <Header id={id} />
@@ -164,7 +137,7 @@ const App = () => {
           title="Add Note"
           open={showModal}
           // TODO - reset errors to default on close
-          close={() => close()}
+          close={() => setAlert({}) + setShowModal(false)}
           content={
             <Form
               id={id}
@@ -176,7 +149,12 @@ const App = () => {
         />
         {renderNotes(id, notes)}
       </main>
-      <Footer id={id} open={() => setShowModal(true)} count={notes.length} hasError={!Array.isArray(notes)}/>
+      <Footer
+        id={id}
+        open={() => setShowModal(true)}
+        count={notes.length}
+        hasError={!Array.isArray(notes)}
+      />
     </Fragment>
   );
 };
