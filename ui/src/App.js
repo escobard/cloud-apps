@@ -41,28 +41,20 @@ const App = () => {
 
   // TODO - split this into a util for more testing flexibility
   /** Validates addNote values
-   * @name validateAddNote
+   * @name validateForm
    * @dev used to reduce clutter in makeDonation
-   * @param {string} subject, contains random string value
-   * @param {string} note, contains random string value with a length greater than 10
+   * @param {Array<Object>} fields, contains condition and error fields
+   * @return {boolean} checks if form has errors
    * */
 
-  const validateAddNote = (subject, note) => {
+  const validateForm = (fields) => {
     let errors = [];
 
-    let subjectError = validateField(
-      subject.length < 5,
-      "Subject must contain more than 5"
-    );
-
-    subjectError && errors.push(subjectError);
-
-    let noteError = validateField(
-      note.length < 25,
-      "Note must contain more than 25 characters"
-    );
-
-    noteError && errors.push(noteError);
+    fields.map((field)=>{
+      const { condition, error } = field;
+      const fieldError = validateField(condition, error);
+      fieldError && errors.push(fieldError)
+    });
 
     if (errors.length > 0) {
       setTitle("Note form error:");
@@ -82,7 +74,19 @@ const App = () => {
    * */
 
   const addNote = async (subject, note) => {
-    const hasErrors = validateAddNote(subject, note);
+
+    const conditions = [
+      {
+        condition: subject.length < 5,
+        error: addNoteFields[0].errors[0]
+      },
+      {
+        condition: note.length < 25,
+        error: addNoteFields[1].errors[0]
+      },
+    ];
+
+    const hasErrors = validateForm(conditions);
 
     if (!hasErrors) {
       const request = {
