@@ -1,4 +1,4 @@
-import { validateForm} from "./validateForm";
+import { validateForm } from "./validateForm";
 
 import { addNoteFields } from "Constants";
 
