@@ -94,7 +94,7 @@ const DynamicForm = ({ id, fields, addNote, message }) => {
     <Fragment>
       {fields ? (
         <Form id={formId}>
-          {message && (
+          {message.status && (
             <Message
               color={message.status}
               header={message.title}

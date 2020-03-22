@@ -15,29 +15,26 @@ import "./styles/global.scss";
 const App = () => {
   const id = "application";
 
-  const [title, setTitle] = useState("");
-
-  const [message, setMessage] = useState("");
-
-  const [status, setStatus] = useState(false);
+  const [alert, setAlert] = useState({})
 
   const [showModal, setShowModal] = useState(false);
 
   const [notes, setNotes] = useState([]);
-
-  const formMessage = status
-    ? {
-        status,
-        title,
-        message
-      }
-    : null;
 
   const { data: fetchedNotes } = useGetRequest(getNotes);
 
   useEffect(() => {
     setNotes(fetchedNotes);
   }, [fetchedNotes]);
+
+  /** Closes modal & clears form errors
+   * @return {boolean} checks if form has errors
+   * */
+
+  const close = () => {
+    setShowModal(false)
+    setAlert({})
+  };
 
   // TODO - split this into a util for more testing flexibility
   /** Validates addNote values
@@ -57,9 +54,11 @@ const App = () => {
     });
 
     if (errors.length > 0) {
-      setTitle("Note form error:");
-      setMessage(`Form contains the following error(s): ${errors.join(", ")}.`);
-      setStatus("red");
+      setAlert({
+        title: "Note form error:",
+        message: `Form contains the following error(s): ${errors.join(", ")}.`,
+        status: "red"
+      })
     }
 
     return errors.length > 0;
@@ -99,19 +98,22 @@ const App = () => {
       const response = await addNoteRequest(request);
 
       if (!response.status) {
-        setTitle("Note form error(s)");
-        setMessage(response);
-        return setStatus("red");
+        return setAlert({
+          title: "Note form error(s)",
+          message: response,
+          status: "red"
+        })
       }
 
       if (response.data.note) {
         const {
           data: { status }
         } = response;
-
-        setTitle("Note added!");
-        setMessage(status);
-        setStatus("green");
+        setAlert({
+          title: "Note added!",
+          message: status,
+          status: "green"
+        })
 
         const notes = await getNotes();
 
@@ -119,7 +121,7 @@ const App = () => {
         setTimeout(async () => {
           setNotes(notes);
           setShowModal(false);
-          return setStatus(false);
+          return setAlert({})
         }, 500);
       }
     }
@@ -127,14 +129,13 @@ const App = () => {
 
   /** Renders Notes based on API response
    * @name renderNotes
-   * @dev used to render multiple notes
+   * @dev manages connection issues use cases
    * @param {string} id, contains inherited id
    * @param {array} data, contains array of note objects
    * @returns  no note message || one or more <Note />
    * */
 
   const renderNotes = (id, data) => {
-    console.log("data", notes);
 
     // with data
     if (Array.isArray(data) && data.length > 0){
@@ -149,7 +150,7 @@ const App = () => {
       return <Note id={`${id}-no-notes`} data={noteCatalog.apiError} />
     }
 
-    // no data / initial
+    // initial
     return <Note id={`${id}-no-notes`} data={noteCatalog.noNotes} />;
 
   };
@@ -163,11 +164,11 @@ const App = () => {
           title="Add Note"
           open={showModal}
           // TODO - reset errors to default on close
-          close={() => setShowModal(false) && setStatus(false)}
+          close={() => close()}
           content={
             <Form
               id={id}
-              message={formMessage}
+              message={alert}
               addNote={addNote}
               fields={addNoteFields}
             />
