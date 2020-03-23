@@ -1,5 +1,8 @@
-#application-form{
+[id*="-form"]{
   label{
-    display: none;
+   display: none !important;
+  }
+  textarea{
+    height: 8em !important;
   }
 }

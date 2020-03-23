@@ -142,7 +142,7 @@ const App = () => {
             <Form
               id={id}
               message={alert}
-              addNote={addNote}
+              submit={addNote}
               fields={addNoteFields}
             />
           }

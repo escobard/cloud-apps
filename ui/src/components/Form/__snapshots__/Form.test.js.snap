@@ -9,29 +9,27 @@ exports[`Form >> snapshot is up to date 1`] = `
     <div
       class="field"
     >
-      <label>
+      <label
+        for="subject"
+      >
         Subject
       </label>
-      <div
-        class="ui input"
-      >
-        <input
-          name="subject"
-          placeholder="Enter a subject for your note"
-          type="text"
-        />
-      </div>
+      <input
+        name="subject"
+        placeholder="Enter a subject for your note"
+      />
     </div>
     <div
       class="field"
     >
-      <label>
+      <label
+        for="note"
+      >
         Note *
       </label>
       <textarea
         name="note"
         placeholder="Enter a description for your note (required)"
-        rows="3"
       />
     </div>
     <div

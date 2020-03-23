@@ -8,30 +8,30 @@ import PropTypes from "prop-types";
  * @dev renders an infinite number of fields based on props.fields, very powerful and expandable
  * @param {string} id, inherited id from parent
  * @param {object[]} fields, contains form field data
- * @param {function} addNote, form submit handler from parent
+ * @param {function} submit, form submit handler from parent
  * @param {object} message, contains status strings for form message
  * @returns {Component}, DynamicForm
  * */
 
-const DynamicForm = ({ id, fields, addNote, message }) => {
+const DynamicForm = ({ id, fields, submit, message }) => {
   const formId = `${id}-form`;
 
   const [formState, setFormState] = useState({});
 
   /** Submits the form, triggers POST request from parent
    * @name submitForm
-   * @dev could be scrapped all together and just use addNote callback, keeping for readability
+   * @dev could be scrapped all together and just use submit callback, keeping for readability
    * */
 
   const submitForm = () => {
     const { subject, note } = formState;
 
-    if (addNote) {
+    if (submit) {
       // sends empty strings if undefined to trigger validation
       const subjectValue = subject ? subject.value : "";
       const noteValue = note ? note.value : "";
 
-      addNote(subjectValue, noteValue);
+      submit(subjectValue, noteValue);
     }
   };
 
@@ -64,35 +64,37 @@ const DynamicForm = ({ id, fields, addNote, message }) => {
       // add conditional for input vs textfield
 
       if (name === "note") {
-        return (
-          <Form.TextArea
-            key={index}
+        return(
+          <Form.Field key={index}>
+            <label htmlFor={name}>{label}</label>
+            <textarea
+              name={name}
+              onChange={e => {
+                inputChange(e.target.value, name);
+              }}
+              placeholder={placeholder}
+            />
+          </Form.Field>
+        )
+      }
+
+      return (
+        <Form.Field key={index}>
+          <label htmlFor={name}>{label}</label>
+          <input
             name={name}
-            label={label}
             onChange={e => {
               inputChange(e.target.value, name);
             }}
             placeholder={placeholder}
           />
-        );
-      }
-
-      return (
-        <Form.Input
-          key={index}
-          name={name}
-          label={label}
-          onChange={e => {
-            inputChange(e.target.value, name);
-          }}
-          placeholder={placeholder}
-        />
+        </Form.Field>
       );
     });
   };
 
+  // TODO - switch to material-ui to match desired look and feel
   return (
-    // TODO - switch to material-ui just for form to match desired look and feel
     <Form id={formId}>
       {message && message.status && (
         <Message
@@ -112,12 +114,17 @@ const DynamicForm = ({ id, fields, addNote, message }) => {
 
 DynamicForm.propTypes = {
   id: PropTypes.string.isRequired,
-  fields: PropTypes.array.isRequired,
-  addNote: PropTypes.func.isRequired,
+  fields: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    placeholder: PropTypes.string.isRequired,
+    errors: PropTypes.arrayOf(PropTypes.string).isRequired,
+  })).isRequired,
+  submit: PropTypes.func.isRequired,
   message: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    message: PropTypes.string.isRequired,
-    status: PropTypes.any.isRequired
+    title: PropTypes.string,
+    message: PropTypes.string,
+    status: PropTypes.any
   }).isRequired
 };
 

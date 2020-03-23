@@ -1,6 +1,6 @@
 @import "../../styles/variables";
 
-div[id*="-modal"]{
+[id*="-modal"]{
   background: $blue-dark !important;
   > .content{
     background: $blue-dark !important;
