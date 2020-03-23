@@ -1,8 +1,7 @@
 import DynamicForm from "./index";
-import { addNoteFields } from "constants/forms";
+import { addNoteFields } from "Constants";
 
 describe("Form", () => {
-
   const testFunct = jest.fn();
 
   const props = {
@@ -12,7 +11,7 @@ describe("Form", () => {
       message: "test message",
       status: false
     },
-    addNote: testFunct,
+    submit: testFunct,
     fields: addNoteFields
   };
 
@@ -21,17 +20,13 @@ describe("Form", () => {
     expect(container).toMatchSnapshot();
   });
 
-  it(">> validates critical elements", () => {
-
-  })
-
-  it(">> displays message", () => {
-
-  })
-  it(">> submits field values", () => {
-
-  })
-  it(">> submits empty values if fields are empty", () => {
-
-  })
+  it(">> validates fields", () => {
+    const { getByLabelText } = render(<DynamicForm {...props} />);
+    expect(getByLabelText("Subject"))
+    expect(getByLabelText("Note *"))
+    expect(getByLabelText("Submit"))
+  });
+  it(">> displays message", () => {});
+  it(">> submits field values", () => {});
+  it(">> submits empty values if fields are empty", () => {});
 });

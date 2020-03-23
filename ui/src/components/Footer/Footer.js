@@ -17,9 +17,9 @@ const Footer = ({ id, count, open, hasError }) => (
   <footer id={`${id}-footer`} className={hasError && "error"}>
     <p>
       {count >= 1 ? (
-        <Fragment>
+        <>
           {footer.withNotes} <span> {count} </span>
-        </Fragment>
+        </>
       ) : (
         <>
         {footer.noNotes}

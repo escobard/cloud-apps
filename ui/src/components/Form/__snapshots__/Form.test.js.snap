@@ -15,6 +15,7 @@ exports[`Form >> snapshot is up to date 1`] = `
         Subject
       </label>
       <input
+        id="subject"
         name="subject"
         placeholder="Enter a subject for your note"
       />
@@ -28,6 +29,7 @@ exports[`Form >> snapshot is up to date 1`] = `
         Note *
       </label>
       <textarea
+        id="note"
         name="note"
         placeholder="Enter a description for your note (required)"
       />
@@ -36,6 +38,7 @@ exports[`Form >> snapshot is up to date 1`] = `
       class="field"
     >
       <button
+        aria-label="Submit"
         class="ui button"
       >
         Add Note

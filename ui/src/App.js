@@ -128,7 +128,7 @@ const App = () => {
   };
 
   return (
-    <Fragment>
+    <>
       <Header id={id} />
       <div className="divider" />
       <main id={id} className="application">
@@ -155,7 +155,7 @@ const App = () => {
         count={notes.length}
         hasError={!Array.isArray(notes)}
       />
-    </Fragment>
+    </>
   );
 };
 

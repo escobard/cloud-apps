@@ -68,6 +68,7 @@ const DynamicForm = ({ id, fields, submit, message }) => {
           <Form.Field key={index}>
             <label htmlFor={name}>{label}</label>
             <textarea
+              id={name}
               name={name}
               onChange={e => {
                 inputChange(e.target.value, name);
@@ -82,6 +83,7 @@ const DynamicForm = ({ id, fields, submit, message }) => {
         <Form.Field key={index}>
           <label htmlFor={name}>{label}</label>
           <input
+            id={name}
             name={name}
             onChange={e => {
               inputChange(e.target.value, name);
@@ -105,7 +107,7 @@ const DynamicForm = ({ id, fields, submit, message }) => {
       )}
 
       {renderFields(fields)}
-      <Form.Field onClick={() => submitForm()} control={Button}>
+      <Form.Field onClick={() => submitForm()} control={Button} aria-label="Submit">
         Add Note
       </Form.Field>
     </Form>
