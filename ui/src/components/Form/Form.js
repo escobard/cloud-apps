@@ -42,11 +42,13 @@ const DynamicForm = ({ id, fields, addNote, message }) => {
    * */
 
   const inputChange = (value, fieldKey) => {
-    setFormState({
-      ...formState,
-      [fieldKey]: {
-        value
-      }
+    setFormState(prevState => {
+      return {
+        ...prevState,
+        [fieldKey]: {
+          value
+        }
+      };
     });
   };
 
@@ -94,7 +96,7 @@ const DynamicForm = ({ id, fields, addNote, message }) => {
     <Fragment>
       {fields ? (
         <Form id={formId}>
-          {message.status && (
+          {message && message.status && (
             <Message
               color={message.status}
               header={message.title}

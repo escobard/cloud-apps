@@ -1,16 +1,16 @@
 import { footer } from "constants/catalog";
 import Footer from "./index";
 
-const props = {
-  id: "test",
-  count: 0,
-  open: jest.fn()
-};
-
 describe("Footer", () => {
   afterAll(() => {
     cleanup();
   });
+
+  const props = {
+    id: "test",
+    count: 0,
+    open: jest.fn()
+  };
 
   it(">> snapshot is up to date", () => {
     const { container } = render(<Footer {...props} />);

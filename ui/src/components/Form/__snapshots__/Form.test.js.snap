@@ -1,35 +1,48 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Form snapshot renders should render makeDonation form and fields correctly 1`] = `
-<Fragment>
-  <Form
-    as="form"
-    id="undefined-form"
+exports[`Form >> snapshot is up to date 1`] = `
+<div>
+  <form
+    class="ui form"
+    id="test-id-form"
   >
-    <FormInput
-      as={[Function]}
-      control={[Function]}
-      key="0"
-      label="Subject"
-      name="subject"
-      onChange={[Function]}
-      placeholder="Enter a subject for your note"
-    />
-    <FormTextArea
-      as={[Function]}
-      control={[Function]}
-      key="1"
-      label="Note *"
-      name="note"
-      onChange={[Function]}
-      placeholder="Enter a description for your note (required)"
-    />
-    <FormField
-      control={[Function]}
-      onClick={[Function]}
+    <div
+      class="field"
     >
-      Add Note
-    </FormField>
-  </Form>
-</Fragment>
+      <label>
+        Subject
+      </label>
+      <div
+        class="ui input"
+      >
+        <input
+          name="subject"
+          placeholder="Enter a subject for your note"
+          type="text"
+        />
+      </div>
+    </div>
+    <div
+      class="field"
+    >
+      <label>
+        Note *
+      </label>
+      <textarea
+        name="note"
+        placeholder="Enter a description for your note (required)"
+        rows="3"
+      />
+    </div>
+    <div
+      class="field"
+    >
+      <button
+        class="ui button"
+      >
+        Add Note
+      </button>
+    </div>
+  </form>
+</div>
 `;
