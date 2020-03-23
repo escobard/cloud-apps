@@ -2,9 +2,9 @@ import React, { Fragment, useState } from "react";
 import { Button, Form, Message } from "semantic-ui-react";
 
 import "./Form.scss";
+import PropTypes from "prop-types";
 
 /** Dynamically creates a form from the data provided via props.fields
- * @name DynamicForm
  * @dev renders an infinite number of fields based on props.fields, very powerful and expandable
  * @param {string} id, inherited id from parent
  * @param {object[]} fields, contains form field data
@@ -93,27 +93,32 @@ const DynamicForm = ({ id, fields, addNote, message }) => {
 
   return (
     // TODO - switch to material-ui just for form to match desired look and feel
-    <Fragment>
-      {fields ? (
-        <Form id={formId}>
-          {message && message.status && (
-            <Message
-              color={message.status}
-              header={message.title}
-              content={message.message}
-            />
-          )}
-
-          {renderFields(fields)}
-          <Form.Field onClick={() => submitForm()} control={Button}>
-            Add Note
-          </Form.Field>
-        </Form>
-      ) : (
-        <p>Form has no input props!</p>
+    <Form id={formId}>
+      {message && message.status && (
+        <Message
+          color={message.status}
+          header={message.title}
+          content={message.message}
+        />
       )}
-    </Fragment>
+
+      {renderFields(fields)}
+      <Form.Field onClick={() => submitForm()} control={Button}>
+        Add Note
+      </Form.Field>
+    </Form>
   );
+};
+
+DynamicForm.propTypes = {
+  id: PropTypes.string.isRequired,
+  fields: PropTypes.array.isRequired,
+  addNote: PropTypes.func.isRequired,
+  message: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    message: PropTypes.string.isRequired,
+    status: PropTypes.any.isRequired
+  }).isRequired
 };
 
 export default DynamicForm;

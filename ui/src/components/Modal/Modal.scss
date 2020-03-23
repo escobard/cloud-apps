@@ -11,6 +11,11 @@ div[id*="-modal"]{
         text-align: center;
         font-weight: 100;
       }
+      .arrow{
+        &:hover{
+          cursor: pointer;
+        }
+      }
       .clipboard{
         float: right;
       }
