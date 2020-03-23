@@ -100,6 +100,7 @@ const DynamicForm = ({ id, fields, submit, message }) => {
     <Form id={formId}>
       {message && message.status && (
         <Message
+          aria-label={message.status === "red" ? "Alert": "Update"}
           color={message.status}
           header={message.title}
           content={message.message}
