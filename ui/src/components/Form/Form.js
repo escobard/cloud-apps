@@ -2,37 +2,33 @@ import React, { Fragment, useState } from "react";
 import { Button, Form, Message } from "semantic-ui-react";
 
 import "./Form.scss";
+import PropTypes from "prop-types";
 
 /** Dynamically creates a form from the data provided via props.fields
- * @name DynamicForm
  * @dev renders an infinite number of fields based on props.fields, very powerful and expandable
  * @param {string} id, inherited id from parent
  * @param {object[]} fields, contains form field data
- * @param {function} addNote, form submit handler from parent
+ * @param {function} submit, form submit handler from parent
  * @param {object} message, contains status strings for form message
  * @returns {Component}, DynamicForm
  * */
 
-const DynamicForm = ({ id, fields, addNote, message }) => {
+const DynamicForm = ({ id, fields, submit, message }) => {
   const formId = `${id}-form`;
 
   const [formState, setFormState] = useState({});
 
   /** Submits the form, triggers POST request from parent
    * @name submitForm
-   * @dev could be scrapped all together and just use addNote callback, keeping for readability
+   * @dev could be scrapped all together and just use submit callback, keeping for readability
    * */
 
   const submitForm = () => {
     const { subject, note } = formState;
-
-    if (addNote) {
-      // sends empty strings if undefined to trigger validation
+      // sends empty strings if fields are empty to trigger validation
       const subjectValue = subject ? subject.value : "";
       const noteValue = note ? note.value : "";
-
-      addNote(subjectValue, noteValue);
-    }
+      submit(subjectValue, noteValue);
   };
 
   /** Handles the change of each field's input, when the user types into a field
@@ -42,11 +38,13 @@ const DynamicForm = ({ id, fields, addNote, message }) => {
    * */
 
   const inputChange = (value, fieldKey) => {
-    setFormState({
-      ...formState,
-      [fieldKey]: {
-        value
-      }
+    setFormState(prevState => {
+      return {
+        ...prevState,
+        [fieldKey]: {
+          value
+        }
+      };
     });
   };
 
@@ -62,56 +60,71 @@ const DynamicForm = ({ id, fields, addNote, message }) => {
       // add conditional for input vs textfield
 
       if (name === "note") {
-        return (
-          <Form.TextArea
-            key={index}
+        return(
+          <Form.Field key={index}>
+            <label htmlFor={name}>{label}</label>
+            <textarea
+              id={name}
+              name={name}
+              onChange={e => {
+                inputChange(e.target.value, name);
+              }}
+              placeholder={placeholder}
+            />
+          </Form.Field>
+        )
+      }
+
+      return (
+        <Form.Field key={index}>
+          <label htmlFor={name}>{label}</label>
+          <input
+            id={name}
             name={name}
-            label={label}
             onChange={e => {
               inputChange(e.target.value, name);
             }}
             placeholder={placeholder}
           />
-        );
-      }
-
-      return (
-        <Form.Input
-          key={index}
-          name={name}
-          label={label}
-          onChange={e => {
-            inputChange(e.target.value, name);
-          }}
-          placeholder={placeholder}
-        />
+        </Form.Field>
       );
     });
   };
 
+  // TODO - switch to material-ui to match desired look and feel
   return (
-    // TODO - switch to material-ui just for form to match desired look and feel
-    <Fragment>
-      {fields ? (
-        <Form id={formId}>
-          {message.status && (
-            <Message
-              color={message.status}
-              header={message.title}
-              content={message.message}
-            />
-          )}
-
-          {renderFields(fields)}
-          <Form.Field onClick={() => submitForm()} control={Button}>
-            Add Note
-          </Form.Field>
-        </Form>
-      ) : (
-        <p>Form has no input props!</p>
+    <Form id={formId}>
+      {message && message.status && (
+        <Message
+          aria-label={message.status === "red" ? "Alert": "Update"}
+          color={message.status}
+          header={message.title}
+          content={message.message}
+        />
       )}
-    </Fragment>
+
+      {renderFields(fields)}
+      <Form.Field onClick={() => submitForm()} control={Button} aria-label="Submit">
+        Add Note
+      </Form.Field>
+    </Form>
   );
+};
+
+DynamicForm.propTypes = {
+  id: PropTypes.string.isRequired,
+  fields: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    placeholder: PropTypes.string.isRequired,
+    errors: PropTypes.arrayOf(PropTypes.string).isRequired,
+  })).isRequired,
+  submit: PropTypes.func.isRequired,
+  message: PropTypes.shape({
+    title: PropTypes.string,
+    message: PropTypes.string,
+    status: PropTypes.any
+  }).isRequired
 };
 
 export default DynamicForm;

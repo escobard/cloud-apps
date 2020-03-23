@@ -1,6 +1,6 @@
 @import "../../styles/variables";
 
-div[id*="-modal"]{
+[id*="-modal"]{
   background: $blue-dark !important;
   > .content{
     background: $blue-dark !important;
@@ -10,6 +10,11 @@ div[id*="-modal"]{
       h2{
         text-align: center;
         font-weight: 100;
+      }
+      .arrow{
+        &:hover{
+          cursor: pointer;
+        }
       }
       .clipboard{
         float: right;
