@@ -10,19 +10,27 @@ import { useEffect, useState } from "react";
 
 export const useGetRequest = (request, effect) => {
   const [data, setData] = useState([]);
+  const unmounted = useRef(null);
 
   const getData = async () => {
     try {
       const results = await request();
-      setData(results);
+      if (results && !unmounted.current){
+        setData(results);
+      }
     } catch (e) {
-      // placeholder
+      return "useGetRequest error: " + e;
     }
   };
 
   useEffect(() => {
+    unmounted.current = false;
     getData();
-  }, [effect]);
+    return () => {
+      unounted.current = true;
+    }
+
+  }, [effect, unmounted]);
 
   return {
     data
