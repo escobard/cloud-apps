@@ -11,7 +11,15 @@ const ModalElement = ({ id, open, close, title, content }) => {
       <Modal.Content>
         <Grid className="header">
           <Grid.Column width={2}>
-            <i aria-label="Back" onClick={close} className="arrow left big icon" />
+            <i
+              onKeyDown={e => {
+                e.key === "Enter" && close();
+              }}
+              tabIndex={0}
+              aria-label="Back"
+              onClick={close}
+              className="arrow left big icon"
+            />
           </Grid.Column>
           <Grid.Column width={12}>
             <h2>{title}</h2>

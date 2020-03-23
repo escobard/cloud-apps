@@ -26,6 +26,7 @@ describe("Form", () => {
     expect(getByLabelText("Note *"))
     expect(getByLabelText("Submit"))
   });
+
   it(">> displays alert message", () => {
     props.message.status = "red";
     const { getByText, getByLabelText } = render(<DynamicForm {...props} />);
@@ -33,11 +34,15 @@ describe("Form", () => {
     expect(getByText(props.message.message))
     expect(getByLabelText("Alert"))
   });
+
   it(">> displays update message", () => {
     props.message.status = "green";
     const { getByLabelText } = render(<DynamicForm {...props} />);
     expect(getByLabelText("Update"))
   });
-  it(">> submits field values", () => {});
+  it(">> updates and submits field values", () => {
+    const { getByPlaceholderText } = render(<DynamicForm {...props} />);
+
+  });
   it(">> submits empty values if fields are empty", () => {});
 });

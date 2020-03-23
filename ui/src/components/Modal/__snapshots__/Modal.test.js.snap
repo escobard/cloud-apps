@@ -18,7 +18,7 @@ exports[`Modal snapshot renders should render correctly mode 1`] = `
         width={2}
       >
         <i
-          aria-hidden="true"
+          aria-label="Back"
           className="arrow left big icon"
         />
       </GridColumn>
