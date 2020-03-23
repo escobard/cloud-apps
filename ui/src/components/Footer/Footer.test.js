@@ -1,8 +1,4 @@
-import React from "react";
-import { render, fireEvent, cleanup } from "@testing-library/react";
-
 import { footer } from "constants/catalog";
-
 import Footer from "./index";
 
 const props = {
@@ -23,14 +19,14 @@ describe("Footer", () => {
 
   it(">> should display no notes when count is 0", () => {
     const { getByText } = render(<Footer {...props} />);
-    expect(getByText(footer.noNotes).toExist);
+    expect(getByText(footer.noNotes));
   });
 
   it(">> should display completed notes and count if count is not 0", () => {
     props.count = 1;
     const { getByText } = render(<Footer {...props} />);
-    expect(getByText(footer.withNotes).toExist);
-    expect(getByText(props.count.toString()).toExist);
+    expect(getByText(footer.withNotes));
+    expect(getByText(props.count.toString()));
   });
 
   it(">> should trigger open function on click", () => {

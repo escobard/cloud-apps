@@ -1,4 +1,4 @@
-import { validateField } from "utils/validateField"
+import { validateField } from "utils"
 
 describe("validation util", () => {
   const error = "Subject must contain more than 5"

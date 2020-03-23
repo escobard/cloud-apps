@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 /** Manages state for resolving a GET request
  * @name useGetRequest
@@ -8,23 +8,35 @@ import { useEffect, useState } from "react";
  * @return {object} data, resolved response
  * */
 
-export const useGetRequest = (request, effect) => {
+export const useGetRequest = (request) => {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const isMounted = useRef(null);
 
   const getData = async () => {
     try {
+      isMounted.current && setLoading(true)
       const results = await request();
-      setData(results);
+      if (results && isMounted.current){
+        setData(results);
+        setLoading(false)
+      }
     } catch (e) {
       // placeholder
     }
   };
 
   useEffect(() => {
+    isMounted.current = true;
     getData();
-  }, [effect]);
+    return () => {
+      isMounted.current = false;
+    }
+
+  }, [isMounted]);
 
   return {
-    data
+    data,
+    loading
   };
 };

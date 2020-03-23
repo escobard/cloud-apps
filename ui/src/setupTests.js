@@ -4,5 +4,21 @@
 // TODO - retire enzyme when form tests have been converted
 import { configure } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
+import React from "react";
+import { render, fireEvent, cleanup } from "@testing-library/react";
+import { renderHook, act } from '@testing-library/react-hooks'
+import axios from 'axios';
+
+global.React = React;
+
+global.render = render;
+global.fireEvent = fireEvent;
+global.cleanup = cleanup;
+global.renderHook = renderHook;
+global.act = act;
+jest.mock('axios');
+global.axios = axios;
+
+
 
 configure({ adapter: new Adapter() });
