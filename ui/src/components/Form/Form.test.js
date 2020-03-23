@@ -2,7 +2,12 @@ import DynamicForm from "./index";
 import { addNoteFields } from "Constants";
 
 describe("Form", () => {
-  const testFunct = jest.fn();
+
+  let results;
+
+  const testFunct = (subject, note) => {
+    results = { subject, note};
+  };
 
   const props = {
     id: "test-id",
@@ -40,9 +45,22 @@ describe("Form", () => {
     const { getByLabelText } = render(<DynamicForm {...props} />);
     expect(getByLabelText("Update"))
   });
-  it(">> updates and submits field values", () => {
-    const { getByPlaceholderText } = render(<DynamicForm {...props} />);
 
+  it(">> updates and submits field values", () => {
+    const { getByPlaceholderText, getByLabelText } = render(<DynamicForm {...props} />);
+    fireEvent.change(getByPlaceholderText(addNoteFields[0].placeholder), {
+      target: { value: 'subject test value' }
+    });
+    fireEvent.change(getByPlaceholderText(addNoteFields[1].placeholder), {
+      target: { value: 'note test value' }
+    });
+    fireEvent.click(getByLabelText("Submit"));
+    expect(results).toEqual({ subject: 'subject test value', note: 'note test value' })
   });
-  it(">> submits empty values if fields are empty", () => {});
+
+  it(">> submits empty values if fields are empty", () => {
+    const { getByLabelText } = render(<DynamicForm {...props} />);
+    fireEvent.click(getByLabelText("Submit"));
+    expect(results).toEqual({ subject: '', note: '' })
+  });
 });

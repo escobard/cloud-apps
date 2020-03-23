@@ -20,6 +20,8 @@ exports[`Modal snapshot renders should render correctly mode 1`] = `
         <i
           aria-label="Back"
           className="arrow left big icon"
+          onKeyDown={[Function]}
+          tabIndex={0}
         />
       </GridColumn>
       <GridColumn
