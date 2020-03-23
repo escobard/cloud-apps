@@ -25,14 +25,10 @@ const DynamicForm = ({ id, fields, submit, message }) => {
 
   const submitForm = () => {
     const { subject, note } = formState;
-
-    if (submit) {
-      // sends empty strings if undefined to trigger validation
+      // sends empty strings if fields are empty to trigger validation
       const subjectValue = subject ? subject.value : "";
       const noteValue = note ? note.value : "";
-
       submit(subjectValue, noteValue);
-    }
   };
 
   /** Handles the change of each field's input, when the user types into a field
