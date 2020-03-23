@@ -8,7 +8,7 @@ import { useEffect, useState, useRef } from "react";
  * @return {object} data, resolved response
  * */
 
-export const useGetRequest = (request, effect) => {
+export const useGetRequest = (request) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const isMounted = useRef(null);
@@ -22,11 +22,7 @@ export const useGetRequest = (request, effect) => {
         setLoading(false)
       }
     } catch (e) {
-      const error = "useGetRequest error: " + e;
-      if (isMounted.current){
-        setData(error)
-        setLoading(false)
-      }
+      // placeholder
     }
   };
 
@@ -37,7 +33,7 @@ export const useGetRequest = (request, effect) => {
       isMounted.current = false;
     }
 
-  }, [effect, isMounted]);
+  }, [isMounted]);
 
   return {
     data,

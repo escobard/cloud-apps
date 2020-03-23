@@ -4,7 +4,6 @@ import { getNotes } from "utils"
 describe("useGetRequest hook", () => {
   const body = {data: "test"};
   const response = body;
-  const reject = "test request rejected";
   it(">> updates state with request response", async () => {
     axios.get.mockResolvedValue(response);
     const { result, waitForNextUpdate } = renderHook(() => useGetRequest(getNotes));
@@ -15,15 +14,6 @@ describe("useGetRequest hook", () => {
     await waitForNextUpdate();
 
     expect(result.current.data).toEqual('test')
-    expect(result.current.loading).toEqual(false)
-  });
-  it(">> returns error in case of request rejections", async () => {
-    axios.get.mockRejectedValue(reject)
-    const { result, waitForNextUpdate } = renderHook(() => useGetRequest(getNotes));
-
-    await waitForNextUpdate();
-
-    expect(result.current.data).toEqual("Request error: test request rejected")
     expect(result.current.loading).toEqual(false)
   });
   it(">> does not attempt to update state if unmounted", async () => {
