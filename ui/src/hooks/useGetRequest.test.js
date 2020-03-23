@@ -6,7 +6,7 @@ describe("useGetRequest hook", () => {
   const response = body;
   const reject = "test request rejected";
   it(">> updates state with request response", async () => {
-    axios.get.mockResolvedValueOnce(response)
+    axios.get.mockResolvedValue(response);
     const { result, waitForNextUpdate } = renderHook(() => useGetRequest(getNotes));
 
     expect(result.current.data).toEqual([])
@@ -17,6 +17,23 @@ describe("useGetRequest hook", () => {
     expect(result.current.data).toEqual('test')
     expect(result.current.loading).toEqual(false)
   });
-  it(">> does not update sstate with request response if unmounted", () => {});
-  it(">> returns error in case of request rejections", () => {});
+  it(">> returns error in case of request rejections", async () => {
+    axios.get.mockRejectedValue(reject)
+    const { result, waitForNextUpdate } = renderHook(() => useGetRequest(getNotes));
+
+    await waitForNextUpdate();
+
+    expect(result.current.data).toEqual("Request error: test request rejected")
+    expect(result.current.loading).toEqual(false)
+  });
+  it(">> does not attempt to update state if unmounted", async () => {
+    axios.get.mockResolvedValue(response);
+    const { result, unmount } = renderHook(() => useGetRequest(getNotes));
+    await act(async()=>{
+      unmount()
+    })
+    expect(result.current.data).toEqual([])
+    expect(result.current.loading).toEqual(true)
+
+  });
 });

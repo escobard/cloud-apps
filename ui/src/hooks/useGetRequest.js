@@ -11,37 +11,36 @@ import { useEffect, useState, useRef } from "react";
 export const useGetRequest = (request, effect) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const unmounted = useRef(null);
+  const isMounted = useRef(null);
 
   const getData = async () => {
     try {
-      setLoading(true)
+      isMounted.current && setLoading(true)
       const results = await request();
-      console.log('RESULTS', results)
-      if (results && !unmounted.current){
+      if (results && isMounted.current){
         setData(results);
+        setLoading(false)
       }
     } catch (e) {
       const error = "useGetRequest error: " + e;
-      setData(error)
-      return error;
-    } finally {
-      setLoading(false)
+      if (isMounted.current){
+        setData(error)
+        setLoading(false)
+      }
     }
   };
 
   useEffect(() => {
-    unmounted.current = false;
+    isMounted.current = true;
     getData();
     return () => {
-      unmounted.current = true;
+      isMounted.current = false;
     }
 
-  }, [effect, unmounted]);
+  }, [effect, isMounted]);
 
   return {
     data,
-    loading,
-    getData
+    loading
   };
 };
