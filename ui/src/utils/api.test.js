@@ -1,7 +1,4 @@
-import axios from 'axios';
 import { addNote, getNotes } from "./api"
-
-jest.mock('axios');
 
 describe("api utils", () => {
   const body = {data: "test"};
@@ -23,12 +20,12 @@ describe("api utils", () => {
   describe("getNotes", () => {
     it(">> successful request, notes fetched", async () => {
       axios.get.mockResolvedValue(response)
-      const request = await getNotes(body);
+      const request = await getNotes();
       expect(request).toEqual(response.data)
     });
     it(">> rejected request, no notes fetched", async () => {
       axios.get.mockRejectedValue(reject)
-      const request = await getNotes(body);
+      const request = await getNotes();
       expect(request).toEqual(rejectError)
     });
   });
