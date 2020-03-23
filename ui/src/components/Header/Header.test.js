@@ -1,8 +1,4 @@
-import React from "react";
-import { render, cleanup } from "@testing-library/react";
-
 import { header } from "constants/catalog";
-
 import Header from "./index";
 
 const props = {
@@ -24,7 +20,7 @@ describe("Header", () => {
   it(">> title and date are rendered", () => {
     props.date = todayDate;
     const { getByText } = render(<Header {...props} />);
-    expect(getByText(title).toExist);
-    expect(getByText(todayDate).toExist);
+    expect(getByText(title));
+    expect(getByText(todayDate));
   });
 });

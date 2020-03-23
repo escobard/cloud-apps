@@ -1,5 +1,3 @@
-import React from "react";
-import { render, cleanup } from "@testing-library/react";
 import Note from "./index";
 
 const props = {
@@ -26,10 +24,10 @@ describe("Note", () => {
       data: { subject, note, date }
     } = props;
     const { getByText, container } = render(<Note {...props} />);
-    expect(getByText(subject).toExist);
-    expect(getByText(note).toExist);
-    expect(getByText(date).toExist);
-    expect(container.querySelector(".sticky.note").toExist);
+    expect(getByText(subject));
+    expect(getByText(note));
+    expect(getByText(date));
+    expect(container.querySelector(".sticky.note"));
   });
 
   it(">> should hide date when no date is given", () => {
@@ -45,6 +43,6 @@ describe("Note", () => {
     };
     const { container } = render(<Note {...props} />);
     expect(container.querySelector(".sticky.note")).toEqual(null);
-    expect(container.querySelector(".some.icon").toExist);
+    expect(container.querySelector(".some.icon"));
   });
 });
