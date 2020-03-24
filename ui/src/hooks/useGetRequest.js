@@ -20,7 +20,6 @@ export const useGetRequest = (request) => {
       isMounted.current && setLoading(true)
       const results = await request();
       if (results && isMounted.current){
-        console.log('DATA', results)
         setData(results);
         setLoading(false)
       }
