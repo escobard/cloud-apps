@@ -92,7 +92,8 @@ const App = () => {
         const notes = await getNotes();
 
         // add timeout here to close out modal on note creation
-        setTimeout(async () => {
+        setTimeout(() => {
+          console.log("TRIGGERED")
           setNotes(notes);
           setShowModal(false);
           return setAlert({});

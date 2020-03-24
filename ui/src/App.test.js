@@ -17,18 +17,95 @@ describe("App", () => {
     ]
   };
   describe(">> addNote()", () => {
-    it(">> displays a validation form error", () => {
-      axios.get.mockRejectedValue("TEST");
+    it(">> displays validation form errors", () => {
       const { getByRole, getByLabelText } = render(<App />);
       act(() => {
         fireEvent.click(getByRole("button"));
-      })
+      });
       act(() => {
         fireEvent.click(getByLabelText("Submit"));
-      })
+      });
       expect(getByLabelText("Alert"));
     });
-    it(">> user can send a note", () => {});
+    it(">> displays API validation form errors", async () => {
+      const identifier = "unique test string";
+      axios.post.mockRejectedValue(identifier);
+      const { getByText, getByRole, getByLabelText } = render(
+        <App />
+      );
+      act(() => {
+        fireEvent.click(getByRole("button"));
+      });
+      act(() => {
+        fireEvent.change(getByLabelText("Subject"), {
+          target: { value: "subject test value" }
+        });
+        fireEvent.change(getByLabelText("Note *"), {
+          target: { value: "random test sesntence to pass validation" }
+        });
+      });
+      await act(async () => {
+        fireEvent.click(getByLabelText("Submit"));
+      });
+
+      expect(getByLabelText("Alert"));
+      expect(getByText("Request error: " + identifier));
+    });
+    it(">> displays message update and closes modal on submit success", async () => {
+      const subjectValue = "subject test value";
+      const noteValue = "random test sentence to pass validation";
+      const response = {
+        data: {
+          note: {
+            id: 20,
+            user_id: 1,
+            subject: subjectValue,
+            note:
+              noteValue,
+            date: "03/24/20, 12:04 AM"
+          },
+          status: "test"
+        },
+        status: "test"
+      };
+      axios.post.mockResolvedValue(response);
+      axios.get.mockResolvedValue([response]);
+      const { rerender, getByRole, getByText, getByLabelText } = render(
+        <App />
+      );
+      act(() => {
+        fireEvent.click(getByRole("button"));
+      });
+      act(() => {
+        fireEvent.change(getByLabelText("Subject"), {
+          target: { value: subjectValue }
+        });
+        fireEvent.change(getByLabelText("Note *"), {
+          target: { value: noteValue }
+        });
+      });
+      await act(async () => {
+        fireEvent.click(getByLabelText("Submit"));
+      });
+      await act(async () => {
+        rerender(<App />);
+      });
+      expect(getByLabelText("Update"));
+      expect(getByText("Note added!"));
+      await act(async () => {
+        rerender(<App />)
+      });
+      jest.useFakeTimers();
+      setTimeout(async () => {
+        await act(async () => {
+          rerender(<App />)
+        });
+      }, 600);
+      jest.runAllTimers();
+      expect(getByLabelText("Back")).toEqual(":asdfa")
+
+
+    });
   });
 
   describe(">> renderNotes()", () => {
