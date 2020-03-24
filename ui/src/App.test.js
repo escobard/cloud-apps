@@ -17,7 +17,17 @@ describe("App", () => {
     ]
   };
   describe(">> addNote()", () => {
-    it(">> displays a validation form error", () => {});
+    it(">> displays a validation form error", () => {
+      axios.get.mockRejectedValue("TEST");
+      const { getByRole, getByLabelText } = render(<App />);
+      act(() => {
+        fireEvent.click(getByRole("button"));
+      })
+      act(() => {
+        fireEvent.click(getByLabelText("Submit"));
+      })
+      expect(getByLabelText("Alert"));
+    });
     it(">> user can send a note", () => {});
   });
 
@@ -33,7 +43,7 @@ describe("App", () => {
       await act(async () => {
         rerender(<App />);
       });
-      expect(await getByText(notes.apiError.subject));
+      expect(getByText(notes.apiError.subject));
     });
 
     it(">> renders notes with data state", async () => {
@@ -42,7 +52,7 @@ describe("App", () => {
       await act(async () => {
         rerender(<App />);
       });
-      expect(await getByText(response.data[0].subject));
+      expect(getByText(response.data[0].subject));
     });
   });
 
