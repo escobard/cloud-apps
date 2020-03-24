@@ -10,11 +10,12 @@ import "./Footer.scss";
  * @param {string} id, inherited ID from parent
  * @param {number} count, number of notes
  * @param {function} open, parent function to open new note modal
+ * @param {boolean} hasError, has errors
  * @return {Component} Footer
  * */
 
 const Footer = ({ id, count, open, hasError }) => (
-  <footer id={`${id}-footer`} className={hasError && "error"}>
+  <footer id={`${id}-footer`} className={hasError ? "error" : undefined}>
     <p>
       {count >= 1 ? (
         <>

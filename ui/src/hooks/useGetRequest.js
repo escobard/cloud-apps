@@ -1,5 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 
+import { cleanError } from "utils";
+
 /** Manages state for resolving a GET request
  * @name useGetRequest
  * @dev used to avoid managing response state at a page container level
@@ -18,6 +20,7 @@ export const useGetRequest = (request) => {
       isMounted.current && setLoading(true)
       const results = await request();
       if (results && isMounted.current){
+        console.log('DATA', results)
         setData(results);
         setLoading(false)
       }

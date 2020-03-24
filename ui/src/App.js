@@ -126,7 +126,7 @@ const App = () => {
     // initial
     return <Note id={`${id}-no-notes`} data={noteCatalog.noNotes} />;
   };
-
+ console.log("data", notes)
   return (
     <>
       <Header id={id} />
