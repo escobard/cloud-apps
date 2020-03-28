@@ -93,7 +93,6 @@ const App = () => {
 
         // add timeout here to close out modal on note creation
         setTimeout(() => {
-          console.log("TRIGGERED")
           setNotes(notes);
           setShowModal(false);
           return setAlert({});
@@ -148,12 +147,12 @@ const App = () => {
             />
           }
         />
-        {renderNotes(id, notes)}
+        {notes && renderNotes(id, notes)}
       </main>
       <Footer
         id={id}
         open={() => setShowModal(true)}
-        count={notes.length}
+        count={notes && notes.length}
         hasError={!Array.isArray(notes)}
       />
     </>

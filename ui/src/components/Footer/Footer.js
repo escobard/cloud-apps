@@ -33,9 +33,13 @@ const Footer = ({ id, count, open, hasError }) => (
 
 Footer.propTypes = {
   id: PropTypes.string.isRequired,
-  count: PropTypes.number.isRequired,
+  count: PropTypes.number,
   open: PropTypes.func.isRequired,
   hasError: PropTypes.bool.isRequired
 };
+
+Footer.defaultProps = {
+  count: 0
+}
 
 export default Footer;

@@ -70,7 +70,7 @@ describe("App", () => {
       };
       axios.post.mockResolvedValue(response);
       axios.get.mockResolvedValue([response]);
-      const { rerender, getByRole, getByText, getByLabelText } = render(
+      const { container, rerender, getByRole, queryByText, getByText, getByLabelText } = render(
         <App />
       );
       act(() => {
@@ -87,24 +87,9 @@ describe("App", () => {
       await act(async () => {
         fireEvent.click(getByLabelText("Submit"));
       });
-      await act(async () => {
-        rerender(<App />);
-      });
       expect(getByLabelText("Update"));
       expect(getByText("Note added!"));
-      await act(async () => {
-        rerender(<App />)
-      });
-      jest.useFakeTimers();
-      setTimeout(async () => {
-        await act(async () => {
-          rerender(<App />)
-        });
-      }, 600);
-      jest.runAllTimers();
-      expect(getByLabelText("Back")).toEqual(":asdfa")
-
-
+      await waitForElementToBeRemoved(() => getByLabelText("Back"))
     });
   });
 
