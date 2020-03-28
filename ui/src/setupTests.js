@@ -1,12 +1,8 @@
 // TODO - add global test configs for jest in here after all unit tests are written
 // necessary to allow testing globally of jest snapshots
-
-// TODO - retire enzyme when form tests have been converted
-import { configure } from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
 import React from "react";
-import { render, fireEvent, cleanup } from "@testing-library/react";
-import { renderHook, act } from '@testing-library/react-hooks'
+import { act, render, fireEvent, cleanup, waitForDomChange, waitForElementToBeRemoved } from "@testing-library/react";
+import { renderHook } from '@testing-library/react-hooks'
 import axios from 'axios';
 
 global.React = React;
@@ -15,10 +11,12 @@ global.render = render;
 global.fireEvent = fireEvent;
 global.cleanup = cleanup;
 global.renderHook = renderHook;
+global.waitForDomChange = waitForDomChange;
+global.waitForElementToBeRemoved = waitForElementToBeRemoved;
 global.act = act;
 jest.mock('axios');
 global.axios = axios;
 
-
-
-configure({ adapter: new Adapter() });
+afterEach(() =>{
+  jest.clearAllMocks()
+})

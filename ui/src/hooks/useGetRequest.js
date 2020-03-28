@@ -1,5 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 
+import { cleanError } from "utils";
+
 /** Manages state for resolving a GET request
  * @name useGetRequest
  * @dev used to avoid managing response state at a page container level

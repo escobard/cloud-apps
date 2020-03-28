@@ -91,8 +91,8 @@ const App = () => {
 
         const notes = await getNotes();
 
-        // add timeout here to close out modal on note creation
-        setTimeout(async () => {
+        // TODO - split into its child function for readability
+        setTimeout(() => {
           setNotes(notes);
           setShowModal(false);
           return setAlert({});
@@ -126,7 +126,7 @@ const App = () => {
     // initial
     return <Note id={`${id}-no-notes`} data={noteCatalog.noNotes} />;
   };
-
+ //console.log("data", notes)
   return (
     <>
       <Header id={id} />
@@ -147,12 +147,12 @@ const App = () => {
             />
           }
         />
-        {renderNotes(id, notes)}
+        {notes && renderNotes(id, notes)}
       </main>
       <Footer
         id={id}
         open={() => setShowModal(true)}
-        count={notes.length}
+        count={notes && notes.length}
         hasError={!Array.isArray(notes)}
       />
     </>
