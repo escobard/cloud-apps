@@ -70,7 +70,7 @@ describe("App", () => {
       };
       axios.post.mockResolvedValue(response);
       axios.get.mockResolvedValue([response]);
-      const { container, rerender, getByRole, queryByText, getByText, getByLabelText } = render(
+      const { getByRole, getByText, getByLabelText } = render(
         <App />
       );
       act(() => {
@@ -122,6 +122,16 @@ describe("App", () => {
     it(">> snapshot is up to date", () => {
       const { container } = render(<App />);
       expect(container).toMatchSnapshot();
+    });
+    it(">> opens and closes modal", () => {
+      const { getByRole, getByLabelText } = render(<App />);
+      act(() => {
+        fireEvent.click(getByRole("button"));
+      });
+      act(() => {
+        fireEvent.click(getByLabelText("Back"));
+      });
+      waitForElementToBeRemoved(() => getByLabelText("Back"))
     });
   });
 });

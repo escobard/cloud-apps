@@ -91,7 +91,7 @@ const App = () => {
 
         const notes = await getNotes();
 
-        // add timeout here to close out modal on note creation
+        // TODO - split into its child function for readability
         setTimeout(() => {
           setNotes(notes);
           setShowModal(false);
