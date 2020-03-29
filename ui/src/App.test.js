@@ -30,7 +30,7 @@ describe("App", () => {
     it(">> displays API validation form errors", async () => {
       const identifier = "unique test string";
       axios.post.mockRejectedValue(identifier);
-      const { getByText, getByRole, getByLabelText } = render(
+      const {  getByText, getByRole, getByLabelText } = render(
         <App />
       );
       act(() => {
@@ -124,14 +124,14 @@ describe("App", () => {
       expect(container).toMatchSnapshot();
     });
     it(">> opens and closes modal", () => {
-      const { getByRole, getByLabelText } = render(<App />);
+      const { queryByLabelText, getByRole, getByLabelText } = render(<App />);
       act(() => {
         fireEvent.click(getByRole("button"));
       });
       act(() => {
         fireEvent.click(getByLabelText("Back"));
       });
-      waitForElementToBeRemoved(() => getByLabelText("Back"))
+      expect(queryByLabelText("Back")).toBeNull()
     });
   });
 });
