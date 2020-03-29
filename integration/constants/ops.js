@@ -3,4 +3,4 @@ const ops = {
   port: process.env.API_PORT ||  "4000"
 };
 
-module.exports = ops;
+export default ops;
