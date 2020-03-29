@@ -1,9 +1,6 @@
-module.exports = {
-  "@tags": ["sad"],
-  "Test": browser => {
-    const landingPage = browser.page.Landing();
-
-    landingPage.navigate().assertNoNotes(browser);
-    browser.end();
-  }
-}
+describe("Landing happy path", ()=>{
+  it(">> confirms notes have been created", async () => {
+    await landingPage.navigate().assertNoNotes(client);
+    client.end();
+  })
+})

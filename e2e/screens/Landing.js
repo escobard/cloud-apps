@@ -1,8 +1,6 @@
-const { getQueriesFrom } = require("@testing-library/nightwatch");
-
 const props = {
     text: {
-      withNotes: "create-app integration automated test subject"
+      withNotes: "create-app integration automated test ssssssubject"
     },
     label: {
       menuIcon: "Menu",
@@ -11,36 +9,28 @@ const props = {
   },
   elements = {},
   LandingCommands = {
+    beforeEach(browser, done) {
+      done()
+    },
     async assertHeaderIcon(browser){
-
       const { getByLabelText } = getQueriesFrom(browser);
-
-      const menu = await getByLabelText(this.props.label.menuIcon);
-
-      this.waitForElementVisible(menu);
+      expect(await getByLabelText(this.props.label.menuIcon))
     },
     async assertNoNotes(browser){
       const { getByLabelText } = getQueriesFrom(browser)
-
-      const noNotes = await getByLabelText(this.props.label.noNotesIcon);
-
-      this.waitForElementVisible(noNotes);
+      expect(await getByLabelText(this.props.label.noNotesIcon))
     },
     async assertWithNotes(browser){
-
-      const { getByText } = getQueriesFrom(browser);
-
-      const withNotes = await getByText(this.props.text.withNotes)
-
-      this.waitForElementVisible(withNotes);
+      const { queryByText } = getQueriesFrom(browser);
+      expect(await queryByText(this.props.text.withNotes))
     }
   };
 
-module.exports = {
+export default {
   url(){
     return this.api.launchUrl;
   },
-  commands: [LandingCommands],
   elements,
+  commands: [LandingCommands],
   props
 };

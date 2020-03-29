@@ -1,12 +1,6 @@
-import { expect } from "jest"
-
-export default {
-  "@tags": ["smoke"],
-  "Test": browser => {
-    const landingPage = browser.page.Landing();
-
-    landingPage.navigate().assertHeaderIcon(browser);
-    expect('TEST')
-    browser.end();
-  }
-}
+describe("Landing smoke", ()=>{
+  it(">> confirms header is present", async () => {
+    await landingPage.navigate().assertHeaderIcon(client);
+    client.end();
+  })
+})

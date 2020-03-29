@@ -3,8 +3,7 @@
  * @dev used mostly for local development and e2e debugging
  */
 
-const chrome = require("chromedriver"),
-  headless = process.argv.includes("--headless") ? ["headless"] : [];
+const chrome = require("chromedriver");
 
 module.exports = {
   src_folders: ["tests"],
@@ -29,7 +28,7 @@ module.exports = {
       desiredCapabilities: {
         browserName: "chrome",
         chromeOptions: {
-          args: headless,
+          args: ["headless"],
           w3c: false
         }
       }
