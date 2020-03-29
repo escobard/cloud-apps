@@ -3,13 +3,13 @@
  */
 
 // pre-req
-require("../config.test");
+import "../config.test";
 
 // service availability checks
-require("./health.test");
+import "./health.test";
 
 // critical happy service paths
-require("./addNote.test")
-require("./getNotes.test")
+import "./addNote.test"
+import "./getNotes.test"
 
 // critical sad service paths - no real sad end to end integration paths until phase 4

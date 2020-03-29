@@ -1,5 +1,3 @@
-// necessary to ensure
-
 describe("getNotes", () => {
   it(">> happy path, contains note created by addNote test", done => {
 
