@@ -7,9 +7,9 @@ describe("Footer", () => {
   });
 
   const props = {
-    id: "test",
     count: 0,
-    open: jest.fn()
+    open: jest.fn(),
+    hasError: true
   };
 
   it(">> snapshot is up to date", () => {
