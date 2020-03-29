@@ -27,13 +27,23 @@ In your terminal, from the parent directory:
 
 #### Globals 
 
-All tests rely on global variables initiated at test runtime, found at [`api/config.test.js`](https://github.com/escobard/create-app/blob/master/api/config.test.js)
+All tests rely on global variables initiated at test runtime, found at [`e2e/nightwatch.global.js`](https://github.com/escobard/create-app/blob/master/e2e/nightwatch.global.js)
 
-Constants for global use are initiated globally at test runtime and live within [`api/constants`](https://github.com/escobard/create-app/tree/master/api/constants)
+Constants for global use are initiated globally at test runtime and live within [`e2e/constants`](https://github.com/escobard/create-app/tree/master/e2e/constants)
 
 #### Page Objects
 
+Page objects are imported into the [`e2e/nightwatch.global.js`](https://github.com/escobard/create-app/blob/master/e2e/nightwatch.global.js) from [`e2e/screens`](https://github.com/escobard/create-app/blob/master/e2e/screens).
+
+#### Tests
+
+Tests leverage [`jest`](https://jestjs.io/), [`@testing-library/nightwatch`](https://github.com/testing-library/nightwatch-testing-library) and [`page objects`](https://nightwatchjs.org/guide/working-with-page-objects/). All tests are found within [`e2e/tests`](https://github.com/escobard/create-app/blob/master/e2e/tests)
+
+Tests are divided into 3 types: `smoke`, `happy`, `sad`.
+
 ### Jest
+
+### @testing-library/nightwatch
 
 ### Babel
 
