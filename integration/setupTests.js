@@ -3,16 +3,17 @@
  * @dev depends on a running host
  */
 
-const { ops, routes, sampleData } = require("./constants")
+import supertest from "supertest"
 
-before((done) =>{
+import { ops, routes, sampleData } from "./constants";
+
+beforeAll(async () =>{
 
   const { health, addNote, getNotes } = routes,
     {host, port} = ops;
-  
-  global.request = require("supertest");
-  global.expect = require("chai").expect
-  
+
+  global.request = supertest;
+
   global.server = `http://${host}:${port}`
 
   // sample data
@@ -22,6 +23,8 @@ before((done) =>{
   global.health = health;
   global.addNote = addNote;
   global.getNotes = getNotes;
-
-  done()
 });
+
+afterEach(() => {
+  global.server = null
+})

@@ -1,9 +1,5 @@
-const routes = require("./routes"),
-  sampleData = require('./sampleData'),
-  ops = require('./ops')
+import { routes } from "./routes";
+import sampleData  from "./sampleData";
+import ops from "./ops";
 
-module.exports = {
-  routes,
-  sampleData,
-  ops
-}
+export { routes, sampleData, ops };
