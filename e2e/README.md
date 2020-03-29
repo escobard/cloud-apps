@@ -24,11 +24,7 @@ end to end test happy paths are dependent on the `integration` tests running fir
 
 To run tests with a single tag
 
-`npm test -- --tag happy`
-
-To run tests with multiple tags
-
-`npm test -- --tag happy --tag smoke`
+`npm test happy`
 
 #### Tests a certain path
 
