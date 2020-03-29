@@ -28,6 +28,7 @@ module.exports = {
       desiredCapabilities: {
         browserName: "chrome",
         chromeOptions: {
+          // remove args property to show browser
           args: ["headless"],
           w3c: false
         }

@@ -1,6 +1,6 @@
 const props = {
     text: {
-      withNotes: "create-app integration automated test ssssssubject"
+      withNotes: "create-app integration automated test subject"
     },
     label: {
       menuIcon: "Menu",
