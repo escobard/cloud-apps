@@ -23,15 +23,7 @@ In your terminal, from the parent directory:
 
 ## Usage - Expanded 
 
-### Swagger
-
-Most API validation is handled with [swagger](https://swagger.io/). Live swagger docs can be found here: [http://create-app.us-east-2.elasticbeanstalk.com/api/docs](http://create-app.us-east-2.elasticbeanstalk.com/api/docs)
-
-[`Notes.yaml`](https://github.com/escobard/create-app/blob/master/api/Notes.yaml) drives all swagger validation logic. Swagger validation is leveraged an application level through the use of the [swagger-express-middleware](https://www.npmjs.com/package/swagger-express-middleware) library.
-
-The swagger middleware and the swagger docs are set up at [`api/index.js`](https://github.com/escobard/create-app/blob/master/api/index.js)
-
-### Tests
+### Nightwatch Tests
 
 #### Globals 
 
@@ -39,15 +31,13 @@ All tests rely on global variables initiated at test runtime, found at [`api/con
 
 Constants for global use are initiated globally at test runtime and live within [`api/constants`](https://github.com/escobard/create-app/tree/master/api/constants)
 
-### Sequelize
+#### Page Objects
 
-The API leverages [sequelize](https://sequelize.org/) to communicate with the DB. Along with the rest of our `postgres` business logic, all sequelize logic lives within the [`api/services/postgres`](https://github.com/escobard/create-app/tree/master/api/services/postgres) directory.
+### Jest
 
-DB authentication functionality can be found within [`api/services/postgres/authenticate.js`](https://github.com/escobard/create-app/tree/master/api/services/postgres/authenticate.js) and all sequelize models live within [`api/services/postgres/models`](https://github.com/escobard/create-app/tree/master/api/services/postgres/models).
+### Babel
 
 ## Docker
-
-As with the other applications in the stack, docker is heavily leveraged at the API layer.
 
 ### Development
 

@@ -47,8 +47,6 @@ DB authentication functionality can be found within [`api/services/postgres/auth
 
 ## Docker
 
-As with the other applications in the stack, docker is heavily leveraged at the API layer.
-
 ### Development
 
 Dependent on [`api/ops/Dockerfile.dev`](https://github.com/escobard/create-app/blob/master/api/ops/Dockerfile.dev).
