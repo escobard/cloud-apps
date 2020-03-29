@@ -19,4 +19,4 @@ services:
       - ../:/usr/create-app/e2e
       - /usr/create-app/e2e/node_modules
     command: |
-      sh -c "/wait && npm start"
+      sh -c "/wait && npm run test-compose"

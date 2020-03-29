@@ -1,15 +1,17 @@
-describe("addNote route", () => {
-  it(">> happy path, response has expected properties", async () => {
+export default describe("addNote route", () => {
+  it(">> smoke test, response has expected properties", async () => {
     const {
         addNote: { request: addNoteRequest }
       } = sampleData,
       { body,status } = await request(server).post(addNote).send(addNoteRequest);
 
-    expect(status).toEqual(200)
+    expect(status).toEqual(200);
     expect(body.note).toEqual(addNoteRequest.note);
     expect(body.subject).toEqual(addNoteRequest.subject);
     expect(body.user_id).toEqual(addNoteRequest.user_id);
-    expect(typeof body.id).toBe("number");
-    expect(typeof body.date).toBe("string");
+    expect(body.id).toBeNumber();
+    expect(body.date).toBeString();
+    expect(body.subject).toBeString();
+    expect(body.note).toBeString();
   });
 });

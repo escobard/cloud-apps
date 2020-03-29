@@ -1,7 +1,7 @@
-describe("health route", () => {
-  it(">> has DB, is running in test environment", async () => {
+export default describe("health route", () => {
+  it(">> smoke test, has DB, is running in test environment", async () => {
     let {status, body} = await request(server).get(health);
     expect(status).toEqual(200)
-    expect(body).toEqual(sampleData.health.response);
+    return expect(body).toEqual(sampleData.health.response);
   });
 });

@@ -1,4 +1,4 @@
-module.exports = {
+export const LandingHappy = {
   "@tags": ["happy"],
   "Test": browser => {
     const landingPage = browser.page.Landing();
@@ -6,4 +6,4 @@ module.exports = {
     landingPage.navigate().assertWithNotes(browser);
     browser.end();
   }
-}
+};
