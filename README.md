@@ -1,5 +1,6 @@
 # create-app 
-An enterprise platform boilerplate, powered by React, Node, Postgres and Docker.       
+
+An enterprise platform boilerplate, powered by React, Node, Postgres, Jest and Docker.       
         
 Production version available here: http://create-app.us-east-2.elasticbeanstalk.com/        
         
@@ -24,19 +25,9 @@ For a deeper dive into the drivers behind this project, read through [`documenta
   `npm run test`  
   #### Prod debugging        
  `npm run prod`   
-  ### NPM - LEGACY        
- The following scripts can be used to run the UI and the API application `concurrently`.         
-        
-Using `concurrently` is not recommended. For debugging, it's recommended to run each application individually.  
-        
-The following scripts assume:        
-        
-1. `npm install` has been run in the `./`,`./ui` and `./api` directories.        
-        
-##### Local development for UI and API        
- `npm run dev-legacy`        
- ##### Run unit tests on UI and API        
- `npm run test-legacy`   
+ 
+ For a full list of all available docker scripts, visit [`documentation/ops.md`](https://github.com/escobard/create-app/blob/master/documentation/ops.md).  
+
  ## UI - this area needs work - Follow API format  
   UI documentation can be found here: [documentation/ui.md](https://github.com/escobard/create-app/blob/master/documentation/ui.md)        
         

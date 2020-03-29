@@ -18,9 +18,7 @@
     "test-ui-e2e-with-data": "",
     "test": "npm run test-api-unit && npm run test-api-integration",
     "prod": "docker-compose -f ops/prod.yaml up",
-    "clean": "docker system prune -a",
-    "test-legacy": "concurrently --names \"UI,API\" \"npm run test --prefix ui\" \"npm run test --prefix api\" ",
-    "dev-legacy": "concurrently --names \"UI,API\" \"npm run start --prefix ui\" \"npm run dev --prefix api\" "
+    "clean": "docker system prune -a"
   },
   "repository": {
     "type": "git",

@@ -3,7 +3,7 @@
  * @dev depends on a running host
  */
 
-const { ops, routes, sampleData } = require("./constants")
+import { ops, routes, sampleData } from "./constants";
 
 before((done) =>{
 

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run test",
     "port": "set port=5000",
-    "test": "npm run port && mocha \"./{,!(node_modules)/**/}*.test.js\"",
+    "test": "npm run port && mocha --compilers js:@babel/register \"./{,!(node_modules)/**/}*.test.js\"",
     "test-watch": "npm run port && mocha --watch \"./{,!(node_modules)/**/}*.test.js\"",
     "test-in-order": "npm run port && mocha --bail ./tests/tests-in-order.js",
     "test-compose": "docker-compose -f ops/api-test-integration.yaml up --exit-code-from integration"
@@ -21,5 +21,12 @@
     "chai": "^4.2.0",
     "mocha": "^5.2.0",
     "supertest": "^3.4.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/register": "^7.9.0"
   }
 }
