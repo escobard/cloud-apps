@@ -30,9 +30,7 @@ describe("App container", () => {
     it(">> displays API validation form errors", async () => {
       const identifier = "unique test string";
       axios.post.mockRejectedValue(identifier);
-      const {  getByText, getByRole, getByLabelText } = render(
-        <App />
-      );
+      const { getByText, getByRole, getByLabelText } = render(<App />);
       act(() => {
         fireEvent.click(getByRole("button"));
       });
@@ -60,8 +58,7 @@ describe("App container", () => {
             id: 20,
             user_id: 1,
             subject: subjectValue,
-            note:
-              noteValue,
+            note: noteValue,
             date: "03/24/20, 12:04 AM"
           },
           status: "test"
@@ -70,9 +67,7 @@ describe("App container", () => {
       };
       axios.post.mockResolvedValue(response);
       axios.get.mockResolvedValue([response]);
-      const { getByRole, getByText, getByLabelText } = render(
-        <App />
-      );
+      const { getByRole, getByText, getByLabelText } = render(<App />);
       act(() => {
         fireEvent.click(getByRole("button"));
       });
@@ -89,7 +84,7 @@ describe("App container", () => {
       });
       expect(getByLabelText("Update"));
       expect(getByText("Note added!"));
-      await waitForElementToBeRemoved(() => getByLabelText("Back"))
+      await waitForElementToBeRemoved(() => getByLabelText("Back"));
     });
   });
 
@@ -119,19 +114,17 @@ describe("App container", () => {
   });
 
   describe(">> render()", () => {
+
     it(">> snapshot is up to date", () => {
       const { container } = render(<App />);
       expect(container).toMatchSnapshot();
     });
+
     it(">> opens and closes modal", () => {
       const { queryByLabelText, getByRole, getByLabelText } = render(<App />);
-      act(() => {
-        fireEvent.click(getByRole("button"));
-      });
-      act(() => {
-        fireEvent.click(getByLabelText("Back"));
-      });
-      expect(queryByLabelText("Back")).toBeNull()
+      fireEvent.click(getByRole("button"));
+      fireEvent.click(getByLabelText("Back"));
+      expect(queryByLabelText("Back")).toBeNull();
     });
   });
 });
