@@ -13,7 +13,7 @@ import "./Modal.scss";
  * @returns {Component}, ModalElement
  * */
 
-const ModalElement = ({ state, close, data: {title, content}}) => (
+const ModalElement = ({ state, close, data: { title, content } }) => (
   <Modal id="modal" size="large" open={state} onClose={close}>
     <Modal.Content>
       <Grid className="header">
@@ -46,6 +46,14 @@ const ModalElement = ({ state, close, data: {title, content}}) => (
   </Modal>
 );
 
+Modal.PropTypes = {
+  state: PropTypes.bool.isRequired,
+  close: PropTypes.func.isRequired,
+  data: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    close: PropTypes.object.isRequired
+  })
+};
 
 
 export default ModalElement;
