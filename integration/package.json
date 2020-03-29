@@ -6,11 +6,11 @@
   "author": "escobard",
   "license": "ISC",
   "scripts": {
-    "start": "npm run test",
+    "start": "npm run test-in-order",
     "port": "set port=5000",
     "test": "npm run port && jest",
     "test-watch": "npm run port && jest --watch",
-    "test-bail": "npm run port && jest --bail",
+    "test-in-order": "npm run port && jest --bail --runInBand test-in-order",
     "test-compose": "docker-compose -f ops/api-test-integration.yaml up --exit-code-from integration"
   },
   "engines": {
@@ -21,9 +21,11 @@
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
     "@babel/node": "^7.8.7",
+    "@babel/plugin-transform-runtime": "^7.9.0",
     "@babel/preset-env": "^7.9.0",
     "@babel/register": "^7.9.0",
     "jest": "^24.9.0",
+    "jest-extended": "^0.11.5",
     "jest-resolve": "24.7.1",
     "jest-watch-typeahead": "^0.4.2",
     "supertest": "^3.4.2"
@@ -34,11 +36,11 @@
       "!<rootDir>/node_modules/"
     ],
     "setupFilesAfterEnv": [
+      "jest-extended",
       "<rootDir>/setupTests.js"
     ],
     "testMatch": [
-      "<rootDir>/**/__tests__/**/*.{js,jsx,ts,tsx}",
-      "<rootDir>/**/*.{spec,test}.{js,jsx,ts,tsx}"
+      "<rootDir>/**/*.test.{js,jsx,ts,tsx}"
     ],
     "moduleDirectories": [
       "node_modules"
@@ -56,6 +58,8 @@
     "presets": [
       "@babel/preset-env"
     ],
-  "plugins": ["@babel/plugin-transform-runtime"]
+    "plugins": [
+      "@babel/plugin-transform-runtime"
+    ]
   }
 }

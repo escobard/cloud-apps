@@ -11,6 +11,7 @@ services:
       - UI_PORT=3000
       - SELENIUM_PORT=4444
       - SELENIUM_HOST=chromedriver
+      - CONFIG=
       - WAIT_HOSTS=chromedriver:4444, ui:3000
     build:
       context: ../..
@@ -19,4 +20,4 @@ services:
       - ../:/usr/create-app/e2e
       - /usr/create-app/e2e/node_modules
     command: |
-      sh -c "/wait && npm run test-docker"
+      sh -c "/wait && npm run test-compose"

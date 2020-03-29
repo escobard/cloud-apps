@@ -15,13 +15,19 @@ To quickly spin up a development instance of the platform, run `npm run dev` in 
 
 #### Development
 
+To watch all tests:
+
 `npm run test-watch`
+
+To watch a single test:
+
+`npm run test-watch moduleName`
 
 #### Test in order
 
 This is the script that is used in CI/CD:
 
-`npm run test-in-order`
+`npm run test-bail`
 
 #### Run all tests
 

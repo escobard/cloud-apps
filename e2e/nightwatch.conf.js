@@ -3,12 +3,12 @@
  * @dev used mostly for local development and e2e debugging
  */
 
-const chrome = require("chromedriver"),
-  headless = process.argv.includes("--headless") ? ["headless"] : [];
+const chrome = require("chromedriver");
 
 module.exports = {
   src_folders: ["tests"],
   page_objects_path: ["screens"],
+  globals_path : "nightwatch.globals.js",
   test_workers: false,
   webdriver: {
     start_process: true,
@@ -28,7 +28,8 @@ module.exports = {
       desiredCapabilities: {
         browserName: "chrome",
         chromeOptions: {
-          args: headless,
+          // remove args property to show browser
+          args: ["headless"],
           w3c: false
         }
       }
