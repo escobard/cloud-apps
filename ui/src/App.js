@@ -77,8 +77,6 @@ const App = () => {
           status: "red"
         });
       }
-
-      if (response.data.note) {
         const {
           data: { status }
         } = response;
@@ -98,7 +96,6 @@ const App = () => {
           return setAlert({});
         }, 500);
       }
-    }
   };
 
   /** Renders Notes based on API response

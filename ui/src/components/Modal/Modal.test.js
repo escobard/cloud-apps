@@ -1,10 +1,8 @@
-import { shallow } from "enzyme";
 import Modal from "./index";
 
-describe("Modal snapshot renders", () => {
-  it("should render correctly mode", () => {
-    const component = shallow(<Modal />);
-
-    expect(component).toMatchSnapshot();
+describe(">> render()", () => {
+  it(">> snapshot is up to date", () => {
+    const { container } = render(<Modal />);
+    expect(container).toMatchSnapshot();
   });
 });
