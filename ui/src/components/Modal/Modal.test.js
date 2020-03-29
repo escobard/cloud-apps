@@ -1,6 +1,6 @@
 import Modal from "./index";
 
-describe(">> render()", () => {
+describe(">> Modal component", () => {
   it(">> snapshot is up to date", () => {
     const { container } = render(<Modal />);
     expect(container).toMatchSnapshot();

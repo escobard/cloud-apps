@@ -1,7 +1,7 @@
 import { notes } from "./constants/catalog";
 import App from "./App";
 
-describe("App", () => {
+describe("App container", () => {
   afterEach(() => {
     cleanup();
   });

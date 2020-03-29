@@ -130,19 +130,20 @@ const App = () => {
       <div className="divider" />
       <main id={id} className="application">
         <Modal
-          id={id}
-          title="Add Note"
-          open={showModal}
+          state={showModal}
           // TODO - reset errors to default on close
           close={() => setAlert({}) + setShowModal(false)}
-          content={
-            <Form
-              id={id}
-              message={alert}
-              submit={addNote}
-              fields={addNoteFields}
-            />
-          }
+          data={{
+            title: "Add note",
+            content: (
+              <Form
+                id={id}
+                message={alert}
+                submit={addNote}
+                fields={addNoteFields}
+              />
+            )
+          }}
         />
         {notes && renderNotes(id, notes)}
       </main>
