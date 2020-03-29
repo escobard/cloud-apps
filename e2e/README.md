@@ -1,6 +1,7 @@
 # End to End Tests
 
-For more End to End Test documentation, visit [documents/integration.md](https://github.com/escobard/create-app/blob/master/documentation/integration.md)
+For more End to End Test documentation, visit [documents/e2e.md](https://github.com/escobard/create-app/blob
+/master/documentation/e2e.md)
 
 ## Usage
 

@@ -1,7 +1,7 @@
 version: '3'
 services:
   postgres:
-    container_name: pgdb_test
+    container_name: pgdb_dev
     build:
       context: ../db
     ports:
@@ -10,7 +10,7 @@ services:
     environment:
       POSTGRES_HOST_AUTH_METHOD: trust
   api:
-    container_name: api_test
+    container_name: api_dev
     working_dir: /usr/create-app/api
     environment:
       - DOCKER_VARIANT=compose_routing
@@ -21,27 +21,29 @@ services:
       - PGPORT=5432
       - WAIT_HOSTS=postgres:5432
     ports:
-      - "4000:4000"
+    - "4000:4000"
     build:
       context: ../api
-      dockerfile: ops/Dockerfile.dev
+      dockerfile: ../api/docker/Dockerfile.dev
     volumes:
-      - ../api:/usr/create-app/api
-      - /usr/create-app/api/node_modules
+    - ../api:/usr/create-app/api
+    - /usr/create-app/api/node_modules
     command: |
-      sh -c "/wait && npm start"
-  integration:
-    container_name: integration_test
-    working_dir: /usr/create-app/integration
+      sh -c "/wait && npm run dev"
+  ui:
+    container_name: ui_dev
+    working_dir: /usr/create-app/ui
     environment:
-      - API_HOST=api
+      - REACT_APP_environment=docker_dev
+      - DOCKER_VARIANT=compose_routing
       - WAIT_HOSTS=api:4000
-    links:
-      - api
     ports:
-      - "5000:5000"
+    - "3000:3000"
     build:
-      context: ../integration
-      dockerfile: ops/Dockerfile
+      context: ../ui
+      dockerfile: ../ui/docker/Dockerfile.dev
+    volumes:
+      - ../ui:/usr/create-app/ui
+      - /usr/create-app/ui/node_modules
     command: |
-      sh -c "/wait && npm run test-in-order"
+      sh -c "/wait && npm run start"
