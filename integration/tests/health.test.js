@@ -1,12 +1,7 @@
-describe("health", () => {
-  it(">> has DB, is running in test environment", done => {
-    request(server)
-      .get(health)
-      .end((err, res) => {
-        expect(res.status).to.equal(200);
-        expect(res.body).to.deep.equal(sampleData.health.response);
-        if (err) return done(err);
-        done();
-      });
+describe("health route", () => {
+  it(">> has DB, is running in test environment", async () => {
+    let {status, body} = await request(server).get(health);
+    expect(status).toEqual(200)
+    expect(body).toEqual(sampleData.health.response);
   });
 });
