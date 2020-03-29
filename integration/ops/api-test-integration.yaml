@@ -10,4 +10,4 @@ services:
       context: ../
       dockerfile: ops/Dockerfile
     command: |
-      sh -c "npm run test-in-order"
+      sh -c "npm run test"

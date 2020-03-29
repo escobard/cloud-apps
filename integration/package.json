@@ -6,9 +6,9 @@
   "scripts": {
     "start": "npm run test",
     "port": "set port=5000",
-    "test": "npm run port && mocha --compilers js:@babel/register \"./{,!(node_modules)/**/}*.test.js\"",
-    "test-watch": "npm run port && mocha --compilers js:@babel/register --watch \"./{,!(node_modules)/**/}*.test.js\"",
-    "test-in-order": "npm run port && mocha --compilers js:@babel/register --bail ./tests/tests-in-order.js",
+    "test": "npm run port && jest",
+    "test-watch": "npm run port && jest --watch",
+    "test-in-order": "npm run port && jest --bail",
     "test-compose": "docker-compose -f ops/api-test-integration.yaml up --exit-code-from integration"
   },
   "engines": {
@@ -18,14 +18,53 @@
   "author": "escobard",
   "license": "ISC",
   "dependencies": {
-    "chai": "^4.2.0",
-    "mocha": "^5.2.0",
-    "supertest": "^3.4.2",
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
     "@babel/node": "^7.8.7",
     "@babel/preset-env": "^7.9.0",
-    "@babel/register": "^7.9.0"
+    "@babel/register": "^7.9.0",
+    "chai": "^4.2.0",
+    "jest": "^24.9.0",
+    "jest-resolve": "24.7.1",
+    "jest-watch-typeahead": "^0.4.2",
+    "mocha": "^5.2.0",
+    "supertest": "^3.4.2"
   },
-  "babel": { "presets": ["@babel/preset-env"] }
+  "jest": {
+    "collectCoverageFrom": [
+      "./**/*.{js,jsx,ts,tsx}",
+      "!<rootDir>/node_modules/"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/setupTests.js"
+    ],
+    "testMatch": [
+      "<rootDir>/**/__tests__/**/*.{js,jsx,ts,tsx}",
+      "<rootDir>/**/*.{spec,test}.{js,jsx,ts,tsx}"
+    ],
+    "moduleDirectories": [
+      "node_modules"
+    ],
+    "moduleFileExtensions": [
+      "web.js",
+      "js",
+      "web.ts",
+      "ts",
+      "web.tsx",
+      "tsx",
+      "json",
+      "web.jsx",
+      "jsx",
+      "node"
+    ],
+    "watchPlugins": [
+      "jest-watch-typeahead/filename",
+      "jest-watch-typeahead/testname"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  }
 }

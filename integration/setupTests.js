@@ -5,14 +5,14 @@
 
 import { ops, routes, sampleData } from "./constants";
 
-before((done) =>{
+beforeAll((done) =>{
 
   const { health, addNote, getNotes } = routes,
     {host, port} = ops;
-  
+
   global.request = require("supertest");
   global.expect = require("chai").expect
-  
+
   global.server = `http://${host}:${port}`
 
   // sample data
