@@ -3,7 +3,7 @@
 exports[`Footer >> snapshot is up to date 1`] = `
 <div>
   <footer
-    id="test-footer"
+    class="error"
   >
     <p>
       NO NOTES

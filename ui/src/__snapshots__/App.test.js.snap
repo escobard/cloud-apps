@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App >> render() >> snapshot is up to date 1`] = `
+exports[`App container >> render() >> snapshot is up to date 1`] = `
 <div>
   <nav
     id="application-navigation"
@@ -47,9 +47,7 @@ exports[`App >> render() >> snapshot is up to date 1`] = `
       </div>
     </div>
   </main>
-  <footer
-    id="application-footer"
-  >
+  <footer>
     <p>
       NO NOTES
     </p>
