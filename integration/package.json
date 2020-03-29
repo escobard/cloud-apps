@@ -6,7 +6,7 @@
   "author": "escobard",
   "license": "ISC",
   "scripts": {
-    "start": "npm run test",
+    "start": "npm run test-bail",
     "port": "set port=5000",
     "test": "npm run port && jest",
     "test-watch": "npm run port && jest --watch",

@@ -9,6 +9,7 @@ const chrome = require("chromedriver"),
 module.exports = {
   src_folders: ["tests"],
   page_objects_path: ["screens"],
+  globals_path : "nightwatch.globals.js",
   test_workers: false,
   webdriver: {
     start_process: true,

@@ -8,6 +8,7 @@ const { config } = require("./constants")
 module.exports = {
   src_folders: ["tests"],
   page_objects_path: ["screens"],
+  globals_path : "nightwatch.globals.js",
   test_workers: false,
   selenium: {
     start_process: false
