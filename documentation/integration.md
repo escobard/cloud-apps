@@ -1,9 +1,9 @@
-# End to End
+# Integration
 
 ## Introduction
 
-The purpose of the End-to-End(e2e) application is to run e2e tests against the UI, to validating product readiness
- prior to deployment.
+The purpose of the integration application is to run end to end integration tests against the API, validating product
+ readiness prior to  deployment.
 
 ## Quickstart
 
@@ -24,23 +24,7 @@ In your terminal, from the parent directory:
 
 ## Usage - Expanded 
 
-### Nightwatch Tests
-
-#### Globals 
-
-All tests rely on global variables initiated at test runtime, found at [`e2e/nightwatch.global.js`](https://github.com/escobard/create-app/blob/master/e2e/nightwatch.global.js)
-
-Constants for global use are initiated globally at test runtime and live within [`e2e/constants`](https://github.com/escobard/create-app/tree/master/e2e/constants)
-
-#### Page Objects
-
-Page objects are imported into the [`e2e/nightwatch.global.js`](https://github.com/escobard/create-app/blob/master/e2e/nightwatch.global.js) from [`e2e/screens`](https://github.com/escobard/create-app/blob/master/e2e/screens).
-
-#### Tests
-
-Tests leverage [`jest`](https://jestjs.io/), [`@testing-library/nightwatch`](https://github.com/testing-library/nightwatch-testing-library) and [`page objects`](https://nightwatchjs.org/guide/working-with-page-objects/). All tests are found within [`e2e/tests`](https://github.com/escobard/create-app/blob/master/e2e/tests)
-
-Tests are divided into 3 types: `smoke`, `happy`, `sad`.
+### Supertest
 
 ### Jest
 
@@ -49,8 +33,6 @@ Tests are divided into 3 types: `smoke`, `happy`, `sad`.
 
 [`e2e/jest.config.js`](https://github.com/escobard/create-app/blob/master/e2e/jest.config.js) sets up jest with
  nightwatch, all supporting files live within [`e2e/jest-config`](https://github.com/escobard/create-app/blob/master/e2e/jest-config).
-
-### @testing-library/nightwatch
 
 ### Babel
 
