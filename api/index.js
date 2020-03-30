@@ -1,5 +1,6 @@
-const express = require("express"),
-  createMiddleware = require("swagger-express-middleware"),
+require("@babel/core").transform("code");
+import express from "express";
+const createMiddleware = require("swagger-express-middleware"),
   bodyParser = require("body-parser"),
   cors = require("cors"),
   app = express(),
