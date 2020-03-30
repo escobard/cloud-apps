@@ -11,7 +11,8 @@
     "docker-build": "docker build -t escobard/create-app-api:latest -f docker/Dockerfile .",
     "docker-start": "docker run --name api -p 4000:4000 -t escobard/create-app-api:latest",
     "docker-rm": "docker stop api && docker rm api",
-    "docker": "npm run docker-build && npm run docker-start"
+    "docker": "npm run docker-build && npm run docker-start",
+    "jest": "jest"
   },
   "engines": {
     "node": "10.x",

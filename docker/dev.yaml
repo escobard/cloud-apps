@@ -1,42 +1,11 @@
 version: '3'
 services:
-  postgres:
-    container_name: pgdb_dev
-    build:
-      context: ../db
-    ports:
-      - "5432:5432"
-    # TODO - replace this by creating a default superadmin with SQL for phase 4
-    environment:
-      POSTGRES_HOST_AUTH_METHOD: trust
-  api:
-    container_name: api_dev
-    working_dir: /usr/create-app/api
-    environment:
-      - DOCKER_VARIANT=compose_routing
-      - PGUSER=postgres
-      - PGHOST=postgres
-      - PGDATABASE=postgres
-      - PGPASSWORD=postgres_password
-      - PGPORT=5432
-      - WAIT_HOSTS=postgres:5432
-    ports:
-    - "4000:4000"
-    build:
-      context: ../api
-      dockerfile: docker/Dockerfile.dev
-    volumes:
-    - ../api:/usr/create-app/api
-    - /usr/create-app/api/node_modules
-    command: |
-      sh -c "/wait && npm run dev"
   ui:
     container_name: ui_dev
     working_dir: /usr/create-app/ui
     environment:
       - REACT_APP_environment=docker_dev
       - DOCKER_VARIANT=compose_routing
-      - WAIT_HOSTS=api:4000
     ports:
     - "3000:3000"
     build:
