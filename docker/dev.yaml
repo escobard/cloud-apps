@@ -24,7 +24,7 @@ services:
       - "4000:4000"
     build:
       context: ../api
-      dockerfile: ops/Dockerfile.dev
+      dockerfile: docker/Dockerfile.dev
     volumes:
       - ../api:/usr/create-app/api
       - /usr/create-app/api/node_modules
@@ -36,11 +36,12 @@ services:
     environment:
       - REACT_APP_environment=docker_dev
       - DOCKER_VARIANT=compose_routing
+      - WAIT_HOSTS=api:4000
     ports:
       - "3000:3000"
     build:
       context: ../ui
-      dockerfile: ../ui/docker/Dockerfile.dev
+      dockerfile: docker/Dockerfile.dev
     volumes:
       - ../ui:/usr/create-app/ui
       - /usr/create-app/ui/node_modules
