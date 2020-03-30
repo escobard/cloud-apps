@@ -1,12 +1,13 @@
-require("@babel/core").transform("code");
 import express from "express";
-const createMiddleware = require("swagger-express-middleware"),
-  bodyParser = require("body-parser"),
-  cors = require("cors"),
-  app = express(),
-  { routes } = require("./constants"),
-  port = routes.port,
-  { swaggerValidation } = require("./middlewares");
+import createMiddleware from "swagger-express-middleware";
+import cors from "cors";
+import bodyParser from "body-parser";
+
+import { routes } from "./constants";
+import { swaggerValidation } from "./middlewares";
+
+const app = express();
+const port = routes.port;
 
 app.use(bodyParser.json());
 app.use(cors({ origin: "*" }));
@@ -30,8 +31,8 @@ createMiddleware("Notes.yaml", app, (err, middleware) => {
   require("./routes")(app);
 });
 
-let server = app.listen(port, () =>
+const server = app.listen(port, () =>
   console.log(`Example app listening on port ${port}!`)
 );
 
-module.exports = server;
+export default server;
