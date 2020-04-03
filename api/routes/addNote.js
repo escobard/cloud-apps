@@ -6,7 +6,7 @@ import { cleanError } from "../utils";
 
 const { Notes } = models;
 
-Router().post("/", checkDB(), async (req, res) => {
+export default Router().post("/", checkDB(), async (req, res) => {
   try {
     console.log("/addNote request", req.body);
     const { subject, note } = req.body;
@@ -28,5 +28,3 @@ Router().post("/", checkDB(), async (req, res) => {
     res.status(503).json(cleanError(err));
   }
 });
-
-export default Router;
