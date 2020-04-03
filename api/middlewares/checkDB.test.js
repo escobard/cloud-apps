@@ -1,4 +1,4 @@
-const checkDB = require("./checkDB");
+import { checkDB } from "./checkDB";
 
 describe("checkDB", function() {
   let req,res,spy;
@@ -12,7 +12,7 @@ describe("checkDB", function() {
     let nextSpy = sinon.spy();
     global.hasDB = true;
 
-    checkDB({}, {}, nextSpy);
+    checkDB()({}, {}, nextSpy);
     expect(nextSpy.calledOnce).to.be.true;
   });
 
@@ -24,7 +24,7 @@ describe("checkDB", function() {
     req = res = {};
     spy = res.status = res.json = sinon.spy();
 
-    checkDB(req, res, nextSpy);
+    checkDB()(req, res, nextSpy);
 
     sinon.assert.calledWith(spy, 503)
     sinon.assert.calledWith(spy, "test DB error")

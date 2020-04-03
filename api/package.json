@@ -6,8 +6,8 @@
   "scripts": {
     "start": "babel-node index.js",
     "dev": "set environment=development&& nodemon --exec babel-node -L index.js",
-    "test": "nyc --reporter=text mocha \"./{,!(node_modules)/**/}*.test.js\"",
-    "test-watch": "set PORT=5555 && nyc mocha --watch \"./{,!(node_modules)/**/}*.test.js\"",
+    "test": "nyc --reporter=text mocha --compilers js:@babel/register \"./{,!(node_modules)/**/}*.test.js\"",
+    "test-watch": "set PORT=5555 && nyc mocha --compilers js:@babel/register --watch \"./{,!(node_modules)/**/}*.test.js\"",
     "docker-build": "docker build -t escobard/create-app-api:latest -f docker/Dockerfile .",
     "docker-start": "docker run --name api -p 4000:4000 -t escobard/create-app-api:latest",
     "docker-rm": "docker stop api && docker rm api",

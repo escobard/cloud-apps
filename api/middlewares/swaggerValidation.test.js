@@ -1,4 +1,4 @@
-const swaggerValidation = require("./swaggerValidation");
+import swaggerValidation from "./swaggerValidation";
 
 describe("swaggerValidation", function() {
   let req, res, spy;

@@ -6,7 +6,7 @@ const router = require("express").Router(),
   { cleanError } = require("../utils");
 
 // the route here is replaced by the route passed within ./tests-in-order.js
-router.get("/", checkDB, async (req, res) => {
+router.get("/", checkDB(), async (req, res) => {
   try {
     const getNotes = await Notes.findAll();
     return res.status(200).json(getNotes.reverse());

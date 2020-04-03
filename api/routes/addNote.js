@@ -5,7 +5,7 @@ const router = require("express").Router(),
   { checkDB } = require("../middlewares"),
   { cleanError } = require("../utils");
 
-router.post("/", checkDB, async (req, res) => {
+router.post("/", checkDB(), async (req, res) => {
   try {
     console.log("/addNote request", req.body);
     const { subject, note } = req.body;
