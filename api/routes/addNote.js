@@ -1,4 +1,4 @@
-import express, { Router } from "express";
+import { Router } from "express";
 
 import { models } from "../services/postgres"
 import { checkDB } from "../middlewares";

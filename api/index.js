@@ -5,6 +5,7 @@ import bodyParser from "body-parser";
 
 import { routes } from "./constants";
 import { swaggerValidation } from "./middlewares";
+import docs from "./routes/docs";
 
 const app = express();
 const port = routes.port;
@@ -13,7 +14,7 @@ app.use(bodyParser.json());
 app.use(cors({ origin: "*" }));
 
 // swagger docs
-app.use(routes.docs, require("./routes/docs"));
+app.use(routes.docs, docs);
 
 createMiddleware("Notes.yaml", app, (err, middleware) => {
   app.use(
