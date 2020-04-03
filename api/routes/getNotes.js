@@ -1,12 +1,12 @@
-const router = require("express").Router(),
-  {
-    models: { Notes }
-  } = require("../services/postgres"),
-  { checkDB } = require("../middlewares"),
-  { cleanError } = require("../utils");
+import { Router } from "express";
 
-// the route here is replaced by the route passed within ./tests-in-order.js
-router.get("/", checkDB(), async (req, res) => {
+import { models } from "../services/postgres"
+import { checkDB } from "../middlewares";
+import { cleanError } from "../utils";
+
+const { Notes } = models;
+
+export default Router().get("/", checkDB(), async (req, res) => {
   try {
     const getNotes = await Notes.findAll();
     return res.status(200).json(getNotes.reverse());
@@ -14,5 +14,3 @@ router.get("/", checkDB(), async (req, res) => {
     return res.status(503).json(cleanError(err));
   }
 });
-
-module.exports = router;
