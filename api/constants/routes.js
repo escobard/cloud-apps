@@ -6,4 +6,4 @@ const routes = {
     getNotes: "/getNotes"
 };
 
-module.exports = routes;
+export default routes;

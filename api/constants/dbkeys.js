@@ -1,4 +1,4 @@
-const keys = {
+const dbkeys = {
     pgUser: process.env.PGUSER,
     pgHost: process.env.PGHOST,
     pgPort: process.env.PGPORT,
@@ -6,3 +6,4 @@ const keys = {
     pgPassword: process.env.PGPASSWORD
 };
 
+export default dbkeys;
