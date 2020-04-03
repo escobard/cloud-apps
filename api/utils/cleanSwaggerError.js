@@ -21,4 +21,4 @@ const cleanSwaggerError = error => {
   };
 };
 
-module.exports = cleanSwaggerError;
+export default cleanSwaggerError;

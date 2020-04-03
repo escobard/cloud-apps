@@ -1,7 +1,7 @@
-const cleanSwaggerError = require('./cleanSwaggerError'),
-  cleanError = require("./cleanError")
+import cleanSwaggerError from "./cleanSwaggerError";
+import cleanError from "./cleanError";
 
-module.exports = {
+export {
   cleanSwaggerError,
   cleanError
 }

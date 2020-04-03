@@ -1,4 +1,4 @@
-const { cleanSwaggerError } = require("./");
+import { cleanSwaggerError } from "./";
 
 describe("cleanSwaggerError", () => {
   it(">> creates response object in the desired format", () => {

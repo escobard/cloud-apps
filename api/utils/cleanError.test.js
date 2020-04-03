@@ -1,4 +1,4 @@
-const { cleanError } = require("./");
+import { cleanError } from "./";
 
 describe("cleanError", () => {
   it(">> creates response object in the desired format", () => {
