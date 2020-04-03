@@ -1,10 +1,8 @@
 import { Router } from "express";
 
-import { models } from "../services/postgres"
+import { Notes } from "../services/postgres"
 import { checkDB } from "../middlewares";
 import { cleanError } from "../utils";
-
-const { Notes } = models;
 
 export default Router().post("/", checkDB(), async (req, res) => {
   try {

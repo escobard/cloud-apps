@@ -1,4 +1,5 @@
-const { Users } = require("./models");
+import { Users } from "./models";
+
 const authenticate = sequelize => {
   return sequelize
     .authenticate()
@@ -44,4 +45,4 @@ const authenticate = sequelize => {
     });
 };
 
-module.exports = authenticate;
+export default authenticate;
