@@ -1,11 +1,12 @@
-const router = require("express").Router(),
-  {
-    models: { Notes }
-  } = require("../services/postgres"),
-  { checkDB } = require("../middlewares"),
-  { cleanError } = require("../utils");
+import express, { Router } from "express";
 
-router.post("/", checkDB(), async (req, res) => {
+import { models } from "../services/postgres"
+import { checkDB } from "../middlewares";
+import { cleanError } from "../utils";
+
+const { Notes } = models;
+
+Router().post("/", checkDB(), async (req, res) => {
   try {
     console.log("/addNote request", req.body);
     const { subject, note } = req.body;
@@ -28,4 +29,4 @@ router.post("/", checkDB(), async (req, res) => {
   }
 });
 
-module.exports = router;
+export default Router;

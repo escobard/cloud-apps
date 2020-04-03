@@ -1,4 +1,6 @@
-const { Notes } = require("../services/postgres/models");
+import { models } from "../services/postgres"
+
+const { Notes } = models;
 
 describe("addNote route", () => {
   let note;
