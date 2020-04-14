@@ -1,6 +1,4 @@
-const sequelize = require("./sequelize"),
-  authenticate = require("./authenticate"),
-  { Users } = require("./models");
+import { sequelize, authenticate, Users} from "./"
 
 describe("DB Authentication", () => {
   const users = [

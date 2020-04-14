@@ -6,6 +6,7 @@ authenticate(sequelize)
 
 export {
   sequelize,
+  authenticate,
   Users,
   Notes
 }

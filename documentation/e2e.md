@@ -52,9 +52,15 @@ Tests are divided into 3 types: `smoke`, `happy`, `sad`.
 
 ### @testing-library/nightwatch
 
+[@testing-library/nightwatch](https://testing-library.com/docs/nightwatch-testing-library/intro) to
+ align the syntax between `UI unit and end to end tests`. (make a note on the UI documentation on how queries are  leveraged)
+ 
+ Since we use [`testing-library queries`](https://testing-library.com/docs/react-testing-library/cheatsheet), a
+   [`unit test like approach with expect`](https://nightwatchjs.org/api/expect/) is leveraged.
+
 ### Babel
 
-## Docker
+## Docker - needs to be cleaned up for e2e
 
 ### Development
 
