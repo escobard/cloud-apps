@@ -15,7 +15,7 @@ services:
       - WAIT_HOSTS=chromedriver:4444, ui:3000
     build:
       context: ../..
-      dockerfile: ../../docker/Dockerfile
+      dockerfile: docker/Dockerfile
     volumes:
       - ../:/usr/create-app/e2e
       - /usr/create-app/e2e/node_modules

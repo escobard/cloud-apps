@@ -62,6 +62,8 @@ This file is leveraged by the [`ops/prod.yaml`](https://github.com/escobard/crea
 
 ## Libraries, Frameworks & Tools
 
+TODO - update as part of #122
+
 [node](https://nodejs.org/en/)
 
 [express](https://expressjs.com/)
@@ -71,6 +73,7 @@ This file is leveraged by the [`ops/prod.yaml`](https://github.com/escobard/crea
 [swagger-express-middleware](https://www.npmjs.com/package/swagger-express-middleware)
 
 [swagger-ui-express](https://www.npmjs.com/package/swagger-ui-express)
+
 
 [mocha](https://mochajs.org/)
 

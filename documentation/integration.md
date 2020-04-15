@@ -28,13 +28,15 @@ In your terminal, from the parent directory:
 
 ### Jest
 
-[Jest](https://jestjs.io/) is utilized as the `test runner` for this application, boilerplated from [the official jest
+[Jest](https://jestjs.io/) as the `test runner` for this application, boilerplated from [the official jest
  / nightwatch POC](https://github.com/mucsi96/nightwatch-api/tree/master/packages/jest-example).
 
 [`e2e/jest.config.js`](https://github.com/escobard/create-app/blob/master/e2e/jest.config.js) sets up jest with
  nightwatch, all supporting files live within [`e2e/jest-config`](https://github.com/escobard/create-app/blob/master/e2e/jest-config).
 
 ### Babel
+
+[`@babel/preset-env`](https://babeljs.io/docs/en/babel-preset-env) for JavaScript es6+ syntax. 
 
 ## Docker
 

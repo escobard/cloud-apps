@@ -53,47 +53,49 @@ Tests are divided into 3 types: `smoke`, `happy`, `sad`.
 ### @testing-library/nightwatch
 
 [@testing-library/nightwatch](https://testing-library.com/docs/nightwatch-testing-library/intro) to
- align the syntax between `UI unit and end to end tests`. (make a note on the UI documentation on how queries are  leveraged)
+ align the syntax between `UI unit and end to end tests`. (make a note on the UI documentation on how queries are leveraged)
  
  Since we use [`testing-library queries`](https://testing-library.com/docs/react-testing-library/cheatsheet), a
    [`unit test like approach with expect`](https://nightwatchjs.org/api/expect/) is leveraged.
 
 ### Babel
 
-## Docker - needs to be cleaned up for e2e
+[`@babel/preset-env`](https://babeljs.io/docs/en/babel-preset-env) for JavaScript es6+ syntax. 
+
+## Docker
 
 ### Development
 
-Dependent on [`api/ops/Dockerfile.dev`](https://github.com/escobard/create-app/blob/master/api/ops/Dockerfile.dev).
+Dependent on [`e2e/docker/Dockerfile`](https://github.com/escobard/create-app/blob/master/e2e/docker/Dockerfile), must have a running `ui, api and db` with the UI available on `localhost:4000`.
+
+TODO - update this section as part of #89
 
 This file is leveraged by the [`ops/dev.yaml`](https://github.com/escobard/create-app/blob/master/ops/dev.yaml), [`ops/api-unit-tests.yaml`](https://github.com/escobard/create-app/blob/master/ops/api-unit-tests.yaml) and the [`ops/api-integration-tests.yaml`](https://github.com/escobard/create-app/blob/master/ops/api-integration-tests.yaml) docker-compose jobs. Read through [`documentation/ops.md`](https://github.com/escobard/create-app/blob/master/documentation/ops.md) to learn more.
 
+
 ### Production
 
-Dependent on [`api/ops/Dockerfile`](https://github.com/escobard/create-app/blob/master/api/ops/Dockerfile)
+Dependent on [`e2e/docker/Dockerfile`](https://github.com/escobard/create-app/blob/master/e2e/docker/Dockerfile
+), must have a running `ui, api and db` with the UI available on `localhost:4000` if debugging.
+
+TODO - update this section as part of #89
 
 This file is leveraged by the [`ops/prod.yaml`](https://github.com/escobard/create-app/blob/master/ops/prod.yaml
 ) docker-compose job. Read through [`documentation/ops.md`](https://github.com/escobard/create-app/blob/master/documentation/ops.md) to learn more.
 
 ## Libraries, Frameworks & Tools
 
-[node](https://nodejs.org/en/)
+[Nightwatch](https://nightwatchjs.org/)
 
-[express](https://expressjs.com/)
+[Nightwatch with Jest](https://github.com/mucsi96/nightwatch-api/tree/master/packages/jest-example)
 
-[swagger](https://swagger.io/)
+[Jest](https://jestjs.io/)
 
-[swagger-express-middleware](https://www.npmjs.com/package/swagger-express-middleware)
+[@testing-library/nightwatch](https://testing-library.com/docs/nightwatch-testing-library/intro)
 
-[swagger-ui-express](https://www.npmjs.com/package/swagger-ui-express)
+[Babel](https://babeljs.io/docs/en/babel-preset-env)
 
-[mocha](https://mochajs.org/)
+[Docker](https://www.docker.com/)
 
-[chai](https://www.chaijs.com/)
-
-[supertest](https://github.com/visionmedia/supertest)
-
-[docker](https://www.docker.com/)
-
-[docker-compose](https://docs.docker.com/compose/)
+[Docker Compose](https://docs.docker.com/compose/)
 
