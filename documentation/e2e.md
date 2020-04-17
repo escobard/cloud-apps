@@ -64,6 +64,8 @@ Tests are divided into 3 types: `smoke`, `happy`, `sad`.
 
 ## Docker
 
+### Quickstart
+
 ### Development
 
 Dependent on [`e2e/docker/Dockerfile`](https://github.com/escobard/create-app/blob/master/e2e/docker/Dockerfile), must have a running `ui, api and db` with the UI available on `localhost:4000`.
@@ -71,7 +73,6 @@ Dependent on [`e2e/docker/Dockerfile`](https://github.com/escobard/create-app/bl
 TODO - update this section as part of #89
 
 This file is leveraged by the [`ops/dev.yaml`](https://github.com/escobard/create-app/blob/master/ops/dev.yaml), [`ops/api-unit-tests.yaml`](https://github.com/escobard/create-app/blob/master/ops/api-unit-tests.yaml) and the [`ops/api-integration-tests.yaml`](https://github.com/escobard/create-app/blob/master/ops/api-integration-tests.yaml) docker-compose jobs. Read through [`documentation/ops.md`](https://github.com/escobard/create-app/blob/master/documentation/ops.md) to learn more.
-
 
 ### Production
 
