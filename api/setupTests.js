@@ -2,7 +2,6 @@
  * @dev source of truth for all unit tests in the application
  */
 import supertest from "supertest";
-import sinon from "sinon";
 
 import server from "./"
 
@@ -19,7 +18,6 @@ beforeAll((done) =>{
 
   // setup global environment variable for server + request builder
   global.request = supertest;
-  global.sinon = sinon;
 
   // routes
   global.health = health;
@@ -33,7 +31,8 @@ beforeAll((done) =>{
 });
 
 afterEach(done => {
-  sinon.restore();
+  jest.clearAllMocks();
+  jest.restoreAllMocks();
   server.close();
   done();
 });

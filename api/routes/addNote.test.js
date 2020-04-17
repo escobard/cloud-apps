@@ -1,5 +1,7 @@
 import { Notes } from "../services/postgres"
 
+jest.mock("../services/postgres").Notes;
+
 describe("addNote route", () => {
   let note;
   beforeEach(done => {
@@ -17,7 +19,8 @@ describe("addNote route", () => {
 
   it(">> happy path, add note success", async () => {
     global.hasDB = true;
-    sinon.stub(Notes, "create").resolves("Note added!");
+
+    jest.spyOn(Notes, "create").mockResolvedValue("Note added!");
 
     const { body, status } = await request(server).post(addNote).send(note);
 
@@ -28,7 +31,7 @@ describe("addNote route", () => {
   it(">> sad path, general promise rejection", async () => {
     global.hasDB = true;
 
-    const { body, status, error } = await request(server)
+    const { status, error } = await request(server)
       .post(addNote)
       .send(note);
 
