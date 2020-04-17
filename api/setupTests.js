@@ -1,11 +1,15 @@
 /** Configuration file for tests
  * @dev source of truth for all unit tests in the application
  */
+import supertest from "supertest";
+import sinon from "sinon";
 
-const { routes } = require("./constants");
+import server from "./"
+
+import { routes } from "./constants";
 
 // timeout is necessary to unit test swagger middleware
-beforeAll(async () =>{
+beforeAll((done) =>{
 
   const { health, addNote, getNotes } = routes;
 
@@ -14,21 +18,18 @@ beforeAll(async () =>{
   //process.env.PORT = 5555;
 
   // setup global environment variable for server + request builder
-  global.request = require("supertest");
-  global.server = require("./index");
-  global.sinon = require("sinon");
-  global.expect = require("chai").expect;
+  global.request = supertest;
+  global.sinon = sinon;
 
   // routes
   global.health = health;
   global.addNote = addNote;
   global.getNotes = getNotes;
+  global.server = server;
 
-  // TODO - expand request with external API url, if tests are running in CI/CD
-});
-
-beforeEach(async () => {
-  server = require("./index");
+  // TODO - try to eliminate this workaround, only thing that seems to work
+  // necessary workaround to give swagger middleware to initialize
+  setTimeout(done, 100)
 });
 
 afterEach(done => {

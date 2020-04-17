@@ -14,29 +14,30 @@ describe("Health route", () => {
   });
 
   it(">> responds to /health, no DB", async () => {
-    request(server)
-      // TODO - update the string routes for all tests to use constants/routes
-      .get(health)
-      .expect(defaultHealth);
+    const { body, status } = await request(server).get(health)
+
+    //expect(res.status).toEqual(200)
+    expect(status).toEqual(200);
+    expect(body).toEqual(defaultHealth);
   });
 
   it(">> responds to /health, has DB", async () => {
     global.hasDB = true;
     defaultHealth.DB = true;
-    request(server)
-      .get(health)
-      .expect(defaultHealth);
+
+    const { body, status } = await request(server).get(health)
+
+    expect(status).toEqual(200);
+    expect(body).toEqual(defaultHealth);
   });
 
   it(">> responds to /health, on staging / hosting platform", async () => {
     process.env.environment = "testing";
     defaultHealth.process = "testing";
-    request(server)
-      .get(health)
-      .expect(defaultHealth)
-      .end((err, res) => {
-        expect(res.status).to.equal(200);
-        expect(res.body).to.deep.equal(defaultHealth);
-      });
+
+    const { body, status } = await request(server).get(health)
+
+    expect(status).toEqual(200);
+    expect(body).toEqual(defaultHealth);
   });
 });

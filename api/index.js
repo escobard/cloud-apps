@@ -5,6 +5,7 @@ import bodyParser from "body-parser";
 
 import { routes } from "./constants";
 import { swaggerValidation } from "./middlewares";
+import allRoutes from "./routes"
 import docs from "./routes/docs";
 
 const app = express();
@@ -29,10 +30,10 @@ createMiddleware("Notes.yaml", app, (err, middleware) => {
 
   app.use(swaggerValidation(err));
 
-  require("./routes")(app);
+  allRoutes(app)
 });
 
-const server = app.listen(port, () =>
+let server = app.listen(port, () =>
   console.log(`Example app listening on port ${port}!`)
 );
 
