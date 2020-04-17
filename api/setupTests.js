@@ -36,8 +36,3 @@ afterEach(done => {
   server.close();
   done();
 });
-
-afterAll(function(done){
-  sinon.restore();
-  done();
-});
