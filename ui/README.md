@@ -1,8 +1,23 @@
 # UI
 
-For more UI documentation, visit [documents/ui.md](documents/ui.md)
+For more expanded documentation, visit [documents/ui.md](documents/ui.md)
 
-## Usage
+## Quickstart
+
+This application can run standalone, without an API or DB available.
+
+To get access to all features, the create-app `API` must be running on `localhost:4000` connected to running `DB`.
+
+### With NPM
+
+1. `npm install`
+2. `npm start`
+
+### With Docker - TODO - add docker stand alone script for prod
+
+1. `npm run docker`
+
+## Scripts
 
 ### Installation
 
@@ -39,3 +54,11 @@ To fix lint errors
 ### Production
 
 `npm build`
+
+## Docker - TODO - add docker stand alone script for prod
+
+Configuration can be found within [`ui/docker/Dockerfile`](https://github.com/escobard/create-app/blob/master/e2e/docker/ui-test-e2e.yaml).
+
+Builds the UI application into it's production version and hosts it on `localhost:3000`:
+
+`npm run docker`

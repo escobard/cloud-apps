@@ -1,11 +1,12 @@
-const sequelize = require("./sequelize"),
-  models = require("./models"),
-  authenticate = require("./authenticate")
+import sequelize from "./sequelize"
+import { Users, Notes } from "./models";
+import authenticate from "./authenticate"
 
-// authenticates DB connection
 authenticate(sequelize)
 
-module.exports = {
+export {
   sequelize,
-  models
-};
+  authenticate,
+  Users,
+  Notes
+}

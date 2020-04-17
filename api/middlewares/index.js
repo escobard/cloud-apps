@@ -1,5 +1,5 @@
-const checkDB = require("./checkDB"),
-  swaggerValidation = require("./swaggerValidation")
+import checkDB from "./checkDB";
+import swaggerValidation from "./swaggerValidation";
 
 module.exports = {
   checkDB,

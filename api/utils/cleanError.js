@@ -16,4 +16,4 @@ const cleanError = error => {
   };
 };
 
-module.exports = cleanError;
+export default cleanError;

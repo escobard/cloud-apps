@@ -1,12 +1,14 @@
 // file to connect to sequelize
-const Sequelize = require("sequelize"),
-  {
-    pgPort,
-    pgHost,
-    pgUser,
-    pgDatabase,
-    pgPassword
-  } = require("../../constants").dbkeys;
+import Sequelize from "sequelize";
+import { dbkeys } from "../../constants"
+
+const  {
+  pgPort,
+  pgHost,
+  pgUser,
+  pgDatabase,
+  pgPassword
+} = dbkeys;
 
 const sequelize = new Sequelize(pgDatabase, pgUser, pgPassword, {
   host: pgHost,
@@ -18,5 +20,4 @@ const sequelize = new Sequelize(pgDatabase, pgUser, pgPassword, {
   }
 });
 
-module.exports = sequelize;
-
+export default sequelize;

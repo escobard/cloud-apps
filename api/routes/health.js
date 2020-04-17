@@ -1,6 +1,6 @@
-const router = require("express").Router();
+import { Router } from "express";
 
-router.get("/", (req, res) => {
+export default Router().get("/", (req, res) => {
   res.status(200).json({
     healthy: true,
     DB: global.hasDB === true,
@@ -9,5 +9,3 @@ router.get("/", (req, res) => {
     process: process.env.environment
   });
 });
-
-module.exports = router;

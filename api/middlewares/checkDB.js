@@ -1,17 +1,18 @@
-const { sequelize } = require("../services/postgres");
-
 /** Middelware to check connection to DB
  * @dev prevents API crashes when DB is unavailable
  */
 
-// TODO - improve with cleanError.js util
-module.exports = function checkDB(){
+function checkDB(){
   return async (req, res, next) => {
     if (global.hasDB === false){
       res.status(503)
+      // TODO - improve with cleanError.js util
       return res.json(global.dBError);
     }else{
       next()
+
     }
   }
-}();
+};
+
+export default checkDB;

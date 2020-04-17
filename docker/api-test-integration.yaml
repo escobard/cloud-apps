@@ -24,7 +24,7 @@ services:
       - "4000:4000"
     build:
       context: ../api
-      dockerfile: ops/Dockerfile.dev
+      dockerfile: ../api/docker/Dockerfile.dev
     volumes:
       - ../api:/usr/create-app/api
       - /usr/create-app/api/node_modules
@@ -42,6 +42,6 @@ services:
       - "5000:5000"
     build:
       context: ../integration
-      dockerfile: ops/Dockerfile
+      dockerfile: ../integration/docker/Dockerfile
     command: |
       sh -c "/wait && npm run test-in-order"

@@ -7,7 +7,7 @@ services:
       - "4000:4000"
     build:
       context: ../api
-      dockerfile: ops/Dockerfile.dev
+      dockerfile: ../api/docker/Dockerfile.dev
     volumes:
       - ../api:/usr/create-app/api
       - /usr/create-app/api/node_modules

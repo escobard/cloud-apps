@@ -1,7 +1,7 @@
-const dbkeys = require("./dbkeys"),
-  routes = require("./routes")
+import dbkeys from "./dbkeys";
+import routes from "./routes"
 
-module.exports = {
+export {
   dbkeys,
   routes
 }

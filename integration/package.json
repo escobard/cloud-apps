@@ -11,7 +11,7 @@
     "test": "npm run port && jest",
     "test-watch": "npm run port && jest --watch",
     "test-in-order": "npm run port && jest --bail --runInBand test-in-order",
-    "test-compose": "docker-compose -f ops/api-test-integration.yaml up --exit-code-from integration"
+    "test-docker": "docker-compose -f docker/api-test-integration.yaml up --exit-code-from integration"
   },
   "engines": {
     "node": "10.x",

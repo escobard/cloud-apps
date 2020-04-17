@@ -21,13 +21,13 @@ services:
       - PGPORT=5432
       - WAIT_HOSTS=postgres:5432
     ports:
-    - "4000:4000"
+      - "4000:4000"
     build:
       context: ../api
-      dockerfile: ops/Dockerfile.dev
+      dockerfile: docker/Dockerfile.dev
     volumes:
-    - ../api:/usr/create-app/api
-    - /usr/create-app/api/node_modules
+      - ../api:/usr/create-app/api
+      - /usr/create-app/api/node_modules
     command: |
       sh -c "/wait && npm run dev"
   ui:
@@ -38,10 +38,10 @@ services:
       - DOCKER_VARIANT=compose_routing
       - WAIT_HOSTS=api:4000
     ports:
-    - "3000:3000"
+      - "3000:3000"
     build:
       context: ../ui
-      dockerfile: Dockerfile.dev
+      dockerfile: docker/Dockerfile.dev
     volumes:
       - ../ui:/usr/create-app/ui
       - /usr/create-app/ui/node_modules

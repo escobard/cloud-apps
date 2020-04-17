@@ -1,11 +1,10 @@
-const router = require("express").Router(),
-  {
-    models: { Notes }
-  } = require("../services/postgres"),
-  { checkDB } = require("../middlewares"),
-  { cleanError } = require("../utils");
+import { Router } from "express";
 
-router.post("/", checkDB, async (req, res) => {
+import { Notes } from "../services/postgres"
+import { checkDB } from "../middlewares";
+import { cleanError } from "../utils";
+
+export default Router().post("/", checkDB(), async (req, res) => {
   try {
     console.log("/addNote request", req.body);
     const { subject, note } = req.body;
@@ -20,12 +19,10 @@ router.post("/", checkDB, async (req, res) => {
     });
 
     // user_id will be dynamic after phase 3
-    // TODO revealing too much information on response, should reduce this with phase 4
+    // TODO revealing too much information on response, should reduce this to only the id with phase 4
     const addNote = await Notes.create({ user_id: 1, subject, note, date });
     res.status(200).json(addNote);
   } catch (err) {
     res.status(503).json(cleanError(err));
   }
 });
-
-module.exports = router;

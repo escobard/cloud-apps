@@ -5,10 +5,9 @@
   "main": "nightwatch.js",
   "scripts": {
     "start": "npm run test",
-    "test": "jest --config nightwatch.conf.docker.js",
+    "test": "jest",
     "test-watch": "jest --watch",
-    "test-docker": "jest --config nightwatch.conf.docker.js",
-    "test-compose": "docker-compose -f ops/ui-test-e2e.yaml up --exit-code-from e2e"
+    "test-docker": "docker-compose -f docker/ui-test-e2e.yaml up --exit-code-from e2e"
   },
   "engines": {
     "node": "10.x",

@@ -1,11 +1,10 @@
-
 /** Middleware to return swagger validation errors
  * @dev throws an error if a request doesn't match our Note.yaml swagger validation
  */
 
-const { cleanSwaggerError } = require("../utils");
+import { cleanSwaggerError } from "../utils"
 
-module.exports = function swaggerValidation(err){
+function swaggerValidation(err){
   return async (err, req, res, next) => {
     if (err) {
       res.status(err.status);
@@ -16,4 +15,6 @@ module.exports = function swaggerValidation(err){
       next();
     }
   }
-};
+}
+
+export default swaggerValidation;

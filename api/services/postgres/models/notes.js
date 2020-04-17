@@ -1,6 +1,6 @@
 const notes = (sequelize, DataTypes) => {
   
-  const Notes = sequelize.define('notes', {
+  return sequelize.define('notes', {
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -19,7 +19,7 @@ const notes = (sequelize, DataTypes) => {
     },
     
   });
-  
-  return Notes;
+
 };
-module.exports.default = notes;
+
+export default notes;

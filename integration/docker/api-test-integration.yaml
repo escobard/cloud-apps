@@ -8,6 +8,6 @@ services:
       - API_PORT=4000
     build:
       context: ../
-      dockerfile: ops/Dockerfile
+      dockerfile: ""
     command: |
       sh -c "npm start"

@@ -47,8 +47,6 @@ DB authentication functionality can be found within [`api/services/postgres/auth
 
 ## Docker
 
-As with the other applications in the stack, docker is heavily leveraged at the API layer.
-
 ### Development
 
 Dependent on [`api/ops/Dockerfile.dev`](https://github.com/escobard/create-app/blob/master/api/ops/Dockerfile.dev).
@@ -64,6 +62,8 @@ This file is leveraged by the [`ops/prod.yaml`](https://github.com/escobard/crea
 
 ## Libraries, Frameworks & Tools
 
+TODO - update as part of #122
+
 [node](https://nodejs.org/en/)
 
 [express](https://expressjs.com/)
@@ -73,6 +73,7 @@ This file is leveraged by the [`ops/prod.yaml`](https://github.com/escobard/crea
 [swagger-express-middleware](https://www.npmjs.com/package/swagger-express-middleware)
 
 [swagger-ui-express](https://www.npmjs.com/package/swagger-ui-express)
+
 
 [mocha](https://mochajs.org/)
 

@@ -1,17 +1,21 @@
-const express = require("express"),
-  createMiddleware = require("swagger-express-middleware"),
-  bodyParser = require("body-parser"),
-  cors = require("cors"),
-  app = express(),
-  { routes } = require("./constants"),
-  port = routes.port,
-  { swaggerValidation } = require("./middlewares");
+import express from "express";
+import createMiddleware from "swagger-express-middleware";
+import cors from "cors";
+import bodyParser from "body-parser";
+
+import { routes } from "./constants";
+import { swaggerValidation } from "./middlewares";
+import allRoutes from "./routes"
+import docs from "./routes/docs";
+
+const app = express();
+const port = routes.port;
 
 app.use(bodyParser.json());
 app.use(cors({ origin: "*" }));
 
 // swagger docs
-app.use(routes.docs, require("./routes/docs"));
+app.use(routes.docs, docs);
 
 createMiddleware("Notes.yaml", app, (err, middleware) => {
   app.use(
@@ -26,11 +30,11 @@ createMiddleware("Notes.yaml", app, (err, middleware) => {
 
   app.use(swaggerValidation(err));
 
-  require("./routes")(app);
+  allRoutes(app)
 });
 
 let server = app.listen(port, () =>
   console.log(`Example app listening on port ${port}!`)
 );
 
-module.exports = server;
+export default server;

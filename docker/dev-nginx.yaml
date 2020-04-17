@@ -1,24 +1,21 @@
 version: '3'
 services:
-  postgres:
-    container_name: pgdb_prod
-    build:
-      context: ../db
-    ports:
-      - "5432:5432"
   ui:
-    container_name: ui_prod
+    container_name: ui_dev
     working_dir: /usr/create-app/ui
     environment:
-      - DOCKER_VARIANT=compose_routing
+      - DOCKER_VARIANT=nginx_routing
       - REACT_APP_DOCKER_VARIANT=nginx_routing
     build:
       context: ../ui
-      dockerfile: Dockerfile.prod
-    ports:
-      - "3000:3000"
+      dockerfile: ../ui/docker/Dockerfile.dev
+    volumes:
+      - ./ui:/usr/create-app/ui
+      - /usr/create-app/ui/node_modules
+    command: |
+      sh -c "npm run start"
   api:
-    container_name: api_prod
+    container_name: api_dev
     working_dir: /usr/create-app/api
     environment:
       - DOCKER_VARIANT=nginx_routing
@@ -28,15 +25,20 @@ services:
       - PGDATABASE=postgres
       - PGPASSWORD=postgres_password
       - PGPORT=5432
-    ports:
-    - "4000:4000"
     build:
       context: ../api
-      dockerfile: api/ops/Dockerfile
+      dockerfile: api/docker/Dockerfile
+    volumes:
+    - ./api:/usr/create-app/api
+    - /usr/create-app/api/node_modules
+    command: |
+      sh -c "npm run dev"
+  postgres:
+    image: 'postgres:latest'
   nginx:
     restart: always
     build:
-      dockerfile: Dockerfile.prod
+      dockerfile: ../nginx/Dockerfile.dev
       context: ../nginx
     ports:
-      - '5000:5000'
+      - '5000:80'

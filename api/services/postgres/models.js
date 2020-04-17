@@ -1,9 +1,5 @@
 // file to add models to sequelize instance
-const sequelize = require("./sequelize");
+import sequelize from "./sequelize"
 
-const models = {
-  Users: sequelize.import("./models/users"),
-  Notes: sequelize.import("./models/notes")
-};
-
-module.exports = models;
+export const Users = sequelize.import("./models/users");
+export const Notes = sequelize.import("./models/notes");

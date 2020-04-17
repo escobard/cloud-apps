@@ -1,5 +1,7 @@
 const { Notes } = require("../services/postgres/models");
 
+jest.mock("../services/postgres").Notes;
+
 describe("getNotes route", () => {
   const users = [
     {
@@ -10,9 +12,6 @@ describe("getNotes route", () => {
       date: "a JavaScript generated date"
     }
   ];
-  beforeEach(done => {
-    done();
-  });
 
   afterEach(done => {
     global.hasDB = null;
@@ -20,29 +19,25 @@ describe("getNotes route", () => {
     done();
   });
 
-  it(">> happy path, get all users success", done => {
+  it(">> happy path, get all users success", async () => {
     global.hasDB = true;
-    sinon.stub(Notes, "findAll").resolves(users);
-    request(server)
-      .get(getNotes)
-      .expect(users)
-      .end((err, res) => {
-        expect(res.status).to.equal(200);
-        if (err) return done(err);
-        done();
-      });
+    jest.spyOn(Notes, "findAll").mockResolvedValue(users);
+
+    const { body, status } = await request(server).get(getNotes);
+
+    expect(status).toEqual(200);
+    expect(body).toEqual(users);
+
   });
 
   it(">> sad path, general promise rejection", async () => {
     global.hasDB = true;
-    request(server)
-      .get(getNotes)
-      .end((err, res) => {
-        expect(res.error.status).to.equal(503);
-        expect(res.error.text).to.equal(
-          '{"type":"Promise rejection error","status":503,"message":"connect ECONNREFUSED 127.0.0.1:5432"}'
-        );
-        if (err) return err;
-      });
+
+    const { error, status } = await request(server).get(getNotes);
+
+    expect(status).toEqual(503);
+    expect(error.text).toEqual(
+      '{"type":"Promise rejection error","status":503,"description":"connect ECONNREFUSED 127.0.0.1:5432"}'
+    );
   });
 });

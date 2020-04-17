@@ -1,9 +1,9 @@
-require("@babel/register")()
-import { client } from 'nightwatch-api';
+require("@babel/register")();
+import { client } from "nightwatch-api";
 const { getQueriesFrom } = require("@testing-library/nightwatch");
 
 global.client = client;
-global.getQueriesFrom = getQueriesFrom
+global.getQueriesFrom = getQueriesFrom;
 
 // screens
-global.landingPage = client.page.Landing()
+global.landingPage = client.page.Landing();

@@ -11,13 +11,13 @@ services:
       - UI_PORT=3000
       - SELENIUM_PORT=4444
       - SELENIUM_HOST=chromedriver
-      - CONFIG=
+      - CONFIG=nightwatch.conf.docker.js
       - WAIT_HOSTS=chromedriver:4444, ui:3000
     build:
       context: ../..
-      dockerfile: ops/Dockerfile
+      dockerfile: docker/Dockerfile
     volumes:
       - ../:/usr/create-app/e2e
       - /usr/create-app/e2e/node_modules
     command: |
-      sh -c "/wait && npm run test-compose"
+      sh -c "/wait && npm start smoke"

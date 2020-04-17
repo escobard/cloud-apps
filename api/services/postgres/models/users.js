@@ -9,4 +9,5 @@ const users = (sequelize, DataTypes) => {
   
   return Users;
 };
-module.exports.default = users;
+
+export default users;
