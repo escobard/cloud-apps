@@ -52,6 +52,6 @@ In addition, this script expects the `api and db` applications to be running via
 
 Configuration can be found within [`integration/docker/api-test-integration.yaml`](https://github.com/escobard/create-app/blob/master/e2e/docker/ui-test-e2e.yaml).
 
-Runs the integration application in a docker image and the provided API url. 
+Runs the integration application in a docker image and the provided API url:
 
 `npm run test-docker`

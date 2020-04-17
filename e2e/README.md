@@ -51,6 +51,6 @@ In addition, this script expects the `ui, api and db` applications to be running
 
 #### With docker + docker-compose
 
-Runs the nightwatch application in a docker image, powered by a chromedriver docker image and the provided UI url.
+Runs the nightwatch application in a docker image, powered by a chromedriver docker image and the provided UI url:
 
 `npm run test-docker`
