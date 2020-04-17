@@ -4,7 +4,7 @@ For more expanded documentation, visit [documents/integration.md](https://github
 
 ## Quickstart
 
-This application expects the `create-app API` to be running on `localhost:4000` with a database available.
+This application expects the create-app `API` to be running on `localhost:4000` connected to running `DB`.
 
 To quickly spin up a development instance of the platform, run `npm run dev` in the parent directory, or `cd
  .. && npm run dev` from this directory.
@@ -16,7 +16,7 @@ To quickly spin up a development instance of the platform, run `npm run dev` in 
 
 ### With Docker
 
-1. `npm run docker`
+1. `npm run test-docker`
 
 ## Scripts
 
@@ -48,8 +48,10 @@ In order to run this application with docker, `docker` and `docker-compose` must
 
 In addition, this script expects the `api and db` applications to be running via `docker-compose`.
 
-#### Nightwatch with docker + docker-compose
+#### With docker + docker-compose
 
-Runs the integration application in a docker image and the provided API url.
+Configuration can be found within [`integration/docker/api-test-integration.yaml`](https://github.com/escobard/create-app/blob/master/e2e/docker/ui-test-e2e.yaml).
 
-`npm run test-compose`
+Runs the integration application in a docker image and the provided API url. 
+
+`npm run test-docker`
