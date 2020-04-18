@@ -9,8 +9,12 @@ function swaggerValidation(err){
     if (err) {
       res.status(err.status);
       res.type("application/json");
+
+      console.log(err);
+
       const cleanError = cleanSwaggerError(err);
-      res.json(cleanError)
+
+      res.json(cleanError);
     } else {
       next();
     }

@@ -1,17 +1,18 @@
-import swaggerValidation from "./swaggerValidation";
+import { swaggerValidation } from "./";
 
 describe("swaggerValidation", function() {
-  let req, res, spy;
+  beforeAll(() => {
+    global.hasDB = true;
+  });
 
   it(">> should call next() if no swagger error is thrown", function() {
-    let nextSpy = sinon.spy();
+    let nextSpy = jest.fn();
 
-    swaggerValidation(null)(null, req, res, nextSpy);
-    expect(nextSpy.calledOnce).to.be.true;
+    swaggerValidation(null)(null, {}, {}, nextSpy);
+    expect(nextSpy).toHaveBeenCalledTimes(1);
   });
 
   it(">> should throw swagger error with invalid requests", async () => {
-    global.hasDB = true;
     const body = { user_id: "a" };
     request(server)
       .post("/addNote")
@@ -19,5 +20,27 @@ describe("swaggerValidation", function() {
       .end((err, res) => {
         expect(res.status).to.equal(400);
       });
+  });
+
+  it(">> should throw swagger error with invalid requests", async () => {
+    const body = { user_id: "a" };
+    const req = mockRequest(body);
+    const res = mockResponse();
+    const err = {
+      status: 503,
+      message:
+        'test'
+    };
+    swaggerValidation(err)(err, req, res, {});
+    expect(res.status).toHaveBeenCalledWith(503);
+    expect(res.json).toHaveBeenCalledWith({
+      dataPath: undefined,
+      description: undefined,
+      message:
+        'test',
+      schemaPath: undefined,
+      status: 503,
+      type: "Swagger validation error"
+    });
   });
 });

@@ -3,15 +3,17 @@
  * @return {object} status, message
  */
 
-const cleanError = error => {
-  const type = "Promise rejection error"
+const cleanError = (error, type) => {
+
+  const checkType = type ? type : "Promise rejection error";
+
   console.log(type);
-  console.log("Status: 503");
+  console.log("Status:" + error.status);
   console.log("Message: " + error.message);
 
   return {
-    type,
-    status: 503,
+    type: checkType,
+    status: error.status,
     description: error.message
   };
 };

@@ -27,12 +27,14 @@ beforeAll((done) =>{
   // test utils - maybe better as an external module
   global.mockRequest = (data) => {
     return {
-      body: { data },
+      body: data,
     };
   };
+
   global.mockResponse = () => {
     const res = {};
     res.status = jest.fn().mockReturnValue(res);
+    res.type = jest.fn().mockReturnValue(res);
     res.json = jest.fn().mockReturnValue(res);
     return res;
   };

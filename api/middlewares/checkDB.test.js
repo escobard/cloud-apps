@@ -1,8 +1,6 @@
 import { checkDB } from "./";
 
 describe("checkDB", function() {
-  let req, res, spy;
-
   afterEach(() => {
     global.hasDB = false;
     global.dBError = "";
@@ -17,15 +15,13 @@ describe("checkDB", function() {
   });
 
   it(">> should not call next() if db is unavailable", function() {
-    const nextSpy = jest.fn();
     const req = mockRequest();
     const res = mockResponse();
     global.dBError = "test DB error";
 
-    checkDB()(req, res, nextSpy);
+    checkDB()(req, res, {});
 
     expect(res.status).toHaveBeenCalledWith(503);
     expect(res.json).toHaveBeenCalledWith("test DB error");
-    expect(nextSpy).toHaveBeenCalledTimes(1)
   });
 });
