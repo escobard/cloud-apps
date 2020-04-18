@@ -12,9 +12,8 @@ beforeAll((done) =>{
 
   const { health, addNote, getNotes } = routes;
 
-  // sets port to something else to avoid clashes with local dev
-  // for whatever reason, nyc fails when port changes
-  //process.env.PORT = 5555;
+  // sets port to something else to avoid clashes with local dev, nyc fails when port changes
+  // process.env.PORT = 5555;
 
   // setup global environment variable for server + request builder
   global.request = supertest;
@@ -24,6 +23,19 @@ beforeAll((done) =>{
   global.addNote = addNote;
   global.getNotes = getNotes;
   global.server = server;
+
+  // test utils - maybe better as an external module
+  global.mockRequest = (data) => {
+    return {
+      body: { data },
+    };
+  };
+  global.mockResponse = () => {
+    const res = {};
+    res.status = jest.fn().mockReturnValue(res);
+    res.json = jest.fn().mockReturnValue(res);
+    return res;
+  };
 
   // TODO - try to eliminate this workaround, only thing that seems to work
   // necessary workaround to give swagger middleware to initialize

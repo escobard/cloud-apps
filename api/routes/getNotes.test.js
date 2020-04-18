@@ -27,7 +27,6 @@ describe("getNotes route", () => {
 
     expect(status).toEqual(200);
     expect(body).toEqual(users);
-
   });
 
   it(">> sad path, general promise rejection", async () => {
