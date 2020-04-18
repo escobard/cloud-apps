@@ -6,7 +6,7 @@ Production version available here: http://create-app.us-east-2.elasticbeanstalk.
         
 ## About the Product 
 
-In software enterprises its common to have a variety of applications, written in multiple programming languages, to solve business problems. 
+In software enterprises, its common to have a variety of applications written in multiple programming languages.
 
 This product aims to challenge the norm, by using a single programming language (JavaScript) and common design
  patterns to power a software system. 

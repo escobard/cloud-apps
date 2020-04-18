@@ -12,7 +12,7 @@ describe("cleanSwaggerError", () => {
       status: 400
     };
     const cleanError = cleanSwaggerError(error);
-    expect(cleanError).to.deep.equal({
+    expect(cleanError).toEqual({
       type: "Swagger validation error",
       status: 400,
       message:

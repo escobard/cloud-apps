@@ -31,9 +31,7 @@ describe("addNote route", () => {
   it(">> sad path, general promise rejection", async () => {
     global.hasDB = true;
 
-    const { status, error } = await request(server)
-      .post(addNote)
-      .send(note);
+    const { status, error } = await request(server).post(addNote).send(note);
 
     expect(status).toEqual(503);
     expect(error.text).toEqual(
