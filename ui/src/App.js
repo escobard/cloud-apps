@@ -16,8 +16,10 @@ import "./styles/global.scss";
 
 const App = () => {
 
+  // TODO - legacy, remove
   const id = "application";
 
+  // TODO move to provider
   const [alert, setAlert] = useState({});
 
   const [showModal, setShowModal] = useState(false);
@@ -26,10 +28,12 @@ const App = () => {
 
   const { data: fetchedNotes } = useGetRequest(getNotes);
 
+  // TODO - remove after context refactor, should be unecessary
   useEffect(() => {
     setNotes(fetchedNotes);
   }, [fetchedNotes]);
 
+  // TODO move to provider
   /** Submits the POST request to the API
    * @name addNote
    * @dev this requests tests basic validation between UI and API
@@ -131,7 +135,7 @@ const App = () => {
       <main id={id} className="application">
         <Modal
           state={showModal}
-          // TODO - reset errors to default on close
+          // TODO - reset errors to default on close, first callback not working
           close={() => setAlert({}) + setShowModal(false)}
           data={{
             title: "Add note",

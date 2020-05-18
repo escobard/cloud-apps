@@ -14,16 +14,6 @@ describe("swaggerValidation", function() {
 
   it(">> should throw swagger error with invalid requests", async () => {
     const body = { user_id: "a" };
-    request(server)
-      .post("/addNote")
-      .send(body)
-      .end((err, res) => {
-        expect(res.status).to.equal(400);
-      });
-  });
-
-  it(">> should throw swagger error with invalid requests", async () => {
-    const body = { user_id: "a" };
     const req = mockRequest(body);
     const res = mockResponse();
     const err = {
@@ -31,7 +21,9 @@ describe("swaggerValidation", function() {
       message:
         'test'
     };
+
     swaggerValidation(err)(err, req, res, {});
+
     expect(res.status).toHaveBeenCalledWith(503);
     expect(res.json).toHaveBeenCalledWith({
       dataPath: undefined,

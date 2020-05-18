@@ -3,8 +3,8 @@ import axios from "axios";
 import { apiRoutes, headers } from "../constants";
 import { cleanError } from "utils";
 
-// TODO - refactor this to an `api` class that can send GET / POST requests via URL argument for phase 4
-
+// TODO - refactor this to an `api` function that can send GET / POST requests via URL argument for phase 4 for
+//  scalability
 /** Sends POST request to API to addNote
  * @dev refer to the /addNote route in the API for request handling logic
  * @returns resolved promise || rejected promise
