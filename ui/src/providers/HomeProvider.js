@@ -4,11 +4,10 @@ import { useGetRequest } from "hooks";
 import { getNotes } from "utils";
 
 import { HomeContext } from ".";
-import {addNoteFields} from "ui/src/constants";
-import {addNote as addNoteRequest, validateForm} from "ui/src/utils";
+import { addNoteFields } from "ui/src/constants";
+import { addNote as addNoteRequest, validateForm } from "ui/src/utils";
 
 const HomeProvider = ({ children }) => {
-
   const [notes, setNotes] = useState([]);
   const [alert, setAlert] = useState({});
 
@@ -16,6 +15,7 @@ const HomeProvider = ({ children }) => {
 
   const { data: fetchedNotes } = useGetRequest(getNotes);
 
+  // TODO consider refactoring out to test alone
   /** Submits the POST request to the API
    * @name addNote
    * @dev this requests tests basic validation between UI and API
@@ -89,14 +89,7 @@ const HomeProvider = ({ children }) => {
   }, [fetchedNotes]);
 
   return (
-    <HomeContext
-      value={{
-        notes,
-        alert,
-        modal,
-        addNote
-      }}
-    >
+    <HomeContext notes={notes} alert={alert} modal={modal} addNote={addNote}>
       {children}
     </HomeContext>
   );

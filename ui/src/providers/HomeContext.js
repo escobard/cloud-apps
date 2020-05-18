@@ -1,5 +1,5 @@
-import React from "react";
+import { createContext } from "react";
 
-const HomeContext = React.createContext();
+const HomeContext = createContext();
 
 export default HomeContext;
