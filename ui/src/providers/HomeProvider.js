@@ -9,11 +9,21 @@ import { addNote as addNoteRequest, validateForm } from "ui/src/utils";
 
 const HomeProvider = ({ children }) => {
   const [notes, setNotes] = useState([]);
-  const [alert, setAlert] = useState({});
+  const [alert, setAlertState] = useState({});
 
   const [modal, setModal] = useState(false);
 
   const { data: fetchedNotes } = useGetRequest(getNotes);
+
+  const setAlert = alert => {
+    if (!alert) setAlertState({});
+    setAlertState(alert);
+  };
+
+  // state helpers
+  const toggleModal = () => {
+    setAlert(!modal);
+  };
 
   // TODO consider refactoring out to test alone
   /** Submits the POST request to the API
@@ -22,7 +32,7 @@ const HomeProvider = ({ children }) => {
    * @param {string} subject, contains note's subject value
    * @param {string} note, contains note's note value
    * @returns /addNote route response, or validation message
-   * */
+   **/
 
   const addNote = async (subject, note) => {
     const conditions = [
@@ -89,8 +99,17 @@ const HomeProvider = ({ children }) => {
   }, [fetchedNotes]);
 
   return (
-    <HomeContext notes={notes} alert={alert} modal={modal} addNote={addNote}>
+    <HomeContext
+      notes={notes}
+      alert={alert}
+      setAlert={setAlert}
+      modal={modal}
+      setModal={toggleModal}
+      addNote={addNote}
+    >
       {children}
     </HomeContext>
   );
+
+  // TODO proptypes
 };

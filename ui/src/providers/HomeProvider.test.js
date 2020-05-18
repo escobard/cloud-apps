@@ -1,18 +1,12 @@
 describe("HomeProvider", () => {
-  describe("> sync state", () => {
-    it(">> notes", () => {
-
-    });
-    it(">> alert", () => {
-
-    });
-    it(">> modal", () => {
-
-    });
-  })
-  describe("> async state", () => {
-    it(">> fetchedNotes", () => {
-
-    });
-  })
-})
+  describe("> state", () => {
+    it(">> notes", () => {});
+    it(">> alert", () => {});
+    it(">> modal", () => {});
+    it(">> fetchedNotes", () => {});
+  });
+  describe("> actions", () => {
+    it(">> toggleModal", () => {});
+    it(">> setAlert", () => {});
+  });
+});
