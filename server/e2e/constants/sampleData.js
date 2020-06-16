@@ -6,8 +6,8 @@ const health = {response:{ healthy: true, DB: true, /* environment: testing */ }
 const addNote = {
   request:{
     user_id:1,
-    subject:"create-app integration automated test subject",
-    note:"create-app integration automated test note"
+    subject:"create-app e2e automated test subject",
+    note:"create-app e2e automated test note"
   }
 };
 

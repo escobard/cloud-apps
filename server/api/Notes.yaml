@@ -3,7 +3,7 @@ info:
   description: "This is a simple Node.js API, used as an ORM for the `create-app` platform. You can find out more about `create-app` at [https://github.com/escobard/create-app](https://github.com/escobard/create-app) or contact the author via linkedin at [https://www.linkedin.com/in/descobar-developer](https://www.linkedin.com/in/descobar-developer)."
   version: "0.0.2"
   title: "create-app API"
-  termsOfService: "https://github.com/escobard/create-app/blob/master/documentation/contribution.md"
+  termsOfService: "https://github.com/escobard/create-app/blob/master/docs/contribution.md"
   contact:
     email: "admin@odevs.ca"
   license:
@@ -17,7 +17,7 @@ tags:
     description: "Everything about your notes"
     externalDocs:
       description: "Find out more"
-      url: "https://github.com/escobard/create-app/tree/master/documentation"
+      url: "https://github.com/escobard/create-app/tree/master/docs"
 schemes:
   - "https"
   - "http"

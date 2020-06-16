@@ -3,7 +3,7 @@ services:
   postgres:
     container_name: pgdb_prod
     build:
-      context: ../db
+      context: ./server/db
     ports:
       - "5432:5432"
   ui:
@@ -31,8 +31,8 @@ services:
     ports:
     - "4000:4000"
     build:
-      context: ../api
-      dockerfile: api/docker/Dockerfile
+      context: ./server/api
+      dockerfile: docker/Dockerfile
   nginx:
     restart: always
     build:
