@@ -9,15 +9,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "dev": "docker-compose -f docker/dev.yaml up",
-    "dev-ngnix": "docker-compose -f docker/dev-nginx.yaml up",
-    "test-api-unit": "docker-compose -f docker/api-test-unit.yaml up --exit-code-from api",
-    "test-ui-unit": "",
-    "test-ui-e2e-no-data": "docker-compose -f e2e/docker/ui-test-e2e.yaml up --exit-code-from e2e",
-    "test-api-integration": "docker-compose -f docker/api-test-integration.yaml up --exit-code-from integration",
-    "test-ui-e2e-with-data": "",
-    "test": "npm run test-api-unit && npm run test-api-integration",
-    "prod": "docker-compose -f docker/prod.yaml up",
+    "dev": "docker-compose -f dev.yaml up",
+    "prod": "docker-compose -f prod.yaml up",
     "clean": "docker system prune -a"
   },
   "repository": {
