@@ -2,7 +2,8 @@ import sequelize from "./sequelize"
 import { Users, Notes } from "./models";
 import authenticate from "./authenticate"
 
-authenticate(sequelize)
+// no longer
+authenticate(sequelize);
 
 export {
   sequelize,

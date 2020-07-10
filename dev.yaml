@@ -46,4 +46,4 @@ services:
       - ./client/ui:/usr/create-app/ui
       - /usr/create-app/ui/node_modules
     command: |
-      sh -c "/wait && npm run start"
+      sh -c "/wait && npm run dev"

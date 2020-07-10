@@ -5,7 +5,7 @@ import bodyParser from "body-parser";
 
 import { routes } from "./constants";
 import { swaggerValidation } from "./middlewares";
-import allRoutes from "./routes"
+import allRoutes from "./routes";
 import docs from "./routes/docs";
 
 const app = express();
@@ -17,7 +17,7 @@ app.use(cors({ origin: "*" }));
 // swagger docs
 app.use(routes.docs, docs);
 
-createMiddleware("Notes.yaml", app, (err, middleware) => {
+createMiddleware("Notes.yaml", app, async (err, middleware) => {
   app.use(
     middleware.metadata(),
     middleware.files(),
@@ -30,11 +30,11 @@ createMiddleware("Notes.yaml", app, (err, middleware) => {
 
   app.use(swaggerValidation(err));
 
-  allRoutes(app)
+  await allRoutes(app);
 });
 
-let server = app.listen(port, () =>
-  console.log(`Example app listening on port ${port}!`)
-);
+let server = app.listen(port, async () => {
+  console.log(`Example app listening on port ${port}!`);
+});
 
 export default server;

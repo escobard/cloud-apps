@@ -4,10 +4,10 @@
 
 function checkDB(){
   return async (req, res, next) => {
-    if (global.hasDB === false){
-      res.status(503)
+    console.log('CALL')
+    if (!global.hasDB){
       // TODO - improve with cleanError.js util
-      return res.json(global.dBError);
+      return res.status(503).json('No database available!');
     }else{
       next()
 

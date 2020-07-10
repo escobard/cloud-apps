@@ -1,5 +1,5 @@
 // file to connect to sequelize
-import Sequelize from "sequelize";
+import { Sequelize } from "sequelize";
 import { dbkeys } from "../../constants"
 
 const  {
@@ -19,5 +19,5 @@ const sequelize = new Sequelize(pgDatabase, pgUser, pgPassword, {
     schema: "notes"
   }
 });
-
+console.log('dbkeys', dbkeys)
 export default sequelize;

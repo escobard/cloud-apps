@@ -1,6 +1,7 @@
 import { Users } from "./models";
 
 const authenticate = sequelize => {
+
   return sequelize
     .authenticate()
     .then(() => {

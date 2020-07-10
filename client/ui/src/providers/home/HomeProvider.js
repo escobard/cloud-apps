@@ -7,6 +7,8 @@ import { HomeContext } from ".";
 import { addNoteFields } from "ui/src/constants";
 import { addNote as addNoteRequest, validateForm } from "ui/src/utils";
 
+export const HomeContext = React.createContext([{}, () => {}]);
+
 const HomeProvider = ({ children }) => {
   const [notes, setNotes] = useState([]);
   const [alert, setAlertState] = useState({});
@@ -25,7 +27,7 @@ const HomeProvider = ({ children }) => {
     setAlert(!modal);
   };
 
-  // TODO consider refactoring out to test alone
+  // TODO refactor to hook
   /** Submits the POST request to the API
    * @name addNote
    * @dev this requests tests basic validation between UI and API
@@ -99,17 +101,21 @@ const HomeProvider = ({ children }) => {
   }, [fetchedNotes]);
 
   return (
-    <HomeContext
-      notes={notes}
-      alert={alert}
-      setAlert={setAlert}
-      modal={modal}
-      setModal={toggleModal}
-      addNote={addNote}
+    <HomeContext.Provider
+      value={{
+        notes: { notes },
+        alert: { alert },
+        setAlert: { setAlert },
+        modal: { modal },
+        setModal: { toggleModal },
+        addNote: { addNote }
+      }}
     >
       {children}
-    </HomeContext>
+    </HomeContext.Provider>
   );
 
   // TODO proptypes
 };
+
+export default HomeProvider;
