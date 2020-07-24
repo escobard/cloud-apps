@@ -1,3 +1,10 @@
-import React, { useState, useEffect } from "hooks";
+import React, { useState } from "react";
 
-const useModal = () => {};
+const useModal = () => {
+  const [showModal, setShowModal] = useState(false);
+  const openModal = () => {setShowModal(true)};
+  const closeModal = () => setShowModal(false);
+  return { showModal, openModal, closeModal };
+};
+
+export default useModal;

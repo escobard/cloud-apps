@@ -1,3 +1,3 @@
 import { useGetRequest } from "./useGetRequest";
 
-export { useGetRequest };
+export { useGetRequest, useModal };
