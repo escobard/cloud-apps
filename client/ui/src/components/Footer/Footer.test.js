@@ -28,10 +28,4 @@ describe("Footer", () => {
     expect(getByText(footer.withNotes));
     expect(getByText(props.count.toString()));
   });
-
-  it(">> should trigger open function on click", () => {
-    const { queryByText, getByRole } = render(<Footer {...props} />);
-    fireEvent.click(getByRole("button"));
-    expect(queryByText("Add note"))
-  });
 });
