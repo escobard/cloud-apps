@@ -5,10 +5,18 @@
   > .content{
     background: $blue-dark !important;
     color: $white;
-    .ui.red.message{
-      .header {
-        color: $red;
+    .ui.message{
+      &.red{
+        .header {
+          color: $red;
+        }
       }
+      &.green{
+        .header {
+          color: $green;
+        }
+      }
+
     }
     .header{
       color: $white;

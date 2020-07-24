@@ -1,3 +1,4 @@
-import { useGetRequest } from "./useGetRequest";
+import useGetRequest from "./useGetRequest";
+import useModal from "./useModal";
 
-export { useGetRequest };
+export { useGetRequest, useModal };
