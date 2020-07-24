@@ -10,7 +10,7 @@ import { cleanError } from "utils";
  * @return {object} data, resolved response
  * */
 
-export const useGetRequest = (request) => {
+const useGetRequest = (request) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const isMounted = useRef(null);
@@ -42,3 +42,5 @@ export const useGetRequest = (request) => {
     loading
   };
 };
+
+export default useGetRequest;

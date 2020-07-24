@@ -4,7 +4,7 @@ import { addNote as addNoteRequest, getNotes, validateForm } from "./utils";
 
 import { addNoteFields, notes as noteCatalog } from "./constants";
 
-import { useGetRequest } from "hooks/useGetRequest";
+import { useGetRequest } from "hooks";
 
 import Header from "components/Header";
 import Form from "components/Form";
