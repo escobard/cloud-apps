@@ -1,6 +1,8 @@
-import React from "react";
-import { Modal, Grid } from "semantic-ui-react";
+import React, {useContext} from "react";
 import PropTypes from "prop-types";
+import { Modal, Grid } from "semantic-ui-react";
+
+import { HomeContext } from "providers/home";
 
 import "./Modal.scss";
 
@@ -13,42 +15,45 @@ import "./Modal.scss";
  * @returns {Component}, ModalElement
  * */
 
-const ModalElement = ({ state, close, data: { title, content } }) => (
-  <Modal id="modal" size="large" open={state} onClose={close}>
-    <Modal.Content>
-      <Grid className="header">
-        <Grid.Column width={2}>
+const ModalElement = ({ data: { title, content } }) => {
+
+  const { showModal, closeModal } = useContext(HomeContext);
+
+  return (
+    <Modal id="modal" size="large" open={showModal} onClose={closeModal}>
+      <Modal.Content>
+        <Grid className="header">
+          <Grid.Column width={2}>
+            <i
+              onKeyDown={e => {
+                e.key === "Enter" && closeModal();
+              }}
+              tabIndex={0}
+              aria-label="Back"
+              onClick={closeModal}
+              className="arrow left big icon"
+            />
+          </Grid.Column>
+          <Grid.Column width={12}>
+            <h2>{title}</h2>
+          </Grid.Column>
+          <Grid.Column width={2}>
+            <i aria-hidden="true" className="clipboard outline big icon" />
+          </Grid.Column>
+        </Grid>
+        <div className="icon-container">
           <i
-            onKeyDown={e => {
-              e.key === "Enter" && close();
-            }}
-            tabIndex={0}
-            aria-label="Back"
-            onClick={close}
-            className="arrow left big icon"
+            aria-hidden="true"
+            className="sticky note outline big circular icon"
           />
-        </Grid.Column>
-        <Grid.Column width={12}>
-          <h2>{title}</h2>
-        </Grid.Column>
-        <Grid.Column width={2}>
-          <i aria-hidden="true" className="clipboard outline big icon" />
-        </Grid.Column>
-      </Grid>
-      <div className="icon-container">
-        <i
-          aria-hidden="true"
-          className="sticky note outline big circular icon"
-        />
-      </div>
-      {content}
-    </Modal.Content>
-  </Modal>
-);
+        </div>
+        {content}
+      </Modal.Content>
+    </Modal>
+  );
+};
 
 Modal.PropTypes = {
-  state: PropTypes.bool.isRequired,
-  close: PropTypes.func.isRequired,
   data: PropTypes.shape({
     title: PropTypes.string.isRequired,
     close: PropTypes.object.isRequired

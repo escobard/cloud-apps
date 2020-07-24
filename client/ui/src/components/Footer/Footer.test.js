@@ -30,8 +30,8 @@ describe("Footer", () => {
   });
 
   it(">> should trigger open function on click", () => {
-    const { getByRole } = render(<Footer {...props} />);
+    const { queryByText, getByRole } = render(<Footer {...props} />);
     fireEvent.click(getByRole("button"));
-    expect(props.open).toHaveBeenCalledTimes(1);
+    expect(queryByText("Add note"))
   });
 });

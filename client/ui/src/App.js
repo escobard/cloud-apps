@@ -1,8 +1,8 @@
 import React, { Fragment, useState, useEffect } from "react";
 
-import { addNote as addNoteRequest, getNotes, validateForm } from "./utils";
+import { addNote as addNoteRequest, getNotes, validateForm } from "utils";
 
-import { addNoteFields, notes as noteCatalog } from "./constants";
+import HomeProvider from "providers/home";
 
 import { useGetRequest } from "hooks";
 
@@ -12,10 +12,11 @@ import Footer from "components/Footer";
 import Note from "components/Note";
 import Modal from "components/Modal";
 
-import "./styles/global.scss";
+import "styles/global.scss";
+
+import { addNoteFields, notes as noteCatalog } from "./constants";
 
 const App = () => {
-
   // TODO - legacy, remove
   const id = "application";
 
@@ -81,25 +82,25 @@ const App = () => {
           status: "red"
         });
       }
-        const {
-          data: { status }
-        } = response;
+      const {
+        data: { status }
+      } = response;
 
-        setAlert({
-          title: "Note added!",
-          message: status,
-          status: "green"
-        });
+      setAlert({
+        title: "Note added!",
+        message: status,
+        status: "green"
+      });
 
-        const notes = await getNotes();
+      const notes = await getNotes();
 
-        // TODO - split into its child function for readability
-        setTimeout(() => {
-          setNotes(notes);
-          setShowModal(false);
-          return setAlert({});
-        }, 500);
-      }
+      // TODO - update with openModal when refactored
+      setTimeout(() => {
+        setNotes(notes);
+        setShowModal(false);
+        return setAlert({});
+      }, 500);
+    }
   };
 
   /** Renders Notes based on API response
@@ -127,36 +128,33 @@ const App = () => {
     // initial
     return <Note id={`${id}-no-notes`} data={noteCatalog.noNotes} />;
   };
- //console.log("data", notes)
+  //console.log("data", notes)
   return (
     <>
-      <Header id={id} />
-      <div className="divider" />
-      <main id={id} className="application">
-        <Modal
-          state={showModal}
-          // TODO - reset errors to default on close, first callback not working
-          close={() => setAlert({}) + setShowModal(false)}
-          data={{
-            title: "Add note",
-            content: (
-              <Form
-                id={id}
-                message={alert}
-                submit={addNote}
-                fields={addNoteFields}
-              />
-            )
-          }}
+      <HomeProvider>
+        <Header id={id} />
+        <div className="divider" />
+        <main id={id} className="application">
+          <Modal
+            data={{
+              title: "Add note",
+              content: (
+                <Form
+                  id={id}
+                  message={alert}
+                  submit={addNote}
+                  fields={addNoteFields}
+                />
+              )
+            }}
+          />
+          {notes && renderNotes(id, notes)}
+        </main>
+        <Footer
+          count={notes && notes.length}
+          hasError={!Array.isArray(notes)}
         />
-        {notes && renderNotes(id, notes)}
-      </main>
-      <Footer
-        id={id}
-        open={() => setShowModal(true)}
-        count={notes && notes.length}
-        hasError={!Array.isArray(notes)}
-      />
+      </HomeProvider>
     </>
   );
 };
