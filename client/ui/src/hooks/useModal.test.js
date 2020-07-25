@@ -1,20 +1,42 @@
 import { useModal } from "hooks";
 
 describe("useModal hook", () => {
-  it("> opens modal", () => {
-    const { result } = renderHook(() => useModal());
+  describe("> renders", () => {
+    it(">> title and content ", () => {
+      const { result } = renderHook(() => useModal());
 
-    actHook(() => {
-      result.current.openModal();
+      actHook(() => {
+        result.current.openModal();
+      });
+
+      const { getByText } = render(
+        result.current.renderModal({
+          title: <h2>Test title</h2>,
+          content: <div>Test content</div>
+        })
+      );
+
+      expect(getByText("Test title"));
+      expect(getByText("Test content"));
     });
-
-    expect(result.current.showModal).toEqual(true);
   });
-    it("> closes modal", () => {
-    const { result } = renderHook(() => useModal());
+
+  describe("> user actions", () => {
+    it(">> opens modal", () => {
+      const { result } = renderHook(() => useModal());
+
+      actHook(() => {
+        result.current.openModal();
+      });
+
+      expect(result.current.showModal).toEqual(true);
+    });
+    it(">> closes modal", () => {
+      const { result } = renderHook(() => useModal());
       actHook(() => {
         result.current.closeModal();
       });
-    expect(result.current.showModal).toEqual(false);
+      expect(result.current.showModal).toEqual(false);
+    });
   });
 });
