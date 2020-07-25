@@ -1,8 +1,8 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import { addNote as addNoteRequest, getNotes, validateForm } from "utils";
 
-import HomeProvider from "providers/home";
+import HomeProvider, { HomeContext } from "providers/home";
 
 import { useGetRequest } from "hooks";
 
@@ -10,7 +10,6 @@ import Header from "components/Header";
 import Form from "components/Form";
 import Footer from "components/Footer";
 import Note from "components/Note";
-import Modal from "components/Modal";
 
 import "styles/global.scss";
 
@@ -28,6 +27,7 @@ const App = () => {
   const [notes, setNotes] = useState([]);
 
   const { data: fetchedNotes } = useGetRequest(getNotes);
+  const { renderModal } = useContext(HomeContext);
 
   // TODO - remove after context refactor, should be unecessary
   useEffect(() => {
@@ -135,19 +135,17 @@ const App = () => {
         <Header id={id} />
         <div className="divider" />
         <main id={id} className="application">
-          <Modal
-            data={{
-              title: "Add note",
-              content: (
-                <Form
-                  id={id}
-                  message={alert}
-                  submit={addNote}
-                  fields={addNoteFields}
-                />
-              )
-            }}
-          />
+          {renderModal({
+            title: "Add note",
+            content: (
+              <Form
+                id={id}
+                message={alert}
+                submit={addNote}
+                fields={addNoteFields}
+              />
+            )
+          })}
           {notes && renderNotes(id, notes)}
         </main>
         <Footer
