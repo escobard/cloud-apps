@@ -1,16 +1,16 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import { addNote as addNoteRequest, getNotes, validateForm } from "utils";
 
 import HomeProvider from "providers/home";
 
 import { useGetRequest } from "hooks";
+import Modal from "hooks/useModal/Modal";
 
 import Header from "components/Header";
 import Form from "components/Form";
 import Footer from "components/Footer";
 import Note from "components/Note";
-import Modal from "components/Modal";
 
 import "styles/global.scss";
 

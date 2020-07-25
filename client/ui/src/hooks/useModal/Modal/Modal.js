@@ -6,15 +6,6 @@ import { HomeContext } from "providers/home";
 
 import "./Modal.scss";
 
-/** Dynamically creates a modal from the data provided via props
- * @dev renders a semantic-ui-react modal
- * @param {boolean} state, determines open / close state
- * @param {function} close, state handler from parent
- * @param {string} title, string for modal title
- * @param {function} content, component to render in modal
- * @returns {Component}, ModalElement
- * */
-
 const ModalElement = ({ data: { title, content } }) => {
 
   const { showModal, closeModal } = useContext(HomeContext);
