@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 
 import { addNote as addNoteRequest, getNotes, validateForm } from "utils";
 
-import HomeProvider, { HomeContext } from "providers/home";
+import { HomeContext } from "./providers/home";
 
 import { useGetRequest } from "hooks";
 
@@ -22,7 +22,6 @@ const App = () => {
   // TODO move to provider
   const [alert, setAlert] = useState({});
 
-  const [showModal, setShowModal] = useState(false);
 
   const [notes, setNotes] = useState([]);
 
@@ -128,10 +127,9 @@ const App = () => {
     // initial
     return <Note id={`${id}-no-notes`} data={noteCatalog.noNotes} />;
   };
-  //console.log("data", notes)
+  console.log("data", )
   return (
     <>
-      <HomeProvider>
         <Header id={id} />
         <div className="divider" />
         <main id={id} className="application">
@@ -152,7 +150,6 @@ const App = () => {
           count={notes && notes.length}
           hasError={!Array.isArray(notes)}
         />
-      </HomeProvider>
     </>
   );
 };
