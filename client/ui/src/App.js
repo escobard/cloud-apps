@@ -26,7 +26,7 @@ const App = () => {
   const [notes, setNotes] = useState([]);
 
   const { data: fetchedNotes } = useGetRequest(getNotes);
-  const { renderModal } = useContext(HomeContext);
+  const { renderModal, closeModal } = useContext(HomeContext);
 
   // TODO - remove after context refactor, should be unecessary
   useEffect(() => {
@@ -96,7 +96,7 @@ const App = () => {
       // TODO - update with openModal when refactored
       setTimeout(() => {
         setNotes(notes);
-        setShowModal(false);
+        closeModal();
         return setAlert({});
       }, 500);
     }

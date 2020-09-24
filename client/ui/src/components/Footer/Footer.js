@@ -8,7 +8,7 @@ import "./Footer.scss";
 
 const Footer = ({ count, hasError }) => {
 
-  const { openModal } = useContext(HomeContext)
+  const { openModal } = useContext(HomeContext);
 
   return (
     <footer className={hasError ? "error" : undefined}>
