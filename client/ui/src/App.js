@@ -22,7 +22,6 @@ const App = () => {
   // TODO move to provider
   const [alert, setAlert] = useState({});
 
-
   const [notes, setNotes] = useState([]);
 
   const { data: fetchedNotes } = useGetRequest(getNotes);
