@@ -1,17 +1,13 @@
-# create-app 
+# create-cloud-apps
 
-An enterprise platform boilerplate, powered by React, Node, Postgres, Jest and Docker.       
+A cloud platform boilerplate, powered by React, Node, Postgres, Jest and Docker.       
         
 Production version available here: http://create-app.us-east-2.elasticbeanstalk.com/        
         
 ## About the Product 
 
-In software enterprises, its common to have a variety of applications written in multiple programming languages.
-
-This product aims to challenge the norm, by using a single programming language (JavaScript) and common design
- patterns to power a software system. 
-  
-For a deeper dive into the drivers behind this project, read through [`documentation/concept.md`](https://github.com/escobard/create-app/blob/master/documentation/concept.md)        
+In software enterprises its common to have a variety of applications written in multiple programming languages. This product aims to challenge the norm by leveraging a JavaScript infrastructure with common design
+ patterns to power a cloud based software system.  
   
 ## Scripts - this area needs work        
  These scripts assume the user is on the root directory and has `npm`, `node`, `docker` & `docker-compose` installed.        
