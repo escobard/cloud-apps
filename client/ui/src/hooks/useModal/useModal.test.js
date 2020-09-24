@@ -17,7 +17,7 @@ describe("useModal hook", () => {
     });
     expect(result.current.showModal).toEqual(false);
   });
-  // redundant, for test coverage only
+  // redundant, for test coverage only, ensures renderModal callback doesn't throw an error
   it(">> renders modal", () => {
     const { result } = renderHook(() => useModal());
     expect(

@@ -37,6 +37,7 @@ const ModalElement = ({ title, content, showModal, closeModal }) => (
   </Modal>
 );
 
+// TODO - rework these to work w/ useModal refactor
 Modal.PropTypes = {
   data: PropTypes.shape({
     title: PropTypes.string.isRequired,

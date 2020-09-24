@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 
 import { addNote as addNoteRequest, getNotes, validateForm } from "utils";
 
-import { HomeContext } from "./providers/home";
+import { HomeContext } from "providers/home";
 
 import { useGetRequest } from "hooks";
 
@@ -20,13 +20,12 @@ const App = () => {
   const id = "application";
 
   // TODO move to provider
-  const [alert, setAlert] = useState({});
 
 
   const [notes, setNotes] = useState([]);
 
   const { data: fetchedNotes } = useGetRequest(getNotes);
-  const { renderModal } = useContext(HomeContext);
+  const { renderModal, closeModal } = useContext(HomeContext);
 
   // TODO - remove after context refactor, should be unecessary
   useEffect(() => {
@@ -96,7 +95,7 @@ const App = () => {
       // TODO - update with openModal when refactored
       setTimeout(() => {
         setNotes(notes);
-        setShowModal(false);
+        closeModal();
         return setAlert({});
       }, 500);
     }
