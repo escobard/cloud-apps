@@ -36,3 +36,15 @@ export const getNotes = async () => {
       return cleanError(error);
     });
 };
+
+export const api = async (httpReq, url, headers, body) => {
+  if (!httpReq) return "http request type argument required";
+  if (!url) return "url argument required";
+  return axios[httpReq](url, headers && headers, body && body)
+    .then(response => {
+      return response.data;
+    })
+    .catch(error => {
+      return cleanError(error);
+    });
+};
