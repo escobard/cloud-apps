@@ -20,8 +20,6 @@ const App = () => {
   const id = "application";
 
   // TODO move to provider
-
-
   const [notes, setNotes] = useState([]);
 
   const { data: fetchedNotes } = useGetRequest(getNotes);
@@ -33,14 +31,6 @@ const App = () => {
   }, [fetchedNotes]);
 
   // TODO move to provider
-  /** Submits the POST request to the API
-   * @name addNote
-   * @dev this requests tests basic validation between UI and API
-   * @param {string} subject, contains note's subject value
-   * @param {string} note, contains note's note value
-   * @returns /addNote route response, or validation message
-   * */
-
   const addNote = async (subject, note) => {
     const conditions = [
       {
@@ -101,14 +91,6 @@ const App = () => {
     }
   };
 
-  /** Renders Notes based on API response
-   * @name renderNotes
-   * @dev manages connection issues use cases
-   * @param {string} id, contains inherited id
-   * @param {array} data, contains array of note objects
-   * @returns  no note message || one or more <Note />
-   * */
-
   const renderNotes = (id, data) => {
     // with data
     if (Array.isArray(data) && data.length > 0) {
@@ -126,7 +108,9 @@ const App = () => {
     // initial
     return <Note id={`${id}-no-notes`} data={noteCatalog.noNotes} />;
   };
+
   console.log("data", )
+
   return (
     <>
         <Header id={id} />
