@@ -3,7 +3,10 @@
 exports[`Footer >> snapshot is up to date 1`] = `
 <div>
   <footer>
-    NO NOTES
+    <p>
+      NO NOTES
+    </p>
   </footer>
+   
 </div>
 `;

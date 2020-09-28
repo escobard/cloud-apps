@@ -6,7 +6,7 @@ describe("useNotes hook", () => {
     note: "Note description"
   };
 
-  const postNotesResponse = {data: note};
+  const postNotesResponse = { data: note };
   const getNotesBody = { data: { notes: [note] } };
   const getNotesResponse = getNotesBody;
 
@@ -15,7 +15,7 @@ describe("useNotes hook", () => {
 
     const { result, waitForNextUpdate } = renderHook(() => useNotes());
 
-    expect(result.current.loading).toEqual(false);
+    expect(result.current.loading).toEqual(true);
     expect(result.current.notes).toEqual(undefined);
 
     actHook(() => {
@@ -33,17 +33,16 @@ describe("useNotes hook", () => {
 
     const { result, waitForNextUpdate } = renderHook(() => useNotes());
 
-    expect(result.current.loading).toEqual(false);
+    expect(result.current.loading).toEqual(true);
     expect(result.current.notes).toEqual(undefined);
 
     actHook(() => {
-      result.current.addNotes(note);
+      result.current.addNote(note);
     });
     expect(result.current.loading).toEqual(true);
 
-    await waitForNextUpdate()
+    await waitForNextUpdate();
     expect(result.current.note).toEqual(note);
     expect(result.current.loading).toEqual(false);
   });
-
 });

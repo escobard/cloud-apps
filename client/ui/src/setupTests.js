@@ -4,6 +4,8 @@ import React from "react";
 import { act, render, fireEvent, cleanup, waitForDomChange, waitForElementToBeRemoved } from "@testing-library/react";
 import { act as actHook, renderHook } from '@testing-library/react-hooks'
 import axios from 'axios';
+import { MemoryRouter } from "react-router-dom";
+
 
 jest.mock('axios');
 
@@ -17,6 +19,7 @@ global.waitForElementToBeRemoved = waitForElementToBeRemoved;
 global.act = act;
 global.actHook = actHook;
 global.axios = axios;
+global.MemoryRouter = MemoryRouter;
 
 afterEach(() =>{
   jest.clearAllMocks()
