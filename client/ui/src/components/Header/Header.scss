@@ -1,7 +1,7 @@
 @import "../../styles/variables";
 
 /* start by selecting the parent ID */
-[id*="-navigation"] {
+nav {
   /* will need a higher res image for screens larger than 1800px*/
   background: url("../../assets/images/nav-background.jpg") no-repeat fixed 100% -50vh;
   background-size: cover;

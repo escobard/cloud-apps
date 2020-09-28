@@ -5,15 +5,8 @@ import { header } from "constants/catalog";
 
 import "./Header.scss";
 
-/** Header Component
- * @name Header
- * @param {string} id, inherited ID from parent
- * @param {string} date, today's date
- * @return {Component} Header
- * */
-
-const Header = ({ id, date }) => (
-  <nav id={`${id}-navigation`}>
+const Header = ({ date }) => (
+  <nav>
     <i aria-label="Menu" className="bars big icon" />
     <h1>{header.title}</h1>
     <p>{date}</p>
@@ -21,7 +14,6 @@ const Header = ({ id, date }) => (
 );
 
 Header.propTypes = {
-  id: PropTypes.string.isRequired,
   date: PropTypes.string
 };
 

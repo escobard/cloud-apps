@@ -35,17 +35,21 @@ const Form = ({ fields, submit }) => {
     const errors = validateForm(conditions);
 
     if (errors.length > 0) {
+
       return setAlert({
         title: "Form error:",
         message: `Form contains the following error(s): ${errors.join(", ")}.`,
         status: "red"
       });
+
     } else {
+
       setAlert({
         title: "Note added!",
         message: status,
         status: "green"
       });
+
       return submit(subjectValue, noteValue);
     }
   };
@@ -125,12 +129,7 @@ Form.propTypes = {
       errors: PropTypes.arrayOf(PropTypes.string).isRequired
     })
   ).isRequired,
-  submit: PropTypes.func.isRequired,
-  message: PropTypes.shape({
-    title: PropTypes.string,
-    message: PropTypes.string,
-    status: PropTypes.any
-  }).isRequired
+  submit: PropTypes.func.isRequired
 };
 
 export default Form;
