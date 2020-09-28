@@ -30,11 +30,11 @@ describe("api utils", () => {
     });
   });
   describe("api", () => {
-    it(">> returns error if http request type argument is missing", async () => {
+    it(">> returns error if http request argument is missing", async () => {
       const request = await api();
-      expect(request).toEqual("http request type argument required");
+      expect(request).toEqual("http request argument required");
     });
-    it(">> returns response when url argument is passed", async () => {
+    it(">> returns error if url argument is missing", async () => {
       const request = await api('get');
       expect(request).toEqual("url argument required");
     });
