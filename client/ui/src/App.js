@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
@@ -12,7 +12,6 @@ import Header from "components/Header";
 import Footer from "components/Footer";;
 
 import "styles/global.scss";
-
 
 const App = () => {
   // TODO move to provider

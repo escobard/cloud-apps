@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import { HomeContext } from "providers/home";
+import { NotesContext } from "providers/notes";
 
 import { footer } from "constants/catalog";
 
@@ -8,7 +8,7 @@ import "./Footer.scss";
 
 const Footer = ({ count, hasError }) => {
 
-  const { openModal } = useContext(HomeContext);
+  const { openModal } = useContext(NotesContext);
 
   return (
     <footer className={hasError ? "error" : undefined}>

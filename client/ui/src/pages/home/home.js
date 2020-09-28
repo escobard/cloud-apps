@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 
 import { addNote as addNoteRequest, getNotes } from "utils";
 
-import { HomeContext } from "providers/home";
+import { NotesContext } from "providers/notes";
 
 import { useGetRequest } from "hooks";
 
@@ -18,7 +18,7 @@ const Home = () => {
   const [notes, setNotes] = useState([]);
 
   const { data: fetchedNotes } = useGetRequest(getNotes);
-  const { renderModal, closeModal } = useContext(HomeContext);
+  const { renderModal, closeModal } = useContext(NotesContext);
 
   // TODO - remove after context refactor, should be unecessary
   useEffect(() => {

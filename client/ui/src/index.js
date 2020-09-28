@@ -2,12 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import HomeProvider from "./providers/home";
+import NotesProvider from "./providers/notes";
 
 ReactDOM.render(
-  <HomeProvider>
+  <NotesProvider>
     <App />
-  </HomeProvider>,
+  </NotesProvider>,
   document.getElementById("root")
 );
 
