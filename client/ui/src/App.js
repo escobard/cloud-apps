@@ -1,29 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
-import { getNotes } from "utils";
-
-import { useGetRequest } from "hooks";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { Home } from "pages";
 
-import Header from "components/Header";
-import Footer from "components/Footer";;
+import { Header, Footer } from "components";
 
 import "styles/global.scss";
 
 const App = () => {
-  // TODO move to provider
-  const [notes, setNotes] = useState([]);
-
-  const { data: fetchedNotes } = useGetRequest(getNotes);
-
-  // TODO - remove after context refactor, should be unecessary
-  useEffect(() => {
-    setNotes(fetchedNotes);
-  }, [fetchedNotes]);
-
 
   return (
     <Router>
@@ -38,10 +23,7 @@ const App = () => {
             <span>Page not found.</span>
           </Route>
         </Switch>
-        <Footer
-          count={notes && notes.length}
-          hasError={!Array.isArray(notes)}
-        />
+        <Footer/>
       </>
     </Router>
   );
