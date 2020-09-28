@@ -5,16 +5,9 @@ import { Grid } from "semantic-ui-react";
 
 import "./Note.scss";
 
-/** Note Component
- * @name Note
- * @param {string} id, inherited ID from parent
- * @param {object} data, note subject, date, icon and message properties
- * @return {React.Component} Note
- * */
-
 // TODO - improve grid structure for error cases
-const Note = ({ id, data: { subject, note, date, icon}}) => (
-  <Grid id={`${id}-note`} columns="equal" className={subject === "API error" ? "error" : ""}>
+const Note = ({ data: { subject, note, date, icon}}) => (
+  <Grid columns="equal" className={subject === "API error" ? "error note" : "note"}>
     <Grid.Column mobile={3} tablet={2} computer={1} className="icon">
       <i
         aria-label={icon && icon.label ? icon.label : "note icon"}
@@ -34,7 +27,6 @@ const Note = ({ id, data: { subject, note, date, icon}}) => (
 );
 
 Note.propTypes = {
-  id: PropTypes.string.isRequired,
   data: PropTypes.shape({
     subject: PropTypes.string.isRequired,
     note: PropTypes.string.isRequired,

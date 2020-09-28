@@ -2,16 +2,11 @@
 
 exports[`Footer >> snapshot is up to date 1`] = `
 <div>
-  <footer
-    class="error"
-  >
+  <footer>
     <p>
       NO NOTES
     </p>
-    <i
-      class="plus big icon"
-      role="button"
-    />
   </footer>
+   
 </div>
 `;

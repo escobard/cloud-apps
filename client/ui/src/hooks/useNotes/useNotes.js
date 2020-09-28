@@ -12,6 +12,9 @@ const useNotes = () => {
 
   useEffect(() => {
     isMounted.current = true;
+    if (isMounted.current){
+      getNotes();
+    }
     return () => {
       isMounted.current = false;
     };
@@ -30,7 +33,7 @@ const useNotes = () => {
     }
   };
 
-  const addNotes = async note => {
+  const addNote = async note => {
     isMounted.current && setLoading(true);
     const results = await api("post", apiRoutes.addNote, { headers }, note);
     if (isMounted.current && results) {
@@ -44,7 +47,7 @@ const useNotes = () => {
     notes,
     note,
     getNotes,
-    addNotes
+    addNote
   };
 };
 

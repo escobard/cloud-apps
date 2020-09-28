@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import NotesProvider from "./providers/notes";
+import { NotesProvider } from "providers";
 
 ReactDOM.render(
   <NotesProvider>
