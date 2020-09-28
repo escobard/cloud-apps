@@ -3,8 +3,7 @@
 exports[`Note >> snapshot is up to date 1`] = `
 <div>
   <div
-    class="ui equal width grid"
-    id="test-note"
+    class="ui equal width grid note"
   >
     <div
       class="one wide computer three wide mobile two wide tablet column icon"

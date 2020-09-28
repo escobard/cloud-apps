@@ -6,7 +6,22 @@ export const NotesContext = React.createContext([{}, () => {}]);
 
 const NotesProvider = ({ children }) => {
   const { showModal, openModal, closeModal, renderModal } = useModal();
-  const { loading, notes, note, getNotes, addNotes } = useNotes();
+  const { loading, notes, note, getNotes, addNote } = useNotes();
+
+  const updateNotes = async (subject, note) => {
+    const request = {
+      // TODO - this should come from authentication
+      user_id: 1,
+      subject,
+      note
+    };
+
+    await addNote(request);
+
+    setTimeout(() => {
+      closeModal();
+    }, 500);
+  };
 
   return (
     <NotesContext.Provider
@@ -19,7 +34,8 @@ const NotesProvider = ({ children }) => {
         notes,
         note,
         getNotes,
-        addNotes
+        addNote,
+        updateNotes
       }}
     >
       {children}

@@ -1,7 +1,7 @@
 @import "../../styles/variables";
 
 // really useful way of finding the elements that contain some id characters - should consider this approach with rebank
-[id*="-note"] {
+.note {
   border-bottom: $border-gray;
   margin: 0 !important;
   &.error {
