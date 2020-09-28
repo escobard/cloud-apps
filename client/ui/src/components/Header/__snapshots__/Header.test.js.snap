@@ -2,9 +2,7 @@
 
 exports[`Header >> snapshot is up to date 1`] = `
 <div>
-  <nav
-    id="test-navigation"
-  >
+  <nav>
     <i
       aria-label="Menu"
       class="bars big icon"
