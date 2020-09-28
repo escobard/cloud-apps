@@ -3,8 +3,7 @@
 exports[`Form >> snapshot is up to date 1`] = `
 <div>
   <form
-    class="ui form"
-    id="test-id-form"
+    class="ui form form"
   >
     <div
       class="field"

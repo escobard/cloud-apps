@@ -1,8 +1,6 @@
 # cloud-apps
 
-Cloud application boilerplates using React, Node, Postgres and Docker.       
-        
-Production version available here: http://create-app.us-east-2.elasticbeanstalk.com/        
+A cloud system boilerplate, powered by React, Node, Postgres and Docker.    
         
 ## About the Product 
 
