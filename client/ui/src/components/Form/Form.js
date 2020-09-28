@@ -1,41 +1,54 @@
-import React, { Fragment, useState } from "react";
-import { Button, Form, Message } from "semantic-ui-react";
+import React, { useState } from "react";
+import { Button, Form as SemanticForm, Message } from "semantic-ui-react";
 
-import "./Form.scss";
 import PropTypes from "prop-types";
 
-/** Dynamically creates a form from the data provided via props.fields
- * @dev renders an infinite number of fields based on props.fields, very powerful and expandable
- * @param {string} id, inherited id from parent
- * @param {object[]} fields, contains form field data
- * @param {function} submit, form submit handler from parent
- * @param {object} message, contains status strings for form message
- * @returns {Component}, DynamicForm
- * */
+import { validateForm } from "utils";
 
-const DynamicForm = ({ id, fields, submit, message }) => {
-  const formId = `${id}-form`;
+import useAlert from "hooks/useAlert";
 
+import { addNoteFields } from "../../constants";
+import "./Form.scss";
+
+const Form = ({ fields, submit }) => {
   const [formState, setFormState] = useState({});
-
-  /** Submits the form, triggers POST request from parent
-   * @name submitForm
-   * @dev could be scrapped all together and just use submit callback, keeping for readability
-   * */
+  const { alert, setAlert } = useAlert();
 
   const submitForm = () => {
     const { subject, note } = formState;
-      // sends empty strings if fields are empty to trigger validation
-      const subjectValue = subject ? subject.value : "";
-      const noteValue = note ? note.value : "";
-      submit(subjectValue, noteValue);
-  };
 
-  /** Handles the change of each field's input, when the user types into a field
-   * @dev this also creates the input form state for each field
-   * @param {string} value, new field value
-   * @param {string} fieldKey, state.fieldKey, determines which state to update dynamically
-   * */
+    // sends empty strings if fields are empty to trigger validation
+    const subjectValue = subject ? subject.value : "";
+    const noteValue = note ? note.value : "";
+
+    const conditions = [
+      {
+        condition: subjectValue.length < 5,
+        error: addNoteFields[0].errors[0]
+      },
+      {
+        condition: noteValue.length < 25,
+        error: addNoteFields[1].errors[0]
+      }
+    ];
+
+    const errors = validateForm(conditions);
+
+    if (errors.length > 0) {
+      return setAlert({
+        title: "Form error:",
+        message: `Form contains the following error(s): ${errors.join(", ")}.`,
+        status: "red"
+      });
+    } else {
+      setAlert({
+        title: "Note added!",
+        message: status,
+        status: "green"
+      });
+      return submit(subjectValue, noteValue);
+    }
+  };
 
   const inputChange = (value, fieldKey) => {
     setFormState(prevState => {
@@ -48,20 +61,13 @@ const DynamicForm = ({ id, fields, submit, message }) => {
     });
   };
 
-  /** Dynamically renders all fields, based on props.fields
-   * @param {object[]} fields, each object contains field name, label, placeholder, error
-   * @returns {Component} Form.Input || Form.TextArea
-   * */
-
   const renderFields = fields => {
     return fields.map((field, index) => {
       const { name, label, placeholder } = field;
 
-      // add conditional for input vs textfield
-
       if (name === "note") {
-        return(
-          <Form.Field key={index}>
+        return (
+          <SemanticForm.Field key={index}>
             <label htmlFor={name}>{label}</label>
             <textarea
               id={name}
@@ -71,12 +77,12 @@ const DynamicForm = ({ id, fields, submit, message }) => {
               }}
               placeholder={placeholder}
             />
-          </Form.Field>
-        )
+          </SemanticForm.Field>
+        );
       }
 
       return (
-        <Form.Field key={index}>
+        <SemanticForm.Field key={index}>
           <label htmlFor={name}>{label}</label>
           <input
             id={name}
@@ -86,39 +92,39 @@ const DynamicForm = ({ id, fields, submit, message }) => {
             }}
             placeholder={placeholder}
           />
-        </Form.Field>
+        </SemanticForm.Field>
       );
     });
   };
 
-  // TODO - switch to material-ui to match desired look and feel
   return (
-    <Form id={formId}>
-      {message && message.status && (
+    <SemanticForm className="form" onSubmit={() => submitForm()}>
+      {alert && alert.status && (
         <Message
-          aria-label={message.status === "red" ? "Alert": "Update"}
-          color={message.status}
-          header={message.title}
-          content={message.message}
+          aria-label={alert.status === "red" ? "Alert" : "Update"}
+          color={alert.status}
+          header={alert.title}
+          content={alert.message}
         />
       )}
 
       {renderFields(fields)}
-      <Form.Field onClick={() => submitForm()} control={Button} aria-label="Submit">
+      <SemanticForm.Field control={Button} aria-label="Submit">
         Add Note
-      </Form.Field>
-    </Form>
+      </SemanticForm.Field>
+    </SemanticForm>
   );
 };
 
-DynamicForm.propTypes = {
-  id: PropTypes.string.isRequired,
-  fields: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
-    placeholder: PropTypes.string.isRequired,
-    errors: PropTypes.arrayOf(PropTypes.string).isRequired,
-  })).isRequired,
+Form.propTypes = {
+  fields: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+      placeholder: PropTypes.string.isRequired,
+      errors: PropTypes.arrayOf(PropTypes.string).isRequired
+    })
+  ).isRequired,
   submit: PropTypes.func.isRequired,
   message: PropTypes.shape({
     title: PropTypes.string,
@@ -127,4 +133,4 @@ DynamicForm.propTypes = {
   }).isRequired
 };
 
-export default DynamicForm;
+export default Form;

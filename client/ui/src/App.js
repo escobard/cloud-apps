@@ -15,9 +15,8 @@ import "styles/global.scss";
 
 import { addNoteFields, notes as noteCatalog } from "./constants";
 
+
 const App = () => {
-  // TODO - legacy, remove
-  const id = "application";
 
   // TODO move to provider
   const [notes, setNotes] = useState([]);
@@ -32,63 +31,20 @@ const App = () => {
 
   // TODO move to provider
   const addNote = async (subject, note) => {
-    const conditions = [
-      {
-        condition: subject.length < 5,
-        error: addNoteFields[0].errors[0]
-      },
-      {
-        condition: note.length < 25,
-        error: addNoteFields[1].errors[0]
-      }
-    ];
 
-    const errors = validateForm(conditions);
+    const request = {
+      // TODO - this should come from authentication token after phase 4
+      user_id: 1,
+      subject,
+      note
+    };
 
-    if (errors.length > 0) {
-      setAlert({
-        title: "Note form error:",
-        message: `Form contains the following error(s): ${errors.join(", ")}.`,
-        status: "red"
-      });
-    }
+    await addNoteRequest(request);
 
-    if (errors.length === 0) {
-      const request = {
-        // TODO - this should come from authentication token after phase 4
-        user_id: 1,
-        subject,
-        note
-      };
-
-      const response = await addNoteRequest(request);
-
-      if (!response.status) {
-        return setAlert({
-          title: "Note form error(s)",
-          message: response,
-          status: "red"
-        });
-      }
-      const {
-        data: { status }
-      } = response;
-
-      setAlert({
-        title: "Note added!",
-        message: status,
-        status: "green"
-      });
-
-      const notes = await getNotes();
-
-      // TODO - update with openModal when refactored
-      setTimeout(() => {
-        setNotes(notes);
-        closeModal();
-        return setAlert({});
-      }, 500);
-    }
+    // TODO - update with openModal when refactored
+    setTimeout(() => {
+      closeModal();
+    }, 500);
   };
 
   const renderNotes = (id, data) => {
@@ -109,30 +65,20 @@ const App = () => {
     return <Note id={`${id}-no-notes`} data={noteCatalog.noNotes} />;
   };
 
-  console.log("data", )
-
   return (
     <>
-        <Header id={id} />
-        <div className="divider" />
-        <main id={id} className="application">
-          {renderModal({
-            title: "Add note",
-            content: (
-              <Form
-                id={id}
-                message={alert}
-                submit={addNote}
-                fields={addNoteFields}
-              />
-            )
-          })}
-          {notes && renderNotes(id, notes)}
-        </main>
-        <Footer
-          count={notes && notes.length}
-          hasError={!Array.isArray(notes)}
-        />
+      <Header />
+      <div className="divider" />
+      <main className="application">
+        {renderModal({
+          title: "Add note",
+          content: (
+            <Form submit={addNote} fields={addNoteFields} />
+          )
+        })}
+        {notes && renderNotes('notes', notes)}
+      </main>
+      <Footer count={notes && notes.length} hasError={!Array.isArray(notes)} />
     </>
   );
 };
