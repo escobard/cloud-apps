@@ -1,4 +1,4 @@
-import validateField from "pages/home/Form/validateField";
+import validateField from "pages/Home/Form/validateField";
 
 const validateForm = (fields) => {
   let errors = [];
