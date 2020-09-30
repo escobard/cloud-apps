@@ -2,10 +2,11 @@ import React, { useContext } from "react";
 
 import { NotesContext } from "providers";
 
-import { Form, Note } from "components";
+import { Note } from "components";
 
 import "styles/global.scss";
 
+import Form from "./Form";
 import { addNoteFields, notes as noteCatalog } from "../../constants";
 
 const Home = () => {

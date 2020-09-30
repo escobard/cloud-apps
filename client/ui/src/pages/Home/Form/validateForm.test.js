@@ -1,4 +1,4 @@
-import validateForm from "pages/home/Form/validateForm";
+import validateForm from "pages/Home/Form/validateForm";
 
 import { addNoteFields } from "constants/forms";
 

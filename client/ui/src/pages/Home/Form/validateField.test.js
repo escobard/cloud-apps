@@ -1,4 +1,4 @@
-import validateField from "pages/home/Form/validateField"
+import validateField from "pages/Home/Form/validateField"
 
 describe("validation util", () => {
   const error = "Subject must contain more than 5"
