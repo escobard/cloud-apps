@@ -3,11 +3,11 @@ import { Button, Form as SemanticForm, Message } from "semantic-ui-react";
 
 import PropTypes from "prop-types";
 
-import { validateForm } from "utils";
+import validateForm from "./validateForm";
 
 import useAlert from "hooks/useAlert";
 
-import { addNoteFields } from "../../constants";
+import { addNoteFields } from "constants/forms";
 import "./Form.scss";
 
 const Form = ({ fields, submit }) => {
@@ -35,15 +35,12 @@ const Form = ({ fields, submit }) => {
     const errors = validateForm(conditions);
 
     if (errors.length > 0) {
-
       return setAlert({
         title: "Form error:",
         message: `Form contains the following error(s): ${errors.join(", ")}.`,
         status: "red"
       });
-
     } else {
-
       setAlert({
         title: "Note added!",
         message: status,

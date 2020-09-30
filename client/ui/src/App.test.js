@@ -17,17 +17,7 @@ describe("App container", () => {
     ]
   };
   // these may be obsolete after refactor
-/*  describe(">> addNote()", () => {
-    it(">> displays validation form errors", () => {
-      const { getByRole, getByLabelText } = render(<App />);
-      act(() => {
-        fireEvent.click(getByRole("button"));
-      });
-      act(() => {
-        fireEvent.click(getByLabelText("Submit"));
-      });
-      expect(getByLabelText("Alert"));
-    });
+/*  describe(">> add note high level user flows", () => {
     it(">> displays API validation form errors", async () => {
       const identifier = "unique test string";
       axios.post.mockRejectedValue(identifier);
