@@ -5,19 +5,19 @@ services:
     image: selenium/standalone-chrome:latest
   e2e:
     container_name: e2e_test
-    working_dir: /usr/create-app/e2e
+    working_dir: /usr/create-app/tests
     environment:
-      - UI_HOST=ui
+      - UI_HOST=localhost
       - UI_PORT=3000
       - SELENIUM_PORT=4444
       - SELENIUM_HOST=chromedriver
       - CONFIG=nightwatch.conf.docker.js
-      - WAIT_HOSTS=chromedriver:4444, ui:3000
+      - WAIT_HOSTS=chromedriver:4444
     build:
-      context: ../..
-      dockerfile: docker/Dockerfile
+      context: ../
+      dockerfile: ./docker/Dockerfile
     volumes:
-      - ../:/usr/create-app/e2e
-      - /usr/create-app/e2e/node_modules
+      - ../:/usr/create-app/tests
+      - /usr/create-app/tests/node_modules
     command: |
       sh -c "/wait && npm start smoke"
