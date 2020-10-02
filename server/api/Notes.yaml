@@ -1,15 +1,17 @@
 swagger: "2.0"
 info:
-  description: "This is a simple Node.js API, used as an ORM for the `create-app` platform. You can find out more about `create-app` at [https://github.com/escobard/create-app](https://github.com/escobard/create-app) or contact the author via linkedin at [https://www.linkedin.com/in/descobar-developer](https://www.linkedin.com/in/descobar-developer)."
+  description: "This is a bolierplate Node.js API, used as an ORM for the `cloud-apps` system. You can find out more
+  about `cloud-apps` at [https://github.com/escobard/cloud-apps](https://github.com/escobard/cloud-apps) or contact the
+  author via linkedin at [https://www.linkedin.com/in/descobar-developer](https://www.linkedin.com/in/descobar-developer)."
   version: "0.0.2"
-  title: "create-app API"
-  termsOfService: "https://github.com/escobard/create-app/blob/master/docs/contribution.md"
+  title: "cloud-apps API"
+  termsOfService: "https://github.com/escobard/cloud-apps/blob/master/docs/contribution.md"
   contact:
     email: "admin@odevs.ca"
   license:
     name: "MIT"
     url: "https://opensource.org/licenses/MIT"
-host: "create-app.us-east-2.elasticbeanstalk.com"
+host: "cloud-apps.us-east-2.elasticbeanstalk.com"
 # update this path once swagger-ui is setup with API
 ##basePath: "/v1"
 tags:
@@ -17,12 +19,50 @@ tags:
     description: "Everything about your notes"
     externalDocs:
       description: "Find out more"
-      url: "https://github.com/escobard/create-app/tree/master/docs"
+      url: "https://github.com/escobard/cloud-apps/tree/master/docs"
 schemes:
   - "https"
   - "http"
 paths:
-  /addNote:
+  /:
+    get:
+      tags:
+        - "notes"
+      summary: "Finds all notes"
+      description: "Notes by user to be introduced in phase 5"
+      operationId: "getNotes"
+      produces:
+        - "application/json"
+          # paramaters introduced in phase 5
+        #parameters:
+        #- name: "user_id"
+        #in: "query"
+        #description: "User ID used to fetch user specific notes"
+        #required: true
+        #type: "array"
+        #items:
+        #type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Note"
+            #400:
+            #description: "Invalid user_id"
+            #security:
+            #- createapp_auth:
+            #- "write:notes"
+            #- "read:notes"
+      #securityDefinitions:
+      #createapp_auth:
+      #type: "oauth2"
+      #authorizationUrl: "http://cloud-apps.us-east-2.elasticbeanstalk.com/auth"
+      #flow: "implicit"
+      #scopes:
+      #write:notes: "modify notes in your account"
+      #read:notes: "read your notes"
     post:
       tags:
         - "notes"
@@ -79,7 +119,7 @@ paths:
             #responses:
             #400:
             # description: "Invalid ID supplied"
-            #404:
+          #404:
           #description: "Pet not found"
           #405:
           #description: "Validation exception"
@@ -87,45 +127,6 @@ paths:
           #- createapp_auth:
           #- "write:notes"
           #- "read:notes"
-  /getNotes:
-    get:
-      tags:
-        - "notes"
-      summary: "Finds all notes"
-      description: "Notes by user to be introduced in phase 5"
-      operationId: "getNotes"
-      produces:
-        - "application/json"
-          # paramaters introduced in phase 5
-          #parameters:
-        #- name: "user_id"
-        #in: "query"
-        #description: "User ID used to fetch user specific notes"
-        #required: true
-        #type: "array"
-        #items:
-        #type: "string"
-      responses:
-        200:
-          description: "successful operation"
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/Note"
-            #400:
-            #description: "Invalid user_id"
-            #security:
-            #- createapp_auth:
-            #- "write:notes"
-            #- "read:notes"
-      #securityDefinitions:
-      #createapp_auth:
-      #type: "oauth2"
-      #authorizationUrl: "http://create-app.us-east-2.elasticbeanstalk.com/auth"
-      #flow: "implicit"
-      #scopes:
-      #write:notes: "modify notes in your account"
-      #read:notes: "read your notes"
   /health:
     get:
       tags:
@@ -134,7 +135,7 @@ paths:
       operationId: "health"
       produces:
         - "application/json"
-          # paramaters introduced in phase 5
+        # paramaters introduced in phase 5
         #parameters:
         #- name: "user_id"
         #in: "query"
@@ -219,5 +220,5 @@ definitions:
     xml:
       name: "notes"
 externalDocs:
-  description: "Find out more about create-app"
-  url: "https://github.com/escobard/create-app"
+  description: "Find out more about cloud-apps"
+  url: "https://github.com/escobard/cloud-apps"
