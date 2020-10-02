@@ -1,35 +1,46 @@
 # API
 
-For more API documentation, visit [documents/api.md](https://github.com/escobard/create-app/blob/master/documentation/api.md)
+## Quickstart
 
-## Usage - NPM
+Starts the application on `http://localhost:4000`
+
+### With npm
+
+2. `npm install`
+3. `npm start`
+
+## Usage
 
 ### Development
 
 `npm run dev`
 
-### Test development
-
-`npm run test-watch`
-
-### Tests with coverage
-
-`npm test`
-
-### Run API
+### Production
 
 `npm start`
 
-## Usage - Docker
-
-Docker scripts are available for production & unit test debugging.
-
-### Production
-
-#### Build & Start
-
+### Docker
 `npm run docker`
 
-#### Stop & Remove
+## Libraries, Frameworks & Tools
 
-`npm run docker-rm`
+[node](https://nodejs.org/en/)
+
+[express](https://expressjs.com/)
+
+[sequelize](https://sequelize.org/)
+
+[swagger](https://swagger.io/)
+
+[swagger-express-middleware](https://www.npmjs.com/package/swagger-express-middleware)
+
+[swagger-ui-express](https://www.npmjs.com/package/swagger-ui-express)
+
+[jest](https://mochajs.org/)
+
+[supertest](https://github.com/visionmedia/supertest)
+
+[docker](https://www.docker.com/)
+
+[docker-compose](https://docs.docker.com/compose/)
+

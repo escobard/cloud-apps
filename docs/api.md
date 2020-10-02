@@ -1,27 +1,6 @@
 # API
 
-## Introduction
-
-The purpose of the API layer is to serve as a controller to the UI and DB applications.
-
-## Quickstart
-
-### With npm
-
-In your terminal, from the parent directory:
-
-1. `cd api`
-2. `npm install`
-3. `npm start`
-
-### With npm & Docker
-
-In your terminal, from the parent directory:
-
-1. `cd api`
-2. `npm run docker`
-
-## Usage - Expanded 
+## Dev docs 
 
 ### Swagger
 
@@ -59,29 +38,3 @@ Dependent on [`api/ops/Dockerfile`](https://github.com/escobard/create-app/blob/
 
 This file is leveraged by the [`ops/prod.yaml`](https://github.com/escobard/create-app/blob/master/ops/prod.yaml
 ) docker-compose job. Read through [`documentation/ops.md`](https://github.com/escobard/create-app/blob/master/documentation/ops.md) to learn more.
-
-## Libraries, Frameworks & Tools
-
-TODO - update as part of #122
-
-[node](https://nodejs.org/en/)
-
-[express](https://expressjs.com/)
-
-[swagger](https://swagger.io/)
-
-[swagger-express-middleware](https://www.npmjs.com/package/swagger-express-middleware)
-
-[swagger-ui-express](https://www.npmjs.com/package/swagger-ui-express)
-
-
-[mocha](https://mochajs.org/)
-
-[chai](https://www.chaijs.com/)
-
-[supertest](https://github.com/visionmedia/supertest)
-
-[docker](https://www.docker.com/)
-
-[docker-compose](https://docs.docker.com/compose/)
-
