@@ -23,7 +23,7 @@ const Footer = () => {
           <p>
             {footer.withNotes} <span> {notes.length} </span>
           </p>
-          <i role="button" className="plus big icon" onClick={openModal} />
+          <i aria-label="Add note" role="button" className="plus big icon" onClick={openModal} />
         </>
       ) : (
         <p>

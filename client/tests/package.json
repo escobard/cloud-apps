@@ -7,7 +7,7 @@
     "start": "npm run test",
     "test": "jest",
     "test-watch": "jest --watch",
-    "test-docker": "docker-compose -f docker/ui-test-e2e.yaml up --exit-code-from e2e"
+    "test-docker": "docker-compose -f docker/ui-tests.yaml up --exit-code-from e2e"
   },
   "engines": {
     "node": "10.x",
@@ -36,7 +36,8 @@
     "jest-resolve": "24.7.1",
     "jest-watch-typeahead": "^0.4.2",
     "nightwatch": "latest",
-    "nightwatch-api": "^3.0.1"
+    "nightwatch-api": "^3.0.1",
+    "selenium-server": "^3.141.59"
   },
   "jest": {
     "collectCoverageFrom": [

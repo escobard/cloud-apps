@@ -1,5 +1,5 @@
-const clientHost = process.env.UI_HOST,
-  clientPort = process.env.UI_PORT
+const clientHost = process.env.UI_HOST || process.UI_HOST,
+  clientPort = process.env.UI_PORT || process.UI_PORT,
   clientUrl = `http://${clientHost}:${clientPort}`;
 
 const config = {

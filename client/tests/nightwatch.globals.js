@@ -6,4 +6,4 @@ global.client = client;
 global.getQueriesFrom = getQueriesFrom;
 
 // screens
-global.landingPage = client.page.Landing();
+global.landingPage = client.page.Home();
