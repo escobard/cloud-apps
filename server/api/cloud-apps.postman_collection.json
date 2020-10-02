@@ -1,0 +1,45 @@
+{
+	"info": {
+		"_postman_id": "106ce1ab-a3c1-49f9-ad63-001cb1b0b61d",
+		"name": "cloud-apps",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add Note",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"subject\":\"aasdfas\",\r\n  \"note\":\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent efficitur tempor lectus, et blandit lorem. Praesent eget odio pellentesque, placerat neque vel, elementum dolor. Donec id leo et metus condimentum aliquet id at justo. Aenean ac diam eu ipsum luctus tincidunt sed at purus. Sed vitae euismod nulla. Aliquam at faucibus dui. Nulla sagittis id justo nec cursus. Integer aliquam venenatis lorem, eget rhoncus massa lacinia eu. Duis posuere enim at consequat dapibus. Phasellus vulputate faucibus lacus, ut posuere augue porta a. Sed dui elit, placerat ut varius ac, facili\",\r\n  \"user_id\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:4000",
+				"description": "addNote happy path"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Notes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:4000"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
