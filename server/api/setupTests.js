@@ -11,7 +11,7 @@ import { routes } from "./constants";
 // timeout is necessary to unit test swagger middleware
 beforeAll((done) =>{
 
-  const { health, addNote, getNotes } = routes;
+  const { health } = routes;
 
   // sets port to something else to avoid clashes with local dev, nyc fails when port changes
   // process.env.PORT = 5555;

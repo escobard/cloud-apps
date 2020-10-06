@@ -2,7 +2,6 @@
   "name": "integration",
   "version": "0.0.2",
   "description": "integration",
-  "main": "config.test.js",
   "author": "escobard",
   "license": "ISC",
   "scripts": {

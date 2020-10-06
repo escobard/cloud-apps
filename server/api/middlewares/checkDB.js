@@ -5,7 +5,6 @@ import { cleanError } from "../utils";
 
 function checkDB() {
   return async (req, res, next) => {
-    console.log("CALL");
     if (!global.hasDB) {
       // TODO - improve with cleanError.js util
       return res

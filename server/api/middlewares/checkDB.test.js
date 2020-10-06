@@ -22,6 +22,6 @@ describe("checkDB", function() {
     checkDB()(req, res, {});
 
     expect(res.status).toHaveBeenCalledWith(503);
-    expect(res.json).toHaveBeenCalledWith("test DB error");
+    expect(res.json).toHaveBeenCalledWith({"description": "No database available!", "status": 503, "type": "Promise rejection error"});
   });
 });
