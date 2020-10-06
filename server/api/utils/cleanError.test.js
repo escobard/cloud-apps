@@ -3,7 +3,8 @@ import { cleanError } from "./";
 describe("cleanError", () => {
   it(">> creates response object in the desired format", () => {
     const error = {
-      message: "test message"
+      message: "test message",
+      status: 503
     };
     const resError = cleanError(error);
     expect(resError).toEqual({

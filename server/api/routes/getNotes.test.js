@@ -36,7 +36,7 @@ describe("getNotes route", () => {
 
     expect(status).toEqual(503);
     expect(error.text).toEqual(
-      '{"type":"Promise rejection error","status":503,"description":"connect ECONNREFUSED 127.0.0.1:5432"}'
+      '{"type":"Promise rejection error","description":"connect ECONNREFUSED 127.0.0.1:5432"}'
     );
   });
 });
