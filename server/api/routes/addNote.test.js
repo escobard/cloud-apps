@@ -22,7 +22,7 @@ describe("addNote route", () => {
 
     jest.spyOn(Notes, "create").mockResolvedValue("Note added!");
 
-    const { body, status } = await request(server).post(addNote).send(note);
+    const { body, status } = await request(server).post("/").send(note);
 
     expect(status).toEqual(200);
     expect(body).toEqual("Note added!");
@@ -31,7 +31,7 @@ describe("addNote route", () => {
   it(">> sad path, general promise rejection", async () => {
     global.hasDB = true;
 
-    const { status, error } = await request(server).post(addNote).send(note);
+    const { status, error } = await request(server).post("/").send(note);
 
     expect(status).toEqual(503);
     expect(error.text).toEqual(

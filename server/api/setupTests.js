@@ -2,6 +2,7 @@
  * @dev source of truth for all unit tests in the application
  */
 import supertest from "supertest";
+import sinon from "sinon";
 
 import server from "./"
 
@@ -20,8 +21,6 @@ beforeAll((done) =>{
 
   // routes
   global.health = health;
-  global.addNote = addNote;
-  global.getNotes = getNotes;
   global.server = server;
 
   // test utils - maybe better as an external module
@@ -39,6 +38,9 @@ beforeAll((done) =>{
     return res;
   };
 
+  // sinon, temporary
+  global.sinon = sinon;
+
   // TODO - try to eliminate this workaround, only thing that seems to work
   // necessary workaround to give swagger middleware to initialize
   setTimeout(done, 100)
@@ -47,6 +49,7 @@ beforeAll((done) =>{
 afterEach(done => {
   jest.clearAllMocks();
   jest.restoreAllMocks();
+  sinon.restore();
   server.close();
   done();
 });

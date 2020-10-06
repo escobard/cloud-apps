@@ -23,7 +23,7 @@ describe("getNotes route", () => {
     global.hasDB = true;
     jest.spyOn(Notes, "findAll").mockResolvedValue(users);
 
-    const { body, status } = await request(server).get(getNotes);
+    const { body, status } = await request(server).get("/");
 
     expect(status).toEqual(200);
     expect(body).toEqual(users);
@@ -32,7 +32,7 @@ describe("getNotes route", () => {
   it(">> sad path, general promise rejection", async () => {
     global.hasDB = true;
 
-    const { error, status } = await request(server).get(getNotes);
+    const { error, status } = await request(server).get("/");
 
     expect(status).toEqual(503);
     expect(error.text).toEqual(

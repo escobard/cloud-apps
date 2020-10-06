@@ -1,7 +1,7 @@
 import { swaggerValidation } from "./";
 
 describe("swaggerValidation", function() {
-  beforeAll(() => {
+  beforeEach(() => {
     global.hasDB = true;
   });
 
