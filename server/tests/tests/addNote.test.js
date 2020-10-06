@@ -3,7 +3,7 @@ export default describe("addNote route", () => {
     const {
         addNote: { request: addNoteRequest }
       } = sampleData,
-      { body,status } = await request(server).post(addNote).send(addNoteRequest);
+      { body,status } = await request(server).post("/").send(addNoteRequest);
 
     expect(status).toEqual(200);
     expect(body.note).toEqual(addNoteRequest.note);

@@ -3,11 +3,10 @@ export default describe("getNotes", () => {
     const {
         addNote: { request: addNoteRequest }
       } = sampleData,
-      { body, status } = await request(server).get(getNotes),
+      { body, status } = await request(server).get("/"),
       noteResult = body.filter(note => note.note === addNoteRequest.note);
 
-    expect(status).toEqual(200)
+    expect(status).toEqual(200);
     expect(noteResult.length).toBeGreaterThanOrEqual(0);
-
   });
 });
