@@ -7,7 +7,7 @@ import supertest from "supertest";
 import { ops, routes, sampleData } from "./constants";
 
 beforeAll(async () => {
-  const { health, addNote, getNotes } = routes;
+  const { health } = routes;
 
   global.request = supertest;
 

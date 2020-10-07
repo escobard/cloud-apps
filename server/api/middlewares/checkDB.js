@@ -1,6 +1,3 @@
-/** Middelware to check connection to DB
- * @dev prevents API crashes when DB is unavailable
- */
 import { cleanError } from "../utils";
 
 function checkDB() {

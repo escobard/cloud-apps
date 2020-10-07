@@ -1,7 +1,3 @@
-/** Middleware to return swagger validation errors
- * @dev throws an error if a request doesn't match our Note.yaml swagger validation
- */
-
 import { cleanSwaggerError } from "../utils"
 
 function swaggerValidation(err){

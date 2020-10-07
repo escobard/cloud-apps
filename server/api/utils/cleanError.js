@@ -1,8 +1,3 @@
-
-/** Util to clean route errors
- * @return {object} status, message
- */
-
 const cleanError = (error, type) => {
 
   const checkType = type ? type : "Promise rejection error";

@@ -1,6 +1,7 @@
-import { sequelize, authenticate, Users} from "./"
+import { sequelize, authenticate, Users, Notes } from "./";
 
 describe("DB Authentication", () => {
+
   const users = [
     {
       id: 3,
@@ -10,12 +11,10 @@ describe("DB Authentication", () => {
       date: "a JavaScript generated date"
     }
   ];
-  it(">> is able to authenticate", async () => {
 
-    sinon
-      .stub(sequelize, "authenticate")
-      .resolves();
-    sinon.stub(Users, "findAll").resolves(users);
+  it(">> is able to authenticate", async () => {
+    jest.spyOn(sequelize, "authenticate").mockResolvedValue("");
+    jest.spyOn(Users, "findAll").mockResolvedValue(users);
 
     const test = await authenticate(sequelize);
 
@@ -23,45 +22,44 @@ describe("DB Authentication", () => {
   });
 
   it(">> is able to create base user", async () => {
-
-    sinon
-      .stub(sequelize, "authenticate")
-      .resolves();
-    sinon.stub(Users, "findAll").resolves([]);
-    sinon.stub(Users, "create").resolves("User created!");
+    jest.spyOn(sequelize, "authenticate").mockResolvedValue("");
+    jest.spyOn(Users, "findAll").mockResolvedValue([]);
+    jest.spyOn(Users, "create").mockResolvedValue("User created!");
 
     const test = await authenticate(sequelize);
 
     expect(test).toEqual("User created!");
   });
 
- it(">> throws unable to connect to DB error", async () => {
+  it(">> throws unable to connect to DB error", async () => {
+    jest.spyOn(sequelize, "authenticate").mockRejectedValue("Random DB error");
 
-   sinon
-     .stub(sequelize, "authenticate")
-     .rejects('Random DB error');
+    const test = await authenticate(sequelize);
 
-   const test = await authenticate(sequelize);
-   expect(test).toEqual('Unable to connect to the database: Random DB error');
- });
+    expect(test).toEqual("Unable to connect to the database: Random DB error");
+  });
+
   it(">> throws unable to get users error", async () => {
-    sinon
-      .stub(sequelize, "authenticate")
-      .resolves();
-
-    sinon.stub(Users, "findAll").rejects("Random User findAll error");
+    jest.spyOn(sequelize, "authenticate").mockResolvedValue("");
+    jest.spyOn(Users, "findAll").mockRejectedValue("Random User findAll error");
 
     const test = await authenticate(sequelize);
-    expect(test).toEqual("Unable to connect to findAll users: Random User findAll error");
+
+    expect(test).toEqual(
+      "Unable to connect to findAll users: Random User findAll error"
+    );
   });
+
   it(">> throws unable to create users error", async () => {
-    sinon
-      .stub(sequelize, "authenticate")
-      .resolves();
-    sinon.stub(Users, "findAll").resolves([]);
-    sinon.stub(Users, "create").rejects("Random User create error");
+    jest.spyOn(sequelize, "authenticate").mockResolvedValue("");
+    jest.spyOn(Users, "findAll").mockResolvedValue([]);
+    jest.spyOn(Users, "create").mockRejectedValue("Random User create error");
 
     const test = await authenticate(sequelize);
-    expect(test).toEqual("Unable to create original user: Random User create error");
+
+    expect(test).toEqual(
+      "Unable to create original user: Random User create error"
+    );
   });
+
 });
