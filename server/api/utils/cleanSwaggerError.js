@@ -1,8 +1,3 @@
-
-/** Util to clean swagger validation errors
- * @return {object} status, message, schemaPath, missingProp
- */
-
 const cleanSwaggerError = error => {
   const type = "Swagger validation error"
   console.log(type);

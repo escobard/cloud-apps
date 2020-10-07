@@ -33,10 +33,3 @@ services:
     build:
       context: ./server/api
       dockerfile: docker/Dockerfile
-  nginx:
-    restart: always
-    build:
-      dockerfile: Dockerfile.prod
-      context: ../nginx
-    ports:
-      - '5000:5000'
