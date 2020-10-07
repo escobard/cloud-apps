@@ -13,14 +13,9 @@ const authenticate = sequelize => {
       return Users.findAll()
         .then(values => {
           const { hasDB } = global;
-
-          const cleanData = JSON.stringify(values, null, 4);
-
-          console.log("All users:", cleanData);
           if (hasDB === true && values.length === 0) {
             return Users.create({ email: "admin@admin" })
               .then(admin => {
-                console.log("Auto-generated ID:", admin.id, admin.email);
                 return admin;
               })
               .catch(err => {

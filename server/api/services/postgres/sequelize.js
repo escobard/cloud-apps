@@ -19,5 +19,4 @@ const sequelize = new Sequelize(pgDatabase, pgUser, pgPassword, {
     schema: "notes"
   }
 });
-console.log('dbkeys', dbkeys)
 export default sequelize;

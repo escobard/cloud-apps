@@ -4,16 +4,18 @@
 
 Starts the application on `http://localhost:4000`
 
-### With npm
-
-2. `npm install`
-3. `npm start`
+1. `npm install`
+2. `npm start`
 
 ## Usage
 
 ### Development
 
 `npm run dev`
+
+### Unit Tests
+
+`npm run test`
 
 ### Production
 

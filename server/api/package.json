@@ -6,13 +6,12 @@
   "scripts": {
     "start": "babel-node index.js",
     "dev": "set environment=development&& nodemon --exec babel-node -L index.js",
-    "test": "nyc --reporter=text mocha --compilers js:@babel/register \"./{,!(node_modules)/**/}*.test.js\"",
-    "test-watch": "set PORT=5555 && nyc mocha --compilers js:@babel/register --watch \"./{,!(node_modules)/**/}*.test.js\"",
+    "test": "set PORT=5555 && jest --coverage",
+    "test-watch": "set PORT=5555 && jest --watch -o",
     "docker-build": "docker build -t escobard/create-app-api:latest -f docker/Dockerfile .",
     "docker-start": "docker run --name api -p 4000:4000 -t escobard/create-app-api:latest",
     "docker-rm": "docker stop api && docker rm api",
-    "docker": "npm run docker-build && npm run docker-start",
-    "jest": "jest"
+    "docker": "npm run docker-build && npm run docker-start"
   },
   "engines": {
     "node": "10.x",
@@ -69,7 +68,18 @@
     "watchPlugins": [
       "jest-watch-typeahead/filename",
       "jest-watch-typeahead/testname"
-    ]
+    ],
+    "coverageReporters": [
+      "text"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
+    }
   },
   "babel": {
     "presets": [

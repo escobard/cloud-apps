@@ -19,7 +19,7 @@ describe("DB Authentication", () => {
 
     const test = await authenticate(sequelize);
 
-    expect(test).to.equal(users);
+    expect(test).toEqual(users);
   });
 
   it(">> is able to create base user", async () => {
@@ -32,7 +32,7 @@ describe("DB Authentication", () => {
 
     const test = await authenticate(sequelize);
 
-    expect(test).to.equal("User created!");
+    expect(test).toEqual("User created!");
   });
 
  it(">> throws unable to connect to DB error", async () => {
@@ -42,7 +42,7 @@ describe("DB Authentication", () => {
      .rejects('Random DB error');
 
    const test = await authenticate(sequelize);
-   expect(test).to.equal('Unable to connect to the database: Random DB error');
+   expect(test).toEqual('Unable to connect to the database: Random DB error');
  });
   it(">> throws unable to get users error", async () => {
     sinon
@@ -52,7 +52,7 @@ describe("DB Authentication", () => {
     sinon.stub(Users, "findAll").rejects("Random User findAll error");
 
     const test = await authenticate(sequelize);
-    expect(test).to.equal("Unable to connect to findAll users: Random User findAll error");
+    expect(test).toEqual("Unable to connect to findAll users: Random User findAll error");
   });
   it(">> throws unable to create users error", async () => {
     sinon
@@ -62,6 +62,6 @@ describe("DB Authentication", () => {
     sinon.stub(Users, "create").rejects("Random User create error");
 
     const test = await authenticate(sequelize);
-    expect(test).to.equal("Unable to create original user: Random User create error");
+    expect(test).toEqual("Unable to create original user: Random User create error");
   });
 });
