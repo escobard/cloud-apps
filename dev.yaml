@@ -1,9 +1,9 @@
 version: '3'
 services:
   postgres:
-    container_name: pgdb_dev
+    container_name: postgres_dev
     build:
-      context: ./server/db
+      context: ./server/postgres
     ports:
       - "5432:5432"
     # TODO - replace this by creating a default superadmin with SQL for phase 4

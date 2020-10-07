@@ -6,7 +6,7 @@ describe("checkDB", function() {
     global.dBError = "";
   });
 
-  it(">> should call next() if db is available", async () => {
+  it(">> should call next() if postgres is available", async () => {
     const nextSpy = jest.fn();
     global.hasDB = true;
 
@@ -14,7 +14,7 @@ describe("checkDB", function() {
     expect(nextSpy).toHaveBeenCalledTimes(1)
   });
 
-  it(">> should not call next() if db is unavailable", function() {
+  it(">> should not call next() if postgres is unavailable", function() {
     const req = mockRequest();
     const res = mockResponse();
     global.dBError = "test DB error";

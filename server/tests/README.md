@@ -1,27 +1,23 @@
 # Integration Tests
 
-For more expanded documentation, visit [documents/integration.md](https://github.com/escobard/create-app/blob/master/documentation/integration.md)
-
 ## Quickstart
 
-This application expects the create-app `API` to be running on `localhost:4000` connected to running `DB`.
+This application expects the api to be running on `localhost:4000` connected to a running database.
+
+
 
 1. `npm install`
 2. `npm start`
 
 ## Usage
 
-### Run all tests
+### Run tests
 
 `npm test`
 
-### Watch all tests
+### Watch tests
 
 `npm run test-watch`
-
-#### Run a single test
-
-`npm run test-watch moduleName`
 
 ### Run tests in order
 
