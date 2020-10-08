@@ -11,7 +11,7 @@ describe("useNotes hook", () => {
   const getNotesResponse = getNotesBody;
 
   it(">> getNotes()", async () => {
-    axios.get.mockResolvedValue(getNotesResponse);
+    mockApi.get.mockResolvedValue(getNotesResponse);
 
     const { result, waitForNextUpdate } = renderHook(() => useNotes());
 
@@ -29,7 +29,7 @@ describe("useNotes hook", () => {
   });
 
   it(">> addNote()", async () => {
-    axios.post.mockResolvedValue(postNotesResponse);
+    mockApi.post.mockResolvedValue(postNotesResponse);
 
     const { result, waitForNextUpdate } = renderHook(() => useNotes());
 

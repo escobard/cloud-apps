@@ -14,8 +14,8 @@ describe(">> render()", () => {
       }
     ]
   };
-  it(">> snapshot is up to date", async () => {
-    axios.get.mockResolvedValue(response);
+  it(">> snapshot with data is up to date", async () => {
+    mockApi.get.mockResolvedValue(response);
     const { container } = render(
       <NotesProvider>
         <MemoryRouter initialEntries={["/"]}>

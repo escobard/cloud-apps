@@ -22,8 +22,8 @@ describe("User flows", () => {
     it(">> displays message update and closes modal on submit success", async () => {
       const subjectValue = "subject test value";
       const noteValue = "random test sentence to pass validation";
-      axios.post.mockResolvedValue(response);
-      axios.get.mockResolvedValue(response);
+      mockApi.post.mockResolvedValue(response);
+      mockApi.get.mockResolvedValue(response);
       const { getByRole, getByText, getByLabelText, rerender } = render(
         <NotesProvider>
           <MemoryRouter initialEntries={["/"]}>
@@ -75,7 +75,7 @@ describe("User flows", () => {
     });
 
     it(">> renders notes in error state", async () => {
-      axios.get.mockRejectedValue("TEST");
+      mockApi.get.mockRejectedValue("TEST");
       const { rerender, getByText } = render(
         <NotesProvider>
           <MemoryRouter initialEntries={["/"]}>
@@ -96,7 +96,7 @@ describe("User flows", () => {
     });
 
     it(">> renders notes with data state", async () => {
-      axios.get.mockResolvedValue(response);
+      mockApi.get.mockResolvedValue(response);
       const { rerender, getByText } = render(
         <NotesProvider>
           <MemoryRouter initialEntries={["/"]}>
