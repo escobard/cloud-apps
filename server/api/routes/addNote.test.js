@@ -3,7 +3,9 @@ import { Notes } from "../services/postgres"
 jest.mock("../services/postgres").Notes;
 
 describe("addNote route", () => {
+
   let note;
+
   beforeEach(done => {
     note = {
       user_id: 1,

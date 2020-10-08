@@ -3,6 +3,7 @@ const { Notes } = require("../services/postgres/models");
 jest.mock("../services/postgres").Notes;
 
 describe("getNotes route", () => {
+
   const users = [
     {
       id: 3,

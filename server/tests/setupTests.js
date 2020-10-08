@@ -21,8 +21,7 @@ beforeAll(async () => {
 });
 
 beforeEach(() => {
-  const { host, port } = ops;
-  global.server = `http://${host}:${port}`;
+  global.server = `http://${ops.host}:${ops.port}`;
 });
 
 afterEach(() => {

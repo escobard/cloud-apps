@@ -33,7 +33,7 @@ describe("Footer", () => {
   });
 
   it(">> should display completed notes and count if count is not 0", async () => {
-    axios.get.mockResolvedValue(getNotesBody);
+    mockApi.get.mockResolvedValue(getNotesBody);
     const { getByText } = render(
       <NotesProvider>
         <MemoryRouter initialEntries={["/"]}>
