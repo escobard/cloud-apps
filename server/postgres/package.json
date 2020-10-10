@@ -1,0 +1,14 @@
+{
+  "name": "postgres",
+  "version": "1.0.0",
+  "description": "Postgres SQL application for cloud-apps",
+  "main": "index.js",
+  "scripts": {
+    "docker-build": "docker build -t escobard/create-app-postgres:latest -f Dockerfile .",
+    "docker-start": "docker run --name postgres -e POSTGRES_PASSWORD=postgres_password -p 5432:5432 -t escobard/create-app-postgres:latest",
+    "docker-rm": "docker stop ui && docker rm ui",
+    "docker": "npm run docker-build && npm run docker-start"
+  },
+  "author": "Daniel Escobar",
+  "license": "ISC"
+}
