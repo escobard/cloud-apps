@@ -12,6 +12,6 @@ const apiRoot =
   environment === "gcp" ? "https://gcp.api.url" : apiRouteController;
 
 export const apiRoutes = {
-  addNote: `${`${apiRoot}/addNote`}`,
-  getNotes: `${`${apiRoot}/getNotes`}`
+  addNote: `${`${apiRoot}`}`,
+  getNotes: `${`${apiRoot}`}`
 };

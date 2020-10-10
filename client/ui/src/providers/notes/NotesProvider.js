@@ -13,7 +13,7 @@ const NotesProvider = ({ children }) => {
       // TODO - this should come from authentication
       user_id: 1,
       subject,
-      newNote
+      note: newNote
     };
 
     await addNote(request);
