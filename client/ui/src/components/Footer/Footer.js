@@ -13,7 +13,7 @@ const Footer = () => {
   const { openModal, notes } = useContext(NotesContext);
   const { pathname } = useLocation();
 
-  const hasNotes = notes && notes.length >= 1;
+  const hasNotes = notes && Array.isArray(notes) && notes.length >= 1;
   const isHome = pathname === "/";
 
   return (
@@ -27,7 +27,7 @@ const Footer = () => {
       ) : (
         <p>{footer.noNotes}</p>
       )}
-      {notes && (
+      {notes && Array.isArray(notes) && (
         <i
           aria-label="Add note"
           role="button"

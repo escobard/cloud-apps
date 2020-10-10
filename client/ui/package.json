@@ -9,7 +9,11 @@
     "test": "node scripts/test.js --coverage",
     "test-watch": "jest --watch",
     "lint": "eslint ./src",
-    "lint-fix": "eslint ./src --fix"
+    "lint-fix": "eslint ./src --fix",
+    "docker-build": "docker build -t escobard/create-app-ui:latest -f docker/Dockerfile.prod .",
+    "docker-start": "docker run --name ui -p 3000:3000 -t escobard/create-app-ui:latest",
+    "docker-rm": "docker stop ui && docker rm ui",
+    "docker": "npm run docker-build && npm run docker-start"
   },
   "dependencies": {
     "@babel/core": "7.1.6",
