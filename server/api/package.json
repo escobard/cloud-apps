@@ -8,6 +8,8 @@
     "dev": "set environment=development&& nodemon --exec babel-node -L index.js",
     "test": "set PORT=5555 && jest --coverage",
     "test-watch": "set PORT=5555 && jest --watch -o",
+    "lint": "eslint ./",
+    "lint-fix": "eslint ./ --fix",
     "docker-build": "docker build -t escobard/create-app-api:latest -f docker/Dockerfile .",
     "docker-start": "docker run --name api -p 4000:4000 -t escobard/create-app-api:latest",
     "docker-rm": "docker stop api && docker rm api",
@@ -21,12 +23,15 @@
   "license": "ISC",
   "dependencies": {
     "@babel/core": "^7.9.0",
+    "babel-eslint": "^9.0.0",
+    "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
     "pg": "^7.4.3",
     "sequelize": "^5.21.2",
     "swagger-express-middleware": "^2.0.5",
+    "swagger-parser": "^10.0.2",
     "swagger-ui-express": "^4.1.3"
   },
   "devDependencies": {
@@ -36,6 +41,13 @@
     "@babel/preset-env": "^7.9.0",
     "@babel/register": "^7.9.0",
     "chai": "^4.2.0",
+    "eslint": "^7.11.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-prettier": "^6.12.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.21.4",
     "jest": "^24.9.0",
     "jest-extended": "^0.11.5",
     "jest-resolve": "24.7.1",
@@ -43,8 +55,13 @@
     "mocha": "^5.2.0",
     "nodemon": "^1.19.4",
     "nyc": "^14.1.1",
+    "prettier": "^2.1.2",
     "supertest": "^3.4.2"
   },
+  "eslintIgnore": [
+    "*.test.js",
+    "setupTests.js"
+  ],
   "jest": {
     "collectCoverageFrom": [
       "./**/*.{js,jsx,ts,tsx}",

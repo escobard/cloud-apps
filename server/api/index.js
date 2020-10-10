@@ -9,7 +9,7 @@ import allRoutes from "./routes";
 import docs from "./routes/docs";
 
 const app = express();
-const port = routes.port;
+const { port } = routes;
 
 app.use(bodyParser.json());
 app.use(cors({ origin: "*" }));
@@ -33,8 +33,8 @@ createMiddleware("Notes.yaml", app, async (err, middleware) => {
   await allRoutes(app);
 });
 
-let server = app.listen(port, async () => {
-  console.log(`Example app listening on port ${port}!`);
+const server = app.listen(port, async () => {
+  console.info(`Example app listening on port ${port}!`);
 });
 
 export default server;

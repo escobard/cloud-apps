@@ -1,14 +1,8 @@
 // file to connect to sequelize
 import { Sequelize } from "sequelize";
-import { dbkeys } from "../../constants"
+import { dbkeys } from "../../constants";
 
-const  {
-  pgPort,
-  pgHost,
-  pgUser,
-  pgDatabase,
-  pgPassword
-} = dbkeys;
+const { pgPort, pgHost, pgUser, pgDatabase, pgPassword } = dbkeys;
 
 const sequelize = new Sequelize(pgDatabase, pgUser, pgPassword, {
   host: pgHost,
@@ -16,7 +10,7 @@ const sequelize = new Sequelize(pgDatabase, pgUser, pgPassword, {
   dialect: "postgres",
   define: {
     timestamps: false,
-    schema: "notes"
-  }
+    schema: "notes",
+  },
 });
 export default sequelize;

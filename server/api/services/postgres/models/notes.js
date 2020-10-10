@@ -1,6 +1,5 @@
 const notes = (sequelize, DataTypes) => {
-  
-  return sequelize.define('notes', {
+  return sequelize.define("notes", {
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -17,9 +16,7 @@ const notes = (sequelize, DataTypes) => {
       type: DataTypes.STRING(25),
       allowNull: false,
     },
-    
   });
-
 };
 
 export default notes;

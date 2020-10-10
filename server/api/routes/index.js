@@ -4,7 +4,7 @@ import health from "./health";
 import addNote from "./addNote";
 import getNotes from "./getNotes";
 
-export default app => {
+export default (app) => {
   // lifecycle checks
   app.use(routes.health, health);
 

@@ -6,6 +6,6 @@ export default Router().get("/", (req, res) => {
     DB: global.hasDB === true,
     // TODO update docker with this new variable for staging / prod
     // TODO update process to environment, so it makes more sense
-    process: process.env.environment
+    process: process.env.environment,
   });
 });

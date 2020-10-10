@@ -1,0 +1,53 @@
+module.exports = {
+  extends: ["airbnb", "plugin:prettier/recommended"],
+  env: {
+    es6: true,
+    node: true,
+    jest: true,
+    browser: true,
+  },
+  plugins: ["prettier"],
+  rules: {
+    "prettier/prettier": "error",
+    "import/prefer-default-export": "off",
+    "linebreak-style": 0,
+    "no-unused-expressions": [2, { allowShortCircuit: true }],
+    "no-console": ["error", { allow: ["error", "info"] }],
+  },
+  parser: "babel-eslint",
+  parserOptions: {
+    ecmaVersion: 6,
+    sourceType: "module",
+    ecmaFeatures: {
+      arrowFunctions: true,
+      binaryLiterals: true,
+      blockBindings: true,
+      classes: true,
+      defaultParams: true,
+      destructuring: true,
+      forOf: true,
+      generators: true,
+      modules: true,
+      objectLiteralComputedProperties: true,
+      objectLiteralDuplicateProperties: true,
+      objectLiteralShorthandMethods: true,
+      objectLiteralShorthandProperties: true,
+      octalLiterals: true,
+      regexUFlag: true,
+      regexYFlag: true,
+      spread: true,
+      superInFunctions: true,
+      templateStrings: true,
+      unicodeCodePointEscapes: true,
+      globalReturn: true,
+      experimentalObjectRestSpread: true,
+    },
+  },
+  settings: {
+    "import/resolver": {
+      node: {
+        paths: ["node_modules", ""],
+      },
+    },
+  },
+};

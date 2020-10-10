@@ -1,13 +1,8 @@
-import sequelize from "./sequelize"
+import sequelize from "./sequelize";
 import { Users, Notes } from "./models";
-import authenticate from "./authenticate"
+import authenticate from "./authenticate";
 
 // no longer
 authenticate(sequelize);
 
-export {
-  sequelize,
-  authenticate,
-  Users,
-  Notes
-}
+export { sequelize, authenticate, Users, Notes };
