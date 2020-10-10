@@ -1,3 +1,3 @@
-import useNotes from "./useNotes"
+import useNotes from "./useNotes";
 
 export default useNotes;

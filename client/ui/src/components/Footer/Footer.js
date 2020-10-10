@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import { useLocation } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 
 import { NotesContext } from "providers";
 
@@ -14,7 +14,7 @@ const Footer = () => {
   const { pathname } = useLocation();
 
   const hasNotes = notes && notes.length >= 1;
-  const isHome = pathname === '/';
+  const isHome = pathname === "/";
 
   return (
     <footer>
@@ -23,16 +23,18 @@ const Footer = () => {
           <p>
             {footer.withNotes} <span> {notes.length} </span>
           </p>
-          <i aria-label="Add note" role="button" className="plus big icon" onClick={openModal} />
+          <i
+            aria-label="Add note"
+            role="button"
+            className="plus big icon"
+            onClick={openModal}
+          />
         </>
       ) : (
-        <p>
-          {footer.noNotes}
-        </p>
+        <p>{footer.noNotes}</p>
       )}
     </footer>
   );
-
 };
 
 export default Footer;

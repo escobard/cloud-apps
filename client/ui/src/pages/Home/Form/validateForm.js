@@ -1,12 +1,12 @@
 import validateField from "pages/Home/Form/validateField";
 
-const validateForm = (fields) => {
-  let errors = [];
+const validateForm = fields => {
+  const errors = [];
 
-  fields.map( (field) => {
+  fields.map(field => {
     const { condition, error } = field;
     const fieldError = validateField(condition, error);
-    fieldError && errors.push(fieldError)
+    fieldError && errors.push(fieldError);
   });
 
   return errors;

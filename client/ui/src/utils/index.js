@@ -1,5 +1,5 @@
-import { cleanError } from "./cleanError"
+import { cleanError } from "./cleanError";
 import { todayDate } from "./todayDate";
-import { api } from "./api"
+import { api } from "./api";
 
-export {  cleanError, todayDate, api };
+export { cleanError, todayDate, api };

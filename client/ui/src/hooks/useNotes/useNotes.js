@@ -12,7 +12,7 @@ const useNotes = () => {
 
   useEffect(() => {
     isMounted.current = true;
-    if (isMounted.current){
+    if (isMounted.current) {
       getNotes();
     }
     return () => {

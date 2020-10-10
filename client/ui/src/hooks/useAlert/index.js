@@ -1,3 +1,3 @@
-import useAlert from './useAlert'
+import useAlert from "./useAlert";
 
 export default useAlert;

@@ -45,5 +45,4 @@ Modal.PropTypes = {
   })
 };
 
-
 export default ModalElement;

@@ -1,3 +1,3 @@
 import NotesProvider, { NotesContext } from "./notes";
 
-export { NotesProvider, NotesContext}
+export { NotesProvider, NotesContext };

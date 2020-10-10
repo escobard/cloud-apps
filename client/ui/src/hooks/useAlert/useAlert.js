@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 const useAlert = () => {
   const [alert, setAlert] = useState({});
 
-  return { alert, setAlert}
+  return { alert, setAlert };
 };
 
 export default useAlert;

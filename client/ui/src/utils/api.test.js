@@ -11,22 +11,22 @@ describe("api utils", () => {
       expect(request).toEqual("http request argument required");
     });
     it(">> returns error if url argument is missing", async () => {
-      const request = await api('get');
+      const request = await api("get");
       expect(request).toEqual("url argument required");
     });
     it(">> returns response when headers argument is passed", async () => {
       mockApi.get.mockResolvedValue(response);
-      const request = await api('get', '/', {'':""});
+      const request = await api("get", "/", { "": "" });
       expect(request).toEqual(response.data);
     });
     it(">> returns response when body argument is passed", async () => {
       mockApi.post.mockResolvedValue(response);
-      const request = await api('post', '/', {'':""}, body);
+      const request = await api("post", "/", { "": "" }, body);
       expect(request).toEqual(response.data);
     });
     it(">> returns error when request is rejected", async () => {
       mockApi.get.mockRejectedValue(reject);
-      const request = await api('get', '/');
+      const request = await api("get", "/");
       expect(request).toEqual(rejectError);
     });
   });

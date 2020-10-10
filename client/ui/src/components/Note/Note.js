@@ -6,12 +6,16 @@ import { Grid } from "semantic-ui-react";
 import "./Note.scss";
 
 // TODO - improve grid structure for error cases
-const Note = ({ data: { subject, note, date, icon}}) => (
-  <Grid columns="equal" className={subject === "API error" ? "error note" : "note"}>
+const Note = ({ data: { subject, note, date, icon } }) => (
+  <Grid
+    columns="equal"
+    className={subject === "API error" ? "error note" : "note"}
+  >
     <Grid.Column mobile={3} tablet={2} computer={1} className="icon">
       <i
         aria-label={icon && icon.label ? icon.label : "note icon"}
-        className={`${icon && icon.image || "sticky note"} big circular icon error`}
+        className={`${(icon && icon.image) ||
+          "sticky note"} big circular icon error`}
       />
     </Grid.Column>
     <Grid.Column mobile={9} tablet={12} computer={13} className="content">
