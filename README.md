@@ -1,9 +1,6 @@
 # cloud-apps
 
-A cloud boilerplate powered by React, Node, Postgres and Docker.    
-
-This boilerplate leverages a JavaScript infrastructure along with common design
- patterns to power a cloud native software system.  
+A cloud system boilerplate powered by React, Node, Postgres and Docker.
   
 ## Quickstart
 
