@@ -12,6 +12,7 @@ module.exports = {
     "import/prefer-default-export": "off",
     "linebreak-style": 0,
     "no-unused-expressions": [2, { allowShortCircuit: true }],
+    "no-console": ["error", { allow: ["error", "info"] }],
   },
   parser: "babel-eslint",
   parserOptions: {

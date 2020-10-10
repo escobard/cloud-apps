@@ -1,6 +1,6 @@
 import { cleanSwaggerError } from "../utils";
 
-function swaggerValidation(err) {
+function swaggerValidation() {
   return async (err, req, res, next) => {
     if (err) {
       res.status(err.status);

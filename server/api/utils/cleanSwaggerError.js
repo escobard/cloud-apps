@@ -1,8 +1,8 @@
 const cleanSwaggerError = (error) => {
   const type = "Swagger validation error";
-  console.log(type);
-  console.log(`Status: ${error.status}`);
-  console.log(`Message: ${error.message}`);
+  console.error(type);
+  console.error(`Status: ${error.status}`);
+  console.error(`Message: ${error.message}`);
 
   const fullError = error.message.split(/\r\n|\r|\n/g);
 

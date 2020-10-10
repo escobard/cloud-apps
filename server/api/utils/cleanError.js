@@ -1,9 +1,9 @@
 const cleanError = (error, type) => {
   const checkType = type || "Promise rejection error";
 
-  console.log(type);
-  console.log(`Status:${error.status}`);
-  console.log(`Message: ${error.message}`);
+  console.error(type);
+  console.error(`Status:${error.status}`);
+  console.error(`Message: ${error.message}`);
 
   return {
     type: checkType,

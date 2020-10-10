@@ -34,7 +34,7 @@ createMiddleware("Notes.yaml", app, async (err, middleware) => {
 });
 
 const server = app.listen(port, async () => {
-  console.log(`Example app listening on port ${port}!`);
+  console.info(`Example app listening on port ${port}!`);
 });
 
 export default server;

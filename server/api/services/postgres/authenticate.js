@@ -5,7 +5,7 @@ const authenticate = (sequelize) => {
     .authenticate()
     .then(() => {
       global.hasDB = true;
-      console.log("Connection has been established successfully.");
+      console.info("Connection has been established successfully.");
 
       // TODO - this logic will be moved to the auth service with phase 5
 

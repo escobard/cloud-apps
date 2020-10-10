@@ -8,7 +8,7 @@ function checkDB() {
         .status(503)
         .json(cleanError({ message: "No database available!", status: 503 }));
     }
-    next();
+    return next();
   };
 }
 
