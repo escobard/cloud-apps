@@ -2,7 +2,7 @@
 
 A cloud boilerplate powered by React, Node, Postgres and Docker.    
 
-It's not unusual to have applications written in multiple programming languages within software enterprises. This boilerplate leverages a JavaScript infrastructure along with common design
+This boilerplate leverages a JavaScript infrastructure along with common design
  patterns to power a cloud native software system.  
   
 ## Quickstart

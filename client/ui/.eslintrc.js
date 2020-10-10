@@ -18,7 +18,8 @@ module.exports={
     "react/prefer-stateless-function": [0, { "ignorePureComponents": true }],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/style-prop-object": [0],
-    "linebreak-style": 0
+    "linebreak-style": 0,
+    "no-unused-expressions": [2, { allowShortCircuit: true }]
   },
   "parser": "babel-eslint",
   "parserOptions": {

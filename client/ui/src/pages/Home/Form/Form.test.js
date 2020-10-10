@@ -1,5 +1,5 @@
-import Form from "./Form";
 import { addNoteFields } from "constants/forms";
+import Form from "./Form";
 
 describe("Form", () => {
   let results;

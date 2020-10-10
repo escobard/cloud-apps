@@ -1,4 +1,5 @@
-import useGetRequest from "./useGetRequest";
 import useModal from "./useModal";
+import useNotes from "./useNotes";
+import useAlert from "./useAlert";
 
-export { useGetRequest, useModal };
+export { useModal, useNotes, useAlert };

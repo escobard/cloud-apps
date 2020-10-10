@@ -2,7 +2,7 @@
 
 ## Quickstart
 
-Starts the application on `http://localhost:4000`
+Starts the application on `http://localhost:4003`
 
 1. `npm install`
 2. `npm start`

@@ -3,7 +3,6 @@ import validateForm from "pages/Home/Form/validateForm";
 import { addNoteFields } from "constants/forms";
 
 describe("validateForm util", () => {
-
   const trueCondition = [
     {
       condition: true,
@@ -27,5 +26,4 @@ describe("validateForm util", () => {
     const results = validateForm(falseCondition);
     expect(results).toEqual([]);
   });
-
 });

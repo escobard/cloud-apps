@@ -1,6 +1,4 @@
-import NotesProvider, { NotesContext } from "providers/notes/NotesProvider"
+import NotesProvider, { NotesContext } from "providers/notes/NotesProvider";
 
 export default NotesProvider;
-export {
-  NotesContext
-}
+export { NotesContext };

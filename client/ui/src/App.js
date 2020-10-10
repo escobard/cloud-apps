@@ -9,7 +9,6 @@ import { Header, Footer } from "components";
 import "styles/global.scss";
 
 const App = () => {
-
   return (
     <Router>
       <>
@@ -23,7 +22,7 @@ const App = () => {
             <span>Page not found.</span>
           </Route>
         </Switch>
-        <Footer/>
+        <Footer />
       </>
     </Router>
   );

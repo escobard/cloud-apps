@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import { api } from "utils";
 
@@ -10,9 +10,20 @@ const useNotes = () => {
   const [notes, setNotes] = useState(undefined);
   const isMounted = useRef(null);
 
+  const getNotes = async () => {
+    isMounted.current && setLoading(true);
+    const results = await api("get", apiRoutes.getNotes, { headers });
+    if (isMounted.current && results) {
+      setNotes(results);
+      setLoading(false);
+      return results;
+    }
+    return results;
+  };
+
   useEffect(() => {
     isMounted.current = true;
-    if (isMounted.current){
+    if (isMounted.current) {
       getNotes();
     }
     return () => {
@@ -24,22 +35,15 @@ const useNotes = () => {
     note && getNotes();
   }, [note]);
 
-  const getNotes = async () => {
+  const addNote = async newNote => {
     isMounted.current && setLoading(true);
-    const results = await api("get", apiRoutes.getNotes, { headers });
-    if (isMounted.current && results) {
-      setNotes(results);
-      return setLoading(false);
-    }
-  };
-
-  const addNote = async note => {
-    isMounted.current && setLoading(true);
-    const results = await api("post", apiRoutes.addNote, { headers }, note);
+    const results = await api("post", apiRoutes.addNote, { headers }, newNote);
     if (isMounted.current && results) {
       setNote(results);
-      return setLoading(false);
+      setLoading(false);
+      return results;
     }
+    return results;
   };
 
   return {
