@@ -28,6 +28,10 @@ const Footer = () => {
             role="button"
             className="plus big icon"
             onClick={openModal}
+            tabIndex={0}
+            onKeyDown={e => {
+              e.key === "Enter" && openModal();
+            }}
           />
         </>
       ) : (

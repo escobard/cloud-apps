@@ -6,7 +6,7 @@ const validateForm = fields => {
   fields.map(field => {
     const { condition, error } = field;
     const fieldError = validateField(condition, error);
-    fieldError && errors.push(fieldError);
+    return fieldError && errors.push(fieldError);
   });
 
   return errors;

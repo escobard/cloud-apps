@@ -42,7 +42,7 @@ const Form = ({ fields, submit }) => {
     }
     setAlert({
       title: "Note added!",
-      message: status,
+      message: "",
       status: "green"
     });
 
@@ -60,13 +60,13 @@ const Form = ({ fields, submit }) => {
     });
   };
 
-  const renderFields = fields => {
-    return fields.map((field, index) => {
+  const renderFields = formFields => {
+    return formFields.map(field => {
       const { name, label, placeholder } = field;
 
       if (name === "note") {
         return (
-          <SemanticForm.Field key={index}>
+          <SemanticForm.Field key={name + label}>
             <label htmlFor={name}>{label}</label>
             <textarea
               id={name}
@@ -81,7 +81,7 @@ const Form = ({ fields, submit }) => {
       }
 
       return (
-        <SemanticForm.Field key={index}>
+        <SemanticForm.Field key={name + label}>
           <label htmlFor={name}>{label}</label>
           <input
             id={name}

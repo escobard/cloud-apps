@@ -17,6 +17,7 @@ const ModalElement = ({ title, content, showModal, closeModal }) => (
             aria-label="Back"
             onClick={closeModal}
             className="arrow left big icon"
+            role="button"
           />
         </Grid.Column>
         <Grid.Column width={12}>
@@ -37,12 +38,11 @@ const ModalElement = ({ title, content, showModal, closeModal }) => (
   </Modal>
 );
 
-// TODO - rework these to work w/ useModal refactor
-Modal.PropTypes = {
-  data: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    close: PropTypes.object.isRequired
-  })
+ModalElement.propTypes = {
+  title: PropTypes.string.isRequired,
+  content: PropTypes.shape({}).isRequired,
+  showModal: PropTypes.bool.isRequired,
+  closeModal: PropTypes.func.isRequired
 };
 
 export default ModalElement;
