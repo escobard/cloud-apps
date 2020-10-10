@@ -3,11 +3,6 @@
   "version": "0.0.2",
   "description": "An enterprise platform boilerplate, forked from escobard/create-dapp",
   "main": "index.js",
-  "dependencies": {
-    "concurrently": "^4.1.0",
-    "prettier": "^1.17.0"
-  },
-  "devDependencies": {},
   "scripts": {
     "dev": "docker-compose -f dev.yaml up",
     "prod": "docker-compose -f prod.yaml up",

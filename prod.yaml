@@ -6,23 +6,20 @@ services:
       context: ./server/postgres
     ports:
       - "5432:5432"
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
   ui:
     container_name: ui_prod
     working_dir: /usr/create-app/ui
-    environment:
-      - DOCKER_VARIANT=compose_routing
-      - REACT_APP_DOCKER_VARIANT=nginx_routing
     build:
-      context: ../ui
-      dockerfile: ../ui/docker/Dockerfile.prod
+      context: ./client/ui
+      dockerfile: docker/Dockerfile.prod
     ports:
       - "3000:3000"
   api:
     container_name: api_prod
     working_dir: /usr/create-app/api
     environment:
-      - DOCKER_VARIANT=nginx_routing
-      - REACT_APP_DOCKER_VARIANT=nginx_routing
       - PGUSER=postgres
       - PGHOST=postgres
       - PGDATABASE=postgres
@@ -32,4 +29,4 @@ services:
     - "4000:4000"
     build:
       context: ./server/api
-      dockerfile: docker/Dockerfile
+      dockerfile: docker/Dockerfile.prod
