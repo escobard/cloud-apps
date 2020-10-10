@@ -1,56 +1,40 @@
 # End to End Tests
 
-For more End to End Test documentation, visit [documents/e2e.md](https://github.com/escobard/create-app/blob
-/master/documentation/e2e.md)
+## Quickstart
 
-## Usage
-
-This application expects the `create-app UI` to be running on `localhost:3000` with the API and database available. 
-
-end to end test happy paths are dependent on the `integration` tests running first, as e2e happy path assertions rely on the data created by the integration tests.
-
-To quickly spin up a development instance of the platform, run `npm run dev` in the parent directory, or `cd
- .. && npm run dev` from this directory.
-
-### With NPM
+This application expects the ui to be running on `localhost:3000` and the api to be running on `localhost:4000` connected to a running database.
 
 1. `npm install`
 2. `npm start`
 
-### With Docker
+## Usage
 
-1. `npm run test-docker`
-
-## Scripts 
-
-### NPM
-
-#### All tests
+#### Run tests
 
 `npm run test`
+
+###3 Watch tests
+
+`npm run test-watch`
 
 #### Tests in headless mode
 
 `npm run test -- --headless`
 
-#### Tests with tags
-
-To run tests with a single tag
-
-`npm test happy`
-
-#### Tests a certain path
-
-`npm test-path tests/Landing`
-
-## Docker
-
-In order to run this application with docker, `docker` and `docker-compose` have to be installed on the user's machine.
-
-In addition, this script expects the `ui, api and db` applications to be running via `docker-compose`.
-
-#### With docker + docker-compose
-
-Runs the nightwatch application in a docker image, powered by a chromedriver docker image and the provided UI url:
+### With Docker
 
 `npm run test-docker`
+
+## Libraries, Frameworks & Tools
+
+[Jest](https://jestjs.io/)
+
+[Nightwatch](https://nightwatchjs.org/)
+
+[Nightwatch testing library](https://testing-library.com/docs/nightwatch-testing-library/intro)
+
+[Babel](https://babeljs.io/docs/en/babel-preset-env)
+
+[Docker](https://www.docker.com/)
+
+[Docker Compose](https://docs.docker.com/compose/)

@@ -4,8 +4,6 @@
 
 This application expects the api to be running on `localhost:4000` connected to a running database.
 
-
-
 1. `npm install`
 2. `npm start`
 
