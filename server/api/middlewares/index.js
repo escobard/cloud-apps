@@ -3,5 +3,5 @@ import swaggerValidation from "./swaggerValidation";
 
 module.exports = {
   checkDB,
-  swaggerValidation
-}
+  swaggerValidation,
+};

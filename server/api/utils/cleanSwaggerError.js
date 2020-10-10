@@ -1,10 +1,10 @@
-const cleanSwaggerError = error => {
-  const type = "Swagger validation error"
+const cleanSwaggerError = (error) => {
+  const type = "Swagger validation error";
   console.log(type);
-  console.log("Status: " + error.status);
-  console.log("Message: " + error.message);
+  console.log(`Status: ${error.status}`);
+  console.log(`Message: ${error.message}`);
 
-  let fullError = error.message.split(/\r\n|\r|\n/g);
+  const fullError = error.message.split(/\r\n|\r|\n/g);
 
   return {
     type,
@@ -12,7 +12,7 @@ const cleanSwaggerError = error => {
     message: fullError[0],
     dataPath: fullError[2],
     schemaPath: fullError[3],
-    description: fullError[4]
+    description: fullError[4],
   };
 };
 

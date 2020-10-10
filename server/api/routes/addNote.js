@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { Notes } from "../services/postgres"
+import { Notes } from "../services/postgres";
 import { checkDB } from "../middlewares";
 import { cleanError } from "../utils";
 
@@ -14,7 +14,7 @@ export default Router().post("/", checkDB(), async (req, res) => {
       day: "2-digit",
       hour: "numeric",
       minute: "numeric",
-      timeZone: "Canada/Mountain"
+      timeZone: "Canada/Mountain",
     });
 
     // TODO revealing too much information on response, should reduce this to only the id with phase 4

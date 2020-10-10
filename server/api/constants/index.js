@@ -1,7 +1,4 @@
 import dbkeys from "./dbkeys";
-import routes from "./routes"
+import routes from "./routes";
 
-export {
-  dbkeys,
-  routes
-}
+export { dbkeys, routes };

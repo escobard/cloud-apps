@@ -16,7 +16,7 @@ This boilerplate leverages a JavaScript infrastructure along with common design
   `npm run test`  
   
 #### Production        
- `npm run dev`   
+ `npm run start`   
 
 ## Useful links
 
