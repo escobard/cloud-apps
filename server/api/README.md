@@ -13,6 +13,10 @@ Starts the application on `http://localhost:4000`
 
 `npm run dev`
 
+### Develop unit Tests
+
+`npm run test-watch`
+
 ### Unit Tests
 
 `npm run test`
