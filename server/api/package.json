@@ -4,13 +4,13 @@
   "description": "api",
   "main": "index.js",
   "scripts": {
-    "start": "babel-node index.js",
+    "start": "npm run lint && babel-node index.js",
     "dev": "set environment=development&& nodemon --exec babel-node -L index.js",
     "test": "set PORT=5555 && jest --coverage",
     "test-watch": "set PORT=5555 && jest --watch -o",
     "lint": "eslint ./",
     "lint-fix": "eslint ./ --fix",
-    "docker-build": "docker build -t escobard/create-app-api:latest -f docker/Dockerfile .",
+    "docker-build": "docker build -t escobard/create-app-api:latest -f docker/Dockerfile.prod .",
     "docker-start": "docker run --name api -p 4000:4000 -t escobard/create-app-api:latest",
     "docker-rm": "docker stop api && docker rm api",
     "docker": "npm run docker-build && npm run docker-start"

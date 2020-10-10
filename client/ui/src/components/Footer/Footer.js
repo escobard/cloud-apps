@@ -23,19 +23,21 @@ const Footer = () => {
           <p>
             {footer.withNotes} <span> {notes.length} </span>
           </p>
-          <i
-            aria-label="Add note"
-            role="button"
-            className="plus big icon"
-            onClick={openModal}
-            tabIndex={0}
-            onKeyDown={e => {
-              e.key === "Enter" && openModal();
-            }}
-          />
         </>
       ) : (
         <p>{footer.noNotes}</p>
+      )}
+      {notes && (
+        <i
+          aria-label="Add note"
+          role="button"
+          className="plus big icon"
+          onClick={openModal}
+          tabIndex={0}
+          onKeyDown={e => {
+            e.key === "Enter" && openModal();
+          }}
+        />
       )}
     </footer>
   );

@@ -13,7 +13,6 @@ services:
     container_name: api_dev
     working_dir: /usr/create-app/api
     environment:
-      - DOCKER_VARIANT=compose_routing
       - PGUSER=postgres
       - PGHOST=postgres
       - PGDATABASE=postgres
@@ -34,8 +33,6 @@ services:
     container_name: ui_dev
     working_dir: /usr/create-app/ui
     environment:
-      - REACT_APP_environment=docker_dev
-      - DOCKER_VARIANT=compose_routing
       - WAIT_HOSTS=api:4000
     ports:
       - "3000:3000"
