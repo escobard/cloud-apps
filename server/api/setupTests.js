@@ -3,13 +3,12 @@
  */
 import supertest from "supertest";
 
-import server from "./"
+import server from "./";
 
 import { routes } from "./constants";
 
 // timeout is necessary to unit test swagger middleware
-beforeAll((done) =>{
-
+beforeAll(done => {
   const { health } = routes;
 
   // sets port to something else to avoid clashes with local dev, nyc fails when port changes
@@ -23,9 +22,9 @@ beforeAll((done) =>{
   global.server = server;
 
   // test utils - maybe better as an external module
-  global.mockRequest = (data) => {
+  global.mockRequest = data => {
     return {
-      body: data,
+      body: data
     };
   };
 
@@ -39,7 +38,7 @@ beforeAll((done) =>{
 
   // TODO - try to eliminate this workaround, only thing that seems to work
   // necessary workaround to give swagger middleware to initialize
-  setTimeout(done, 100)
+  setTimeout(done, 100);
 });
 
 afterEach(done => {
@@ -48,7 +47,7 @@ afterEach(done => {
   done();
 });
 
-afterAll(done =>{
+afterAll(done => {
   server.close();
-  done()
-})
+  done();
+});
