@@ -1,5 +1,5 @@
 # Stage 1 - build process
-FROM node:alpine as builder
+FROM node:lts as builder
 
 WORKDIR /usr/create-app/ui
 
