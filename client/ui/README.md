@@ -2,7 +2,7 @@
 
 ## Quickstart
 
-Starts the application on `http://localhost:4003`
+Starts the application on `http://localhost:3000`.
 
 1. `npm install`
 2. `npm start`
@@ -13,7 +13,7 @@ Starts the application on `http://localhost:4003`
 
 `npm start`
 
-### Develop unit Tests
+### Develop unit tests
 
 `npm run test-watch`
 
@@ -33,14 +33,17 @@ Starts the application on `http://localhost:4003`
 
 `npm run build`
 
+### With Docker
+`npm run docker`
+
 ## Libraries, Frameworks & Tools
 
 [React](https://reactjs.org/)
 
-[Create react app](https://reactjs.org/docs/create-a-new-react-app.html)
+[Create React App](https://create-react-app.dev/docs/getting-started/)
 
-[jest](https://mochajs.org/)
+[Jest](https://mochajs.org/)
 
-[docker](https://www.docker.com/)
+[Docker](https://www.docker.com/)
 
-[docker-compose](https://docs.docker.com/compose/)
+[Docker Compose](https://docs.docker.com/compose/)

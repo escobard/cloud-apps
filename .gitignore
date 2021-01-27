@@ -1,5 +1,2 @@
-*/.node_modules
-node_modules
-*/.idea/
-.env/
-.idea
+node_modules/
+.idea/

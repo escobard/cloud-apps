@@ -2,7 +2,7 @@
 
 ## Quickstart
 
-This application expects the api to be running on `localhost:4000` connected to a running database.
+This application expects the api to be running on `localhost:4000` and connected to postgres on `localhost:5432`.
 
 1. `npm install`
 2. `npm start`
@@ -23,13 +23,13 @@ This application expects the api to be running on `localhost:4000` connected to 
 
 ### With Docker
 
-`npm run test-docker`
+`npm run docker`
 
 ## Libraries, Frameworks & Tools
 
 [Jest](https://jestjs.io/)
 
-[supertest](https://github.com/visionmedia/supertest)
+[Supertest](https://github.com/visionmedia/supertest)
 
 [Babel](https://babeljs.io/docs/en/babel-preset-env)
 

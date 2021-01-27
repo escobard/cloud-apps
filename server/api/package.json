@@ -4,7 +4,7 @@
   "description": "api",
   "main": "index.js",
   "scripts": {
-    "start": "npm run lint && babel-node index.js",
+    "start": "babel-node index.js",
     "dev": "set environment=development&& nodemon --exec babel-node -L index.js",
     "test": "set PORT=5555 && jest --coverage",
     "test-watch": "set PORT=5555 && jest --watch -o",

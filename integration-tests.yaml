@@ -1,7 +1,7 @@
 version: '3'
 services:
   postgres:
-    container_name: postgres_dev
+    container_name: postgres_tests
     build:
       context: ./server/postgres
     ports:
@@ -10,7 +10,7 @@ services:
     environment:
       POSTGRES_HOST_AUTH_METHOD: trust
   api:
-    container_name: api_dev
+    container_name: api_tests
     working_dir: /usr/cloud-apps/api
     environment:
       - PGUSER=postgres
@@ -24,23 +24,17 @@ services:
     build:
       context: ./server/api
       dockerfile: docker/Dockerfile.dev
-    volumes:
-      - ./server/api:/usr/cloud-apps/api
-      - /usr/cloud-apps/api/node_modules
     command: |
       sh -c "/wait && npm run dev"
-  ui:
-    container_name: ui_dev
-    working_dir: /usr/cloud-apps/ui
+  integration:
+    container_name: integration_tests
+    working_dir: /usr/cloud-apps/integration
     environment:
+      - API_HOST=api_tests
+      - API_PORT=4000
       - WAIT_HOSTS=api:4000
-    ports:
-      - "3000:3000"
     build:
-      context: ./client/ui
-      dockerfile: docker/Dockerfile.dev
-    volumes:
-      - ./client/ui:/usr/cloud-apps/ui
-      - /usr/cloud-apps/ui/node_modules
+      context: ./server/tests
+      dockerfile: docker/Dockerfile
     command: |
-      sh -c "/wait && npm run dev"
+      sh -c "/wait && npm start"

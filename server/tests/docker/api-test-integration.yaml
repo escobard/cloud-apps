@@ -2,12 +2,12 @@ version: '3'
 services:
   integration:
     container_name: integration_test
-    working_dir: /usr/create-app/tests
+    working_dir: /usr/cloud-apps/integration
     environment:
-      - API_HOST=api
+      - API_HOST=api_tests
       - API_PORT=4000
     build:
       context: ../
-      dockerfile: ""
+      dockerfile: docker/Dockerfile
     command: |
       sh -c "npm start"

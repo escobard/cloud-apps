@@ -13,11 +13,11 @@ Starts the application on `http://localhost:4000`
 
 `npm run dev`
 
-### Develop unit Tests
+### Develop unit tests
 
 `npm run test-watch`
 
-### Unit Tests
+### Unit tests
 
 `npm run test`
 
@@ -25,28 +25,28 @@ Starts the application on `http://localhost:4000`
 
 `npm start`
 
-### Docker
+### With Docker
 `npm run docker`
 
 ## Libraries, Frameworks & Tools
 
-[node](https://nodejs.org/en/)
+[Node](https://nodejs.org/en/)
 
-[express](https://expressjs.com/)
+[Express](https://expressjs.com/)
 
-[sequelize](https://sequelize.org/)
+[Sequelize](https://sequelize.org/)
 
-[swagger](https://swagger.io/)
+[Swagger](https://swagger.io/)
 
 [swagger-express-middleware](https://www.npmjs.com/package/swagger-express-middleware)
 
 [swagger-ui-express](https://www.npmjs.com/package/swagger-ui-express)
 
-[jest](https://mochajs.org/)
+[Jest](https://jestjs.io/)
 
-[supertest](https://github.com/visionmedia/supertest)
+[Supertest](https://github.com/visionmedia/supertest)
 
-[docker](https://www.docker.com/)
+[Docker](https://www.docker.com/)
 
-[docker-compose](https://docs.docker.com/compose/)
+[Docker Compose](https://docs.docker.com/compose/)
 

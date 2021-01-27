@@ -1,7 +1,7 @@
 # Stage 1 - build process
 FROM node:lts as builder
 
-WORKDIR /usr/create-app/ui
+WORKDIR /usr/cloud-apps/ui
 
 COPY ./package.json ./
 
@@ -14,5 +14,5 @@ RUN npm run build
 # Stage 2 - prod env
 FROM nginx
 EXPOSE 3000
-COPY --from=builder /usr/create-app/ui/build /usr/share/nginx/html
+COPY --from=builder /usr/cloud-apps/ui/build /usr/share/nginx/html
 COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf

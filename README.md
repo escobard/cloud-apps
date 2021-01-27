@@ -1,6 +1,6 @@
 # cloud-apps
 
-A cloud system boilerplate powered by React, Node, Postgres and Docker.
+A sample cloud-native product, designed to scale.
   
 ## Quickstart
 

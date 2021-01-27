@@ -1,5 +1,5 @@
 FROM node:lts
-WORKDIR /usr/create-app/ui
+WORKDIR /usr/cloud-apps/ui
 COPY ./package.json ./
 
 ## WAIT mod

@@ -2,7 +2,7 @@
 
 ## Quickstart
 
-This application expects the ui to be running on `localhost:3000` and the api to be running on `localhost:4000` connected to a running database.
+This application expects the ui to be running on `localhost:3000` and the api to be running on `localhost:4000`, connected to postgres on `localhost:5432`.
 
 1. `npm install`
 2. `npm start`
@@ -13,7 +13,7 @@ This application expects the ui to be running on `localhost:3000` and the api to
 
 `npm run test`
 
-###3 Watch tests
+### Watch tests
 
 `npm run test-watch`
 
@@ -23,7 +23,7 @@ This application expects the ui to be running on `localhost:3000` and the api to
 
 ### With Docker
 
-`npm run test-docker`
+`npm run docker`
 
 ## Libraries, Frameworks & Tools
 
