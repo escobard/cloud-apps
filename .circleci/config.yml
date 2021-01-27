@@ -1,0 +1,94 @@
+workflows:
+  version: 2
+  automated-tests:
+    jobs:
+      - ui-unit-tests
+      - api-unit-tests
+      - api-integration-tests
+      - ui-e2e-tests
+version: 2
+jobs:
+  ui-unit-tests:
+    working_directory: ~/client/ui
+    docker:
+      - image: circleci/node:12.13.1 # this may cause issues, revert to 10.14.1 if needed
+    steps:
+      - checkout
+      - run:
+          name: update-npm
+          command: "cd client/ui && sudo npm install -g npm@latest"
+      - restore_cache:
+          key: dependency-cache-{{ checksum "client/ui/package.json" }}
+      - run:
+          name: install-ui
+          command: "cd client/ui && npm install"
+      - save_cache:
+          key: dependency-cache-{{ checksum "client/ui/package.json" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: lint
+          command: "cd client/ui && npm run lint"
+      - run:
+          name: unit-tests
+          command: "cd client/ui && npm test"
+  api-unit-tests:
+    working_directory: ~/server/api
+    docker:
+      - image: circleci/node:12.13.1
+    steps:
+      - checkout
+      - run:
+          name: update-npm
+          command: "cd server/api && sudo npm install -g npm@latest"
+      - restore_cache:
+          key: dependency-cache-{{ checksum "server/api/package.json" }}
+      - run:
+          name: install-api
+          command: "cd server/api && npm install"
+      - save_cache:
+          key: dependency-cache-{{ checksum "server/api/package.json" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: lint
+          command: "cd server/api && npm run lint"
+      - run:
+          name: unit-tests
+          command: "cd server/api && npm test"
+  api-integration-tests:
+    working_directory: ~/server/tests
+    docker:
+      - image: docker:17.05.0-ce-git
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Install dependencies
+          command: |
+            apk add --no-cache \
+              py-pip=9.0.0-r1
+            pip install \
+              docker-compose==1.12.0 \
+      - run:
+          name: api-integration-tests
+          command: |
+            docker-compose -f integration-tests.yaml up --exit-code-from integration
+  ui-e2e-tests:
+    working_directory: ~/client/tests
+    docker:
+      - image: docker:17.05.0-ce-git
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Install dependencies
+          command: |
+            apk add --no-cache \
+              py-pip=9.0.0-r1
+            pip install \
+              docker-compose==1.12.0 \
+      - run:
+          name: ui-e2e-tests
+          command: |
+            docker-compose -f e2e-tests.yaml up --exit-code-from e2e

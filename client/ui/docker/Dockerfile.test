@@ -1,0 +1,9 @@
+FROM node:lts as builder
+
+WORKDIR /usr/cloud-apps/ui
+
+COPY ./package.json ./
+
+RUN npm install
+
+COPY . ./

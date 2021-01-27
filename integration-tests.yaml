@@ -1,0 +1,40 @@
+version: '3'
+services:
+  postgres:
+    container_name: postgres_tests
+    build:
+      context: ./server/postgres
+    ports:
+      - "5432:5432"
+    # TODO - replace this by creating a default superadmin with SQL for phase 4
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+  api:
+    container_name: api_tests
+    working_dir: /usr/cloud-apps/api
+    environment:
+      - PGUSER=postgres
+      - PGHOST=postgres
+      - PGDATABASE=postgres
+      - PGPASSWORD=postgres_password
+      - PGPORT=5432
+      - WAIT_HOSTS=postgres:5432
+    ports:
+      - "4000:4000"
+    build:
+      context: ./server/api
+      dockerfile: docker/Dockerfile.dev
+    command: |
+      sh -c "/wait && npm run dev"
+  integration:
+    container_name: integration_tests
+    working_dir: /usr/cloud-apps/integration
+    environment:
+      - API_HOST=api_tests
+      - API_PORT=4000
+      - WAIT_HOSTS=api:4000
+    build:
+      context: ./server/tests
+      dockerfile: docker/Dockerfile
+    command: |
+      sh -c "/wait && npm start"
