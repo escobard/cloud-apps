@@ -4,7 +4,7 @@ A sample cloud-native product, designed to scale.
   
 ## Quickstart
 
-[`npm`](https://www.npmjs.com/), [`docker`](https://www.docker.com/) and [`docker-compose`](https://docs.docker.com/compose/) are required to run the system locally.
+[Node.js](https://nodejs.org/en/), [npm](https://www.npmjs.com/), [Docker](https://www.docker.com/) and [Docker compose](https://docs.docker.com/compose/) must be installed.
         
 #### Development        
  `npm run dev`            
