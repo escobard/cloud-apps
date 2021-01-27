@@ -1,7 +1,7 @@
 {
-  "name": "create-app",
+  "name": "cloud-apps",
   "version": "0.0.2",
-  "description": "An enterprise platform boilerplate, forked from escobard/heroku-cloud-apps",
+  "description": "A sample cloud-native product, designed to scale.",
   "main": "index.js",
   "scripts": {
     "dev": "docker-compose -f dev.yaml up",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/escobard/heroku-cloud-apps.git"
+    "url": "git+https://github.com/escobard/cloud-apps.git"
   },
   "keywords": [
     "react",
