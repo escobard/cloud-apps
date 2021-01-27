@@ -8,12 +8,29 @@ A sample cloud-native product, designed to scale.
         
 #### Development        
  `npm run dev`            
-
-#### End to end tests  
-  `npm run test`  
   
 #### Production        
  `npm run start`   
+ 
+#### Integration tests
+
+`npm run integration-tests`
+
+#### End to End tests
+
+`npm run e2e-tests`
+
+## Commits
+
+Our commits follow the [Angular commit styleguide](https://gist.github.com/brianclements/841ea7bffdb01346392c). Each commit should be carefully thought out and only contain files affected within the scope of the commit message.
+
+## Branching
+
+A branch's name should reference a story and the type of work being committed.
+
+## Pull Requests
+
+Each pull request must pass a manual check from another contributor and all automated tests.
 
 ## Useful links
 
