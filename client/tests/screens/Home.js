@@ -10,9 +10,10 @@ const LandingCommands = {
     const { getByLabelText } = getQueriesFrom(browser);
     expect(await getByLabelText("Menu"));
   },
-  async assertNoNotes(browser) {
-    const { getByLabelText } = getQueriesFrom(browser);
-    expect(await getByLabelText("No Notes"));
+  async assertNetworkError(browser) {
+    const { getByText } = getQueriesFrom(browser);
+    browser.waitForElementVisible(".exclamation");
+    expect(await getByText("API error"));
   },
   async assertNote(browser, note) {
     const { getAllByText } = getQueriesFrom(browser);

@@ -1,26 +1,22 @@
+
 /**
- * NPM standalone config, relies on npm chromedriver and running UI on localhost:3000
- * @dev used mostly for local development and tests debugging
+ * docker config, relies on external chromedriver and UI
+ * @dev used for automated tests
  */
 
-const chrome = require("chromedriver"),
-  headless = process.argv.includes("--headless") ? ["headless"] : [];
+const { config } = require("./constants")
 
 module.exports = {
   src_folders: ["tests"],
   page_objects_path: ["screens"],
-  globals_path: "nightwatch.globals.js",
-  test_workers: false,
-  webdriver: {
-    start_process: true,
-    server_path: chrome.path,
-    port: 9515
-  },
+  globals_path : "nightwatch.globals.js",
+  webdriver: config.webDriver,
   test_settings: {
     default: {
-      launch_url: "http://localhost:3000",
+      selenium_host: config.seleniumHub,
+      launch_url: config.url,
       filter: "tests/**/*test.js",
-      screenshots: {
+      screenshots:{
         enabled: true,
         on_failure: true,
         on_error: true,
@@ -29,11 +25,15 @@ module.exports = {
       desiredCapabilities: {
         browserName: "chrome",
         chromeOptions: {
-          // args: headless,
-          args: ["headless"],
+          args: ['headless'],
           w3c: false
         }
-      }
+      },
+      chrome: {
+        desiredCapabilities: {
+          browserName: 'chrome',
+        },
+      },
     }
   }
 };

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { cleanError } from "utils";
+import { cleanError } from "./cleanError";
 
 export const api = async (httpReq, url, headers, body) => {
   if (!httpReq) return "http request argument required";

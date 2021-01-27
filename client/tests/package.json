@@ -7,7 +7,7 @@
     "start": "npm run test",
     "test": "jest",
     "test-watch": "jest --watch",
-    "test-docker": "docker-compose -f docker/ui-tests.yaml up --exit-code-from e2e"
+    "docker": "docker-compose -f docker/ui-tests.yaml up --exit-code-from e2e"
   },
   "engines": {
     "node": "10.x",
@@ -25,7 +25,6 @@
     "@babel/plugin-transform-arrow-functions": "^7.8.3",
     "@babel/plugin-transform-runtime": "^7.9.0",
     "@babel/preset-env": "^7.9.0",
-    "@babel/register": "^7.9.0",
     "@testing-library/nightwatch": "^2.0.0",
     "babel-plugin-add-module-exports": "^1.0.2",
     "dotenv": "^8.2.0",

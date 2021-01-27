@@ -11,7 +11,7 @@ services:
       POSTGRES_HOST_AUTH_METHOD: trust
   api:
     container_name: api_dev
-    working_dir: /usr/create-app/api
+    working_dir: /usr/cloud-apps/api
     environment:
       - PGUSER=postgres
       - PGHOST=postgres
@@ -25,13 +25,13 @@ services:
       context: ./server/api
       dockerfile: docker/Dockerfile.dev
     volumes:
-      - ./server/api:/usr/create-app/api
-      - /usr/create-app/api/node_modules
+      - ./server/api:/usr/cloud-apps/api
+      - /usr/cloud-apps/api/node_modules
     command: |
       sh -c "/wait && npm run dev"
   ui:
     container_name: ui_dev
-    working_dir: /usr/create-app/ui
+    working_dir: /usr/cloud-apps/ui
     environment:
       - WAIT_HOSTS=api:4000
     ports:
@@ -40,7 +40,7 @@ services:
       context: ./client/ui
       dockerfile: docker/Dockerfile.dev
     volumes:
-      - ./client/ui:/usr/create-app/ui
-      - /usr/create-app/ui/node_modules
+      - ./client/ui:/usr/cloud-apps/ui
+      - /usr/cloud-apps/ui/node_modules
     command: |
       sh -c "/wait && npm run dev"

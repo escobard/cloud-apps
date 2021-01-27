@@ -1,6 +1,6 @@
 # cloud-apps
 
-A sample cloud-native product, designed for scale.
+A sample cloud-native product, designed to scale.
   
 ## Quickstart
 

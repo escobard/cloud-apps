@@ -10,7 +10,7 @@ services:
       POSTGRES_HOST_AUTH_METHOD: trust
   ui:
     container_name: ui_prod
-    working_dir: /usr/create-app/ui
+    working_dir: /usr/cloud-apps/ui
     build:
       context: ./client/ui
       dockerfile: docker/Dockerfile.prod
@@ -18,7 +18,7 @@ services:
       - "3000:3000"
   api:
     container_name: api_prod
-    working_dir: /usr/create-app/api
+    working_dir: /usr/cloud-apps/api
     environment:
       - PGUSER=postgres
       - PGHOST=postgres

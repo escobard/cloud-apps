@@ -1,16 +1,17 @@
 {
   "name": "create-app",
   "version": "0.0.2",
-  "description": "An enterprise platform boilerplate, forked from escobard/create-dapp",
+  "description": "An enterprise platform boilerplate, forked from escobard/heroku-cloud-apps",
   "main": "index.js",
   "scripts": {
     "dev": "docker-compose -f dev.yaml up",
     "prod": "docker-compose -f prod.yaml up",
-    "clean": "docker system prune -a"
+    "integration-tests": "docker-compose -f integration-tests.yaml up --exit-code-from integration",
+    "e2e-tests": "docker-compose -f e2e-tests.yaml up --exit-code-from e2e"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/escobard/create-dapp.git"
+    "url": "git+https://github.com/escobard/heroku-cloud-apps.git"
   },
   "keywords": [
     "react",
@@ -18,9 +19,5 @@
     "postgres"
   ],
   "author": "Daniel Escobar",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/escobard/create-dapp/issues"
-  },
-  "homepage": "https://github.com/escobard/create-dapp#readme"
+  "license": "ISC"
 }

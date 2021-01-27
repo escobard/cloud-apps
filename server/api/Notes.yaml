@@ -11,7 +11,7 @@ info:
   license:
     name: "MIT"
     url: "https://opensource.org/licenses/MIT"
-host: "cloud-apps.us-east-2.elasticbeanstalk.com"
+host: "localhost:4000"
 # update this path once swagger-ui is setup with API
 ##basePath: "/v1"
 tags:

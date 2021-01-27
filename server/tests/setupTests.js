@@ -16,8 +16,6 @@ beforeAll(async () => {
 
   // routes
   global.health = health;
-  global.addNote = addNote;
-  global.getNotes = getNotes;
 });
 
 beforeEach(() => {
