@@ -6,3 +6,4 @@ chromedriver.log*
 tests_output*
 
 .env
+/debug.log

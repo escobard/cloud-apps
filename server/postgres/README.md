@@ -1,4 +1,4 @@
-``# Postgres Database
+# Postgres Database
 
 ## Quickstart 
 

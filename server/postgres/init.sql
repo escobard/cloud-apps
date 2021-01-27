@@ -1,4 +1,3 @@
--- creates a schema for our DB
 CREATE SCHEMA notes;
 
 CREATE TABLE notes.users (
