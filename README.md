@@ -1,6 +1,7 @@
-# cloud-apps
+# cloud-apps &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/facebook/react/blob/master/LICENSE) [![CircleCI Status](https://circleci.com/gh/escobard/cloud-apps.svg?style=shield&circle-token=:circle-token)](https://app.circleci.com/pipelines/github/escobard/cloud-apps) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/escobard/cloud-apps#pull-requests) 
 
-A sample cloud-native product, designed to scale.
+
+A sample cloud-native enterprise product, designed to scale.
   
 ## Quickstart
 
@@ -30,7 +31,7 @@ A branch's name should reference a story and the type of work being committed.
 
 ## Pull Requests
 
-Each pull request must pass a manual check from another contributor and all automated tests.
+Each pull request must pass a review from another contributor and all automated tests.
 
 ## Useful links
 
