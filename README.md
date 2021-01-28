@@ -47,4 +47,4 @@ Each pull request must pass a review from another contributor and all automated 
 
 ## License
 
-This repository is protected under the [MIT License](https://choosealicense.com/licenses/mit/)
+This repository is protected under the [MIT License](https://choosealicense.com/licenses/mit/).
