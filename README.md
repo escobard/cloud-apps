@@ -31,7 +31,7 @@ A branch's name should reference a story and the type of work being committed.
 
 ## Pull Requests
 
-Each pull request must pass a manual check from another contributor and all automated tests.
+Each pull request must pass a review from another contributor and all automated tests.
 
 ## Useful links
 
