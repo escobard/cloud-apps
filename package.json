@@ -1,7 +1,7 @@
 {
   "name": "cloud-apps",
-  "version": "0.0.2",
-  "description": "A sample cloud-native product, designed to scale.",
+  "version": "1.0.0",
+  "description": "A simple cloud-native product, designed to scale.",
   "main": "index.js",
   "scripts": {
     "dev": "docker-compose -f dev.yaml up",
@@ -19,5 +19,5 @@
     "postgres"
   ],
   "author": "Daniel Escobar",
-  "license": "ISC"
+  "license": "MIT"
 }
