@@ -15,7 +15,7 @@ jobs:
   ui-unit-tests:
     working_directory: ~/client/ui
     docker:
-      - image: circleci/node:12.13.1 # this may cause issues, revert to 10.14.1 if needed
+      - image: circleci/node:10.14.1 # this may cause issues, revert to 10.14.1 if needed
     steps:
       - checkout
       - run:
@@ -39,7 +39,7 @@ jobs:
   api-unit-tests:
     working_directory: ~/server/api
     docker:
-      - image: circleci/node:12.13.1
+      - image: çç
     steps:
       - checkout
       - run:
