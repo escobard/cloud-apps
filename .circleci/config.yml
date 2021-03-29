@@ -2,20 +2,20 @@ workflows:
   version: 2
   automated-tests:
     jobs:
-      - ui-unit-tests
+      #- ui-unit-tests
       - ui-e2e-tests:
-          requires:
-            - ui-unit-tests
+       #   requires:
+        #    - ui-unit-tests
       - api-unit-tests
       - api-integration-tests:
-          requires:
-            - ui-unit-tests
+      #    requires:
+      #     - ui-unit-tests
 version: 2
 jobs:
   ui-unit-tests:
     working_directory: ~/client/ui
     docker:
-      - image: circleci/node:15.12.0 # this may cause issues, revert to 10.14.1 if needed
+      - image: circleci/node:12.13.1 # this may cause issues, revert to 10.14.1 if needed
     steps:
       - checkout
       - run:
@@ -39,7 +39,7 @@ jobs:
   api-unit-tests:
     working_directory: ~/server/api
     docker:
-      - image: circleci/node:15.12.0
+      - image: circleci/node:12.13.1
     steps:
       - checkout
       - run:
