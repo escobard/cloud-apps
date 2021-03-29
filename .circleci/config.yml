@@ -25,7 +25,7 @@ jobs:
           key: dependency-cache-{{ checksum "client/ui/package.json" }}
       - run:
           name: install-ui
-          command: "cd client/ui && npm install"
+          command: "cd client/ui && npm install --legacy-peer-deps"
       - save_cache:
           key: dependency-cache-{{ checksum "client/ui/package.json" }}
           paths:
