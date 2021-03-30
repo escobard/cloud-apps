@@ -2,15 +2,16 @@ workflows:
   version: 2
   automated-tests:
     jobs:
-      - ui-unit-tests
-      - ui-e2e-tests:
-          requires:
-            - ui-unit-tests
+      #- ui-unit-tests
+      #- ui-e2e-tests:
+      #    requires:
+      #     - ui-unit-tests
       #
-      - api-unit-tests
-      - api-integration-tests:
-          requires:
-            - ui-unit-tests
+      #- api-unit-tests
+      #- api-integration-tests:
+       #   requires:
+        #    - ui-unit-tests
+      - push_image_to_ecr      
 version: 2
 orbs:
   aws-ecr: circleci/aws-ecr@6.4.0
@@ -99,7 +100,7 @@ jobs:
           name: ui-e2e-tests
           command: |
             docker-compose -f e2e-tests.yaml up --exit-code-from e2e
-  build_image:
+  push_image_to_ecr:
     working_directory: ~/
     docker:
       - image: circleci/openjdk:8-jdk
