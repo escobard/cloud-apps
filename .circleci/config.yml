@@ -105,7 +105,7 @@ jobs:
     docker:
       - image: docker:17.05.0-ce-git
     steps:
-     # - checkout
+      - checkout
       - setup_remote_docker
       - run:
           name: Setup common environment variables
