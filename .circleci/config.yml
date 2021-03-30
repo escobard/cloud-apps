@@ -109,8 +109,8 @@ jobs:
         name: lsit dir
         command: |
           ls -altr
-      - checkout
-      - setup_remote_docker
+     # - checkout
+     # - setup_remote_docker
       - run:
           name: Setup common environment variables
           command: |
