@@ -123,12 +123,13 @@ jobs:
       - run:
           name: Install dependencies for AWS
           command: |
-            pip install --upgrade awscli        
+            pip install --upgrade awscli  
+      - run:
+          name: AWS_DEFAULT_REGION
+          command: echo ${AWS_DEFAULT_REGION}      
       - run:
           name: Push all services images to AWS ECR using docker compose
           command: |
-            eval echo ${FULL_IMAGE_NAME}
-            eval echo ${AWS_DEFAULT_REGION}
             eval $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
             ls -altr
             docker-compose -f dev.yaml push
