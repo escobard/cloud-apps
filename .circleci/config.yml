@@ -128,5 +128,6 @@ jobs:
           name: Push all services images to AWS ECR using docker compose
           command: |
             eval $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
-            docker-compose -f dev.yaml push
+            ls -altr
+            docker-compose -f ~/dev.yaml push
 
