@@ -108,6 +108,10 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
+          name: lsit dir
+          command: |
+            ls -altr
+      - run:
           name: Setup common environment variables
           command: |
             echo 'export ECR_REPOSITORY_NAME="${AWS_RESOURCE_NAME_PREFIX}"' >> $BASH_ENV
