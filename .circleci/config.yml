@@ -129,5 +129,5 @@ jobs:
           command: |
             eval $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
             ls -altr
-            docker-compose -f ~/dev.yaml push
+            docker-compose -f dev.yaml push
 
