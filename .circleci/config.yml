@@ -105,12 +105,12 @@ jobs:
     docker:
       - image: circleci/openjdk:8-jdk
     steps:
+      - run:
+        name: lsit dir
+        command: |
+        ls -altr
       - checkout
       - setup_remote_docker
-      - run:
-          name: lsit dir
-          command: |
-            ls -altr
       - run:
           name: Setup common environment variables
           command: |
