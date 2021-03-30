@@ -123,10 +123,10 @@ jobs:
       - run:
           name: Install dependencies for AWS
           command: |
-            sudo apt-get update
-            sudo apt-get -y -qq install awscli
-            sudo apt-get install python3-pip
-            sudo pip3 install --upgrade awscli        
+            apt-get update
+            apt-get -y -qq install awscli
+            apt-get install python3-pip
+            pip3 install --upgrade awscli        
       - run:
           name: Push all services images to AWS ECR using docker compose
           command: |
