@@ -108,7 +108,7 @@ jobs:
       - run:
         name: lsit dir
         command: |
-        ls -altr
+          ls -altr
       - checkout
       - setup_remote_docker
       - run:
