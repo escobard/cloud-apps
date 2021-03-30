@@ -101,7 +101,7 @@ jobs:
           command: |
             docker-compose -f e2e-tests.yaml up --exit-code-from e2e
   push_image_to_ecr:
-    working_directory: ~/
+    working_directory: ~/repository
     docker:
       - image: docker:17.05.0-ce-git
     steps:
