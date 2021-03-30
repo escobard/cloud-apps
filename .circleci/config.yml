@@ -103,7 +103,7 @@ jobs:
   push_image_to_ecr:
     working_directory: ~/
     docker:
-      - image: circleci/openjdk:8-jdk
+      - image: docker:17.05.0-ce-git
     steps:
      # - checkout
       - setup_remote_docker
