@@ -6,11 +6,14 @@ workflows:
       - ui-e2e-tests:
           requires:
             - ui-unit-tests
-      #- api-unit-tests
+      #
+      - api-unit-tests
       - api-integration-tests:
           requires:
             - ui-unit-tests
 version: 2
+orbs:
+  aws-ecr: circleci/aws-ecr@6.4.0
 jobs:
   ui-unit-tests:
     working_directory: ~/client/ui
@@ -96,3 +99,36 @@ jobs:
           name: ui-e2e-tests
           command: |
             docker-compose -f e2e-tests.yaml up --exit-code-from e2e
+  build_image:
+    working_directory: ~/
+    docker:
+      - image: circleci/openjdk:8-jdk
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Setup common environment variables
+          command: |
+            echo 'export ECR_REPOSITORY_NAME="${AWS_RESOURCE_NAME_PREFIX}"' >> $BASH_ENV
+            echo 'export FULL_IMAGE_NAME="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${ECR_REPOSITORY_NAME}:latest"' >> $BASH_ENV
+      
+      - run:
+          name: Install dependencies
+          command: |
+            apk add --no-cache \
+              py-pip=9.0.0-r1
+            pip install \
+              docker-compose==1.12.0 \
+      - run:
+          name: Install dependencies for AWS
+          command: |
+            sudo apt-get update
+            sudo apt-get -y -qq install awscli
+            sudo apt-get install python3-pip
+            sudo pip3 install --upgrade awscli        
+      - run:
+          name: Push all services images to AWS ECR using docker compose
+          command: |
+          eval $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
+            docker-compose -f dev.yaml push
+
