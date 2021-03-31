@@ -4,7 +4,7 @@ services:
     container_name: postgres_dev
     build:
       context: ./server/postgres
-    image:  ${FULL_IMAGE_NAME}/postgres_dev:${BRANCH_TAG}
+    image:  ${FULL_IMAGE_NAME}/postgres_dev:${CIRCLE_BRANCH}
     ports:
       - "5432:5432"
     # TODO - replace this by creating a default superadmin with SQL for phase 4
@@ -25,7 +25,7 @@ services:
     build:
       context: ./server/api
       dockerfile: docker/Dockerfile.dev
-    image:  ${FULL_IMAGE_NAME}/api_dev:${BRANCH_TAG}
+    image:  ${FULL_IMAGE_NAME}/api_dev:${CIRCLE_BRANCH}
     volumes:
       - ./server/api:/usr/cloud-apps/api
       - /usr/cloud-apps/api/node_modules
@@ -41,7 +41,7 @@ services:
     build:
       context: ./client/ui
       dockerfile: docker/Dockerfile.dev
-    image:  ${FULL_IMAGE_NAME}/ui_dev:${BRANCH_TAG} 
+    image:  ${FULL_IMAGE_NAME}/ui_dev:${CIRCLE_BRANCH} 
     volumes:
       - ./client/ui:/usr/cloud-apps/ui
       - /usr/cloud-apps/ui/node_modules
