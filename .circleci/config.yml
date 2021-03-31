@@ -15,8 +15,8 @@ workflows:
           requires:
         #    - api-integration-tests
             - ui-e2e-tests
-      environment:
-          VERSION: v1.0.0
+    environment:
+      VERSION: v1.0.0
 
 version: 2
 orbs:
