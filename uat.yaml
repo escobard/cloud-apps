@@ -1,0 +1,35 @@
+version: '3'
+services:
+  postgres:
+    container_name: postgres_prod
+    build:
+      context: ./server/postgres
+    image:  ${FULL_IMAGE_NAME}/postgres_dev:${BRANCH}
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+  ui:
+    container_name: ui_prod
+    working_dir: /usr/cloud-apps/ui
+    build:
+      context: ./client/ui
+      dockerfile: docker/Dockerfile.prod
+    image:  ${FULL_IMAGE_NAME}/ui_dev:${BRANCH}
+    ports:
+      - "3000:3000"
+  api:
+    container_name: api_prod
+    working_dir: /usr/cloud-apps/api
+    environment:
+      - PGUSER=postgres
+      - PGHOST=postgres
+      - PGDATABASE=postgres
+      - PGPASSWORD=postgres_password
+      - PGPORT=5432
+    ports:
+    - "4000:4000"
+    build:
+      context: ./server/api
+      dockerfile: docker/Dockerfile.uat
+    image:  ${FULL_IMAGE_NAME}/api_dev:${BRANCH}

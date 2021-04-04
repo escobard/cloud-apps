@@ -1,0 +1,67 @@
+{
+    "containerDefinitions": [
+        {
+            "environment": [
+                {
+                    "name": "PGUSER",
+                    "value": "postgres"
+                },
+                {
+                    "name": "PGHOST",
+                    "value": "postgres"
+                },
+                {
+                    "name": "PGDATABASE",
+                    "value": "postgres"
+                },
+                {
+                    "name": "PGPASSWORD",
+                    "value": "postgres_password"
+                },
+                {
+                    "name": "PGPORT",
+                    "value": "5432"
+                }
+            ],
+            "essential": true,
+            "image": "${FULL_IMAGE_NAME}/api_dev:${BRANCH}",
+            "name": "api",
+            "portMappings": [
+                {
+                    "containerPort": 4000,
+                    "hostPort": 4000
+                }
+            ]
+        },
+        {
+            "environment": [
+                {
+                    "name": "POSTGRES_HOST_AUTH_METHOD",
+                    "value": "trust"
+                }
+            ],
+            "essential": true,
+            "image": "${FULL_IMAGE_NAME}/postgres_dev:${BRANCH}",
+            "name": "postgres",
+            "portMappings": [
+                {
+                    "containerPort": 5432,
+                    "hostPort": 5432
+                }
+            ]
+        },
+        {
+            "essential": true,
+            "image": "${FULL_IMAGE_NAME}/ui_dev:${BRANCH}",
+            "name": "ui",
+            "portMappings": [
+                {
+                    "containerPort": 3000,
+                    "hostPort": 3000
+                }
+            ]
+        }
+    ],
+    "family": "",
+    "volumes": []
+}

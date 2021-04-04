@@ -2,7 +2,7 @@ version: '3'
 services:
   postgres:
     container_name: postgres_dev
-    image:  "621650508462.dkr.ecr.ca-central-1.amazonaws.com/postgres_dev:v1.0.0"
+    image:  "621650508462.dkr.ecr.ca-central-1.amazonaws.com/postgres_dev:v1.0.1"
     ports:
       - "5432:5432"
     # TODO - replace this by creating a default superadmin with SQL for phase 4
@@ -22,10 +22,7 @@ services:
       - "4000:4000"
     depends_on:
       - postgres
-
-    image:  621650508462.dkr.ecr.ca-central-1.amazonaws.com/api_dev:v1.0.0
-    command: |
-      sh -c "/wait && npm run dev"
+    image:  621650508462.dkr.ecr.ca-central-1.amazonaws.com/api_dev:v1.0.1
   ui:
     container_name: ui_dev
     working_dir: /usr/cloud-apps/ui
@@ -33,12 +30,7 @@ services:
       - WAIT_HOSTS=api:4000
     ports:
       - "3000:3000"
-    image:  621650508462.dkr.ecr.ca-central-1.amazonaws.com/ui_dev:v1.0.0
-    volumes:
-      - ./client/ui:/usr/cloud-apps/ui
-      - /usr/cloud-apps/ui/node_modules
-    command: |
-      sh -c "/wait && npm run dev"
+    image:  621650508462.dkr.ecr.ca-central-1.amazonaws.com/ui_dev:v1.0.1
     depends_on:
       - postgres
       - api
