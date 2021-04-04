@@ -4,6 +4,7 @@ services:
     container_name: postgres_prod
     build:
       context: ./server/postgres
+    image:  ${FULL_IMAGE_NAME}/postgres_dev:${BRANCH}
     ports:
       - "5432:5432"
     environment:
@@ -14,6 +15,7 @@ services:
     build:
       context: ./client/ui
       dockerfile: docker/Dockerfile.prod
+      image:  ${FULL_IMAGE_NAME}/ui_dev:${BRANCH}
     ports:
       - "3000:3000"
   api:
@@ -30,3 +32,4 @@ services:
     build:
       context: ./server/api
       dockerfile: docker/Dockerfile.prod
+      image:  ${FULL_IMAGE_NAME}/api_dev:${BRANCH}
