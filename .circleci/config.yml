@@ -138,7 +138,7 @@ jobs:
           command: |
             eval $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
             FULL_IMAGE_NAME="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com"
-            VERSION="prod"
+            VERSION="v1.0.1"
             FULL_IMAGE_NAME=${FULL_IMAGE_NAME} BRANCH=${VERSION} docker-compose -f prod.yaml build
             FULL_IMAGE_NAME=${FULL_IMAGE_NAME} BRANCH=${VERSION} docker-compose -f prod.yaml push
 
