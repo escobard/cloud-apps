@@ -1,0 +1,111 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+      {
+          "command": [
+              "sh",
+              "-c",
+              "/wait && npm run dev"
+          ],
+          "environment": [
+              {
+                  "name": "PGUSER",
+                  "value": "postgres"
+              },
+              {
+                  "name": "PGHOST",
+                  "value": "postgres"
+              },
+              {
+                  "name": "PGDATABASE",
+                  "value": "postgres"
+              },
+              {
+                  "name": "PGPASSWORD",
+                  "value": "postgres_password"
+              },
+              {
+                  "name": "PGPORT",
+                  "value": "5432"
+              },
+              {
+                  "name": "WAIT_HOSTS",
+                  "value": "postgres:5432"
+              }
+          ],
+          "essential": true,
+          "image": "621650508462.dkr.ecr.ca-central-1.amazonaws.com/api_dev:v1.0.0",
+          "name": "api",
+          "portMappings": [
+              {
+                  "containerPort": 4000,
+                  "hostPort": 4000
+              }
+          ]
+      },
+      {
+          "environment": [
+              {
+                  "name": "POSTGRES_HOST_AUTH_METHOD",
+                  "value": "trust"
+              }
+          ],
+          "essential": true,
+          "image": "621650508462.dkr.ecr.ca-central-1.amazonaws.com/postgres_dev:v1.0.0",
+          "name": "postgres",
+          "portMappings": [
+              {
+                  "containerPort": 5432,
+                  "hostPort": 5432
+              }
+          ]
+      },
+      {
+          "command": [
+              "sh",
+              "-c",
+              "/wait && npm run dev"
+          ],
+          "environment": [
+              {
+                  "name": "WAIT_HOSTS",
+                  "value": "api:4000"
+              }
+          ],
+          "essential": true,
+          "image": "621650508462.dkr.ecr.ca-central-1.amazonaws.com/ui_dev:v1.0.0",
+          "mountPoints": [
+              {
+                  "containerPath": "/usr/cloud-apps/ui",
+                  "sourceVolume": "_ClientUi"
+              },
+              {
+                  "containerPath": "/usr/cloud-apps/ui/node_modules",
+                  "sourceVolume": "UsrCloud-AppsUiNode_Modules"
+              }
+          ],
+          "name": "ui",
+          "portMappings": [
+              {
+                  "containerPort": 3000,
+                  "hostPort": 3000
+              }
+          ]
+      }
+  ],
+  "family": "",
+  "volumes": [
+      {
+          "host": {
+              "sourcePath": "./client/ui"
+          },
+          "name": "_ClientUi"
+      },
+      {
+          "host": {
+              "sourcePath": "/usr/cloud-apps/ui/node_modules"
+          },
+          "name": "UsrCloud-AppsUiNode_Modules"
+      }
+  ]
+}
