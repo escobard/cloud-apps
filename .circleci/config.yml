@@ -133,7 +133,7 @@ jobs:
   deploy_to_ebs:
     working_directory: ~/repository
     docker:
-      - image: circleci/python:3.0
+      - image: cimg/python:3.9.2
     steps:
       - checkout
       - setup_remote_docker:
