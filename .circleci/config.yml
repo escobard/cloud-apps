@@ -133,7 +133,7 @@ jobs:
   deploy_to_ebs:
     working_directory: ~/repository
     docker:
-      - image: circleci/python:2.7
+      - image: circleci/python:3.0
     steps:
       - checkout
       - setup_remote_docker:
@@ -142,7 +142,7 @@ jobs:
           name: Deploy to Elastic Beanstalk
           command: |
             VERSION="v1.0.2"
-            pip install --upgrade awsebcli
+            pip3 install --upgrade awsebcli
             DB_IMAGE="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/postgres_dev:${VERSION}"
             UI_IMAGE="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/ui_dev:${VERSION}"
             API_IMAGE="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/api_dev:${VERSION}"
