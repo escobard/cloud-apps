@@ -9,7 +9,7 @@
               }
           ],
           "essential": true,
-          "image": "621650508462.dkr.ecr.ca-central-1.amazonaws.com/postgres_dev:v1.0.2",
+          "image": "<DB_IMAGE>",
           "name": "postgres",
           "portMappings": [
               {
@@ -20,7 +20,7 @@
           "memory": 128
       },
         {
-            "image": "621650508462.dkr.ecr.ca-central-1.amazonaws.com/api_dev:v1.0.2",
+            "image": "<API_IMAGE>",
             "name": "api",
             "essential": true,
             "memory": 128,
@@ -53,22 +53,12 @@
                   {
                       "name": "PGPORT",
                       "value": "5432"
-                  },
-                  {
-                      "name": "WAIT_HOSTS",
-                      "value": "postgres:5432"
                   }
               ]
         },
         {
-            "environment": [
-                {
-                    "name": "WAIT_HOSTS",
-                    "value": "api:4000"
-                }
-            ],
             "essential": true,
-            "image": "621650508462.dkr.ecr.ca-central-1.amazonaws.com/ui_dev:v1.0.2",
+            "image": "<UI_IMAGE>",
             "name": "ui",
             "portMappings": [
                 {
