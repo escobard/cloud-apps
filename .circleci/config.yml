@@ -132,7 +132,6 @@ jobs:
           name: Install dependencies for AWS
           command: |
             pip install --upgrade awscli
-            pip install --upgrade awsebcli  
       - run:
           name: AWS_DEFAULT_REGION
           command: echo ${AWS_DEFAULT_REGION}      
@@ -155,4 +154,5 @@ jobs:
       - run:
           name: Deploy to Elastic Beanstalk
           command: |
+            pip install --upgrade awsebcli  
             eb deploy
