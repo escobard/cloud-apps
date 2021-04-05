@@ -76,6 +76,9 @@
                     "hostPort": 80
                 }
             ],
+            "links": [
+                "api"
+              ],
             "memory": 128
         }
     ]
