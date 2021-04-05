@@ -12,7 +12,7 @@ workflows:
        #   requires:
         #    - ui-unit-tests
       #- push_image_to_ecr:
-          requires:
+      #    requires:
             #- api-integration-tests
             #- ui-e2e-tests
        #     - ui-unit-tests
