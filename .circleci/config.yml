@@ -143,9 +143,9 @@ jobs:
           command: |
             VERSION="v1.0.2"
             pip install --upgrade awsebcli
-            DB_IMAGE=${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/postgres_dev:${VERSION}"
-            UI_IMAGE=${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/ui_dev:${VERSION}"
-            API_IMAGE=${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/api_dev:${VERSION}"
+            DB_IMAGE="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/postgres_dev:${VERSION}"
+            UI_IMAGE="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/ui_dev:${VERSION}"
+            API_IMAGE="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/api_dev:${VERSION}"
             sed -i '' "s#<DB_IMAGE>#${DB_IMAGE}#" Dockerrun.aws.json
             sed -i '' "s#<UI_IMAGE>#${UI_IMAGE}#" Dockerrun.aws.json
             sed -i '' "s#<API_IMAGE>#${API_IMAGE}#" Dockerrun.aws.json
