@@ -141,6 +141,14 @@ jobs:
             VERSION="v1.0.2"
             FULL_IMAGE_NAME=${FULL_IMAGE_NAME} BRANCH=${VERSION} docker-compose -f uat.yaml build
             FULL_IMAGE_NAME=${FULL_IMAGE_NAME} BRANCH=${VERSION} docker-compose -f uat.yaml push
+  deploy_to_ebs:
+    working_directory: ~/repository
+    docker:
+      - image: circleci/python:2.7
+    steps:
+      - checkout
+      - setup_remote_docker:
+          veraion: 19.03.13
       - run:
           name: Deploy to Elastic Beanstalk
           command: |
