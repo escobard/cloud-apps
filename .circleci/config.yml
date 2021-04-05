@@ -111,7 +111,8 @@ jobs:
       - image: docker:17.05.0-ce-git
     steps:
       - checkout
-      - setup_remote_docker
+      - setup_remote_docker:
+          veraion: 19.03.13
       - run:
           name: Setup common environment variables
           command: |
