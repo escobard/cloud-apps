@@ -2,7 +2,7 @@ workflows:
   version: 2
   cloud-apps-workflow:
     jobs:
-      - ui-unit-tests
+     # - ui-unit-tests
       #- ui-e2e-tests:
          # requires:
           #  - ui-unit-tests
@@ -11,14 +11,14 @@ workflows:
       #- api-integration-tests:
        #   requires:
         #    - ui-unit-tests
-      - push_image_to_ecr:
+      #- push_image_to_ecr:
           requires:
             #- api-integration-tests
             #- ui-e2e-tests
-            - ui-unit-tests
+       #     - ui-unit-tests
       - deploy_to_ebs:
           requires:
-            - push_image_to_ecr
+      #      - push_image_to_ecr
 
 version: 2
 orbs:
