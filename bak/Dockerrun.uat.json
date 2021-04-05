@@ -26,6 +26,7 @@
             "essential": true,
             "image": "${FULL_IMAGE_NAME}/api_dev:${BRANCH}",
             "name": "api",
+            "memory": 300,
             "portMappings": [
                 {
                     "containerPort": 4000,
@@ -57,6 +58,7 @@
             "essential": true,
             "image": "${FULL_IMAGE_NAME}/ui_dev:${BRANCH}",
             "name": "ui",
+            "memory": 300,
             "portMappings": [
                 {
                     "containerPort": 3000,

@@ -2,24 +2,82 @@
     "AWSEBDockerrunVersion": 2,
     "containerDefinitions": [
       {
-        "name": "postgres",
-        "image": "621650508462.dkr.ecr.ca-central-1.amazonaws.com/postgres_dev:v1.0.1",
-        "hostname": "postgres",
-        "essential": true,
-        "portMappings": [
-          {
-            "hostPort": 5432,
-            "containerPort": 5432
-          }
-        ],
-        "memory": 100
+          "environment": [
+              {
+                  "name": "POSTGRES_HOST_AUTH_METHOD",
+                  "value": "trust"
+              }
+          ],
+          "essential": true,
+          "image": "621650508462.dkr.ecr.ca-central-1.amazonaws.com/postgres_dev:v1.0.1",
+          "name": "postgres",
+          "portMappings": [
+              {
+                  "containerPort": 5432,
+                  "hostPort": 5432
+              }
+          ],
+          "memory": 128
       },
-      {
-        "name": "ui",
-        "image": "621650508462.dkr.ecr.ca-central-1.amazonaws.com/ui_dev:v1.0.1",
-        "hostname": "ui",
-        "essential": false,
-        "memory": 300
-      }
+        {
+            "image": "621650508462.dkr.ecr.ca-central-1.amazonaws.com/api_dev:v1.0.1",
+            "name": "api",
+            "essential": true,
+            "memory": 128,
+            "portMappings": [
+                {
+                    "containerPort": 4000,
+                    "hostPort": 4000
+                }
+            ],
+              "links": [
+                  "postgres"
+                ],
+              "environment": [
+                  {
+                      "name": "PGUSER",
+                      "value": "postgres"
+                  },
+                  {
+                      "name": "PGHOST",
+                      "value": "postgres"
+                  },
+                  {
+                      "name": "PGDATABASE",
+                      "value": "postgres"
+                  },
+                  {
+                      "name": "PGPASSWORD",
+                      "value": "postgres_password"
+                  },
+                  {
+                      "name": "PGPORT",
+                      "value": "5432"
+                  },
+                  {
+                      "name": "WAIT_HOSTS",
+                      "value": "postgres:5432"
+                  }
+              ]
+        },
+        {
+            "environment": [
+                {
+                    "name": "WAIT_HOSTS",
+                    "value": "api:4000"
+                }
+            ],
+            "essential": true,
+            "image": "621650508462.dkr.ecr.ca-central-1.amazonaws.com/ui_dev:v1.0.1",
+            "name": "ui",
+            "portMappings": [
+                {
+                    "containerPort": 3000,
+                    "hostPort": 3000
+                }
+            ],
+            "memory": 128
+        }
     ]
-}
+  }
+  
