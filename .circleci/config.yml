@@ -72,7 +72,7 @@ jobs:
   api-integration-tests:
     working_directory: ~/server/tests
     docker:
-      - image: docker:17.05.0-ce-git
+      - image: docker:19.03.13-ce-git
     steps:
       - checkout
       - setup_remote_docker
@@ -90,7 +90,7 @@ jobs:
   ui-e2e-tests:
     working_directory: ~/client/tests
     docker:
-      - image: docker:17.05.0-ce-git
+      - image: docker:19.03.13-ce-git
     steps:
       - checkout
       - setup_remote_docker
@@ -108,7 +108,7 @@ jobs:
   push_image_to_ecr:
     working_directory: ~/repository
     docker:
-      - image: docker:17.05.0-ce-git
+      - image: docker:19.03.13-ce-git
     steps:
       - checkout
       - setup_remote_docker
