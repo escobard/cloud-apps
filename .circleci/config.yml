@@ -130,7 +130,8 @@ jobs:
       - run:
           name: Install dependencies for AWS
           command: |
-            pip install --upgrade awscli  
+            pip install --upgrade awscli
+            pip install awsebcli --upgrade  
       - run:
           name: AWS_DEFAULT_REGION
           command: echo ${AWS_DEFAULT_REGION}      
@@ -142,4 +143,7 @@ jobs:
             VERSION="v1.0.2"
             FULL_IMAGE_NAME=${FULL_IMAGE_NAME} BRANCH=${VERSION} docker-compose -f uat.yaml build
             FULL_IMAGE_NAME=${FULL_IMAGE_NAME} BRANCH=${VERSION} docker-compose -f uat.yaml push
-
+      - run:
+          name: Deploy to Elastic Beanstalk
+          command: |
+            eb deploy
