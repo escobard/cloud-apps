@@ -141,7 +141,7 @@ jobs:
       - run:
           name: Deploy to Elastic Beanstalk
           command: |
-            VERSION="v${CIRCLE_BUILD_NUM}"
+            VERSION="v${CIRCLE_PREVIOUS_BUILD_NUM}"
             pip3 install --upgrade awsebcli
             DB_IMAGE="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/postgres_dev:${VERSION}"
             UI_IMAGE="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/ui_dev:${VERSION}"
