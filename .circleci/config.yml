@@ -127,7 +127,7 @@ jobs:
           command: |
             eval $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
             FULL_IMAGE_NAME="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com"
-            VERSION="v1.0.2"
+            VERSION="v1.0.3"
             FULL_IMAGE_NAME=${FULL_IMAGE_NAME} BRANCH=${VERSION} docker-compose -f uat.yaml build
             FULL_IMAGE_NAME=${FULL_IMAGE_NAME} BRANCH=${VERSION} docker-compose -f uat.yaml push
   deploy_to_ebs:
@@ -141,7 +141,7 @@ jobs:
       - run:
           name: Deploy to Elastic Beanstalk
           command: |
-            VERSION="v1.0.2"
+            VERSION="v1.0.3"
             pip3 install --upgrade awsebcli
             DB_IMAGE="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/postgres_dev:${VERSION}"
             UI_IMAGE="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/ui_dev:${VERSION}"
