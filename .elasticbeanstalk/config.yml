@@ -1,6 +1,6 @@
 branch-defaults:
   feature/multicontainer_deployment:
-    environment: null
+    environment: cloud-apps-dev
     group_suffix: null
 global:
   application_name: cloud-apps
