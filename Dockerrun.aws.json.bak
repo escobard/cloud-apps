@@ -58,7 +58,7 @@
         },
         {
             "essential": true,
-            "image": "<621650508462.dkr.ecr.ca-central-1.amazonaws.com/ui_dev:v1.0.2",
+            "image": "621650508462.dkr.ecr.ca-central-1.amazonaws.com/ui_dev:v1.0.2",
             "name": "ui",
             "portMappings": [
                 {
