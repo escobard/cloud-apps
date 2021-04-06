@@ -147,6 +147,6 @@ jobs:
             UI_IMAGE="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/ui_dev:${VERSION}"
             API_IMAGE="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/api_dev:${VERSION}"
             ls -ltr
-            sed "s#<DB_IMAGE>#${DB_IMAGE}#;s#<UI_IMAGE>#${UI_IMAGE}#;s#<API_IMAGE>#${API_IMAGE}#" Dockerrun.aws.template.json > Dockerrun.aws.json
+            sed "s#<DB_IMAGE>#${DB_IMAGE}#;s#<UI_IMAGE>#${UI_IMAGE}#;s#<API_IMAGE>#${API_IMAGE}#" Dockerrun.aws.template > Dockerrun.aws.json
             cat Dockerrun.aws.json
             eb deploy
