@@ -127,7 +127,7 @@ jobs:
           command: |
             eval $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
             FULL_IMAGE_NAME="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com"
-            VERSION="v1.0.3"
+            VERSION="v${CIRCLE_BUILD_NUM}"
             FULL_IMAGE_NAME=${FULL_IMAGE_NAME} BRANCH=${VERSION} docker-compose -f uat.yaml build
             FULL_IMAGE_NAME=${FULL_IMAGE_NAME} BRANCH=${VERSION} docker-compose -f uat.yaml push
   deploy_to_ebs:
@@ -137,16 +137,14 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker:
-          veraion: 19.03.13
+          version: 19.03.13
       - run:
           name: Deploy to Elastic Beanstalk
           command: |
-            VERSION="v1.0.3"
+            VERSION="v${CIRCLE_BUILD_NUM}"
             pip3 install --upgrade awsebcli
             DB_IMAGE="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/postgres_dev:${VERSION}"
             UI_IMAGE="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/ui_dev:${VERSION}"
             API_IMAGE="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/api_dev:${VERSION}"
-            ls -ltr
             sed -e "s#<DB_IMAGE>#$DB_IMAGE#" -e "s#<UI_IMAGE>#$UI_IMAGE#" -e "s#<API_IMAGE>#$API_IMAGE#" < Dockerrun.aws.template > Dockerrun.aws.json
-            cat Dockerrun.aws.json
             eb deploy --debug
