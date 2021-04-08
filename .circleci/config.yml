@@ -16,9 +16,9 @@ workflows:
             #- api-integration-tests
             #- ui-e2e-tests
             #- ui-unit-tests
-      - deploy_to_ebs
-          # requires:
-          #   - push_image_to_ecr
+      - deploy_to_ebs:
+          requires:
+            - push_image_to_ecr
 
 version: 2
 orbs:
