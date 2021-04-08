@@ -2,7 +2,7 @@ workflows:
   version: 2
   cloud-apps-workflow:
     jobs:
-      - ui-unit-tests
+      #- ui-unit-tests
       #- ui-e2e-tests:
          # requires:
           #  - ui-unit-tests
@@ -11,14 +11,14 @@ workflows:
       #- api-integration-tests:
        #   requires:
         #    - ui-unit-tests
-      - push_image_to_ecr:
-          requires:
+      #- push_image_to_ecr:
+          #requires:
             #- api-integration-tests
             #- ui-e2e-tests
-            - ui-unit-tests
+            #- ui-unit-tests
       - deploy_to_ebs:
-          requires:
-            - push_image_to_ecr
+          # requires:
+          #   - push_image_to_ecr
 
 version: 2
 orbs:
@@ -141,7 +141,7 @@ jobs:
       - run:
           name: Deploy to Elastic Beanstalk
           command: |
-            VERSION="v${CIRCLE_PREVIOUS_BUILD_NUM}"
+            VERSION="v251"
             pip3 install --upgrade awsebcli
             DB_IMAGE="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/postgres_dev:${VERSION}"
             UI_IMAGE="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/ui_dev:${VERSION}"
