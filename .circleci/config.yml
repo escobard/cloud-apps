@@ -155,4 +155,5 @@ jobs:
             ls -ltr
             cat Dockerrun.aws.json
             git add Dockerrun.aws.json
-            eb deploy --debug
+            git commit -m "add Dockerrun.aws.json"
+            eb deploy
