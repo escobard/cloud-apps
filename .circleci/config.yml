@@ -154,6 +154,7 @@ jobs:
             pip3 install --upgrade awsebcli
             ls -ltr
             cat Dockerrun.aws.json
+            git config --global user.name "$CIRCLE_USERNAME"
             git add Dockerrun.aws.json
             git commit -m "add Dockerrun.aws.json"
             eb deploy
