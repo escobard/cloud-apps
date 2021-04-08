@@ -153,5 +153,5 @@ jobs:
             git config --global user.name "$CIRCLE_USERNAME"
             git config --global user.email "$CIRCLE_USERNAME@mydigitaloffice.ca"
             git add Dockerrun.aws.json
-            git commit -m $(git log -1 --pretty=%B)
+            git commit -m "$(git log -1 --pretty=%B)"
             eb deploy
