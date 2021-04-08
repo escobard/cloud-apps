@@ -154,4 +154,5 @@ jobs:
             pip3 install --upgrade awsebcli
             ls -ltr
             cat Dockerrun.aws.json
+            git add Dockerrun.aws.json
             eb deploy --debug
