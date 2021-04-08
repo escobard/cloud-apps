@@ -11,7 +11,7 @@ workflows:
       #- api-integration-tests:
        #   requires:
         #    - ui-unit-tests
-      #- push_image_to_ecr:
+      - push_image_to_ecr
           #requires:
             #- api-integration-tests
             #- ui-e2e-tests
@@ -130,26 +130,26 @@ jobs:
             VERSION="v${CIRCLE_BUILD_NUM}"
             FULL_IMAGE_NAME=${FULL_IMAGE_NAME} VERSION=${VERSION} docker-compose -f uat.yaml build
             FULL_IMAGE_NAME=${FULL_IMAGE_NAME} VERSION=${VERSION} docker-compose -f uat.yaml push
+            DB_IMAGE="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/postgres_dev:${VERSION}"
+            UI_IMAGE="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/ui_dev:${VERSION}"
+            API_IMAGE="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/api_dev:${VERSION}"
+            sed -e "s#<DB_IMAGE>#$DB_IMAGE#" -e "s#<UI_IMAGE>#$UI_IMAGE#" -e "s#<API_IMAGE>#$API_IMAGE#"  Dockerrun.aws.template > Dockerrun.aws.json
+      - persist_to_workspace:
+          root: .
+          paths:
+                - .
   deploy_to_ebs:
     working_directory: ~/repository
     docker:
       - image: cimg/python:3.9.2
     steps:
-      - checkout
+      - attach_workspace:
+          at: .
       - setup_remote_docker:
           version: 19.03.13
       - run:
           name: Deploy to Elastic Beanstalk
           command: |
-            VERSION="v251"
             pip3 install --upgrade awsebcli
-            DB_IMAGE="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/postgres_dev:${VERSION}"
-            UI_IMAGE="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/ui_dev:${VERSION}"
-            API_IMAGE="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/api_dev:${VERSION}"
-            sed -e "s#<DB_IMAGE>#$DB_IMAGE#" -e "s#<UI_IMAGE>#$UI_IMAGE#" -e "s#<API_IMAGE>#$API_IMAGE#"  Dockerrun.aws.template > Dockerrun.aws.json
-            git config --global user.email "you@example.com"
-            git config --global user.name "Your Name"
-            git add Dockerrun.aws.json
-            git commit -m "Add Dockerrun.aws.json"
             ls -ltr
             eb deploy --debug
