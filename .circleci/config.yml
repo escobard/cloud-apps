@@ -115,7 +115,7 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker:
-          veraion: 19.03.13
+          docker_layer_caching: true
       - run:
           name: Install dependencies
           command: |
@@ -134,7 +134,6 @@ jobs:
             UI_IMAGE="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/ui_dev:${VERSION}"
             API_IMAGE="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/api_dev:${VERSION}"
             sed -e "s#<DB_IMAGE>#$DB_IMAGE#" -e "s#<UI_IMAGE>#$UI_IMAGE#" -e "s#<API_IMAGE>#$API_IMAGE#"  Dockerrun.aws.template > Dockerrun.aws.json
-            cat Dockerrun.aws.json
       - persist_to_workspace:
           root: .
           paths:
@@ -146,8 +145,6 @@ jobs:
     steps:
       - attach_workspace:
           at: .
-      - setup_remote_docker:
-          version: 19.03.13
       - run:
           name: Deploy to Elastic Beanstalk
           command: |
