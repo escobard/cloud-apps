@@ -1,5 +1,5 @@
 workflows:
-  version: 2
+  version: 2.1
   cloud-apps-workflow:
     jobs:
       #- ui-unit-tests
@@ -20,9 +20,6 @@ workflows:
           requires:
             - push_image_to_ecr
 
-version: 2
-orbs:
-  aws-ecr: circleci/aws-ecr@6.4.0
 jobs:
   ui-unit-tests:
     working_directory: ~/client/ui
