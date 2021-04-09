@@ -147,7 +147,7 @@ jobs:
           name: Deploy to Elastic Beanstalk
           command: |
             pip3 install --upgrade awsebcli
-            VERSION="${CIRCLE_PREVIOUS_BUILD_NUM}"
+            VERSION="v${CIRCLE_PREVIOUS_BUILD_NUM}"
             cat Dockerrun.aws.json
             git config --global user.name "$CIRCLE_USERNAME"
             git config --global user.email "$CIRCLE_USERNAME@mydigitaloffice.ca"
