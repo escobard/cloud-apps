@@ -126,7 +126,7 @@ jobs:
           command: |
             eval $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
             FULL_IMAGE_NAME="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com"
-            VERSION="v${CIRCLE_BUILD_NUM}"
+            VERSION="$(git describe --tags --abbrev=0)"
             FULL_IMAGE_NAME=${FULL_IMAGE_NAME} VERSION=${VERSION} docker-compose -f uat.yaml build
             FULL_IMAGE_NAME=${FULL_IMAGE_NAME} VERSION=${VERSION} docker-compose -f uat.yaml push
             DB_IMAGE="${FULL_IMAGE_NAME}/postgres_dev:${VERSION}"
@@ -148,10 +148,10 @@ jobs:
           name: Deploy to Elastic Beanstalk
           command: |
             pip3 install --upgrade awsebcli
-            ls -ltr
+            VERSION="$(git describe --tags --abbrev=0)"
             cat Dockerrun.aws.json
             git config --global user.name "$CIRCLE_USERNAME"
             git config --global user.email "$CIRCLE_USERNAME@mydigitaloffice.ca"
             git add Dockerrun.aws.json
             git commit -m "$(git log -1 --pretty=%B)"
-            eb deploy
+            eb deploy -l $VERSION
