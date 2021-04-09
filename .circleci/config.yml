@@ -11,7 +11,7 @@ workflows:
       #- api-integration-tests:
        #   requires:
         #    - ui-unit-tests
-      - push_image_to_ecr
+      - push_image_to_ecr:
           requires:
             - api-integration-tests
             - ui-e2e-tests
