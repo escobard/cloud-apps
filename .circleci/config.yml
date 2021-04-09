@@ -15,7 +15,6 @@ workflows:
           requires:
             - api-integration-tests
             - ui-e2e-tests
-            - ui-unit-tests
       - deploy_to_ebs:
           requires:
             - push_image_to_ecr
@@ -148,7 +147,7 @@ jobs:
           name: Deploy to Elastic Beanstalk
           command: |
             pip3 install --upgrade awsebcli
-            VERSION="$(git describe --tags --abbrev=0)"
+            VERSION="${CIRCLE_PREVIOUS_BUILD_NUM}"
             cat Dockerrun.aws.json
             git config --global user.name "$CIRCLE_USERNAME"
             git config --global user.email "$CIRCLE_USERNAME@mydigitaloffice.ca"
