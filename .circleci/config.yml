@@ -137,6 +137,9 @@ jobs:
           root: .
           paths:
                 - .
+      filters:
+        tags:
+          only: /^v.*/
   deploy_to_ebs:
     working_directory: ~/repository
     docker:
@@ -155,3 +158,6 @@ jobs:
             git add Dockerrun.aws.json
             git commit -m "$(git log -1 --pretty=%B)"
             eb deploy -l $VERSION
+      filters:
+        tags:
+          only: /^v.*/
