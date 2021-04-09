@@ -2,20 +2,20 @@ workflows:
   version: 2
   cloud-apps-workflow:
     jobs:
-      #- ui-unit-tests
-      #- ui-e2e-tests:
-         # requires:
-          #  - ui-unit-tests
+      - ui-unit-tests
+      - ui-e2e-tests:
+          requires:
+            - ui-unit-tests
       
       #- api-unit-tests
       #- api-integration-tests:
        #   requires:
         #    - ui-unit-tests
       - push_image_to_ecr
-          #requires:
-            #- api-integration-tests
-            #- ui-e2e-tests
-            ##- ui-unit-tests
+          requires:
+            - api-integration-tests
+            - ui-e2e-tests
+            - ui-unit-tests
       - deploy_to_ebs:
           requires:
             - push_image_to_ecr
@@ -123,7 +123,7 @@ jobs:
           command: |
             eval $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
             FULL_IMAGE_NAME="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com"
-            VERSION="$(git describe --tags --abbrev=0)"
+            VERSION="${CIRCLE_BUILD_NUM}"
             FULL_IMAGE_NAME=${FULL_IMAGE_NAME} VERSION=${VERSION} docker-compose -f uat.yaml build
             FULL_IMAGE_NAME=${FULL_IMAGE_NAME} VERSION=${VERSION} docker-compose -f uat.yaml push
             DB_IMAGE="${FULL_IMAGE_NAME}/postgres_dev:${VERSION}"
