@@ -1,6 +1,6 @@
 branch-defaults:
   feature/ci_cd_pipeline:
-    environment: null
+    environment: cloud-apps-dev
     group_suffix: null
 environment-defaults:
   Cloudapps-env:
