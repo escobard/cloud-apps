@@ -1,11 +1,15 @@
 branch-defaults:
   feature/ci_cd_pipeline:
-    environment: cloud-apps-dev
+    environment: Cloudapps-env
     group_suffix: null
+environment-defaults:
+  Cloudapps-env:
+    branch: null
+    repository: null
 global:
   application_name: cloud-apps
   branch: null
-  default_ec2_keyname: aws-eb
+  default_ec2_keyname: null
   default_platform: Multi-container Docker running on 64bit Amazon Linux
   default_region: ca-central-1
   include_git_submodules: true
