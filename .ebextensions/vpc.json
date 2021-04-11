@@ -1,0 +1,6 @@
+         {
+           "OptionSettings" : [
+           {"Namespace" : "aws:ec2:vpc", "OptionName" : "VPCId", "Value" : { "Ref" : "cloud-apps-VPC" }},
+           {"Namespace" : "aws:ec2:vpc", "OptionName" : "Subnets", "Value" : { "Ref" : "cloud-apps-PrivateSubnet" }},
+           {"Namespace" : "aws:ec2:vpc", "OptionName" : "ELBSubnets", "Value" : { "Ref" : "cloud-apps-PublicSubnet" }}]
+         }
