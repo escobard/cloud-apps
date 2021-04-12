@@ -2,10 +2,6 @@ branch-defaults:
   feature/ci_cd_pipeline:
     environment: cloud-apps-dev
     group_suffix: null
-environment-defaults:
-  Cloudapps-env:
-    branch: null
-    repository: null
 global:
   application_name: cloud-apps
   branch: null

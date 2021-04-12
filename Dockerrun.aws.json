@@ -29,32 +29,7 @@
                     "containerPort": 4000,
                     "hostPort": 4000
                 }
-            ],
-              "links": [
-                  "postgres"
-                ],
-              "environment": [
-                  {
-                      "name": "PGUSER",
-                      "value": "postgres"
-                  },
-                  {
-                      "name": "PGHOST",
-                      "value": "postgres"
-                  },
-                  {
-                      "name": "PGDATABASE",
-                      "value": "postgres"
-                  },
-                  {
-                      "name": "PGPASSWORD",
-                      "value": "postgres_password"
-                  },
-                  {
-                      "name": "PGPORT",
-                      "value": "5432"
-                  }
-              ]
+            ]
         },
         {
             "essential": true,

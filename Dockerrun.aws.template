@@ -1,24 +1,6 @@
 {
     "AWSEBDockerrunVersion": 2,
     "containerDefinitions": [
-      {
-          "environment": [
-              {
-                  "name": "POSTGRES_HOST_AUTH_METHOD",
-                  "value": "trust"
-              }
-          ],
-          "essential": true,
-          "image": "<DB_IMAGE>",
-          "name": "postgres",
-          "portMappings": [
-              {
-                  "containerPort": 5432,
-                  "hostPort": 5432
-              }
-          ],
-          "memory": 128
-      },
         {
             "image": "<API_IMAGE>",
             "name": "api",
@@ -29,32 +11,7 @@
                     "containerPort": 4000,
                     "hostPort": 4000
                 }
-            ],
-              "links": [
-                  "postgres"
-                ],
-              "environment": [
-                  {
-                      "name": "PGUSER",
-                      "value": "postgres"
-                  },
-                  {
-                      "name": "PGHOST",
-                      "value": "postgres"
-                  },
-                  {
-                      "name": "PGDATABASE",
-                      "value": "postgres"
-                  },
-                  {
-                      "name": "PGPASSWORD",
-                      "value": "postgres_password"
-                  },
-                  {
-                      "name": "PGPORT",
-                      "value": "5432"
-                  }
-              ]
+            ]
         },
         {
             "essential": true,
