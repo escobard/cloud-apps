@@ -1,5 +1,5 @@
 branch-defaults:
-  feature/ci_cd_pipeline:
+  feature/ci_cd_pipeline_rds:
     environment: cloud-apps-dev
     group_suffix: null
 global:
