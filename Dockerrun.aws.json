@@ -1,26 +1,8 @@
 {
     "AWSEBDockerrunVersion": 2,
     "containerDefinitions": [
-      {
-          "environment": [
-              {
-                  "name": "POSTGRES_HOST_AUTH_METHOD",
-                  "value": "trust"
-              }
-          ],
-          "essential": true,
-          "image": "621650508462.dkr.ecr.ca-central-1.amazonaws.com/postgres_dev:v1.0.10",
-          "name": "postgres",
-          "portMappings": [
-              {
-                  "containerPort": 5432,
-                  "hostPort": 5432
-              }
-          ],
-          "memory": 128
-      },
         {
-            "image": "621650508462.dkr.ecr.ca-central-1.amazonaws.com/api_dev:v1.0.10",
+            "image": "936341724687.dkr.ecr.us-east-2.amazonaws.com/cloud-apps-backend:v1.0.0",
             "name": "api",
             "essential": true,
             "memory": 128,
@@ -33,7 +15,7 @@
         },
         {
             "essential": true,
-            "image": "621650508462.dkr.ecr.ca-central-1.amazonaws.com/ui_dev:v1.0.10",
+            "image": "936341724687.dkr.ecr.us-east-2.amazonaws.com/cloud-apps-frontend:v1.0.0",
             "name": "ui",
             "portMappings": [
                 {
