@@ -6,7 +6,7 @@ services:
     build:
       context: ./client/ui
       dockerfile: docker/Dockerfile.prod
-    image:  ${FULL_IMAGE_NAME}/ui_dev:${VERSION}
+    image:  ${FULL_IMAGE_NAME}/cloud-apps-frontend:${VERSION}
     ports:
       - "3000:3000"
   api:
@@ -17,4 +17,4 @@ services:
     build:
       context: ./server/api
       dockerfile: docker/Dockerfile.uat
-    image:  ${FULL_IMAGE_NAME}/api_dev:${VERSION}
+    image:  ${FULL_IMAGE_NAME}/cloud-apps-backend:${VERSION}
