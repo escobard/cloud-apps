@@ -1,5 +1,5 @@
 branch-defaults:
-  feature/ci_cd_pipeline_rds:
+  feature/demo:
     environment: myp2-dev-env
 environment-defaults:
   myp2-dev-env:

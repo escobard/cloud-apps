@@ -3,21 +3,29 @@ workflows:
   cloud-apps-workflow:
     jobs:
       - ui-unit-tests
-      - ui-e2e-tests:
-          requires:
-            - ui-unit-tests
-      
       #- api-unit-tests
       - api-integration-tests:
           requires:
             - ui-unit-tests
+      - ui-e2e-tests:
+          requires:
+            - ui-unit-tests
+          filters:
+            branches:
+              only: master
       - push_image_to_ecr:
           requires:
             - api-integration-tests
             - ui-e2e-tests
+          filters:
+            branches:
+              only: master
       - deploy_to_ebs:
           requires:
             - push_image_to_ecr
+          filters:
+            branches:
+              only: master
 
 jobs:
   ui-unit-tests:
