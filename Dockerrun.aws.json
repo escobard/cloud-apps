@@ -1,0 +1,33 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "image": "936341724687.dkr.ecr.us-east-2.amazonaws.com/cloud-apps-backend:v1.0.0",
+            "name": "api",
+            "essential": true,
+            "memory": 128,
+            "portMappings": [
+                {
+                    "containerPort": 4000,
+                    "hostPort": 4000
+                }
+            ]
+        },
+        {
+            "essential": true,
+            "image": "936341724687.dkr.ecr.us-east-2.amazonaws.com/cloud-apps-frontend:v1.0.0",
+            "name": "ui",
+            "portMappings": [
+                {
+                    "containerPort": 3000,
+                    "hostPort": 80
+                }
+            ],
+            "links": [
+                "api"
+              ],
+            "memory": 128
+        }
+    ]
+  }
+  

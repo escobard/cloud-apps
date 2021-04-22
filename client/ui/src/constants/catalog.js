@@ -6,7 +6,7 @@ export const footer = {
 };
 
 export const header = {
-  title: "Your Notes",
+  title: "Your Notes version1.0",
   todayDate: todayDate()
 };
 
