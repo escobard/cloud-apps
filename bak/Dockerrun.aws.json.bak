@@ -1,0 +1,26 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "ui_dev",
+      "image": "621650508462.dkr.ecr.ca-central-1.amazonaws.com/ui_dev:v1.0.0",
+      "hostname": "ui_dev",
+      "essential": false,
+      "memory": 300
+    },
+    {
+      "name": "api_dev",
+      "image": "621650508462.dkr.ecr.ca-central-1.amazonaws.com/ui_dev:v1.0.0",
+      "hostname": "api_dev",
+      "essential": true,
+      "memory": 300
+    },
+    {
+      "name": "postgres_dev",
+      "image": "621650508462.dkr.ecr.ca-central-1.amazonaws.com/postgres_dev:v1.0.0",
+      "hostname": "postgres_dev",
+      "essential": true,
+      "memory": 300
+    }
+  ]
+}

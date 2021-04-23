@@ -1,16 +1,32 @@
 workflows:
   version: 2
-  automated-tests:
+  cloud-apps-workflow:
     jobs:
       - ui-unit-tests
-      - ui-e2e-tests:
-          requires:
-            - ui-unit-tests
-      - api-unit-tests
+      #- api-unit-tests
       - api-integration-tests:
           requires:
             - ui-unit-tests
-version: 2
+      - ui-e2e-tests:
+          requires:
+            - ui-unit-tests
+          filters:
+            branches:
+              only: master
+      - push_image_to_ecr:
+          requires:
+            - api-integration-tests
+            - ui-e2e-tests
+          filters:
+            branches:
+              only: master
+      - deploy_to_ebs:
+          requires:
+            - push_image_to_ecr
+          filters:
+            branches:
+              only: master
+
 jobs:
   ui-unit-tests:
     working_directory: ~/client/ui
@@ -25,7 +41,7 @@ jobs:
           key: dependency-cache-{{ checksum "client/ui/package.json" }}
       - run:
           name: install-ui
-          command: "cd client/ui && npm install"
+          command: "cd client/ui && npm install --legacy-peer-deps"
       - save_cache:
           key: dependency-cache-{{ checksum "client/ui/package.json" }}
           paths:
@@ -96,3 +112,56 @@ jobs:
           name: ui-e2e-tests
           command: |
             docker-compose -f e2e-tests.yaml up --exit-code-from e2e
+  push_image_to_ecr:
+    working_directory: ~/repository
+    docker:
+      - image: circleci/python:2.7
+    steps:
+      - checkout
+      - setup_remote_docker:
+      - run:
+          name: Install dependencies
+          command: |
+            pip install \
+              docker-compose==1.12.0 \
+            pip install --upgrade awscli     
+      - run:
+          name: Push all services images to AWS ECR using docker compose
+          command: |
+            eval $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
+            FULL_IMAGE_NAME="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com"
+            VERSION="v${CIRCLE_BUILD_NUM}"
+            FULL_IMAGE_NAME=${FULL_IMAGE_NAME} VERSION=${VERSION} docker-compose -f uat.yaml build
+            FULL_IMAGE_NAME=${FULL_IMAGE_NAME} VERSION=${VERSION} docker-compose -f uat.yaml push
+            DB_IMAGE="${FULL_IMAGE_NAME}/postgres_dev:${VERSION}"
+            UI_IMAGE="${FULL_IMAGE_NAME}/cloud-apps-frontend:${VERSION}"
+            API_IMAGE="${FULL_IMAGE_NAME}/cloud-apps-backend:${VERSION}"
+            sed -e "s#<DB_IMAGE>#$DB_IMAGE#" -e "s#<UI_IMAGE>#$UI_IMAGE#" -e "s#<API_IMAGE>#$API_IMAGE#"  Dockerrun.aws.template > Dockerrun.aws.json
+      - persist_to_workspace:
+          root: .
+          paths:
+                - .
+    filters:
+      tags:
+        only: /^v.*/
+  deploy_to_ebs:
+    working_directory: ~/repository
+    docker:
+      - image: cimg/python:3.9.2
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: Deploy to Elastic Beanstalk
+          command: |
+            pip3 install --upgrade awsebcli
+            VERSION="v${CIRCLE_PREVIOUS_BUILD_NUM}"
+            cat Dockerrun.aws.json
+            git config --global user.name "$CIRCLE_USERNAME"
+            git config --global user.email "$CIRCLE_USERNAME@mydigitaloffice.ca"
+            git add Dockerrun.aws.json
+            git commit -m "$(git log -1 --pretty=%B)"
+            eb deploy myp2-dev-env -l $VERSION
+    filters:
+      tags:
+        only: /^v.*/
