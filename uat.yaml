@@ -5,7 +5,7 @@ services:
     working_dir: /usr/cloud-apps/ui
     build:
       context: ./client/ui
-      dockerfile: docker/Dockerfile.prod
+      dockerfile: docker/Dockerfile.uat
     image:  ${FULL_IMAGE_NAME}/cloud-apps-frontend:${VERSION}
     ports:
       - "3000:3000"
