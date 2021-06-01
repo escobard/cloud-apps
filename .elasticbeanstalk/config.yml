@@ -1,12 +1,13 @@
 branch-defaults:
   feature/demo:
-    environment: myp2-dev-env
+    environment: cloudapps-dev
 environment-defaults:
-  myp2-dev-env:
+  cloudapps-dev:
     branch: null
     repository: null
 global:
-  application_name: myp2_dev
+  application_name: cloud-apps
+  environment: cloudapps-dev
   default_ec2_keyname: null
   default_platform: Multi-container Docker running on 64bit Amazon Linux
   default_region: us-east-2
