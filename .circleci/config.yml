@@ -161,7 +161,4 @@ jobs:
             git config --global user.email "$CIRCLE_USERNAME@mydigitaloffice.ca"
             git add Dockerrun.aws.json
             git commit -m "$(git log -1 --pretty=%B)"
-            eb deploy myp2-dev-env -l $VERSION
-    filters:
-      tags:
-        only: /^v.*/
+            eb deploy cloudapps-dev -l $VERSION
