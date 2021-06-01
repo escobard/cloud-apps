@@ -14,6 +14,7 @@ workflows:
             branches:
               only: develop
       - push_image_to_ecr:
+          context: MYP2
           requires:
             - api-integration-tests
             - ui-e2e-tests
@@ -21,6 +22,7 @@ workflows:
             branches:
               only: develop
       - deploy_to_ebs:
+          context: MYP2
           requires:
             - push_image_to_ecr
           filters:
