@@ -1,0 +1,20 @@
+version: '3'
+services:
+  ui:
+    container_name: ui_prod
+    working_dir: /usr/cloud-apps/ui
+    build:
+      context: ./client/ui
+      dockerfile: docker/Dockerfile.uat
+    image:  ${FULL_IMAGE_NAME}/cloud-apps-frontend:${VERSION}
+    ports:
+      - "3000:3000"
+  api:
+    container_name: api_prod
+    working_dir: /usr/cloud-apps/api
+    ports:
+    - "4000:4000"
+    build:
+      context: ./server/api
+      dockerfile: docker/Dockerfile.uat
+    image:  ${FULL_IMAGE_NAME}/cloud-apps-backend:${VERSION}

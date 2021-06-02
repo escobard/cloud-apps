@@ -1,0 +1,33 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "image": "<API_IMAGE>",
+            "name": "api",
+            "essential": true,
+            "memory": 128,
+            "portMappings": [
+                {
+                    "containerPort": 4000,
+                    "hostPort": 4000
+                }
+            ]
+        },
+        {
+            "essential": true,
+            "image": "<UI_IMAGE>",
+            "name": "ui",
+            "portMappings": [
+                {
+                    "containerPort": 3000,
+                    "hostPort": 80
+                }
+            ],
+            "links": [
+                "api"
+              ],
+            "memory": 128
+        }
+    ]
+  }
+  
