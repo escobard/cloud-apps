@@ -1,5 +1,5 @@
+version: 2.1
 workflows:
-  version: 2
   cloud-apps-workflow:
     jobs:
       - ui-unit-tests
@@ -12,7 +12,10 @@ workflows:
             - ui-unit-tests
           filters:
             branches:
-              only: develop
+              only: 
+                - develop
+                - uat
+                - master
       - push_image_to_ecr:
           context: MYP2
           requires:
@@ -20,14 +23,37 @@ workflows:
             - ui-e2e-tests
           filters:
             branches:
-              only: develop
+              only: 
+                - develop
+                - uat
+                - master
       - deploy_to_ebs:
+          cloudapps_env: 'dev'
+          name : 'deploy_to_ebs_dev'
           context: MYP2
           requires:
             - push_image_to_ecr
           filters:
             branches:
               only: develop
+      - deploy_to_ebs:
+          cloudapps_env: 'uat'
+          name : 'deploy_to_ebs_uat'
+          context: MYP2
+          requires:
+            - push_image_to_ecr
+          filters:
+            branches:
+              only: uat
+      - deploy_to_ebs:
+          cloudapps_env: 'prod'
+          name : 'deploy_to_ebs_prod'
+          context: MYP2
+          requires:
+            - push_image_to_ecr
+          filters:
+            branches:
+              only: master
 
 jobs:
   ui-unit-tests:
@@ -120,7 +146,7 @@ jobs:
       - image: circleci/python:2.7
     steps:
       - checkout
-      - setup_remote_docker:
+      - setup_remote_docker
       - run:
           name: Install dependencies
           command: |
@@ -132,7 +158,7 @@ jobs:
           command: |
             eval $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
             FULL_IMAGE_NAME="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com"
-            VERSION="v${CIRCLE_BUILD_NUM}"
+            VERSION="v<< pipeline.number >>"
             FULL_IMAGE_NAME=${FULL_IMAGE_NAME} VERSION=${VERSION} docker-compose -f uat.yaml build
             FULL_IMAGE_NAME=${FULL_IMAGE_NAME} VERSION=${VERSION} docker-compose -f uat.yaml push
             DB_IMAGE="${FULL_IMAGE_NAME}/postgres_dev:${VERSION}"
@@ -144,6 +170,11 @@ jobs:
           paths:
                 - .
   deploy_to_ebs:
+    parameters:
+      cloudapps_env:
+        description: "cloud-apps environment"
+        default: "dev"
+        type: string
     working_directory: ~/repository
     docker:
       - image: cimg/python:3.9.2
@@ -154,10 +185,10 @@ jobs:
           name: Deploy to Elastic Beanstalk
           command: |
             pip3 install --upgrade awsebcli
-            VERSION="v${CIRCLE_PREVIOUS_BUILD_NUM}"
+            VERSION="v$<< pipeline.number >>"
             cat Dockerrun.aws.json
             git config --global user.name "$CIRCLE_USERNAME"
             git config --global user.email "$CIRCLE_USERNAME@mydigitaloffice.ca"
             git add Dockerrun.aws.json
             git commit -m "$(git log -1 --pretty=%B)"
-            eb deploy cloudapps-dev -l $VERSION
+            eb deploy cloudapps-"<< parameters.cloudapps_env >>" -l $VERSION
