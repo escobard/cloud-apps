@@ -1,4 +1,4 @@
-FROM node:lts as builder
+FROM node:14.19.0 as builder
 
 WORKDIR /usr/cloud-apps/ui
 
