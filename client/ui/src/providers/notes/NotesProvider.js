@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { useModal, useNotes } from "hooks";
+import { useModal, useNotes } from "../../hooks";
 
 export const NotesContext = React.createContext([{}, () => {}]);
 

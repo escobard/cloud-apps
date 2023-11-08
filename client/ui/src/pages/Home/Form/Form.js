@@ -3,9 +3,9 @@ import { Button, Form as SemanticForm, Message } from "semantic-ui-react";
 
 import PropTypes from "prop-types";
 
-import useAlert from "hooks/useAlert";
+import useAlert from "../../../hooks/useAlert";
 
-import { addNoteFields } from "constants/forms";
+import { addNoteFields } from "../../../constants/forms";
 import validateForm from "./validateForm";
 import "./Form.scss";
 

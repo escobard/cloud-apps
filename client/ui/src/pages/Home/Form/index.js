@@ -1,1 +1,1 @@
-export { default } from "pages/Home/Form/Form";
+export { default } from "./Form";

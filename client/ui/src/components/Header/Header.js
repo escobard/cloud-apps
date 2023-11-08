@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { header } from "constants/catalog";
+import { header } from "../../constants/catalog";
 
 import "./Header.scss";
 

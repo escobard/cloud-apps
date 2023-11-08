@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { NotesProvider } from "providers";
+import { NotesProvider } from "./providers";
 
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";

@@ -1,4 +1,4 @@
-import { todayDate } from "utils/todayDate";
+import { todayDate } from "../utils/todayDate";
 
 export const footer = {
   noNotes: "NO NOTES",
