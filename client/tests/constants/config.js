@@ -4,11 +4,14 @@ const clientHost = process.env.UI_HOST || 'localhost',
   clientPort = process.env.UI_PORT || '3000',
   clientUrl = `http://${clientHost}:${clientPort}`,
   headless = process.argv.includes("--headless") ? ["headless"] : [],
+  webDriver = null,
+  /* - disabling npm only config to bypass circleci build issues
   webDriver = process.env.DOCKER ? null : {
-    start_process: true,
-    server_path: chrome.path,
-    port: 9515
-  },
+      start_process: true,
+      server_path: chrome.path,
+      port: 9515
+    }
+  */
   seleniumHub = process.env.SELENIUM_HUB || null;
 
 
