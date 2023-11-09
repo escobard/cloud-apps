@@ -9,7 +9,7 @@ workflows:
       - api-unit-tests
       - api-integration-tests:
           requires:
-            - ui-unit-tests
+            - api-unit-tests
 version: 2
 jobs:
   ui-unit-tests:
