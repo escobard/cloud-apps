@@ -13,7 +13,7 @@ const NotesProvider = ({ children }) => {
       // TODO - this should come from authentication
       user_id: 1,
       subject,
-      note: newNote
+      note: newNote,
     };
 
     await addNote(request);
@@ -35,7 +35,7 @@ const NotesProvider = ({ children }) => {
         note,
         getNotes,
         addNote,
-        updateNotes
+        updateNotes,
       }}
     >
       {children}

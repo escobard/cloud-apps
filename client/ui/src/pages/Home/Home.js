@@ -17,7 +17,7 @@ const Home = () => {
     const hasNoData = !Array.isArray(data) && data.length > 0;
 
     if (hasData) {
-      return data.map(note => {
+      return data.map((note) => {
         return <Note key={note.subject} data={note} />;
       });
     }
@@ -35,7 +35,7 @@ const Home = () => {
       <main className="home">
         {renderModal({
           title: "Add note",
-          content: <Form submit={updateNotes} fields={addNoteFields} />
+          content: <Form submit={updateNotes} fields={addNoteFields} />,
         })}
         {notes && renderNotes("notes", notes)}
       </main>

@@ -14,11 +14,11 @@ const Header = ({ date }) => (
 );
 
 Header.propTypes = {
-  date: PropTypes.string
+  date: PropTypes.string,
 };
 
 Header.defaultProps = {
-  date: header.todayDate
+  date: header.todayDate,
 };
 
 export default Header;

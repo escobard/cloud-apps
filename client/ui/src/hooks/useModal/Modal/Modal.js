@@ -10,7 +10,7 @@ const ModalElement = ({ title, content, showModal, closeModal }) => (
       <Grid className="header">
         <Grid.Column width={2}>
           <i
-            onKeyDown={e => {
+            onKeyDown={(e) => {
               e.key === "Enter" && closeModal();
             }}
             tabIndex={0}
@@ -42,7 +42,7 @@ ModalElement.propTypes = {
   title: PropTypes.string.isRequired,
   content: PropTypes.shape({}).isRequired,
   showModal: PropTypes.bool.isRequired,
-  closeModal: PropTypes.func.isRequired
+  closeModal: PropTypes.func.isRequired,
 };
 
 export default ModalElement;
