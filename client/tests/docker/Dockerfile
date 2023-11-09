@@ -3,8 +3,7 @@ WORKDIR /usr/cloud-apps/e2e
 
 COPY ./package.json ./
 
-## uses standalone chromedriver / selenium image
-RUN npm install --only=prod
+RUN npm install
 
 COPY ./ ./
 
