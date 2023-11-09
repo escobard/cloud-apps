@@ -7,7 +7,7 @@
     "start": "npm run test",
     "test": "jest",
     "test-watch": "jest --watch",
-    "docker": "docker-compose -f docker/ui-tests.yaml up --exit-code-from e2e"
+    "docker": "docker-compose -f docker/ui-tests.yaml up --no-attach node-chrome --exit-code-from e2e"
   },
   "engines": {
     "node": "10.x",
@@ -34,33 +34,9 @@
     "jest-extended": "^0.11.5",
     "jest-resolve": "24.7.1",
     "jest-watch-typeahead": "^0.4.2",
-    "nightwatch": "latest",
+    "nightwatch": "1.5.1",
     "nightwatch-api": "^3.0.1",
     "selenium-server": "^3.141.59"
-  },
-  "jest": {
-    "collectCoverageFrom": [
-      "./**/*.{js,jsx,ts,tsx}",
-      "!<rootDir>/node_modules/"
-    ],
-    "setupFilesAfterEnv": [
-      "jest-extended",
-      "<rootDir>/setupTests.js"
-    ],
-    "testMatch": [
-      "<rootDir>/**/*.test.{js,jsx,ts,tsx}"
-    ],
-    "moduleDirectories": [
-      "node_modules"
-    ],
-    "moduleFileExtensions": [
-      "js",
-      "ts"
-    ],
-    "watchPlugins": [
-      "jest-watch-typeahead/filename",
-      "jest-watch-typeahead/testname"
-    ]
   },
   "babel": {
     "presets": [
