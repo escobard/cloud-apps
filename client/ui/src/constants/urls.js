@@ -7,5 +7,5 @@ const apiRoot =
 
 export const apiRoutes = {
   addNote: `${`${apiRoot}`}`,
-  getNotes: `${`${apiRoot}`}`
+  getNotes: `${`${apiRoot}`}`,
 };

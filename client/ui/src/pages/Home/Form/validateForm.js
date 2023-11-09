@@ -1,9 +1,9 @@
-import validateField from "pages/Home/Form/validateField";
+import validateField from "./validateField";
 
-const validateForm = fields => {
+const validateForm = (fields) => {
   const errors = [];
 
-  fields.map(field => {
+  fields.map((field) => {
     const { condition, error } = field;
     const fieldError = validateField(condition, error);
     return fieldError && errors.push(fieldError);

@@ -1,13 +1,13 @@
-import { todayDate } from "utils/todayDate";
+import { todayDate } from "../utils/todayDate";
 
 export const footer = {
   noNotes: "NO NOTES",
-  withNotes: "COMPLETED"
+  withNotes: "COMPLETED",
 };
 
 export const header = {
   title: "Your Notes",
-  todayDate: todayDate()
+  todayDate: todayDate(),
 };
 
 export const notes = {
@@ -16,14 +16,14 @@ export const notes = {
     note: "Add a note by clicking on the + icon below.",
     icon: {
       image: "exclamation",
-      label: "No Notes"
-    }
+      label: "No Notes",
+    },
   },
   apiError: {
     subject: "API error",
     icon: {
       image: "exclamation",
-      label: "API error"
-    }
-  }
+      label: "API error",
+    },
+  },
 };

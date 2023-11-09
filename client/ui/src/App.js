@@ -2,11 +2,11 @@ import React from "react";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import { Home } from "pages";
+import { Home } from "./pages";
 
-import { Header, Footer } from "components";
+import { Header, Footer } from "./components";
 
-import "styles/global.scss";
+import "./styles/global.scss";
 
 const App = () => {
   return (

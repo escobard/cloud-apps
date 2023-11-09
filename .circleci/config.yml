@@ -9,18 +9,15 @@ workflows:
       - api-unit-tests
       - api-integration-tests:
           requires:
-            - ui-unit-tests
+            - api-unit-tests
 version: 2
 jobs:
   ui-unit-tests:
     working_directory: ~/client/ui
     docker:
-      - image: circleci/node:12.13.1 # this may cause issues, revert to 10.14.1 if needed
+      - image: circleci/node:14.18.0 # lock in version of node to prevent dependency issues
     steps:
       - checkout
-      - run:
-          name: update-npm
-          command: "cd client/ui && sudo npm install -g npm@latest"
       - restore_cache:
           key: dependency-cache-{{ checksum "client/ui/package.json" }}
       - run:
@@ -39,12 +36,9 @@ jobs:
   api-unit-tests:
     working_directory: ~/server/api
     docker:
-      - image: circleci/node:12.13.1
+      - image: circleci/node:14.18.0 # lock in version of node to prevent dependency issues
     steps:
       - checkout
-      - run:
-          name: update-npm
-          command: "cd server/api && sudo npm install -g npm@latest"
       - restore_cache:
           key: dependency-cache-{{ checksum "server/api/package.json" }}
       - run:

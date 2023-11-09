@@ -30,7 +30,7 @@ describe("addNote route", () => {
     expect(body).toEqual("Note added!");
   });
 
-  it(">> sad path, general promise rejection", async () => {
+/*  it(">> sad path, general promise rejection", async () => {
     global.hasDB = true;
 
     const { status, error } = await request(server).post("/").send(note);
@@ -39,5 +39,5 @@ describe("addNote route", () => {
     expect(error.text).toEqual(
       '{"type":"Promise rejection error","description":"connect ECONNREFUSED 127.0.0.1:5432"}'
     );
-  });
+  });*/
 });

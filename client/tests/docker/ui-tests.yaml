@@ -25,7 +25,7 @@ services:
     networks:
       - nightwatch-docker-grid-network
     build:
-      context: ./server/postgres
+      context: ../../../server/postgres
     ports:
       - "5432:5432"
     environment:
@@ -83,13 +83,13 @@ services:
       - DOCKER=true
       - WAIT_HOSTS= ui:3000, api:4000
     build:
-      context: ./client/tests
+      context: ../
       dockerfile: docker/Dockerfile
     volumes:
-      - ./client/tests:/usr/cloud-apps/e2e
+      - ../:/usr/cloud-apps/e2e
       - /usr/cloud-apps/e2e/node_modules
     command: |
-      sh -c "/wait && sleep 10 && npm start"
+      sh -c "/wait && sleep 10 && npm start smoke sad"
 networks:
   nightwatch-docker-grid-network:
     driver: bridge

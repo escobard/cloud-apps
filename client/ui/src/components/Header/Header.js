@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { header } from "constants/catalog";
+import { header } from "../../constants/catalog";
 
 import "./Header.scss";
 
@@ -14,11 +14,11 @@ const Header = ({ date }) => (
 );
 
 Header.propTypes = {
-  date: PropTypes.string
+  date: PropTypes.string,
 };
 
 Header.defaultProps = {
-  date: header.todayDate
+  date: header.todayDate,
 };
 
 export default Header;

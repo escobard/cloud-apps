@@ -44,10 +44,10 @@ beforeAll(done => {
 afterEach(done => {
   jest.clearAllMocks();
   jest.restoreAllMocks();
+  server.close();
   done();
 });
 
 afterAll(done => {
-  server.close();
   done();
 });

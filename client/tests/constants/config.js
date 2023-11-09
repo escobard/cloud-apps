@@ -5,9 +5,9 @@ const clientHost = process.env.UI_HOST || 'localhost',
   clientUrl = `http://${clientHost}:${clientPort}`,
   headless = process.argv.includes("--headless") ? ["headless"] : [],
   webDriver = process.env.DOCKER ? null : {
-    start_process: true,
-    server_path: chrome.path,
-    port: 9515
+      start_process: true,
+      server_path: chrome.path,
+      port: 9515
   },
   seleniumHub = process.env.SELENIUM_HUB || null;
 

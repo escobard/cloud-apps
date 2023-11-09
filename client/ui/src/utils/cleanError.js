@@ -3,7 +3,7 @@
  * @return clean error message
  * */
 
-export const cleanError = error => {
+export const cleanError = (error) => {
   let message;
 
   if (error.response) {

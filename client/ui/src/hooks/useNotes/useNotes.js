@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 
-import { api } from "utils";
+import { api } from "../../utils";
 
 import { apiRoutes, headers } from "../../constants";
 
@@ -35,7 +35,7 @@ const useNotes = () => {
     note && getNotes();
   }, [note]);
 
-  const addNote = async newNote => {
+  const addNote = async (newNote) => {
     isMounted.current && setLoading(true);
     const results = await api("post", apiRoutes.addNote, { headers }, newNote);
     if (isMounted.current && results) {
@@ -51,7 +51,7 @@ const useNotes = () => {
     notes,
     note,
     getNotes,
-    addNote
+    addNote,
   };
 };
 

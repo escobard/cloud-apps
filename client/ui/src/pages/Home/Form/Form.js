@@ -3,9 +3,9 @@ import { Button, Form as SemanticForm, Message } from "semantic-ui-react";
 
 import PropTypes from "prop-types";
 
-import useAlert from "hooks/useAlert";
+import useAlert from "../../../hooks/useAlert";
 
-import { addNoteFields } from "constants/forms";
+import { addNoteFields } from "../../../constants/forms";
 import validateForm from "./validateForm";
 import "./Form.scss";
 
@@ -23,12 +23,12 @@ const Form = ({ fields, submit }) => {
     const conditions = [
       {
         condition: subjectValue.length < 5,
-        error: addNoteFields[0].errors[0]
+        error: addNoteFields[0].errors[0],
       },
       {
         condition: noteValue.length < 25,
-        error: addNoteFields[1].errors[0]
-      }
+        error: addNoteFields[1].errors[0],
+      },
     ];
 
     const errors = validateForm(conditions);
@@ -37,31 +37,31 @@ const Form = ({ fields, submit }) => {
       return setAlert({
         title: "Form error:",
         message: `Form contains the following error(s): ${errors.join(", ")}.`,
-        status: "red"
+        status: "red",
       });
     }
     setAlert({
       title: "Note added!",
       message: "",
-      status: "green"
+      status: "green",
     });
 
     return submit(subjectValue, noteValue);
   };
 
   const inputChange = (value, fieldKey) => {
-    setFormState(prevState => {
+    setFormState((prevState) => {
       return {
         ...prevState,
         [fieldKey]: {
-          value
-        }
+          value,
+        },
       };
     });
   };
 
-  const renderFields = formFields => {
-    return formFields.map(field => {
+  const renderFields = (formFields) => {
+    return formFields.map((field) => {
       const { name, label, placeholder } = field;
 
       if (name === "note") {
@@ -71,7 +71,7 @@ const Form = ({ fields, submit }) => {
             <textarea
               id={name}
               name={name}
-              onChange={e => {
+              onChange={(e) => {
                 inputChange(e.target.value, name);
               }}
               placeholder={placeholder}
@@ -86,7 +86,7 @@ const Form = ({ fields, submit }) => {
           <input
             id={name}
             name={name}
-            onChange={e => {
+            onChange={(e) => {
               inputChange(e.target.value, name);
             }}
             placeholder={placeholder}
@@ -121,10 +121,10 @@ Form.propTypes = {
       name: PropTypes.string.isRequired,
       label: PropTypes.string.isRequired,
       placeholder: PropTypes.string.isRequired,
-      errors: PropTypes.arrayOf(PropTypes.string).isRequired
+      errors: PropTypes.arrayOf(PropTypes.string).isRequired,
     })
   ).isRequired,
-  submit: PropTypes.func.isRequired
+  submit: PropTypes.func.isRequired,
 };
 
 export default Form;

@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node:14.19.0-alpine
 WORKDIR /usr/cloud-apps/integration
 
 COPY ./package.json ./

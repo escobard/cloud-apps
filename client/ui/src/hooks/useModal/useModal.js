@@ -9,7 +9,7 @@ const useModal = () => {
     setShowModal(true);
   };
   const closeModal = () => setShowModal(false);
-  const renderModal = props => (
+  const renderModal = (props) => (
     <Modal showModal={showModal} closeModal={closeModal} {...props} />
   );
   return { showModal, openModal, closeModal, renderModal };
