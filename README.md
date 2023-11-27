@@ -8,7 +8,8 @@ A simple note-taking tool, built with JavaScript ES6, designed to be cloud-agnos
 
 * Quickstart
 * Technical Highlights
-* Contribution
+* Application docs
+* How to contribute
 
 ## Quickstart
 
@@ -28,7 +29,26 @@ A simple note-taking tool, built with JavaScript ES6, designed to be cloud-agnos
 #### End to End tests
 `npm run e2e-tests`
 
-### Running applications individually with npm or docker
+## Technical highlights
+
+Ensure top 5 areas to highlight are covered, provide expanded description & link to each.
+1. Containerization & container orchestration
+2. Full stack with a single scripting language
+3. Complete automated test coverage
+4. Automated data migrations & tests
+5. Boilerplate to automated deployments with CircleCI
+
+### Containerization & container orchestration
+
+### Full stack with a single scripting language
+
+### Complete automated test coverage
+
+### Automated data migrations & tests
+
+### Boilerplate to automated deployments with CircleCI
+
+## Application docs (README.mds)
 
 [UI docs](https://github.com/escobard/cloud-apps/blob/master/client/ui)
 
