@@ -74,6 +74,10 @@ A branch's name should reference a story and the type of work being committed.
 
 Each pull request must pass a review from another contributor and all automated tests.
 
+### Issues
+
+Feel free to open an issue ticket, please leave a screenshot and a detailed instructions on how to replicate the issue. 
+
 ### Tools & frameworks
 
 (add links to official docs for the tech used on the stack)
