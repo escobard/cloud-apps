@@ -1,21 +1,21 @@
 # cloud-apps &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/facebook/react/blob/master/LICENSE) [![CircleCI Status](https://circleci.com/gh/escobard/cloud-apps-2019.svg?style=shield&circle-token=9a2ace13d3d938798ecb8f2efc56176ea7ede1ca)](https://app.circleci.com/pipelines/github/escobard/cloud-apps-2019) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/escobard/cloud-apps#pull-requests) 
 
-A simple note-taking tool, built with JavaScript ES6, designed to be cloud-agnostic and for scale. Each application can be run independently with npm or with docker. Development, production, integration and end-to-end (e2e) test environments can be run independently or together with Docker Compose.
+A simple note-taking tool, built with JavaScript ES6, designed to be cloud-agnostic and for scale. Each application in the system can be run independently with npm or with Docker. Quickstart of development, production, integration and end-to-end (e2e) test environments with Docker Compose is provided.
 
 # Table of contents
 
-(build table of contents)
-
-* Quickstart
-* Technical Highlights
-* Application docs
-* How to contribute
+* [Quickstart](https://github.com/escobard/cloud-apps-2019?tab=readme-ov-file#quickstart)
+* [Technical Highlights](https://github.com/escobard/cloud-apps-2019?tab=readme-ov-file#technical-highlights)
+* [Application docs](https://github.com/escobard/cloud-apps-2019?tab=readme-ov-file#application-docs)
+* [How to contribute](https://github.com/escobard/cloud-apps-2019?tab=readme-ov-file#how-to-contribute)
+* [Tools and frameworks](https://github.com/escobard/cloud-apps-2019?tab=readme-ov-file#tools-and-frameworks)
+* [License](https://github.com/escobard/cloud-apps-2019?tab=readme-ov-file#license)
 
 ## Quickstart
 
-[Node.js v14.19.0](https://nodejs.org/en/), [npm](https://www.npmjs.com/), [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/) must be installed.
+[Node.js v14.19.0](https://nodejs.org/en/) and [Docker](https://www.docker.com/) must be installed.
 
-### Run environments with Docker Compose
+### Recommended - Run environments with NPM and Docker Compose
 
 #### Development        
  `npm run dev`            
@@ -23,6 +23,20 @@ A simple note-taking tool, built with JavaScript ES6, designed to be cloud-agnos
 #### Production        
  `npm run start`   
  
+#### Integration tests
+`npm run integration-tests`
+
+#### End to End tests
+`npm run e2e-tests`
+
+### Run environments with Docker Compose
+
+#### Development
+`npm run dev`
+
+#### Production
+`npm run start`
+
 #### Integration tests
 `npm run integration-tests`
 
