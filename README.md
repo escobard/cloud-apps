@@ -31,34 +31,47 @@ A simple note-taking tool, built with JavaScript ES6, designed to be cloud-agnos
 
 ## Technical highlights
 
-Ensure top 5 areas to highlight are covered, provide expanded description & link to each.
-1. Containerization & container orchestration
-2. Full stack with a single scripting language
-3. Complete automated test coverage
-4. Automated data migrations & tests
-5. Boilerplate to automated deployments with CircleCI
+Write summary of technical highlights and how it ties in as a portfolio showcase. 
 
-### Containerization & container orchestration
+Write expanded description & link to each highlight
 
-### Full stack with a single scripting language
+1. Container orchestration
+2. Full stack system with JavaScript
+3. Complete automated testing pyramid
+4. Boilerplate for automated tests with CircleCI and Docker
+5. ???
 
-### Complete automated test coverage
+### Container orchestration
 
-### Automated data migrations & tests
+Leveraging the power of Containers, the system and its applications can be deployed as-is to any cloud provider that supports Docker. It is encouraged to leverage the provided Docker Compose files, which simulate how the system and its applications run independently and together, to facilitate multi-environment hosting, deployment and automation.
+
+#### System overview
+
+Descrive (dev/uat/prod environments)
+
+#### End to end tests
+
+#### Integration tests
+
+### Full stack system with JavaScript
+
+### Complete automated testing pyramid
 
 ### Boilerplate to automated deployments with CircleCI
 
-## Application docs (README.mds)
 
-[UI docs](https://github.com/escobard/cloud-apps/blob/master/client/ui)
 
-[API docs](https://github.com/escobard/cloud-apps/blob/master/server/api)
+## Application docs
 
-[Database docs](https://github.com/escobard/cloud-apps/tree/master/server/postgres)
+[UI docs](https://github.com/escobard/cloud-apps-2019/blob/master/client/ui)
 
-[Integration tests docs](https://github.com/escobard/cloud-apps/tree/master/server/tests)
+[API docs](https://github.com/escobard/cloud-apps-2019/blob/master/server/api)
 
-[End to end tests docs](https://github.com/escobard/cloud-apps/tree/master/client/tests)
+[Database docs](https://github.com/escobard/cloud-apps-2019/tree/master/server/postgres)
+
+[Integration tests docs](https://github.com/escobard/cloud-apps-2019/tree/master/server/tests)
+
+[End to end tests docs](https://github.com/escobard/cloud-apps-2019/tree/master/client/tests)
 
 ## How to contribute
 
@@ -78,7 +91,7 @@ Each pull request must pass a review from another contributor and all automated 
 
 Feel free to open an issue ticket, please leave a screenshot and a detailed instructions on how to replicate the issue. 
 
-### Tools & frameworks
+## Tools & frameworks
 
 (add links to official docs for the tech used on the stack)
 
