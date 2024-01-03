@@ -1,4 +1,4 @@
-# cloud-apps &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/facebook/react/blob/master/LICENSE) [![CircleCI Status](https://circleci.com/gh/escobard/cloud-apps-2019.svg?style=shield&circle-token=9a2ace13d3d938798ecb8f2efc56176ea7ede1ca)](https://app.circleci.com/pipelines/github/escobard/cloud-apps-2019) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/escobard/cloud-apps#pull-requests) 
+# cloud-apps-2019 &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/facebook/react/blob/master/LICENSE) [![CircleCI Status](https://circleci.com/gh/escobard/cloud-apps-2019.svg?style=shield&circle-token=9a2ace13d3d938798ecb8f2efc56176ea7ede1ca)](https://app.circleci.com/pipelines/github/escobard/cloud-apps-2019) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/escobard/cloud-apps#pull-requests) 
 
 A simple note-taking tool, built with JavaScript ES6, designed to be cloud-agnostic and re-usable. Each application in the system can be run independently with npm or with Docker. Development, production, integration and end-to-end (e2e) test environments can be simulated with Docker Compose.
 
@@ -55,13 +55,13 @@ Find detailed instructions on how to run each application within the [Applicatio
 
 ## Technical highlights
 
-As a portfolio piece, this project aims to highlight my expertise in several areas, including:
+As a portfolio piece, this project aims to showcase my expertise in several areas, including:
 
-1. Container orchestration for scale
-2. Full stack system built with JavaScript
-3. Complete automated testing pyramid
-4. Starting point for more complex systems
-5. Blueprint for automated tests with CircleCI
+1. [Container orchestration for scale](https://github.com/escobard/cloud-apps-2019?tab=readme-ov-file#container-orchestration-for-scale)
+2. [Full stack system built with JavaScript](https://github.com/escobard/cloud-apps-2019?tab=readme-ov-file#full-stack-system-built-with-javascript)
+3. [Automated test pyramid](https://github.com/escobard/cloud-apps-2019?tab=readme-ov-file#automated-test-pyramid)
+4. [Starting point for more complex systems](https://github.com/escobard/cloud-apps-2019?tab=readme-ov-file#starting-point-for-more-complex-systems)
+5. [Blueprint for automated tests with CircleCI](https://github.com/escobard/cloud-apps-2019?tab=readme-ov-file#blueprint-for-automated-tests-with-circleci)
 
 ### Container orchestration for scale
 
@@ -84,11 +84,20 @@ Each application in the system uses JavaScript, with the exception of the Postgr
 - **Easier to staff and scale** - hiring and training engineers on for a single programming language is easier than (the more common) multi language software stacks
 - **Large community** - all tools, libraries and frameworks used in the system have large open source communities
 
-### Complete automated testing pyramid
+### Automated test pyramid
+
+Following Mike Cohn's [test pyramid](https://martinfowler.com/articles/practical-test-pyramid/testPyramid.png) approach to automated testing, the system contains a "well-rounded" automated test portfolio, which aims to cover all critical areas of the system with automated tests. 
+
+![Mike Cohn's test pyramid](https://private-user-images.githubusercontent.com/21113484/294026074-5f90752e-b1f0-4d06-a193-bdb1c0e30441.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MDQzMTU2NDIsIm5iZiI6MTcwNDMxNTM0MiwicGF0aCI6Ii8yMTExMzQ4NC8yOTQwMjYwNzQtNWY5MDc1MmUtYjFmMC00ZDA2LWExOTMtYmRiMWMwZTMwNDQxLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDAxMDMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwMTAzVDIwNTU0MlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTkzZTE0NWU4ODc3ZDgyYzc1NzIyNmI4MjhmNDlkZWM5ODk2NjhiNjAxNTQwNGI1MThkYWJiMTdjYzRkNGViNzUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.TfO3aOsg6XUsH2sZ4vIreLAlyvaIgJB7cP4bzbXqg10)
+
+
+In summary, the paradigm dictates that there should be more isolated tests (unit tests) than service tests (integration tests), and more service tests than UI (e2e) tests. The test pyramid paradigm encourages developers to build more unit tests (since they are small and fast), than service tests, and more service tests than UI tests (which are slow and heavy).
+
+While the system provides ~90% unit test coverage, only critical features are covered by integration and end to end tests. The goal is to provide a starting point to extend with more complex automated tests as required.
 
 ### Starting point for more complex systems
 
-The system and its applications can be leveraged as a starting point (or blueprint / boilerplate) for more complex systems and applications. Each application provides common design patterns that can be leveraged to facilitate development of new features. All applications are containerized with Docker, ready to be deployed as-is to any cloud provider that has Docker support. 
+The system and its applications can be leveraged as a starting point (or blueprint / boilerplate) for more complex systems and applications. Each application provides common design patterns that can be leveraged to facilitate development of new features. All applications are containerized with Docker, ready to be deployed as-is to any cloud provider that supports Docker. 
 
 ### Blueprint for automated tests with CircleCI
 
@@ -112,11 +121,12 @@ Following the [fail-fast](https://testsigma.com/blog/test-automation-achieve-fai
 [CircleCI](https://circleci.com)  
 [React](https://react.dev/)  
 [Express.js](https://expressjs.com/)  
+[Swagger](https://swagger.io/)  
 [PostgreSQL](https://www.postgresql.org/)  
 [Jest](https://jestjs.io/)  
-[Nightwatch](https://nightwatchjs.org/)      
-[Selenium](https://www.selenium.dev/)           
 [Supertest](https://www.npmjs.com/package/supertest)
+[Nightwatch](https://nightwatchjs.org/)      
+[Selenium](https://www.selenium.dev/)
 
 ## How to contribute
 
