@@ -30,7 +30,7 @@ services:
     container_name: integration_tests_2019
     working_dir: /usr/cloud-apps/integration
     environment:
-      - API_HOST=api_tests
+      - API_HOST=api
       - API_PORT=4000
       - WAIT_HOSTS=api:4000
     build:
