@@ -73,7 +73,7 @@ jobs:
       - run:
           name: api-integration-tests
           command: |
-            docker-compose -f integration-tests.yaml up --exit-code-from integration
+            docker-compose -f integration-tests.yaml up --exit-code-from integration_tests
   ui-e2e-tests:
     working_directory: ~/client/tests
     docker:
