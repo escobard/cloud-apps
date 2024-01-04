@@ -2,9 +2,23 @@
 
 A simple note-taking tool, built with JavaScript ES6, designed to be cloud-agnostic and re-usable. Each application in the system can be run independently with npm or with Docker. Development, production, integration and end-to-end (e2e) test environments can be simulated with Docker Compose.
 
-Provide screenshots of application (add note in 3 steps)
+A new note can be created in a few simple steps:
 
-Provide system overview diagram (showcase)
+#### 1. Add note
+
+![Add note](https://github-production-user-asset-6210df.s3.amazonaws.com/21113484/294227554-a6165f47-7a1e-49a1-94f6-e0a0b2ba8063.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240104%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240104T154615Z&X-Amz-Expires=300&X-Amz-Signature=6b33f8abcaea19e695cc4eb37b174d7c1e333d5516f418f5989da21131879fe5&X-Amz-SignedHeaders=host&actor_id=21113484&key_id=0&repo_id=219330287)
+
+#### 2. Create and save note
+
+![Create note](https://github-production-user-asset-6210df.s3.amazonaws.com/21113484/294227558-2fa9a3ff-7623-49fe-b79a-c2511a930182.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240104%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240104T154637Z&X-Amz-Expires=300&X-Amz-Signature=c1d89e66f3659061db8a91504e8a6ab39959f4d29dadf2789499c5154dd9c0ff&X-Amz-SignedHeaders=host&actor_id=21113484&key_id=0&repo_id=219330287)
+
+#### 3. New note created
+
+![Note created](https://github-production-user-asset-6210df.s3.amazonaws.com/21113484/294227562-5230d925-0e2d-4a44-bdf5-96f12a8e40bc.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240104%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240104T154655Z&X-Amz-Expires=300&X-Amz-Signature=a8ddd4b21dd269de8bdee9879c7fc905239a1dd7e3479676d7e64af5109db496&X-Amz-SignedHeaders=host&actor_id=21113484&key_id=0&repo_id=219330287)
+
+The diagram below outlines the network created by Docker Compose for development and production environments, including application connections, ports, routes and tools:
+
+![System overview](https://github-production-user-asset-6210df.s3.amazonaws.com/21113484/289718598-ad6aac4a-75fc-4ed6-aad1-1f7297e2eeaf.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240104%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240104T025801Z&X-Amz-Expires=300&X-Amz-Signature=a70be71e150c0bd06dbadffcad56e6505ecb8b919dcbd61e4c051e08476f22cc&X-Amz-SignedHeaders=host&actor_id=21113484&key_id=0&repo_id=219330287)
 
 # Table of contents
 
