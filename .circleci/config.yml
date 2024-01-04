@@ -92,4 +92,4 @@ jobs:
       - run:
           name: ui-e2e-tests
           command: |
-            docker-compose -f e2e-tests.yaml up --exit-code-from e2e
+            docker-compose -f e2e-tests.yaml up --exit-code-from e2e_tests
