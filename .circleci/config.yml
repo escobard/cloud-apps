@@ -3,13 +3,15 @@ workflows:
   automated-tests:
     jobs:
       - ui-unit-tests
-      - ui-e2e-tests:
-          requires:
-            - ui-unit-tests
       - api-unit-tests
       - api-integration-tests:
           requires:
             - api-unit-tests
+      - ui-e2e-tests:
+          requires:
+            - ui-unit-tests
+            - api-unit-tests
+            - api-integration-tests
 version: 2
 jobs:
   ui-unit-tests:

@@ -101,7 +101,7 @@ Following Mike Cohn's [test pyramid](https://martinfowler.com/articles/practical
 
 In summary, the paradigm dictates that there should be more isolated tests (unit tests) than service tests (integration tests), and more service tests than UI (e2e) tests. The test pyramid paradigm encourages developers to build more unit tests (since they are small and fast), than service tests, and more service tests than UI tests (which are slow and heavy).
 
-While the system provides ~90% unit test coverage, only critical features are covered by integration and end to end tests. The goal is to provide a starting point to extend with more complex automated tests as required.
+While the system provides over 97% unit test coverage, only critical features are covered by integration and end to end tests. The goal is to provide a starting point to extend with more complex automated tests as required.
 
 #### UI unit tests
 
