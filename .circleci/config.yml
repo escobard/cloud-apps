@@ -6,6 +6,7 @@ workflows:
       - api-unit-tests
       - api-integration-tests:
           requires:
+            - ui-unit-tests
             - api-unit-tests
       - ui-e2e-tests:
           requires:
