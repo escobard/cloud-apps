@@ -1,6 +1,7 @@
 version: '3'
 services:
-  hub:
+  selenium_hub:
+    container_name: selenium_hub_e2e_2019
     image: selenium/hub:3.0.1
     networks:
       - nightwatch-docker-grid-network
@@ -11,17 +12,18 @@ services:
       GRID_TIMEOUT: 120000
     ports:
       - '4444:4444'
-  node-chrome:
+  browser:
+    container_name: browser_e2e_2019
     image: selenium/node-chrome:3.0.1
     networks:
       - nightwatch-docker-grid-network
     environment: &SELENIUM_NODE_ENV
-      HUB_PORT_4444_TCP_ADDR: hub
+      HUB_PORT_4444_TCP_ADDR: selenium_hub
       HUB_PORT_4444_TCP_PORT: 4444
     logging:
       driver: none
   ui:
-    container_name: ui
+    container_name: ui_e2e_2019
     working_dir: /usr/cloud-apps/ui
     networks:
       - nightwatch-docker-grid-network
@@ -32,8 +34,8 @@ services:
       dockerfile: docker/Dockerfile.test
     command: |
       sh -c "npm run start"
-  e2e:
-    container_name: e2e
+  e2e_tests:
+    container_name: e2e_tests_2019
     working_dir: /usr/cloud-apps/e2e
     networks:
       - nightwatch-docker-grid-network
@@ -41,8 +43,8 @@ services:
       - UI_HOST=ui
       - UI_PORT=3000
       - SELENIUM_PORT=4444
-      - SELENIUM_HOST=chromedriver
-      - SELENIUM_HUB=hub
+      - SELENIUM_HOST=browser
+      - SELENIUM_HUB=selenium_hub
       - DOCKER=true
       - WAIT_HOSTS= ui:3000
     build:

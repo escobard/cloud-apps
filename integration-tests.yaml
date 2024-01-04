@@ -1,7 +1,7 @@
 version: '3'
 services:
-  postgres:
-    container_name: postgres_tests
+  database:
+    container_name: database_integration_2019
     build:
       context: ./server/postgres
     ports:
@@ -10,11 +10,11 @@ services:
     environment:
       POSTGRES_HOST_AUTH_METHOD: trust
   api:
-    container_name: api_tests
+    container_name: api_integration_2019
     working_dir: /usr/cloud-apps/api
     environment:
       - PGUSER=postgres
-      - PGHOST=postgres
+      - PGHOST=database
       - PGDATABASE=postgres
       - PGPASSWORD=postgres_password
       - PGPORT=5432
@@ -26,8 +26,8 @@ services:
       dockerfile: docker/Dockerfile.dev
     command: |
       sh -c "/wait && npm run dev"
-  integration:
-    container_name: integration_tests
+  integration_tests:
+    container_name: integration_tests_2019
     working_dir: /usr/cloud-apps/integration
     environment:
       - API_HOST=api_tests
