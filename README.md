@@ -152,6 +152,8 @@ Leveraging CircleCI, Unit tests for each application (except for the database) a
 
 Following the [fail-fast](https://testsigma.com/blog/test-automation-achieve-fail-fast-fail-often/) automated testing approach, the system provides a starting point (or blueprint / boilerplate) as-is for more complex automated testing requirements.
 
+![CircleCI automated tests](docs/images/circleci_automated_tests.png)
+
 ## Application docs
 
 [UI](https://github.com/escobard/cloud-apps-2019/blob/master/client/ui)  
