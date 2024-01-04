@@ -55,7 +55,7 @@ Find detailed instructions on how to run each application within the [Applicatio
 
 ## Technical highlights
 
-As a portfolio piece, this project aims to showcase my expertise in several areas, including:
+As a portfolio piece, this project aims to showcase expertise in several areas, including:
 
 1. [Container orchestration for scale](https://github.com/escobard/cloud-apps-2019?tab=readme-ov-file#container-orchestration-for-scale)
 2. [Full stack system built with JavaScript](https://github.com/escobard/cloud-apps-2019?tab=readme-ov-file#full-stack-system-built-with-javascript)
@@ -69,11 +69,41 @@ Leveraging the power of Containers, the system and its applications can be deplo
 
 #### System overview
 
-Describe (dev/uat/prod environments)
+Docker Compose is used to simulate the system in different environments, creating a clone on your computer of how the system and its applications would run on a cloud. Leveraging Docker Compose, it is easier to troubleshoot multi-application systems outside of the cloud, while serving as a foundation for the cloud network that must be in place for the system to work on the cloud.
+
+The diagram below outlines the network created by Docker Compose for development and production environments, including application connections, ports, routes and tools:
+
+![System overview](https://github-production-user-asset-6210df.s3.amazonaws.com/21113484/289718598-ad6aac4a-75fc-4ed6-aad1-1f7297e2eeaf.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240104%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240104T025801Z&X-Amz-Expires=300&X-Amz-Signature=a70be71e150c0bd06dbadffcad56e6505ecb8b919dcbd61e4c051e08476f22cc&X-Amz-SignedHeaders=host&actor_id=21113484&key_id=0&repo_id=219330287)
+
+#### Integration tests
+
+Using Docker Compose, a network can be spun up to simulate system and applications required to run integration (or service) tests. Unlike development, production and end to end test environments, the integration tests environment only contains a _partial system orchestration_, as only the API and Database are required.
+
+The diagram below outlines the network created by Docker Compose for integration tests environment, including application connections, ports, routes and tools:
+
+![Integration tests](https://github-production-user-asset-6210df.s3.amazonaws.com/21113484/293793555-1ce73eb1-d1cf-4309-8e8c-4c6f00fd6f43.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240104%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240104T142956Z&X-Amz-Expires=300&X-Amz-Signature=c5d3939fc26e3faa94779db420ad2ad3980e63e1d9460ccbeec15d2b83000514&X-Amz-SignedHeaders=host&actor_id=21113484&key_id=0&repo_id=219330287)
 
 #### End to end tests
 
-#### Integration tests
+A Docker Compose network is provided, simulating the system and applications that are needed to run end to end tests. 
+
+The end to end tests environment has the most complex container orchestration out of all other provided environments, as it requires an application to run the tests (nightwatch), a hub to spin up browsers (selenium hub) and the browser itself (node-chrome). 
+
+The diagram below outlines the full network required for the end to end tests environment, including application connections, ports, routes and tools:
+
+![End to end tests](https://github-production-user-asset-6210df.s3.amazonaws.com/21113484/290332162-1b0a5bbc-8c03-4015-8a9a-2e05d4d6c3f1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240104%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240104T144358Z&X-Amz-Expires=300&X-Amz-Signature=d4e7324e0dc9b8ea306007317cda6926d163468564e016c45de34bcf6b016b4f&X-Amz-SignedHeaders=host&actor_id=21113484&key_id=0&repo_id=219330287)
+
+### Automated test pyramid
+
+Following Mike Cohn's [test pyramid](https://martinfowler.com/articles/practical-test-pyramid/testPyramid.png) approach to automated testing, the system contains a "well-rounded" automated test portfolio, which aims to cover all critical areas of the system with automated tests. 
+
+![Mike Cohn's test pyramid](https://private-user-images.githubusercontent.com/21113484/294026074-5f90752e-b1f0-4d06-a193-bdb1c0e30441.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MDQzMTU2NDIsIm5iZiI6MTcwNDMxNTM0MiwicGF0aCI6Ii8yMTExMzQ4NC8yOTQwMjYwNzQtNWY5MDc1MmUtYjFmMC00ZDA2LWExOTMtYmRiMWMwZTMwNDQxLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDAxMDMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwMTAzVDIwNTU0MlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTkzZTE0NWU4ODc3ZDgyYzc1NzIyNmI4MjhmNDlkZWM5ODk2NjhiNjAxNTQwNGI1MThkYWJiMTdjYzRkNGViNzUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.TfO3aOsg6XUsH2sZ4vIreLAlyvaIgJB7cP4bzbXqg10)
+
+In summary, the paradigm dictates that there should be more isolated tests (unit tests) than service tests (integration tests), and more service tests than UI (e2e) tests. The test pyramid paradigm encourages developers to build more unit tests (since they are small and fast), than service tests, and more service tests than UI tests (which are slow and heavy).
+
+While the system provides ~90% unit test coverage, only critical features are covered by integration and end to end tests. The goal is to provide a starting point to extend with more complex automated tests as required.
+
+(add screenshots of unit, integration and end to end test results)
 
 ### Full stack system built with JavaScript
 
@@ -83,17 +113,6 @@ Each application in the system uses JavaScript, with the exception of the Postgr
 - **Common design patterns** - consistent design patterns and coding styles between applications facilitates readability, maintenance and extendability
 - **Easier to staff and scale** - hiring and training engineers on for a single programming language is easier than (the more common) multi language software stacks
 - **Large community** - all tools, libraries and frameworks used in the system have large open source communities
-
-### Automated test pyramid
-
-Following Mike Cohn's [test pyramid](https://martinfowler.com/articles/practical-test-pyramid/testPyramid.png) approach to automated testing, the system contains a "well-rounded" automated test portfolio, which aims to cover all critical areas of the system with automated tests. 
-
-![Mike Cohn's test pyramid](https://private-user-images.githubusercontent.com/21113484/294026074-5f90752e-b1f0-4d06-a193-bdb1c0e30441.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MDQzMTU2NDIsIm5iZiI6MTcwNDMxNTM0MiwicGF0aCI6Ii8yMTExMzQ4NC8yOTQwMjYwNzQtNWY5MDc1MmUtYjFmMC00ZDA2LWExOTMtYmRiMWMwZTMwNDQxLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDAxMDMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwMTAzVDIwNTU0MlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTkzZTE0NWU4ODc3ZDgyYzc1NzIyNmI4MjhmNDlkZWM5ODk2NjhiNjAxNTQwNGI1MThkYWJiMTdjYzRkNGViNzUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.TfO3aOsg6XUsH2sZ4vIreLAlyvaIgJB7cP4bzbXqg10)
-
-
-In summary, the paradigm dictates that there should be more isolated tests (unit tests) than service tests (integration tests), and more service tests than UI (e2e) tests. The test pyramid paradigm encourages developers to build more unit tests (since they are small and fast), than service tests, and more service tests than UI tests (which are slow and heavy).
-
-While the system provides ~90% unit test coverage, only critical features are covered by integration and end to end tests. The goal is to provide a starting point to extend with more complex automated tests as required.
 
 ### Starting point for more complex systems
 
