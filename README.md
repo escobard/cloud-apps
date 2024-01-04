@@ -103,7 +103,21 @@ In summary, the paradigm dictates that there should be more isolated tests (unit
 
 While the system provides ~90% unit test coverage, only critical features are covered by integration and end to end tests. The goal is to provide a starting point to extend with more complex automated tests as required.
 
-(add screenshots of unit, integration and end to end test results)
+#### UI unit tests
+
+![UI unit tests](https://github-production-user-asset-6210df.s3.amazonaws.com/21113484/294218000-376b95fd-0448-44b0-9c7f-0a7dd6d7635c.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240104%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240104T150834Z&X-Amz-Expires=300&X-Amz-Signature=177aa9707ea21f2bfb02b887e5c3cab05e454d2a82f7c60d43c64634212e7573&X-Amz-SignedHeaders=host&actor_id=21113484&key_id=0&repo_id=219330287) 
+
+#### API unit tests
+
+![API unit tests](https://github-production-user-asset-6210df.s3.amazonaws.com/21113484/294218013-e8e480a6-7733-4aae-a332-874fa74f0fa8.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240104%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240104T150857Z&X-Amz-Expires=300&X-Amz-Signature=4ac2fffbde74742de66c0046306055ed7720f3ddaa46978590b5596cfb14a9d1&X-Amz-SignedHeaders=host&actor_id=21113484&key_id=0&repo_id=219330287)
+
+#### Integration tests
+
+![Integration tests](https://github-production-user-asset-6210df.s3.amazonaws.com/21113484/294218030-7091134f-3bfa-45dc-9329-ec23c9aa6dc5.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240104%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240104T150920Z&X-Amz-Expires=300&X-Amz-Signature=f1cda7e7433d69d5548852edff5058a2fc9162e952c1e0678d30163d190ab130&X-Amz-SignedHeaders=host&actor_id=21113484&key_id=0&repo_id=219330287)
+
+#### End to end tests
+
+![End to end tests](https://github-production-user-asset-6210df.s3.amazonaws.com/21113484/294218049-51c2b8d1-4583-4382-8bcf-4e896557dcd0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240104%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240104T150942Z&X-Amz-Expires=300&X-Amz-Signature=5f06bc688f7f0fc0566a82cfa7546be4bf07610d734987a3d46f183aa3f39b35&X-Amz-SignedHeaders=host&actor_id=21113484&key_id=0&repo_id=219330287)
 
 ### Full stack system built with JavaScript
 
