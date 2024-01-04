@@ -18,7 +18,7 @@ A new note can be created in a few simple steps:
 
 The diagram below outlines the network created by Docker Compose for development and production environments, including application connections, ports, routes and tools:
 
-![System overview](https://github-production-user-asset-6210df.s3.amazonaws.com/21113484/289718598-ad6aac4a-75fc-4ed6-aad1-1f7297e2eeaf.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240104%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240104T025801Z&X-Amz-Expires=300&X-Amz-Signature=a70be71e150c0bd06dbadffcad56e6505ecb8b919dcbd61e4c051e08476f22cc&X-Amz-SignedHeaders=host&actor_id=21113484&key_id=0&repo_id=219330287)
+![System overview](docs/diagrams/system_overview.png)
 
 # Table of contents
 
@@ -87,7 +87,7 @@ Docker Compose is used to simulate the system in different environments, creatin
 
 The diagram below outlines the network created by Docker Compose for development and production environments, including application connections, ports, routes and tools:
 
-![System overview](https://github-production-user-asset-6210df.s3.amazonaws.com/21113484/289718598-ad6aac4a-75fc-4ed6-aad1-1f7297e2eeaf.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240104%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240104T025801Z&X-Amz-Expires=300&X-Amz-Signature=a70be71e150c0bd06dbadffcad56e6505ecb8b919dcbd61e4c051e08476f22cc&X-Amz-SignedHeaders=host&actor_id=21113484&key_id=0&repo_id=219330287)
+![System overview](docs/diagrams/system_overview.png)
 
 #### Integration tests
 
@@ -95,7 +95,7 @@ Using Docker Compose, a network can be spun up to simulate system and applicatio
 
 The diagram below outlines the network created by Docker Compose for integration tests environment, including application connections, ports, routes and tools:
 
-![Integration tests](https://github-production-user-asset-6210df.s3.amazonaws.com/21113484/293793555-1ce73eb1-d1cf-4309-8e8c-4c6f00fd6f43.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240104%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240104T142956Z&X-Amz-Expires=300&X-Amz-Signature=c5d3939fc26e3faa94779db420ad2ad3980e63e1d9460ccbeec15d2b83000514&X-Amz-SignedHeaders=host&actor_id=21113484&key_id=0&repo_id=219330287)
+![Integration tests](docs/diagrams/integration_tests.png)
 
 #### End to end tests
 
@@ -105,7 +105,7 @@ The end to end tests environment has the most complex container orchestration ou
 
 The diagram below outlines the full network required for the end to end tests environment, including application connections, ports, routes and tools:
 
-![End to end tests](https://github-production-user-asset-6210df.s3.amazonaws.com/21113484/290332162-1b0a5bbc-8c03-4015-8a9a-2e05d4d6c3f1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240104%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240104T144358Z&X-Amz-Expires=300&X-Amz-Signature=d4e7324e0dc9b8ea306007317cda6926d163468564e016c45de34bcf6b016b4f&X-Amz-SignedHeaders=host&actor_id=21113484&key_id=0&repo_id=219330287)
+![End to end tests](docs/diagrams/e2e_tests.png)
 
 ### Automated test pyramid
 
