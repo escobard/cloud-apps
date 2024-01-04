@@ -72,10 +72,10 @@ Find detailed instructions on how to run each application within the [Applicatio
 As a portfolio piece, this project aims to showcase expertise in several areas, including:
 
 1. [Container orchestration for scale](https://github.com/escobard/cloud-apps-2019?tab=readme-ov-file#container-orchestration-for-scale)
-2. [Full stack system built with JavaScript](https://github.com/escobard/cloud-apps-2019?tab=readme-ov-file#full-stack-system-built-with-javascript)
-3. [Automated test pyramid](https://github.com/escobard/cloud-apps-2019?tab=readme-ov-file#automated-test-pyramid)
-4. [Starting point for more complex systems](https://github.com/escobard/cloud-apps-2019?tab=readme-ov-file#starting-point-for-more-complex-systems)
-5. [Blueprint for automated tests with CircleCI](https://github.com/escobard/cloud-apps-2019?tab=readme-ov-file#blueprint-for-automated-tests-with-circleci)
+2. [Automated test pyramid](https://github.com/escobard/cloud-apps-2019?tab=readme-ov-file#automated-test-pyramid)
+3. [Blueprint for automated tests with CircleCI](https://github.com/escobard/cloud-apps-2019?tab=readme-ov-file#blueprint-for-automated-tests-with-circleci)
+4. [Full stack system built with JavaScript](https://github.com/escobard/cloud-apps-2019?tab=readme-ov-file#full-stack-system-built-with-javascript)
+5. [Starting point for more complicated use cases](https://github.com/escobard/cloud-apps-2019?tab=readme-ov-file#starting-point-for-more-complicated-use-cases)
 
 ### Container orchestration for scale
 
@@ -113,9 +113,9 @@ Following Mike Cohn's [test pyramid](https://martinfowler.com/articles/practical
 
 ![Mike Cohn's test pyramid](docs/images/test_pyramid.png)
 
-In summary, the paradigm dictates that there should be more isolated tests (unit tests) than service tests (integration tests), and more service tests than UI (e2e) tests. The test pyramid paradigm encourages developers to build more unit tests (since they are small and fast), than service tests, and more service tests than UI tests (which are slow and heavy).
+The test pyramid paradigm encourages developers to build more unit tests (since they are small and fast), than service tests, and more service tests than UI tests (which are slow and heavy).
 
-While the system provides over 97% unit test coverage, only critical features are covered by integration and end to end tests. The goal is to provide a starting point to extend with more complex automated tests as required.
+While the system provides over 95% unit test coverage, only critical features are covered by integration and end to end tests. The goal is to provide a starting point for developers, then extend with more complex automated tests as required.
 
 #### UI unit tests
 
@@ -133,19 +133,6 @@ While the system provides over 97% unit test coverage, only critical features ar
 
 ![End to end tests](docs/images/e2e_test_results.png)
 
-### Full stack system built with JavaScript
-
-Each application in the system uses JavaScript, with the exception of the PostgreSQL database. Leveraging a single programming language for all applications of the system has numerous advantages, including:
-
-- **Cross-functional engineering** - seamlessly switch between application and test code, because it all looks the same!
-- **Common design patterns** - consistent design patterns and coding styles between applications facilitates readability, maintenance and extendability
-- **Easier to staff and scale** - hiring and training engineers on for a single programming language is easier than (the more common) multi language software stacks
-- **Large community** - all tools, libraries and frameworks used in the system have large open source communities
-
-### Starting point for more complex systems
-
-The system and its applications can be re-used as a starting point (or blueprint / boilerplate) for more complex systems and applications. Each application provides common design patterns that can be leveraged to facilitate development of new features. All applications are containerized with Docker, ready to be deployed as-is to any cloud provider that supports Docker. 
-
 ### Blueprint for automated tests with CircleCI
 
 Leveraging CircleCI, Unit tests for each application (except for the database) are run on every new commit to Github. Once unit tests have passed, integration tests are run, validating API and Database changes. After integration tests pass, end to end (e2e) tests are run, validating that the UI, API and Database work as expected with the new changes. 
@@ -153,6 +140,19 @@ Leveraging CircleCI, Unit tests for each application (except for the database) a
 Following the [fail-fast](https://testsigma.com/blog/test-automation-achieve-fail-fast-fail-often/) automated testing approach, the system provides a starting point (or blueprint / boilerplate) as-is for more complex automated testing requirements.
 
 ![CircleCI automated tests](docs/images/circleci_automated_tests.png)
+
+### Full stack system built with JavaScript
+
+Each application in the system uses JavaScript, with the exception of the PostgreSQL database. Leveraging (mostly) a single programming language for all applications of the system has numerous advantages, including:
+
+- **Cross-functional engineering** - seamlessly switch between application and test code, because all code looks alike!
+- **Common design patterns** - consistent design patterns and coding styles between applications facilitates readability, maintenance and extendability
+- **Easier to staff and scale** - hiring and training engineers on for a single programming language is easier than (the more common) multi-language software stacks
+- **Large community** - all tools, libraries and frameworks used in the system have large open source communities
+
+### Starting point for more complicated use cases
+
+The system and its applications can be re-used as a starting point (or blueprint / boilerplate) for more complex systems and applications. Each application provides common design patterns that can be leveraged to facilitate development of new features. All applications are containerized with Docker, ready to be deployed as-is to any cloud provider with Docker support.
 
 ## Application docs
 
