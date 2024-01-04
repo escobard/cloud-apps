@@ -111,7 +111,7 @@ The diagram below outlines the full network required for the end to end tests en
 
 Following Mike Cohn's [test pyramid](https://martinfowler.com/articles/practical-test-pyramid/testPyramid.png) approach to automated testing, the system contains a "well-rounded" automated test portfolio, which aims to cover all critical areas of the system with automated tests. 
 
-![Mike Cohn's test pyramid](https://private-user-images.githubusercontent.com/21113484/294026074-5f90752e-b1f0-4d06-a193-bdb1c0e30441.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MDQzMTU2NDIsIm5iZiI6MTcwNDMxNTM0MiwicGF0aCI6Ii8yMTExMzQ4NC8yOTQwMjYwNzQtNWY5MDc1MmUtYjFmMC00ZDA2LWExOTMtYmRiMWMwZTMwNDQxLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDAxMDMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwMTAzVDIwNTU0MlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTkzZTE0NWU4ODc3ZDgyYzc1NzIyNmI4MjhmNDlkZWM5ODk2NjhiNjAxNTQwNGI1MThkYWJiMTdjYzRkNGViNzUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.TfO3aOsg6XUsH2sZ4vIreLAlyvaIgJB7cP4bzbXqg10)
+![Mike Cohn's test pyramid](docs/images/test_pyramid.png)
 
 In summary, the paradigm dictates that there should be more isolated tests (unit tests) than service tests (integration tests), and more service tests than UI (e2e) tests. The test pyramid paradigm encourages developers to build more unit tests (since they are small and fast), than service tests, and more service tests than UI tests (which are slow and heavy).
 
@@ -119,19 +119,19 @@ While the system provides over 97% unit test coverage, only critical features ar
 
 #### UI unit tests
 
-![UI unit tests](https://github-production-user-asset-6210df.s3.amazonaws.com/21113484/294218000-376b95fd-0448-44b0-9c7f-0a7dd6d7635c.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240104%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240104T150834Z&X-Amz-Expires=300&X-Amz-Signature=177aa9707ea21f2bfb02b887e5c3cab05e454d2a82f7c60d43c64634212e7573&X-Amz-SignedHeaders=host&actor_id=21113484&key_id=0&repo_id=219330287) 
+![UI unit tests](docs/images/ui_unit_tests.png) 
 
 #### API unit tests
 
-![API unit tests](https://github-production-user-asset-6210df.s3.amazonaws.com/21113484/294218013-e8e480a6-7733-4aae-a332-874fa74f0fa8.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240104%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240104T150857Z&X-Amz-Expires=300&X-Amz-Signature=4ac2fffbde74742de66c0046306055ed7720f3ddaa46978590b5596cfb14a9d1&X-Amz-SignedHeaders=host&actor_id=21113484&key_id=0&repo_id=219330287)
+![API unit tests](docs/images/api_unit_tests.png)
 
 #### Integration tests
 
-![Integration tests](https://github-production-user-asset-6210df.s3.amazonaws.com/21113484/294218030-7091134f-3bfa-45dc-9329-ec23c9aa6dc5.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240104%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240104T150920Z&X-Amz-Expires=300&X-Amz-Signature=f1cda7e7433d69d5548852edff5058a2fc9162e952c1e0678d30163d190ab130&X-Amz-SignedHeaders=host&actor_id=21113484&key_id=0&repo_id=219330287)
+![Integration tests](docs/images/integration_test_results.png)
 
 #### End to end tests
 
-![End to end tests](https://github-production-user-asset-6210df.s3.amazonaws.com/21113484/294218049-51c2b8d1-4583-4382-8bcf-4e896557dcd0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240104%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240104T150942Z&X-Amz-Expires=300&X-Amz-Signature=5f06bc688f7f0fc0566a82cfa7546be4bf07610d734987a3d46f183aa3f39b35&X-Amz-SignedHeaders=host&actor_id=21113484&key_id=0&repo_id=219330287)
+![End to end tests](docs/images/e2e_test_results.png)
 
 ### Full stack system built with JavaScript
 
@@ -144,7 +144,7 @@ Each application in the system uses JavaScript, with the exception of the Postgr
 
 ### Starting point for more complex systems
 
-The system and its applications can be leveraged as a starting point (or blueprint / boilerplate) for more complex systems and applications. Each application provides common design patterns that can be leveraged to facilitate development of new features. All applications are containerized with Docker, ready to be deployed as-is to any cloud provider that supports Docker. 
+The system and its applications can be re-used as a starting point (or blueprint / boilerplate) for more complex systems and applications. Each application provides common design patterns that can be leveraged to facilitate development of new features. All applications are containerized with Docker, ready to be deployed as-is to any cloud provider that supports Docker. 
 
 ### Blueprint for automated tests with CircleCI
 
