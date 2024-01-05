@@ -38,8 +38,8 @@ The diagram below outlines the network created by Docker Compose for development
 #### Development
 `docker-compose -f dev.yaml up`
 
-#### Production
-`docker-compose -f prod.yaml up`
+#### Release
+`docker-compose -f release.yaml up`
 
 #### Integration tests
 `docker-compose -f integration-tests.yaml up --exit-code-from integration`
@@ -54,7 +54,7 @@ The diagram below outlines the network created by Docker Compose for development
 #### Development        
  `npm run dev`            
   
-#### Production        
+#### Release        
  `npm run start`   
  
 #### Integration tests
