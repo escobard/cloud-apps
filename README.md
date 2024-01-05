@@ -173,7 +173,7 @@ The system and its applications can be re-used as a starting point (or blueprint
 [Swagger](https://swagger.io/)  
 [PostgreSQL](https://www.postgresql.org/)  
 [Jest](https://jestjs.io/)  
-[Supertest](https://www.npmjs.com/package/supertest)
+[Supertest](https://www.npmjs.com/package/supertest)    
 [Nightwatch](https://nightwatchjs.org/)      
 [Selenium](https://www.selenium.dev/)
 
