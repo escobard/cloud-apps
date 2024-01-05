@@ -1,6 +1,6 @@
 # cloud-apps-2019 &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/facebook/react/blob/master/LICENSE) [![CircleCI Status](https://circleci.com/gh/escobard/cloud-apps-2019.svg?style=shield&circle-token=9a2ace13d3d938798ecb8f2efc56176ea7ede1ca)](https://app.circleci.com/pipelines/github/escobard/cloud-apps-2019) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/escobard/cloud-apps#pull-requests) 
 
-A simple note-taking tool, built with JavaScript ES6, designed to be cloud-agnostic and re-usable. Each application in the system can be run independently with npm or with Docker. Development, production, integration and end-to-end (e2e) test environments can be simulated with Docker Compose.
+A simple note-taking tool, built with JavaScript ES6, designed to be cloud-agnostic and serve as a starting point for more complex use cases. Each application in the system can be run independently with Docker or npm. Unit, integration and end to end (e2e) automated tests are available. Development, release, integration, and e2e test environments can be simulated with Docker Compose.
 
 A new note can be created in a few simple steps:
 
@@ -16,7 +16,7 @@ A new note can be created in a few simple steps:
 
 ![Note created](docs/images/note_created.png)
 
-The diagram below outlines the network created by Docker Compose for development and production environments, including application connections, ports, routes and tools:
+The diagram below outlines the network created by Docker Compose for development and release environments, including application connections, ports, routes and tools:
 
 ![System overview](docs/diagrams/system_overview.png)
 
@@ -85,13 +85,13 @@ Leveraging the power of Containers, the system and its applications can be deplo
 
 Docker Compose is used to simulate the system in different environments, creating a clone on your computer of how the system and its applications would run on a cloud. Leveraging Docker Compose, it is easier to troubleshoot multi-application systems outside of the cloud, while serving as a foundation for the cloud network that must be in place for the system to work on the cloud.
 
-The diagram below outlines the network created by Docker Compose for development and production environments, including application connections, ports, routes and tools:
+The diagram below outlines the network created by Docker Compose for development and release environments, including application connections, ports, routes and tools:
 
 ![System overview](docs/diagrams/system_overview.png)
 
 #### Integration tests
 
-Using Docker Compose, a network can be spun up to simulate system and applications required to run integration (or service) tests. Unlike development, production and end to end test environments, the integration tests environment only contains a _partial system orchestration_, as only the API and Database are required.
+Using Docker Compose, a network can be spun up to simulate system and applications required to run integration (or service) tests. Unlike development, release and end to end test environments, the integration tests environment only contains a _partial system orchestration_, as only the API and Database are required.
 
 The diagram below outlines the network created by Docker Compose for integration tests environment, including application connections, ports, routes and tools:
 
@@ -99,7 +99,7 @@ The diagram below outlines the network created by Docker Compose for integration
 
 #### End to end tests
 
-A Docker Compose network is provided, simulating the system and applications that are needed to run end to end tests. 
+A Docker Compose network is provided, simulating the system and applications that are needed to run end to end (or UI) tests. 
 
 The end to end tests environment has the most complex container orchestration out of all other provided environments, as it requires an application to run the tests (nightwatch), a hub to spin up browsers (selenium hub) and the browser itself (node-chrome). 
 
@@ -115,7 +115,7 @@ Following Mike Cohn's [test pyramid](https://martinfowler.com/articles/practical
 
 The test pyramid paradigm encourages developers to build more unit tests (since they are small and fast), than service tests, and more service tests than UI tests (which are slow and heavy).
 
-While the system provides over 95% unit test coverage, only critical features are covered by integration and end to end tests. The goal is to provide a starting point for developers, then extend with more complex automated tests as required.
+While the system provides over 95% unit test coverage, only critical features are covered by integration and end to end tests. The goal is to provide a starting point for developers, to extend with more complex automated tests as required.
 
 #### UI unit tests
 
