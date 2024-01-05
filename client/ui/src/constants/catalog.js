@@ -2,7 +2,7 @@ import { todayDate } from "../utils/todayDate";
 
 export const footer = {
   noNotes: "NO NOTES",
-  withNotes: "COMPLETED",
+  withNotes: "NOTES",
 };
 
 export const header = {

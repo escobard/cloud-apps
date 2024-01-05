@@ -3,13 +3,16 @@ workflows:
   automated-tests:
     jobs:
       - ui-unit-tests
-      - ui-e2e-tests:
-          requires:
-            - ui-unit-tests
       - api-unit-tests
       - api-integration-tests:
           requires:
+            - ui-unit-tests
             - api-unit-tests
+      - ui-e2e-tests:
+          requires:
+            - ui-unit-tests
+            - api-unit-tests
+            - api-integration-tests
 version: 2
 jobs:
   ui-unit-tests:
@@ -71,7 +74,7 @@ jobs:
       - run:
           name: api-integration-tests
           command: |
-            docker-compose -f integration-tests.yaml up --exit-code-from integration
+            docker-compose -f integration-tests.yaml up --exit-code-from integration_tests
   ui-e2e-tests:
     working_directory: ~/client/tests
     docker:
@@ -89,4 +92,4 @@ jobs:
       - run:
           name: ui-e2e-tests
           command: |
-            docker-compose -f e2e-tests.yaml up --exit-code-from e2e
+            docker-compose -f e2e-tests.yaml up --exit-code-from e2e_tests
