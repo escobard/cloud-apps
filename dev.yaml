@@ -1,7 +1,7 @@
 version: '3'
 services:
   database:
-    container_name: database_dev_2019
+    container_name: database_dev
     build:
       context: ./server/postgres
     ports:
@@ -10,7 +10,7 @@ services:
     environment:
       POSTGRES_HOST_AUTH_METHOD: trust
   api:
-    container_name: api_dev_2019
+    container_name: api_dev
     working_dir: /usr/cloud-apps/api
     environment:
       - PGUSER=postgres
@@ -30,7 +30,7 @@ services:
     command: |
       sh -c "/wait && npm run dev"
   ui:
-    container_name: ui_dev_2019
+    container_name: ui_dev
     working_dir: /usr/cloud-apps/ui
     environment:
       - WAIT_HOSTS=api:4000

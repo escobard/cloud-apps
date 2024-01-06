@@ -1,4 +1,4 @@
-# cloud-apps-2019 &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/facebook/react/blob/master/LICENSE) [![CircleCI Status](https://circleci.com/gh/escobard/cloud-apps-2019.svg?style=shield&circle-token=9a2ace13d3d938798ecb8f2efc56176ea7ede1ca)](https://app.circleci.com/pipelines/github/escobard/cloud-apps-2019) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/escobard/cloud-apps#pull-requests) 
+# cloud-apps &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/facebook/react/blob/master/LICENSE) [![CircleCI Status](https://circleci.com/gh/escobard/cloud-apps.svg?style=shield&circle-token=9a2ace13d3d938798ecb8f2efc56176ea7ede1ca)](https://app.circleci.com/pipelines/github/escobard/cloud-apps) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/escobard/cloud-apps#pull-requests) 
 
 A simple note-taking web application, built with JavaScript ES6, designed as starting point to build complex web applications. Each application in the system can be run independently with Docker or npm. Unit, integration and end to end (e2e) automated tests are available. Development, release, integration and e2e test environments can be simulated with Docker Compose.
 
@@ -22,12 +22,12 @@ The diagram below outlines the network created by Docker Compose for development
 
 # Table of contents
 
-* [Quickstart](https://github.com/escobard/cloud-apps-2019?tab=readme-ov-file#quickstart)
-* [Technical Highlights](https://github.com/escobard/cloud-apps-2019?tab=readme-ov-file#technical-highlights)
-* [Application docs](https://github.com/escobard/cloud-apps-2019?tab=readme-ov-file#application-docs)
-* [How to contribute](https://github.com/escobard/cloud-apps-2019?tab=readme-ov-file#how-to-contribute)
-* [Tools and frameworks](https://github.com/escobard/cloud-apps-2019?tab=readme-ov-file#tools-and-frameworks)
-* [License](https://github.com/escobard/cloud-apps-2019?tab=readme-ov-file#license)
+* [Quickstart](https://github.com/escobard/cloud-apps?tab=readme-ov-file#quickstart)
+* [Technical Highlights](https://github.com/escobard/cloud-apps?tab=readme-ov-file#technical-highlights)
+* [Application docs](https://github.com/escobard/cloud-apps?tab=readme-ov-file#application-docs)
+* [How to contribute](https://github.com/escobard/cloud-apps?tab=readme-ov-file#how-to-contribute)
+* [Tools and frameworks](https://github.com/escobard/cloud-apps?tab=readme-ov-file#tools-and-frameworks)
+* [License](https://github.com/escobard/cloud-apps?tab=readme-ov-file#license)
 
 ## Quickstart
 
@@ -65,17 +65,17 @@ The diagram below outlines the network created by Docker Compose for development
 
 ### Run applications with NPM or Docker
 
-Find detailed instructions on how to run each application within the [Application docs](https://github.com/escobard/cloud-apps-2019?tab=readme-ov-file#application-docs).
+Find detailed instructions on how to run each application within the [Application docs](https://github.com/escobard/cloud-apps?tab=readme-ov-file#application-docs).
 
 ## Technical highlights
 
 As a portfolio piece, this project aims to showcase expertise in several areas, including:
 
-1. [Container orchestration for scale](https://github.com/escobard/cloud-apps-2019?tab=readme-ov-file#container-orchestration-for-scale)
-2. [Automated test pyramid](https://github.com/escobard/cloud-apps-2019?tab=readme-ov-file#automated-test-pyramid)
-3. [Blueprint for automated tests with CircleCI](https://github.com/escobard/cloud-apps-2019?tab=readme-ov-file#blueprint-for-automated-tests-with-circleci)
-4. [Full stack system built with JavaScript](https://github.com/escobard/cloud-apps-2019?tab=readme-ov-file#full-stack-system-built-with-javascript)
-5. [Starting point for more complicated use cases](https://github.com/escobard/cloud-apps-2019?tab=readme-ov-file#starting-point-for-more-complicated-use-cases)
+1. [Container orchestration for scale](https://github.com/escobard/cloud-apps?tab=readme-ov-file#container-orchestration-for-scale)
+2. [Automated test pyramid](https://github.com/escobard/cloud-apps?tab=readme-ov-file#automated-test-pyramid)
+3. [Blueprint for automated tests with CircleCI](https://github.com/escobard/cloud-apps?tab=readme-ov-file#blueprint-for-automated-tests-with-circleci)
+4. [Full stack system built with JavaScript](https://github.com/escobard/cloud-apps?tab=readme-ov-file#full-stack-system-built-with-javascript)
+5. [Starting point for more complicated use cases](https://github.com/escobard/cloud-apps?tab=readme-ov-file#starting-point-for-more-complicated-use-cases)
 
 ### Container orchestration for scale
 
@@ -156,11 +156,11 @@ The system and its applications can be re-used as a starting point (or blueprint
 
 ## Application docs
 
-[UI](https://github.com/escobard/cloud-apps-2019/blob/master/client/ui)  
-[API](https://github.com/escobard/cloud-apps-2019/blob/master/server/api)  
-[Database](https://github.com/escobard/cloud-apps-2019/tree/master/server/postgres)  
-[Integration tests](https://github.com/escobard/cloud-apps-2019/tree/master/server/tests)  
-[End to end tests](https://github.com/escobard/cloud-apps-2019/tree/master/client/tests)
+[UI](https://github.com/escobard/cloud-apps/blob/master/client/ui)  
+[API](https://github.com/escobard/cloud-apps/blob/master/server/api)  
+[Database](https://github.com/escobard/cloud-apps/tree/master/server/postgres)  
+[Integration tests](https://github.com/escobard/cloud-apps/tree/master/server/tests)  
+[End to end tests](https://github.com/escobard/cloud-apps/tree/master/client/tests)
 
 ## Tools and frameworks
 

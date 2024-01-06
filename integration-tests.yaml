@@ -1,7 +1,7 @@
 version: '3'
 services:
   database:
-    container_name: database_integration_2019
+    container_name: database_integration
     build:
       context: ./server/postgres
     ports:
@@ -10,7 +10,7 @@ services:
     environment:
       POSTGRES_HOST_AUTH_METHOD: trust
   api:
-    container_name: api_integration_2019
+    container_name: api_integration
     working_dir: /usr/cloud-apps/api
     environment:
       - PGUSER=postgres
@@ -27,7 +27,7 @@ services:
     command: |
       sh -c "/wait && npm run dev"
   integration_tests:
-    container_name: integration_tests_2019
+    container_name: integration_tests
     working_dir: /usr/cloud-apps/integration
     environment:
       - API_HOST=api

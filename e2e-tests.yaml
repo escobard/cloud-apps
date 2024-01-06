@@ -1,7 +1,7 @@
 version: '3'
 services:
   selenium_hub:
-    container_name: selenium_hub_e2e_2019
+    container_name: selenium_hub_e2e
     image: selenium/hub:3.0.1
     networks:
       - nightwatch-docker-grid-network
@@ -13,7 +13,7 @@ services:
     ports:
       - '4444:4444'
   browser:
-    container_name: browser_e2e_2019
+    container_name: browser_e2e
     image: selenium/node-chrome:3.0.1
     networks:
       - nightwatch-docker-grid-network
@@ -23,7 +23,7 @@ services:
     logging:
       driver: none
   ui:
-    container_name: ui_e2e_2019
+    container_name: ui_e2e
     working_dir: /usr/cloud-apps/ui
     networks:
       - nightwatch-docker-grid-network
@@ -35,7 +35,7 @@ services:
     command: |
       sh -c "npm run start"
   e2e_tests:
-    container_name: e2e_tests_2019
+    container_name: e2e_tests
     working_dir: /usr/cloud-apps/e2e
     networks:
       - nightwatch-docker-grid-network
