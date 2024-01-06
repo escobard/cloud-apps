@@ -1,6 +1,6 @@
 # cloud-apps &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/facebook/react/blob/master/LICENSE) [![CircleCI Status](https://circleci.com/gh/escobard/cloud-apps.svg?style=shield&circle-token=9a2ace13d3d938798ecb8f2efc56176ea7ede1ca)](https://app.circleci.com/pipelines/github/escobard/cloud-apps) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/escobard/cloud-apps#pull-requests) 
 
-A simple note-taking web application, built with JavaScript ES6, designed as starting point to build complex web applications. Each application in the system can be run independently with Docker or npm. Unit, integration and end to end (e2e) automated tests are available. Development, release, integration and e2e test environments can be simulated with Docker Compose.
+A simple note-taking web application, built with JavaScript ES6, designed as starting point to build complex web applications. Each application in the system can be run independently with Docker or npm. Unit, integration and end-to-end (e2e) tests are available. Development, release, integration and e2e test environments can be simulated with Docker Compose.
 
 A new note can be created in a few simple steps:
 
@@ -91,31 +91,29 @@ The diagram below outlines the network created by Docker Compose for development
 
 #### Integration tests
 
-Using Docker Compose, a network can be spun up to simulate system and applications required to run integration (or service) tests. Unlike development, release and end to end test environments, the integration tests environment only contains a _partial system orchestration_, as only the API and Database are required.
+Using Docker Compose, a network can be spun up to simulate system and applications required to run integration (or service) tests. Unlike development, release and e2e test environments, the integration tests environment only contains a _partial system orchestration_, as only the API and Database are required.
 
-The diagram below outlines the network created by Docker Compose for integration tests environment, including application connections, ports, routes and tools:
+The diagram below outlines the network created by Docker Compose for the integration tests environment, including application connections, ports, routes and tools:
 
 ![Integration tests](docs/diagrams/integration_tests.png)
 
 #### End to end tests
 
-A Docker Compose network is provided, simulating the system and applications that are needed to run end to end (or UI) tests. 
+A Docker Compose network is provided, simulating the system and applications that are needed to run e2e (or UI) tests. The e2e tests environment has the most complex container orchestration out of all other provided environments, as it requires an application to run the tests (nightwatch), a hub to spin up browsers (selenium hub) and a browser (node-chrome). 
 
-The end to end tests environment has the most complex container orchestration out of all other provided environments, as it requires an application to run the tests (nightwatch), a hub to spin up browsers (selenium hub) and the browser itself (node-chrome). 
-
-The diagram below outlines the full network required for the end to end tests environment, including application connections, ports, routes and tools:
+The diagram below outlines the full network required for the e2e tests environment, including application connections, ports, routes and tools:
 
 ![End to end tests](docs/diagrams/e2e_tests.png)
 
 ### Automated test pyramid
 
-Following Mike Cohn's [test pyramid](https://martinfowler.com/articles/practical-test-pyramid/testPyramid.png) approach to automated testing, the system contains a "well-rounded" automated test portfolio, which aims to cover all critical areas of the system with automated tests. 
+Following Mike Cohn's [test pyramid](https://martinfowler.com/articles/practical-test-pyramid/testPyramid.png) approach to automated testing, the system contains a "well-rounded" test portfolio, which aims to cover all critical areas of the system with automated tests. 
 
 ![Mike Cohn's test pyramid](docs/images/test_pyramid.png)
 
-The test pyramid paradigm encourages developers to build more unit tests (since they are small and fast), than service tests, and more service tests than UI tests (which are slow and heavy).
+The test pyramid paradigm encourages developers to build more unit tests (since they are small and fast), than service (or integration) tests, and more service tests than UI (or e2e) tests (which are slow and heavy).
 
-While the system provides over 95% unit test coverage, only critical features are covered by integration and end to end tests. The goal is to provide a starting point for developers, to extend with more complex automated tests as required.
+Staying true to the test pyramid paradigm, the system provides over 95% unit test coverage, but only critical features are covered by integration and e2e tests. The goal is to provide a starting point for developers to extend tests as required.
 
 #### UI unit tests
 
@@ -135,7 +133,7 @@ While the system provides over 95% unit test coverage, only critical features ar
 
 ### Blueprint for automated tests with CircleCI
 
-Leveraging CircleCI, Unit tests for each application (except for the database) are run on every new commit to Github. Once unit tests have passed, integration tests are run, validating API and Database changes. After integration tests pass, end to end (e2e) tests are run, validating that the UI, API and Database work as expected with the new changes. 
+Leveraging CircleCI, unit tests for each application (except for the database) are run on every new commit to Github. Once unit tests have passed, integration tests are run, validating API and Database changes. After integration tests pass, e2e tests are run, validating that the UI, API and Database work together as expected with the new changes. 
 
 Following the [fail-fast](https://testsigma.com/blog/test-automation-achieve-fail-fast-fail-often/) automated testing approach, the system provides a starting point (or blueprint / boilerplate) as-is for more complex automated testing requirements.
 
