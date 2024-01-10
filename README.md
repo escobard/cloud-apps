@@ -23,7 +23,7 @@ The diagram below outlines the network created by Docker Compose for development
 # Table of contents
 
 * [Quickstart](https://github.com/escobard/cloud-apps?tab=readme-ov-file#quickstart)
-* [Technical Highlights](https://github.com/escobard/cloud-apps?tab=readme-ov-file#technical-highlights)
+* [Core Concepts](https://github.com/escobard/cloud-apps?tab=readme-ov-file#core-concepts)
 * [Application docs](https://github.com/escobard/cloud-apps?tab=readme-ov-file#application-docs)
 * [How to contribute](https://github.com/escobard/cloud-apps?tab=readme-ov-file#how-to-contribute)
 * [Tools and frameworks](https://github.com/escobard/cloud-apps?tab=readme-ov-file#tools-and-frameworks)
@@ -67,9 +67,7 @@ The diagram below outlines the network created by Docker Compose for development
 
 Find detailed instructions on how to run each application within the [Application docs](https://github.com/escobard/cloud-apps?tab=readme-ov-file#application-docs).
 
-## Technical highlights
-
-As a portfolio piece, this project aims to showcase expertise in several areas, including:
+## Core concepts
 
 1. [Container orchestration for scale](https://github.com/escobard/cloud-apps?tab=readme-ov-file#container-orchestration-for-scale)
 2. [Automated test pyramid](https://github.com/escobard/cloud-apps?tab=readme-ov-file#automated-test-pyramid)
